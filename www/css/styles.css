@@ -1,0 +1,60 @@
+/* ------- INFO ----------------
+	Main color 1 : 
+	Main color 2 : 
+	Main color 3 : 
+	
+	- CONTAINER
+	- HEADER
+	- CONTENT
+		- MAIN
+		- SIDEBAR
+	- FOOTER
+*/
+ 
+/* ------- CONTAINER ---------------- */
+#container {
+	width:1024px;
+	margin:20px auto;
+}
+#header, 
+#main,
+#sidebar,
+#footer {
+	padding-top:10px;
+}
+
+/* ------- HEADER ---------------- */
+	#header h1 a {
+		background:transparent url(../img/logo.png) no-repeat;
+		display:block;
+		height:75px;
+		overflow:hidden;
+		text-indent:-9999px;
+		width:280px; 
+	}
+	#header p {
+		display:none;
+	}
+
+/* ------- CONTENT ---------------- */
+#content {
+	
+}
+
+	/* ------- MAIN ---------------- */
+	#main {
+		
+	}
+		#main p {
+			text-align: justify;	
+		}
+	
+	/* ------- SIDEBAR ---------------- */
+	#sidebar {
+		
+	}
+
+/* ------- FOOTER ---------------- */
+#footer {
+	
+}

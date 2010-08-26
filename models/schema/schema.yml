@@ -1,0 +1,20 @@
+User:
+  connection: default
+  tableName: users
+  columns:
+    name:
+      notblank: true
+      type: string(50)
+    firstname:
+      notblank: true
+      type: string(50)
+    username:
+      notblank: true
+      unique: true
+      type: string(50)
+    password:
+      notblank: true
+      type: string(50)
+    status: 
+      type: boolean
+      default: 1

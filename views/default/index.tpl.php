@@ -1,0 +1,15 @@
+<?php
+	$this->set('TITLE', 		'Titre de la page');
+	$this->set('DESCRIPTION',	'Description de la page');
+?>
+    <div id="content">
+
+    	<div id="main" class="col3-4 first">
+			
+        </div><!-- /main -->
+    
+        <div id="sidebar" class="col1-4 last">
+			
+        </div><!-- /sidebar -->
+
+    </div><!-- /content -->
