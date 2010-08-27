@@ -63,7 +63,7 @@
 			$action	= Inflection::camelCase($this->action, false);
 
 			if (!class_exists($class)) {
-				if (ENV != 'dev') {
+				if (ENV != 'prod') {
 					throw new Exception("Le Controlleur '".$class."' n'existe pas");
 				} else {
 					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
@@ -73,7 +73,7 @@
 				}
 			}
 			if (!method_exists($class, $action)) {
-				if (ENV != 'dev') {
+				if (ENV != 'prod') {
 					throw new Exception("L'Action '".$action."' n'existe pas");
 				} else {
 					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
