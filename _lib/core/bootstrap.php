@@ -1,8 +1,9 @@
 <?php
 	class BootstrapCore {
-		protected $path 	= array();
-		protected $models 	= array();
-		protected $default 	= 'default/index/';
+		protected $path 		= array();
+		protected $models 		= array();
+		protected $default 		= 'default/index/';
+		protected $dispatching 	= true;
 		protected $env;
 		
 		static public $instance;
@@ -15,7 +16,6 @@
 		}
 
 		public function __construct() {
-			spl_autoload_register(array('Doctrine', 'autoload'));
 			spl_autoload_register(array($this, 'autoload'));
 		}
 		
@@ -55,7 +55,15 @@
 		public  function getEnv() {
 			return $this->env;	
 		}
+
+		public function disableDispatch() {
+			$this->dispatching = false;	
+		}
 		
+		public function enableDispatch() {
+			$this->dispatching = true;	
+		}
+
 		public  function setDefaultController($url) {
 			$this->default = $url;
 		}
@@ -85,6 +93,8 @@
 		}
 		
 		public  function setDoctrine() {
+			spl_autoload_register(array('Doctrine', 'autoload'));
+			
 			if (!$configs = Config::get()) {
 				throw new Exception("Les configuration doit être configurées avant l'appel de cette méthode.");	
 			}
@@ -103,6 +113,10 @@
 		}
 				
 		public  function dispatch($url = null) {
+			if ($this->dispatching == false) {
+				return false;
+			}
+			
 			if (!$url && isset($_GET['URL'])) {
 				$url = $_GET['URL'];
 			}
