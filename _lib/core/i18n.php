@@ -20,6 +20,14 @@
 			return self::$path;
 		}
 		
+		static function addDefinition($key, $string) {
+			self::$definitions = array_merge(self::$definitions, array($key => $string));
+		}
+		
+		static function addDefinitions($array) {
+			self::$definitions = array_merge(self::$definitions, $array);
+		}
+		
 		static function loadDefinition($path, $lang = null) {
 			if (!$lang && !self::$culture) {
 				throw new Exception("La culture doit être configuré avant l'appel de cette méthode.");	
@@ -65,8 +73,14 @@
 		
 		static function translate($key, $params = array(), $reversed = null, $prefix = null) {
 			$definitions = I18n::getDefinitions();
+			$string = $key;
 		
 			if ($reversed) {
+				if (is_array($params)) {
+					foreach ($params as $k => $v) {
+						$key = str_replace($v, '%%'.$k.'%%', $string);
+					}
+				}
 				if ($string = array_search($key, $definitions)) {
 					return preg_replace('~^'.$prefix.'\.~', '', $string);
 				}
@@ -82,10 +96,11 @@
 			}
 			
 			if (is_array($params)) {
-				foreach ($params as $key => $value) {
-					$string = str_replace('%%'.$key.'%%', $value, $string);
+				foreach ($params as $k => $v) {
+					$string = str_replace('%%'.$k.'%%', $v, $string);
 				}
 			}
+
 			return $string;	
 		}
 		
