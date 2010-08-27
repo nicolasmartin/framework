@@ -12,15 +12,7 @@
 	require_once ROOT.'_lib/vendors/mailer/class.mailer.php';
 
 	// Environnements
-	ini_set('display_errors', 1);
-	if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
-		define('ENV', 'dev');
-	} else if ($_SERVER['SERVER_NAME'] == 'domain.com') {
-		define('ENV', 'prod');
-		ini_set('display_errors', 0);
-	} else {
-		throw new Exception('Aucun environnement disponible.');	
-	}
+	include ROOT.'configs/env.php';
 
 	// Langues
 	i18n::setCulture('fr');
