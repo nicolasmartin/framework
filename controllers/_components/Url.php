@@ -83,9 +83,10 @@ class UrlComponent extends ComponentCore {
 		$splits[3] = ($url['action']) 		? $url['action'] 		: null;
 		$splits[4] = ($url['params']) 		? $url['params'] 		: null;	
 		
-		$splits[1] = __($splits[1], null, true, 'url');
-		$splits[2] = __($splits[2], null, true, 'url');
-		$splits[3] = __($splits[3], null, true, 'url');
+		$splits[0] = __($splits[0], null, null, 'url');
+		$splits[1] = __($splits[1], null, null, 'url');
+		$splits[2] = __($splits[2], null, null, 'url');
+		$splits[3] = __($splits[3], null, null, 'url');
 		
 		$url = implode($splits, '/');
 		$url = '/'.$url.'/';
