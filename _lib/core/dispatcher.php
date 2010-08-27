@@ -66,8 +66,8 @@
 				if (ENV != 'prod') {
 					throw new Exception("Le Controlleur '".$class."' n'existe pas");
 				} else {
-					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-					header("Status: 404 Not Found");
+//					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+//					header("Status: 404 Not Found");
 					header('location:'.UrlComponent::path('/pages/page404/'));
 					exit;
 				}
@@ -76,8 +76,8 @@
 				if (ENV != 'prod') {
 					throw new Exception("L'Action '".$action."' n'existe pas");
 				} else {
-					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-					header("Status: 404 Not Found");
+//					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+//					header("Status: 404 Not Found");
 					header('location:'.UrlComponent::path('/pages/page404/'));
 					exit;
 				}
