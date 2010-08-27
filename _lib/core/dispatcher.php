@@ -42,6 +42,22 @@
 			return $this->params;	
 		}
 
+		public function setApp($app) {
+			$this->app = $app;
+		}
+
+		public function setController($controller) {
+			$this->controller = $controller;
+		}
+
+		public function setAction($action) {
+			$this->action = $action;
+		}
+			
+		public function setParams($params) {
+			$this->params = $params;
+		}
+		
 		public function dispatch() {		
 			$class	= Inflection::camelCase($this->controller).'Controller';
 			$action	= Inflection::camelCase($this->action, false);
