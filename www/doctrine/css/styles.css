@@ -2,11 +2,9 @@
 	width: 960px;
 	margin:20px auto;	
 }
-
 body {
 	font:11px/1.7 Arial, Helvetica, sans-serif;	
 }
-
 h1 {
 	font-size:24px;	
 	margin-bottom:20px;
@@ -17,12 +15,10 @@ h2 {
 	margin-bottom:5px;
 	padding-bottom:5px;
 }
-
 ul {
 	margin-bottom:10px;
 	padding-bottom:10px;
 }
-
 .message {
 	border:1px solid #000;
 	padding:10px;

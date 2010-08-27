@@ -1,87 +1,71 @@
 /* ------- INFO ----------------
-	Main color 1: Black 
-	Main color 2: Gray 
-	Main color 3: Ivory
+	Color : Black 
+	Color : LightGray
+	Color : WhiteSmoke
+	Color : Ivory
+	Color : DarkBlue
+	Color : DarkGreen
+	Color : DarkBlue
+	Color : White
  ------------------------------ */
-
 body {
-	color: #222;
-	font: 13px/1.7 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+	font: 12px/1.7 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 /* ------- HEADERS ---------------- */
 h1, h2, h3, h4, h5, h6 {
-	margin: 10px 0;
+	margin: 0.1em 0;
 }
-
 h1 {
 	font-size: 48px;
-	color: #000;
 	letter-spacing:-2px;
 }
-
 h2 {
 	font-size: 36px;
-	color: #000;
 	font-weight: normal; 
 }
-
 h3 {
 	font-size: 24px;
 	font-weight: normal; 
-	color: #000;
 }
-
 h4 {
 	font-size: 20px;
 	font-weight: normal; 
-	color: #000;
 }
-
 h5 {
 	font-size: 16px;
-	color: #000;
 }
-
 h6 {
 	font-size: 13px;
-	color: #000;
 }
 
 /* ------- ELEMENTS ---------------- */
 strong {
 	font-weight: bold;
 }
-
 em {
 	font-style: italic;
 }
-
 blockquote {
 	background: transparent url(../img/elements/quotes.png) no-repeat left top;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-style: italic;
 	padding-left: 30px;
-	text-align: justify;	
 }
-
 address {
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
-
 abbr {
-	border-bottom: 1px dotted #666;
+	border-bottom: 1px dotted Gray;
 	cursor: help;	
 }
-
-p {
+p,
+pre {
 	margin-bottom: 10px;
 }
-
 dl,
 hr,
 ol, ul,
-pre,
 table,
 address,
 fieldset,
@@ -89,64 +73,52 @@ blockquote {
 	margin-bottom: 20px;
 /*	padding: 0 20px;*/
 }
-
 .message,
 .chapo {
 	margin-bottom: 20px;	
 }
 
 /* ------- CLASSES ---------------- */
-
 .odd {
-	background: #FFF;
+	background: White;
 }
-
 .even {
-	background: #FAFAFA;
+	background: WhiteSmoke;
 }
-
 .small {
 	width: 30% !important;
 }
-
 .medium {
 	width: 50% !important;
 }
-
 .large {
 	width: 80% !important;
 }
-
 .ir {
 	 background-repeat: no-repeat;
 	 display: block;
 	 text-indent: -9999px; 
 	 overflow: hidden;
 }
-
 .left {
 	float: left;
 	margin-right: 10px;
 }
-
 .right {
 	float: right;
 	margin-left: 10px;
 }
-
 .lettrine {
 	font-size: 46px;
 	float: left;
 	line-height: 40px;
 	padding-right: 5px;
 }
-
 .chapo {
 	font-size: 140%;
 }
-
 .hightlight {
-	background: Gray;	
+	background: LightGray;	
 	padding: 5px;
 }
 
@@ -163,47 +135,39 @@ blockquote {
 	.menu a:hover {
 		text-decoration: none;	
 	}
-
 	.menu.horizontal {
 		overflow: hidden;
 		padding: 20px 0;
 	}
-	
 		.menu.horizontal li {
 			float: left;
 			display: inline-block;	
 			margin: 0;
 		}
-
 		.menu.horizontal li:hover {
-			background: Gray;
+			background: Ivory;
 			cursor: pointer;
 		}
-
 		.menu.horizontal .current {
-			background: #F5F5F5;
+			background: WhiteSmoke;
 			font-weight: bold;
-		}
-		
+		}		
 	.menu.vertical {
 	}
-	
 		.menu.vertical li {
-			border-bottom: 1px dotted #CCC;
 			margin: 0;
 			padding: 10px;
 		}
-		
 		.menu.vertical li:hover {
-			background: Gray ;
+			background: Ivory;
 			cursor: pointer;
 		}
 		
 		.menu.vertical .current {
-			background: #F5F5F5;
+			background: WhiteSmoke;
 			font-weight: bold;
 		}
-
+		
 /* Messages */
 .message {
 	border: 2px solid #000;
@@ -211,25 +175,24 @@ blockquote {
 	margin-bottom: 20px;
 	padding: 8px;
 }
-
 	.message.error {
 		background: transparent url(../img/elements/icons.png) no-repeat -84px -226px;
-		border-color: #C00;
-		color: #C00;
+		border-color: DarkRed;
+		color: DarkRed;
 		padding-left: 50px;
 	}
 	
 	.message.success {
 		background: transparent url(../img/elements/icons.png) no-repeat -188px -122px; 
-		border-color: #390;
-		color: #390;
+		border-color: DarkGreen;
+		color: DarkGreen;
 		padding-left: 50px;
 	}
 	
 	.message.info {
 		background: transparent url(../img/elements/icons.png) no-repeat -136px -174px;
-		border-color: #369;
-		color: #369;
+		border-color: DarkBlue;
+		color: DarkBlue;
 		padding-left: 50px;
 	}
 	
@@ -237,23 +200,20 @@ blockquote {
 	list-style: none; 
 	overflow: hidden; 
 	margin:0;
-} 
-		
+}
 	.breadcrumbs li { 
 		float: left; 
 		height: 26px;
 		line-height: 26px; 
 		margin:0 10px 0 0px;
 		font-weight: bold;
-	}
-			
+	}	
 		.breadcrumbs a { 
 			font-weight: normal;
 			margin-right: 5px;
 		} 
-		
 		.breadcrumbs a:hover {
-			color: Gray; 
+			color: LightGray; 
 		}			
 
 .button {
@@ -263,7 +223,6 @@ blockquote {
 	padding: 5px 20px;
 	text-decoration: none;
 }
-
 	.button:hover {
 		border: 1px solid Black ;
 		color: Black ;
@@ -274,26 +233,19 @@ blockquote {
 a:focus {
 	outline: 1px dotted;
 }
-
 a:link, a:visited, a:active {
-	color: Black ;
 	text-decoration: none;
 }
-
 a:hover {
 	text-decoration: underline;
 }
-
 a.cancel {
-	color: #900;
+	color: DarkRed;
 	text-decoration: underline;	
 }
-
 .sprite { 
 	background:url(../img/elements/icons.png) no-repeat top left;
-	
 }
-
 .sprite.icon { 
 	cursor: pointer;
 	display: inline-block;
@@ -302,30 +254,24 @@ a.cancel {
 	text-indent: 100em;
 	width: 20px;
 }
-
 *+html .sprite.icon { 
 	text-indent: 0; 
 	width: 0; 
 	padding-left: 16px;
 }
-
 .sprite.prefix { 
-	color: #000;
 	display: inline-block;
 	height: 20px;
 	padding-left: 20px; 
 }
-
 .sprite.right {
 	float: right; 
 	margin-left: 15px;
 }
-
 .sprite.left {
 	float: left;
 	margin-right: 15px;
 }
-
 .lock { 
 	background-position: -336px -0px;
 }
@@ -368,155 +314,111 @@ a.cancel {
 .edit { 
 	background-position: -0px -336px;
 }
-
 	
 /* ------- FORMS ---------------- */	
 form {		
 }
-
 	form div {
 		padding: 10px;
 	}
-	
 	form fieldset {
-		border: 1px solid #000;
+		border: 1px solid Black;
 		padding: 0 20px 20px 20px;
 	}
-	
 	form legend {
 		font-size: 14px;
 		font-weight: bold;
 		margin: 5px;
 		padding: 5px;
 	}
-	
 	form label {
-		color: #000;
+		color: Black;
 		display: block;
 		font-weight: bold;
 		padding: 0 0 4px 0;
 	}
-	
 	form input[type=text],
 	form textarea,
 	form select {
-		border: 1px solid #888;
-		color: #000;
+		border: 1px solid Gray;
 		font: 12px 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 		padding: 10px;
-		background: #FEFEFE;
 	}
-	
 	form div.has-error {
 		background: Ivory;
 	}
-	
 	form input[type=text]:focus,
 	form textarea:focus,
 	form select:focus {
-		border: 1px solid Black ;
+		border: 1px solid Black;
 	}
-	
 	form .hint {
-		color: #666;
+		color: Gray;
 		display: block;
 		font-size: 11px;
 		padding: 4px 0;
 	}
-	
 	form input[type=text].error,
 	form textarea.error {
-		border: 1px solid #C30;
+		border: 1px solid DarkRed;
 	}
-	
 	form .errors {
 		background: transparent url(../img/elements/icons.png) no-repeat -104px -234px;
-		color: #C30;
+		color: DarkRed;
 		list-style: none;
 		margin: 0;
 	}
-	
 		form .errors li {
 			margin: 0;
 			padding: 0 0 0 25px;
 		}
-
+		
 /* ------- TABLES et LISTE ------------- */
 table {
-	border: 1px solid #000;
 	width: 100%;
 }
-	
+	table th,
+	table td {
+		padding: 5px;
+	}
+	table tr:hover th,
+	table tr:hover td {
+		background: Ivory;
+	}
 	table th {
 		font-weight: bold;
 	}
-
-	table thead th,
-	table thead td,
-	table tfoot th,
-	table tfoot td {
-		background: #F5F5F5;
-	}
-
 	table thead th,
 	table thead td {
-		border-bottom: 1px solid #000;
+		border-bottom: 1px solid Black;
 	}
-			
 	table tfoot th,
 	table tfoot td {
-		border-top: 1px solid #000;
+		border-top: 1px solid  Black;
 	}
-	
-	table th,
-	table td {
-		border-right: 1px solid #CCC;
-		border-bottom: 1px solid #CCC;
-		padding: 5px;
-	}
-
-	table tbody tr.odd th {
-		background: #FAFAFA;
-		border-right: 1px solid #CCC;
-	}
-
-	table tbody tr.even th {
-		background: #F6F6F6;
-		border-right: 1px solid #CCC;
-	}
-	
-	table tr:hover.odd th,
-	table tr:hover.even th,
-	table tr:hover.odd td,
-	table tr:hover.even td {
-		background: Ivory;
+	table tbody th,
+	table tbody td {
 	}
 
 /* définitions */
 dl {
 }
-
 	dl dt {
-		border-bottom: 1px dotted #CCC;
 		font-weight: bold;
 		margin-bottom: 2px;
 		padding-bottom: 2px;
 	}
-	
 	dl dd {
 		margin-bottom: 10px;
 	}
-
+	
 /* liste */
 ol {
 	list-style: decimal;
 }
-
 ul {
 	list-style: square;
 }
-
 	li {
 		margin-left: 20px;
 	}
-
