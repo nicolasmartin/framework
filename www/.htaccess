@@ -19,6 +19,11 @@ Options -MultiViews
 AddDefaultCharset utf-8
 AddCharset utf-8 .html .css .js .xml .json .rss
 
+# Interpréter certains fichier en tant que PHP
+  AddType application/x-httpd-php .xml
+# AddType application/x-httpd-php .css
+# AddType application/x-httpd-php .js
+
 # Includes
 <FilesMatch "\.(js|css)$">
  	Options +Includes
@@ -61,7 +66,3 @@ RewriteRule ^.*$ - [G]
 # 	ExpiresByType application/javascript    "access plus 1 month"
 # 	ExpiresByType text/javascript           "access plus 1 month"
 # </IfModule>
-
-# Interpréter Js ou Css en tant que PHP
-# AddType application/x-httpd-php .css
-# AddType application/x-httpd-php .css
