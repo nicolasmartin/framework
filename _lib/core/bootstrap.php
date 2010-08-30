@@ -64,10 +64,14 @@
 			$this->dispatching = true;	
 		}
 
-		public  function setDefaultController($url) {
-			$this->default = $url;
+		public  function setDefaultPath($path) {
+			$this->default = $path;
 		}
-		
+
+		public  function getDefaultPath() {
+			return $this->default;
+		}
+
 		public  function loadConfigs($path) {
 			require_once($path.'config.php');
 			

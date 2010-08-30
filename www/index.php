@@ -26,7 +26,7 @@
 
 	// Bootstrap
 	$Bootstrap = Bootstrap::getInstance();
-	$Bootstrap->setDefaultController('default/index');	
+	$Bootstrap->setDefaultPath('default/index');	
 	$Bootstrap->setEnv(ENV);
 	
 	$Bootstrap->addAutoloadPath(ROOT.'controllers/');				// controllers 

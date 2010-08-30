@@ -30,11 +30,11 @@
 			return $this->app;	
 		}
 
-		public function getController() {
+		public function getControllerName() {
 			return $this->controller;	
 		}
 
-		public function getAction() {
+		public function getActionName() {
 			return $this->action;	
 		}
 			
@@ -46,11 +46,11 @@
 			$this->app = $app;
 		}
 
-		public function setController($controller) {
+		public function setControllerName($controller) {
 			$this->controller = $controller;
 		}
 
-		public function setAction($action) {
+		public function setActionName($action) {
 			$this->action = $action;
 		}
 			

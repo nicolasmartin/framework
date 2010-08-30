@@ -1,4 +1,6 @@
+<? $tag = (UrlHelper::isHomepage() ? 'h1' : 'div') ?>
     <div id="header" class="row">
-        <h1><a href="<?= UrlHelper::path('/') ?>">Nom du site</a></h1>
-        <p>Tag line</p>
+        <<?= $tag ?> id="logo"><a href="<?= UrlHelper::path('/') ?>">Nom du site</a></<?= $tag ?>>
+        <small>Tag line</small>
     </div><!-- /header -->
+
