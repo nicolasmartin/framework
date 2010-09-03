@@ -14,25 +14,19 @@
 	// Environnements
 	include ROOT.'configs/env.php';
 
-	// Langues
-	i18n::setCulture('fr');
-	i18n::addDefinitionPath(ROOT.'configs/i18n/');
-	i18n::addDefinitionPath(ROOT.'configs/admin/i18n/');
-	i18n::loadDefinitions();
-
 	// Bootstrap
 	$Bootstrap = Bootstrap::getInstance();
-	$Bootstrap->setDefaultController('default/index');	
+	$Bootstrap->setDefaultPath('default/index');	
 	$Bootstrap->setEnv(ENV);
 	
-	$Bootstrap->addAutoloadPath(ROOT.'controllers/admin/');				// controllers app
-	$Bootstrap->addAutoloadPath(ROOT.'controllers/admin/_components/');	// components app
-	$Bootstrap->addAutoloadPath(ROOT.'controllers/_components/');		// components project
-	$Bootstrap->addAutoloadPath(ROOT.'views/admin/_helpers/');			// helpers app
-	$Bootstrap->addAutoloadPath(ROOT.'views/_helpers/');				// helpers project
+	$Bootstrap->addAutoloadPath(ROOT.'controllers/admin/');
+	$Bootstrap->addAutoloadPath(ROOT.'controllers/admin/_components/');
+	$Bootstrap->addAutoloadPath(ROOT.'controllers/default/_components/');
+	$Bootstrap->addAutoloadPath(ROOT.'views/admin/_helpers/');
+	$Bootstrap->addAutoloadPath(ROOT.'views/default/_helpers/');
 	
-	$Bootstrap->loadConfigs(ROOT.'configs/');							// config project
-	$Bootstrap->loadConfigs(ROOT.'configs/admin/');						// config app
+	$Bootstrap->loadConfigs(ROOT.'configs/default/');
+	$Bootstrap->loadConfigs(ROOT.'configs/admin/');
 
 	$Bootstrap->addModelPath(ROOT.'models/generated/');
 	$Bootstrap->addModelPath(ROOT.'models/');
