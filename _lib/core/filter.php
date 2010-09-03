@@ -1,5 +1,5 @@
 <?php
-	class FilterCore {
+	abstract class FilterCore {
 		static function email($email) {
 			return filter_var($email, FILTER_SANITIZE_EMAIL);	
 		}

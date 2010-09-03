@@ -1,11 +1,11 @@
 <?php
 	// Développement
-	if ($_SERVER['REMOTE_ADDR'] 		== '127.0.0.1') {
+	if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
 		define('ENV', 'dev');
-		ini_set('display_errors', 1);
+		ini_set('display_errors', 0);
 		
 	// Production
-	} else if ($_SERVER['SERVER_NAME'] 	== 'domain.com') {
+	} else if ($_SERVER['SERVER_NAME'] == 'domain.com') {
 		define('ENV', 'prod');
 		ini_set('display_errors', 0);
 	
