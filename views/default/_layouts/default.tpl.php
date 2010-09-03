@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
     <meta name="description" content="<?= $this->slot('DESCRIPTION') ?>" />
     <link rel="alternate" type="application/rss+xml" href="/rss" title="Flux Rss"> 
-    <link rel="stylesheet" type="text/css" href="/css/styles.combined.css" media="screen, print" />
+    <link rel="stylesheet" type="text/css" href="/default/css/styles.combined.css" media="screen, print" />
 <?= $this->slot('STYLES') ?>
-    <script type="text/javascript" src="/js/scripts.combined.js"></script>
+    <script type="text/javascript" src="/default/js/scripts.combined.js"></script>
 <?= $this->slot('SCRIPTS') ?>
 </head>
 <body<?= $this->slot('ID', '', ' id="%s"') ?> <?= BrowserHelper::getClass(true) ?>>

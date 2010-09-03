@@ -13,15 +13,14 @@
 			$Rss->setDate(date('Y-m-d H:i:s'));
 			$Rss->setLink($site);
 
-			$Pictures = Doctrine::getTable('Picture')->getLastest(10);
-
-			foreach($Pictures as $Picture) {
+			$data = array();
+			foreach($data as $row) {
 				$Item = new RssItem();
-				$Item->setTitle('Photo: '.$Picture['name'].', Album: '.$Picture->Album['name']);
-				$Item->setDescription('<img src="'.$site.'/photos/'.$Picture['path'].'" alt="'.$Picture['name'].'" /><br />'); // 
+				$Item->setTitle('title');
+				$Item->setDescription('description');
 				$Item->setDate(date('Y-m-d H:i:s'));
-				$Item->setAuthor('no@email.com ('.$author.')');
-				$Item->setLink($site.UrlComponent::path('/gallery/album/'.$Picture->Album['slug'])); 
+				$Item->setAuthor('no@email.com (author)');
+				$Item->setLink('http://domain.com/'); 
 				
 				$Rss->addItem($Item);
 			}
