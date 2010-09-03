@@ -6,6 +6,9 @@
     <title><?= $this->slot('TITLE') ?></title>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
     <meta name="description" content="<?= $this->slot('DESCRIPTION') ?>" />
+	<link rel="icon" type="image/png" href="/default/img/favicon.png" />
+	<link rel="icon" type="image/png" href="favicon.png" />
+
     <link rel="alternate" type="application/rss+xml" href="/rss" title="Flux Rss"> 
     <link rel="stylesheet" type="text/css" href="/default/css/styles.combined.css" media="screen, print" />
 <?= $this->slot('STYLES') ?>
