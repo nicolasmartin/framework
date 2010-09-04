@@ -16,6 +16,7 @@
     include_once dirname(__FILE__).'/except.php';
     include_once dirname(__FILE__).'/image.php';	
     include_once dirname(__FILE__).'/mailer.php';
+    include_once dirname(__FILE__).'/cache.php';
     
     include_once dirname(__FILE__).'/../config.php';
     include_once dirname(__FILE__).'/../i18n.php';
@@ -32,3 +33,4 @@
     include_once dirname(__FILE__).'/../except.php';
     include_once dirname(__FILE__).'/../image.php';	
     include_once dirname(__FILE__).'/../mailer.php';
+    include_once dirname(__FILE__).'/../cache.php';
