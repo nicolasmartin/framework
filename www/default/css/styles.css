@@ -24,7 +24,10 @@
 }
 
 /* ------- HEADER ---------------- */
-	#header h1 a {
+	#logo {
+		margin:0; padding:0;	
+	}
+	#logo a {
 		background:transparent url(../img/logo.png) no-repeat;
 		display:block;
 		height:75px;
@@ -32,7 +35,7 @@
 		text-indent:-9999px;
 		width:280px; 
 	}
-	#header p {
+	#header small {
 		display:none;
 	}
 

@@ -29,6 +29,35 @@
 		return $array;
 	}
 
+	function exception_handler($e) {
+		$message  = "<div style='padding:20px; font:12px/1.7 Arial'>";
+		$message .= "<h1>[".$e->getCode()."] ".$e->getMessage()."</h1>";
+
+		$message .= '<ul style="margin-bottom:50px">';
+		$message .= '<li><b>Fichier :</b> '.basename($e->getFile()).' [ <span style="color:red">'.$e->getLine().'</span> ]</li>';
+		$message .= '<li><b>Chemin :</b> <a href="'.$e->getFile().'">'.$e->getFile().'</a></li>';
+		$message .= '</ul>';
+		
+		$message .= "<h2>Trace :</h2>";
+		foreach ($e->getTrace() as $t) {
+			$message .= '<ul style="margin-bottom:30px">';
+			$message .= '<li><b>Fichier :</b> '.basename($t['file']).' [ <span style="color:red">'.$t['line'].'</span> ]</li>';
+			$message .= '<li><b>Chemin :</b> <a href="'.$t['file'].'">'.$t['file'].'</a></li>';
+			if ($t['class']) {
+				$message .= '<li><b>Classe :</b> '.$t['class'].$t['type'].$t['function'].'('.implode(', ', $t['args']).')</li>';
+			} else if ($t['function']) {
+				$message .= '<li><b>Fonction :</b> '.$t['function'].'('.implode(', ', $t['args']).')</li>';
+			}
+			if ($t['args']) {
+				$message .= '<li><b>Arguments :</b> <ul><li>'.implode('</li><li>', $t['args']).'</li></ul></li>';
+			}
+			$message .= '</ul>';
+		}
+		$message .= "</div>";
+		die($message);
+	}
+	set_exception_handler('exception_handler'); 
+
 	function protection($username, $password) {
 		if (!isset($_SERVER['PHP_AUTH_USER'])
 		|| ($username != $_SERVER['PHP_AUTH_USER'] && $password != sha1($_SERVER['PHP_AUTH_PW']))) {

@@ -20,7 +20,9 @@
             <p><a href="img/images/img1-big.jpg" class="fancybox"><img class="picture left" src="img/images/img1.jpg" /></a><span class="lettrine">A</span>ww, it's true. I've been hiding it for so long. Shut up and get to the point! Hey, whatcha watching? So, how 'bout them Knicks? Uh, is the puppy mechanical in any way? Hi, I'm a naughty nurse, and I really need someone to talk to. $9.95 a minute.</p>
             <p>I had more, but you go ahead. Um, is this the boring, peaceful kind of taking to the streets? It's okay, Bender. I like cooking too. I don't 'need' to drink. I can quit anytime I want! And I'd do it again! And perhaps a third time! But that would be it. But I've never been to the moon!</p>
             <p><a href="img/images/img2-big.jpg" class="fancybox"><img class="picture right" src="img/images/img2.jpg" /></a>Yes! In your face, Gandhi! And then the battle's not so bad? It's just like the story of the grasshopper and the octopus. All year long, the grasshopper kept burying acorns for winter, while the octopus mooched off his girlfriend and watched TV. But then the winter came, and the grasshopper died, and the octopus ate all his acorns. Also he got a race car. Is any of this getting through to you?</p>
+            <pre>&lt;html>&lt;body>Code ici&lt;/body>&lt;/html></pre>
             <p>Of all the friends I've had... you're the first. I'm just glad my fat, ugly mama isn't alive to see this day. Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket. Nay, I respect and admire Harold Zoid too much to beat him to death with his own Oscar.</p>
+            
             <hr class="clear" />
     
             <div class="row">

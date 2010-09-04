@@ -1,6 +1,6 @@
 <?php
 class UrlHelper extends UrlComponent {
-	function mailto($email, $mailto = 'mailto:') {
+	static function mailto($email, $mailto = 'mailto:') {
 		$encoded_email = '';
 		$len = strlen($email);
 		for ($i = 0; $i < $len; $i++) {
@@ -18,5 +18,16 @@ class UrlHelper extends UrlComponent {
 		
 		return $encoded;
 	}
-
+	
+	static function isHomepage() {
+		$Dispatcher = Dispatcher::getInstance();
+		$Bootstrap 	= Bootstrap::getInstance();
+		
+		if ($Dispatcher->getControllerName().'/'.$Dispatcher->getActionName() == $Bootstrap->getDefaultPath()) {
+			return true;	
+		} else if ($Dispatcher->getControllerName().'/'.$Dispatcher->getActionName() == 'default/index') {
+			return true;
+		}
+		return false;
+	}
 }

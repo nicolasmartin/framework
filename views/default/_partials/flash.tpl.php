@@ -13,3 +13,4 @@
 <? if (FlashComponent::has('neutral')): ?>
 	<div class="message neutral"><strong>Message :</strong> <?= FlashComponent::get('neutral') ?></div>
 <? endif ?>
+

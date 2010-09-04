@@ -20,8 +20,8 @@
 		public function __construct() {
 			$Dispatcher = Dispatcher::getInstance();
 			$Dispatcher->setApp(null);
-			$Dispatcher->setController('myController');
-			$Dispatcher->setAction('myAction');
+			$Dispatcher->setControllerName('myController');
+			$Dispatcher->setActionName('myAction');
 			
 			i18n::setCulture('fr');
 			i18n::addDefinitions($this->def);	

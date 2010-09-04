@@ -1,5 +1,5 @@
 <?
-	class SystemController extends Controller {
+	class PagesController extends Controller {
 
 		public function page403() {
 			header($_SERVER['SERVER_PROTOCOL']." 403 Forbidden");

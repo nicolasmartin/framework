@@ -2,7 +2,7 @@
 	abstract class ControllerCore implements ControllerCoreInterface {
 		public $View;
 		public $app;
-		public $controller;
+		public $name;
 		public $action;
 		public $method;
 		public $post = array();
@@ -13,12 +13,13 @@
 		protected $Components 	= array();
 		
 		public function __construct($action = null, $params = array()) {
-			$this->controller 	= str_replace('controller', '', strtolower(get_class($this)));	
+			$this->name 		= str_replace('controller', '', strtolower(get_class($this)));	
 			$this->action 		= $action;
 			$this->params		= $params;
 
-			$this->Layout		= new Layout($this->layout);		
-			$this->View 		= new View($this->controller.'/'.$this->action, $this->Layout);	
+			$this->Layout		= new Layout($this->layout);	
+			$this->Layout->setController($this);
+			$this->View 		= new View($this->name.'/'.$this->action, $this->Layout);	
 			$this->View->setController($this);
 			$this->View->setAutoRender(true);
 		}

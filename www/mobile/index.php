@@ -22,21 +22,21 @@
 	}
 
 	i18n::setCulture(LANG);
-	i18n::addDefinitionPath(ROOT.'configs/i18n/');
+	i18n::addDefinitionPath(ROOT.'configs/default/i18n/');
 	i18n::loadDefinitions();
 	
 	// Bootstrap	
 	$Bootstrap = Bootstrap::getInstance();
-	$Bootstrap->setDefaultController('default/index');	
+	$Bootstrap->setDefaultPath('default/index');	
 	$Bootstrap->setEnv(ENV);
 	
 	$Bootstrap->addAutoloadPath(ROOT.'controllers/mobile/');
 	$Bootstrap->addAutoloadPath(ROOT.'controllers/mobile/_components/');
-	$Bootstrap->addAutoloadPath(ROOT.'controllers/_components/');
+	$Bootstrap->addAutoloadPath(ROOT.'controllers/default/_components/');
 	$Bootstrap->addAutoloadPath(ROOT.'views/mobile/_helpers/');
-	$Bootstrap->addAutoloadPath(ROOT.'views/_helpers/');
+	$Bootstrap->addAutoloadPath(ROOT.'views/default/_helpers/');
 
-	$Bootstrap->loadConfigs(ROOT.'configs/');
+	$Bootstrap->loadConfigs(ROOT.'configs/default/');
 	$Bootstrap->loadConfigs(ROOT.'configs/mobile/');
 
 	$Bootstrap->addModelPath(ROOT.'models/generated/');

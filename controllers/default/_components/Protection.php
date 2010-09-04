@@ -25,7 +25,7 @@
 					$u = $_SERVER['PHP_AUTH_USER'];
 					$p = $_SERVER['PHP_AUTH_PW'];
 			}
-			if ($username != $u && $password != sha1($p)) {
+			if ($username != $u || $password != sha1($p)) {
 				header('WWW-Authenticate: Basic realm="Forbidden"');
 				header('HTTP/1.0 401 Unauthorized');
 				return false;

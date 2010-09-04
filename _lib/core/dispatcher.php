@@ -30,11 +30,11 @@
 			return $this->app;	
 		}
 
-		public function getController() {
+		public function getControllerName() {
 			return $this->controller;	
 		}
 
-		public function getAction() {
+		public function getActionName() {
 			return $this->action;	
 		}
 			
@@ -46,11 +46,11 @@
 			$this->app = $app;
 		}
 
-		public function setController($controller) {
+		public function setControllerName($controller) {
 			$this->controller = $controller;
 		}
 
-		public function setAction($action) {
+		public function setActionName($action) {
 			$this->action = $action;
 		}
 			
@@ -63,25 +63,11 @@
 			$action	= Inflection::camelCase($this->action, false);
 
 			if (!class_exists($class)) {
-				if (ENV != 'prod') {
-					throw new Exception("Le Controlleur '".$class."' n'existe pas");
-				} else {
-//					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-//					header("Status: 404 Not Found");
-					header('location:'.UrlComponent::path('/pages/page404/'));
-					exit;
-				}
+				throw new Except("Le Controlleur '".$class."' n'existe pas", 404);
 			}
 			if (!method_exists($class, $action)) {
-				if (ENV != 'prod') {
-					throw new Exception("L'Action '".$action."' n'existe pas");
-				} else {
-//					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-//					header("Status: 404 Not Found");
-					header('location:'.UrlComponent::path('/pages/page404/'));
-					exit;
-				}
-			}	
+				throw new Except("L'Action '".$action."' n'existe pas", 404);
+			}
 
 			$method = strtolower($_SERVER['REQUEST_METHOD']);
 			$get	= isset($_GET)  ? Filter::sanitize($_GET) : array();

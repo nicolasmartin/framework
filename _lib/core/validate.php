@@ -1,5 +1,5 @@
 <?php
-	class ValidateCore {
+	abstract class ValidateCore {
 		static function email($email) {
 			return filter_var($email, FILTER_VALIDATE_EMAIL);	
 		}
