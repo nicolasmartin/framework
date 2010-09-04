@@ -1,7 +1,7 @@
 <?php
-	include dirname(__FILE__).'/class.phpmailer.php';
+	include dirname(__FILE__).'/../vendors/phpmailer/class.phpmailer.php';
 
-	class Mailer extends PHPMailerLite {
+	class MailerCore extends PHPMailerLite {
 		public function __construct() {
 			$this->CharSet = 'utf-8';
 			parent::__construct();	

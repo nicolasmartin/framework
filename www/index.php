@@ -6,7 +6,6 @@
 		
 	require_once ROOT.'_lib/core/_includes.php';
 	require_once ROOT.'_lib/vendors/doctrine/Doctrine.php';
-	require_once ROOT.'_lib/vendors/mailer/class.mailer.php';
 	require_once ROOT.'_lib/vendors/rss/class.rss.php';
 
 	// Environnements
