@@ -105,15 +105,18 @@
 			if (empty($this->models)) {
 				throw new Exception("Les chemins des modèles doivent être configurés avant l'appel de cette méthode.");	
 			}
-			$manager = Doctrine_Manager::getInstance();
 			
-			$pdo	= new PDO('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), Config::get('db.username'), Config::get('db.password'));
-			$conn 	= Doctrine_Manager::connection($pdo, 'default');
-			$conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
+			try {
+    			$manager = Doctrine_Manager::getInstance();
+			
+    			$pdo	= new PDO('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), Config::get('db.username'), Config::get('db.password'));
+    			$conn 	= Doctrine_Manager::connection($pdo, 'default');
+    			$conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
 		
-			foreach($this->models as $model_path) {
-				Doctrine_Core::loadModels($model_path);
-			}
+    			foreach($this->models as $model_path) {
+    				Doctrine_Core::loadModels($model_path);
+    			}
+			} catch(Exception $e) {}
 		}
 				
 		public  function dispatch($url = null) {
@@ -136,6 +139,8 @@
 		}
 		
 		public function __destruct() {
-			Doctrine_Manager::connection()->close();
+			try {
+			    Doctrine_Manager::connection()->close();
+			} catch(Exception $e) {}
 		}
 	}
