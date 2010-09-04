@@ -7,7 +7,7 @@
 			}
 			return implode(' ', $html);
 		}
-		
+
 		static function attribute($name, $value) {
 			if (isset($value)) {
 				return $name.' = "'.addslashes($value).'"';	
