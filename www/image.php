@@ -1,6 +1,7 @@
 <?php
     define('ROOT', dirname(__FILE__).'/../');
-    require_once(ROOT.'_lib/core/_includes.php');
+    require_once(ROOT.'_lib/core/image.php');  
+    require_once(ROOT.'_lib/image.php');
   
     $default = array(
         'src'       => false,
@@ -9,20 +10,29 @@
         'mode'      => false,
     );
     extract(array_merge($default, $_GET));
-  
-    $src = ROOT.'www/'.$src;
-    
+ 
     if (!$height) {
-        $height = $width;
-    }
+         $height = $width;
+     }
+
+    $cache = ROOT.'cache/'.sha1($src.$width.$height.$mode);
+    $life  = '-1 month';
     
-    $Image = new Image($src);
-    if ($mode == 'crop') {
-        $Image->thumbnail($width, $height);
-    } elseif ($mode == 'zoom') {
-        $Image->zoom($width, $height);    
+    if (file_exists($cache) && ($life == false || filemtime($cache) > strtotime($life))) {
+    	$info = getimagesize($cache);
+    	header('Content-type:'.$info['mime']);
+    	readfile($cache);
+    	exit();
     } else {
-        $Image->resize($width, $height);
+        $Image = new Image(ROOT.'www/'.$src);
+        if ($mode == 'crop') {
+            $Image->thumbnail($width, $height);
+        } elseif ($mode == 'zoom') {
+            $Image->zoom($width, $height);    
+        } else {
+            $Image->resize($width, $height);
+        }
+        $Image->save($cache);
     }
     $Image->show();
     flush();
