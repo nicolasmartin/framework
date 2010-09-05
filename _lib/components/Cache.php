@@ -1,5 +1,5 @@
 <?php
-    class Cache extends Component {
+    class CacheComponent extends Component {
         public $lifetime; 
         private $filename; 
  

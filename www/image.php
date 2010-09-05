@@ -1,8 +1,7 @@
 <?php
     define('ROOT', dirname(__FILE__).'/../');
-   // require_once ROOT.'_lib/components/Image.php';
 	require_once ROOT.'_lib/core/_includes.php';
-
+//
 	// Environnements
 	include ROOT.'configs/env.php';
 
@@ -26,21 +25,19 @@
     $cache = ROOT.'cache/'.sha1($src.$width.$height.$mode);
     $life  = '-1 month';
     
-    if (file_exists($cache) && ($life == false || filemtime($cache) > strtotime($life))) {
-    	$info = getimagesize($cache);
-    	header('Content-type:'.$info['mime']);
-    	readfile($cache);
-    	exit();
+    $Cache = new CacheComponent($cache, $life);
+    $Cache->open();
+
+    $Image = new ImageComponent(ROOT.'www/'.$src);
+    if ($mode == 'crop') {
+        $Image->thumbnail($width, $height);
+    } elseif ($mode == 'zoom') {
+        $Image->zoom($width, $height);    
     } else {
-        $Image = new Image(ROOT.'www/'.$src);
-        if ($mode == 'crop') {
-            $Image->thumbnail($width, $height);
-        } elseif ($mode == 'zoom') {
-            $Image->zoom($width, $height);    
-        } else {
-            $Image->resize($width, $height);
-        }
-        $Image->save($cache);
+        $Image->resize($width, $height);
     }
     $Image->show();
+
+    $Cache->close();
+
     flush();
