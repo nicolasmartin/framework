@@ -17,6 +17,9 @@
 
 		public function __construct() {
 			spl_autoload_register(array($this, 'autoload'));
+			
+			$this->path[] = dirname(__FILE__).'/../components/';
+			$this->path[] = dirname(__FILE__).'/../helpers/';
 		}
 		
 		private function autoload($classname) {
