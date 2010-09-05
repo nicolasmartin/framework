@@ -142,6 +142,9 @@
 		}
 		
 		public function __destruct() {
+		    if (!class_exists('Doctrine_Manager')) {
+		        return;
+		    }
 			try {
 			    Doctrine_Manager::connection()->close();
 			} catch(Exception $e) {}
