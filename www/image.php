@@ -1,6 +1,15 @@
 <?php
     define('ROOT', dirname(__FILE__).'/../');
-    require_once ROOT.'_lib/components/Image.php';
+   // require_once ROOT.'_lib/components/Image.php';
+	require_once ROOT.'_lib/core/_includes.php';
+
+	// Environnements
+	include ROOT.'configs/env.php';
+
+	// Bootstrap
+	$Bootstrap = Bootstrap::getInstance();	
+	$Bootstrap->setEnv(ENV);
+	$Bootstrap->loadConfigs(ROOT.'configs/default/');
   
     $default = array(
         'src'       => false,
