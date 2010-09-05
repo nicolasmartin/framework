@@ -1,11 +1,12 @@
 <?php
     class CacheComponent extends Component {
         public $lifetime; 
-        private $filename; 
+        private $filename;
+        private $params;
  
         public function __construct($filename, $lifetime = 60) { 
             $this->lifetime = $lifetime;  
-            $this->filename = $filename;
+            $this->filename = $filename;            
         }     
  
         public function open() { 

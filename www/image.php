@@ -5,6 +5,10 @@
 	// Environnements
 	include ROOT.'configs/env.php';
 
+    if (!isset($_GET) || empty($_GET)) {
+        throw new Exception("Paramètres d'image manquants");
+    }
+
 	// Bootstrap
 	$Bootstrap = Bootstrap::getInstance();	
 	$Bootstrap->setEnv(ENV);
@@ -22,9 +26,12 @@
          $height = $width;
      }
 
-    $cache = ROOT.'cache/'.sha1($src.$width.$height.$mode);
+    sort($_GET);
+    $params = http_build_query($_GET);
+
+    $cache = ROOT.'cache/'.sha1($src.'&'.$params);
     $life  = '-1 month';
-    
+
     $Cache = new CacheComponent($cache, $life);
     $Cache->open();
 
