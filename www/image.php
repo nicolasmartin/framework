@@ -27,12 +27,8 @@
      }
 
     sort($_GET);
-    $params = http_build_query($_GET);
-
-    $cache = ROOT.'cache/'.sha1($src.'&'.$params);
-    $life  = '-1 month';
-
-    $Cache = new CacheComponent($cache, $life);
+    $cachename = ROOT.'cache/'.sha1($src.'&'.http_build_query($_GET));
+    $Cache = new CacheComponent($cachename, '-1 month');
     $Cache->open();
 
     $Image = new ImageComponent(ROOT.'www/'.$src);

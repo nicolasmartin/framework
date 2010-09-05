@@ -5,12 +5,19 @@
         private $params;
  
         public function __construct($filename, $lifetime = 60) { 
+            if (!is_numeric($lifetime)) {
+                $lifetime = strtotime($lifetime);
+            }
             $this->lifetime = $lifetime;  
             $this->filename = $filename;            
         }     
  
         public function open() { 
             if (file_exists($this->filename) && (time() - filemtime($this->filename)) < $this->lifetime*60) { 
+                if ($info = getimagesize($this->filename)) {
+                    header('Content-type: '.$info['mime']);
+                }
+                
                 readfile($this->filename); 
                 exit; 
             } 
