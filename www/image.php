@@ -1,7 +1,6 @@
 <?php
     define('ROOT', dirname(__FILE__).'/../');
-    require_once(ROOT.'_lib/core/image.php');  
-    require_once(ROOT.'_lib/image.php');
+    require_once ROOT.'controllers/default/_components/Image.php';
   
     $default = array(
         'src'       => false,
