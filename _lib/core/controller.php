@@ -25,7 +25,7 @@
 		}
 		
 		public function addComponent($name, $options = array()) {
-			$class = Inflection::camelCase($name).'Component';
+			$class = InflectionComponent::camelCase($name).'Component';
 			$this->Components[$name] = new $class($this, $options);
 		}
 		
