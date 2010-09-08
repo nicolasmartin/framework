@@ -1,5 +1,5 @@
 <?php
-	abstract class ValidateCore {
+    class ValidatorComponent extends Component {
 		static function email($email) {
 			return filter_var($email, FILTER_VALIDATE_EMAIL);	
 		}
@@ -31,5 +31,6 @@
 
 		static function regexp($string, $regexp) {
 			return filter_var($string, FILTER_VALIDATE_REGEXP, array("options"=> array("regexp"=>$regexp)));	
-		}			
-	}
+		}
+    }
+?>

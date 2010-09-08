@@ -5,10 +5,7 @@
 	define('MODELS', 		ROOT.'models/');
 	
 	require_once ROOT.'_lib/core/_includes.php';
-	
-	// Vendors
 	require_once ROOT.'_lib/vendors/doctrine/Doctrine.php';
-	require_once ROOT.'_lib/vendors/image/class.image.php';
 
 	// Environnements
 	include ROOT.'configs/env.php';

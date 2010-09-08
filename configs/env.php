@@ -5,7 +5,7 @@
 		ini_set('display_errors', 1);
 		
 	// Production
-	} else if ($_SERVER['SERVER_NAME'] == 'domain.com') {
+	} else if (preg_match('~(www\.)?domain.com~', $_SERVER['SERVER_NAME'])) {
 		define('ENV', 'prod');
 		ini_set('display_errors', 0);
 	

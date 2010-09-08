@@ -59,8 +59,8 @@
 		}
 		
 		public function dispatch() {		
-			$class	= Inflection::camelCase($this->controller).'Controller';
-			$action	= Inflection::camelCase($this->action, false);
+			$class	= InflectionComponent::camelCase($this->controller).'Controller';
+			$action	= InflectionComponent::camelCase($this->action, false);
 
 			if (!class_exists($class)) {
 				throw new Except("Le Controlleur '".$class."' n'existe pas", 404);
@@ -70,8 +70,8 @@
 			}
 
 			$method = strtolower($_SERVER['REQUEST_METHOD']);
-			$get	= isset($_GET)  ? Filter::sanitize($_GET) : array();
-			$post	= isset($_POST) ? Filter::sanitize($_POST) : array();
+			$get	= isset($_GET)  ? FilterComponent::sanitize($_GET) : array();
+			$post	= isset($_POST) ? FilterComponent::sanitize($_POST) : array();
 
 			$Controller = new $class($action);
 			$Controller->app 		= $this->app;

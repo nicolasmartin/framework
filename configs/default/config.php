@@ -4,7 +4,7 @@
 	// Par défaut -----------------------------------------------------------
 	$configs['default'] = array(
 		'db.host'			=> '127.0.0.1',
-		'db.name'			=> 'sebastienisrael',
+		'db.name'			=> '',
 		'db.username'		=> 'root',
 		'db.password'		=> '',
 

@@ -14,7 +14,7 @@
 		}
 
 		public function setPath($path) {
-			$this->path = Inflection::smartPath($path);
+			$this->path = InflectionComponent::smartPath($path);
 		}
 		
 		public function getPath() {
@@ -115,7 +115,7 @@
 		}
 
 		public function partial($path) {
-			$path = Inflection::smartPath($path, '_partials');
+			$path = InflectionComponent::smartPath($path, '_partials');
 			return $this->doRender($path);
 		}
 	

@@ -6,8 +6,6 @@
 		
 	require_once ROOT.'_lib/core/_includes.php';
 	require_once ROOT.'_lib/vendors/doctrine/Doctrine.php';
-	require_once ROOT.'_lib/vendors/image/class.image.php';
-	require_once ROOT.'_lib/vendors/mailer/class.mailer.php';
 	require_once ROOT.'_lib/vendors/rss/class.rss.php';
 
 	// Environnements
@@ -28,11 +26,11 @@
 	$Bootstrap->setDefaultPath('default/index');	
 	$Bootstrap->setEnv(ENV);
 	
-	$Bootstrap->addAutoloadPath(ROOT.'controllers/default/');				// controllers 
-	$Bootstrap->addAutoloadPath(ROOT.'controllers/default/_components/');	// components 
-	$Bootstrap->addAutoloadPath(ROOT.'views/default/_helpers/');			// helpers 
+	$Bootstrap->addAutoloadPath(ROOT.'controllers/default/');
+	$Bootstrap->addAutoloadPath(ROOT.'controllers/default/_components/');
+	$Bootstrap->addAutoloadPath(ROOT.'views/default/_helpers/');
 	
-	$Bootstrap->loadConfigs(ROOT.'configs/default/');						// config
+	$Bootstrap->loadConfigs(ROOT.'configs/default/');
 	
 	$Bootstrap->addModelPath(ROOT.'models/generated/');
 	$Bootstrap->addModelPath(ROOT.'models/');
