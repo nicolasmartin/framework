@@ -1,6 +1,11 @@
+options:
+  type:    INNODB
+  collate: utf8_unicode_ci
+  charset: utf8
+
 User:
   connection: default
-  tableName: users
+  tableName:  users
   columns:
     name:
       notblank: true
