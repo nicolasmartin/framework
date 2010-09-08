@@ -1,5 +1,5 @@
 <?php
-	class DefaultController extends Controller {
+	class ScriptsController extends Controller {
 		
 		public function preExecute() {
 			$this->addComponent('protection', 

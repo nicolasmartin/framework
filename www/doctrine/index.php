@@ -12,7 +12,7 @@
 
 	// Bootstrap	
 	$Bootstrap = new Bootstrap();
-	$Bootstrap->setDefaultPath('default/index');	
+	$Bootstrap->setDefaultPath('scripts/index');	
 	$Bootstrap->setEnv(ENV);
 	
 	$Bootstrap->addAutoloadPath(ROOT.'controllers/doctrine/');
