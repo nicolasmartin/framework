@@ -1,5 +1,5 @@
 <?php
-	class DefaultController extends Controller {
+	class ScriptsController extends Controller {
 		
 		public function preExecute() {
 			$this->addComponent('protection', 
@@ -17,27 +17,27 @@
 		public function dumpData() {
 			Doctrine::dumpData(MODELS.'fixtures/', 1);
 			FlashComponent::set('info', 'Dump Data terminé.');
-			$this->redirect('/doctrine/default/index');
+			$this->redirect('/doctrine/scripts/index');
 		}
 				
 		public function loadData() {
 			Doctrine::LoadData(MODELS.'fixtures/');		
 			FlashComponent::set('info', 'Load Data terminé.');
-			$this->redirect('/doctrine/default/index');
+			$this->redirect('/doctrine/scripts/index');
 		}
 		
 		public function generateModels() {
 			Doctrine_Core::generateModelsFromYaml(MODELS.'schema/schema.yml', MODELS);	
 				
 			FlashComponent::set('info', 'Generate Models terminé.');
-			$this->redirect('/doctrine/default/index');
+			$this->redirect('/doctrine/scripts/index');
 		}
 		
 		public function generateSchema() {
 			Doctrine_Core::generateYamlFromModels(MODELS.'schema/schema.yml', MODELS);
 			
 			FlashComponent::set('info', 'Generate Schema terminé.');
-			$this->redirect('/doctrine/default/index');
+			$this->redirect('/doctrine/scripts/index');
 		}
 		
 		public function generateTables() {
@@ -49,6 +49,6 @@
 			Doctrine_Core::createTablesFromModels(MODELS);
 			
 			FlashComponent::set('info', 'Generate Table terminé.');
-			$this->redirect('/doctrine/default/index');
+			$this->redirect('/doctrine/scripts/index');
 		}
 	}
