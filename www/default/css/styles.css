@@ -30,10 +30,10 @@
 	#logo a {
 		background:transparent url(../img/logo.png) no-repeat;
 		display:block;
-		height:75px;
+		height:128px;
 		overflow:hidden;
 		text-indent:-9999px;
-		width:280px; 
+		width:128px; 
 	}
 	#header small {
 		display:none;

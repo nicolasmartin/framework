@@ -5,7 +5,7 @@
     <div id="content">
 
     	<div id="main" class="col3-4 first">
-            <?= ImageHelper::thumbnail('/default/img/logo.png', 100)?>
+		
         </div><!-- /main -->
     
         <div id="sidebar" class="col1-4 last">
