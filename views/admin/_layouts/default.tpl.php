@@ -21,7 +21,7 @@
 <?= $this->partial('flash') ?>
 <?= $this->slot('CONTENT') ?>
 <?= $this->partial('footer') ?>
-</div><!-- /container -->
+</div><!-- #container -->
 
 <script>
 	$('#navbar .menu').superfish({

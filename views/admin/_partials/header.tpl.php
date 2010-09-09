@@ -3,4 +3,4 @@
         <small>Tag line</small>
         
         <?= $this->partial('logged') ?>
-    </div><!-- /header -->
+    </div><!-- #header -->

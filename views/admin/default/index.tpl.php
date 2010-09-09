@@ -6,10 +6,10 @@
 
         <div id="main">
     
-        </div><!-- /main -->
+        </div><!-- #main -->
     
         <div id="sidebar">
     
-        </div><!-- /sidebar -->
+        </div><!-- #sidebar -->
 
-    </div><!-- /content -->
+    </div><!-- #content -->

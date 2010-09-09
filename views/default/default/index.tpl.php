@@ -6,11 +6,11 @@
 
     	<div id="main" class="col3-4 first">
 		
-        </div><!-- /main -->
+        </div><!-- #main -->
     
         <div id="sidebar" class="col1-4 last">
 			
-        </div><!-- /sidebar -->
+        </div><!-- #sidebar -->
 
-    </div><!-- /content -->
+    </div><!-- #content -->
 

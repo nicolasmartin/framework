@@ -22,7 +22,7 @@
 <?= $this->partial('flash') ?>
 <?= $this->slot('CONTENT') ?>
 <?= $this->partial('footer') ?>
-</div><!-- /container -->
+</div><!-- #container -->
 
 <script>
 $(function() {

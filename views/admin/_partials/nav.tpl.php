@@ -17,4 +17,4 @@
 			<li><a href="#">Item 3</a></li>
 			<li><a href="#">Item 4</a></li>
 		</ul>
-	</div><!-- /navbar -->
+	</div><!-- #navbar -->
