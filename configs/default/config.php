@@ -19,6 +19,7 @@
 		'uploads.path'		=> 'uploads/',
 		
 		'cache.pictures'	=> true,
+		'code.xhtml'			=> true,
 	);
 
 	// Développement ---------------------------------------------------------

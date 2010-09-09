@@ -14,4 +14,8 @@
 			}
 			return '';
 		}
+		
+		static function xhtml() {
+			return Config::get('code.xhtml') ? ' /' : '';
+		}
 	}

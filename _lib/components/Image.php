@@ -3,17 +3,17 @@
     	
     class ImageComponent extends GdThumb {
         public function __construct($filename, $options = array(), $isDataStream = false) {
-            $default = array(
-				'resizeUp'				=> true,
-				'jpegQuality'			=> 80,
-				'correctPermissions'	=> true,
-				'preserveAlpha'			=> true,
-				'alphaMaskColor'		=> array (255, 255, 255),
-				'preserveTransparency'	=> true,
-				'transparencyMaskColor'	=> array (0, 0, 0)
-			);
-			$options = array_merge($default, $options);
-            parent::__construct($filename, $options, $isDataStream);
+          $default = array(
+							'resizeUp'				=> true,
+							'jpegQuality'			=> 80,
+							'correctPermissions'	=> true,
+							'preserveAlpha'			=> true,
+							'alphaMaskColor'		=> array (255, 255, 255),
+							'preserveTransparency'	=> true,
+							'transparencyMaskColor'	=> array (0, 0, 0)
+					);
+					$options = array_merge($default, $options);
+          parent::__construct($filename, $options, $isDataStream);
         }
 
         public function thumbnail($width, $height = null) {

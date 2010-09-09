@@ -5,7 +5,7 @@ class ImageHelper extends Helper {
         if ($height)  {
             $html .= '&height='.$height;
         }
-        $html .= '&mode=crop" />';
+        $html .= '&mode=crop"'.Helper::xhtml().'>';
         return $html;
     }
 
@@ -14,17 +14,16 @@ class ImageHelper extends Helper {
         if ($height)  {
             $html .= '&height='.$height;
         }
-        $html .= '&mode=zoom" />';
+        $html .= '&mode=zoom"'.Helper::xhtml().'>';
         return $html;
     }
 
     public static function image($src, $width, $height = null) {
-        //http_build_query;
         $html = '<img src="image.php?src='.$src.'&width='.$width;
         if ($height)  {
             $html .= '&height='.$height;
         }
-        $html .= '" />';
+        $html .= '"'.Helper::xhtml().'>';
         return $html;
     }
 }
