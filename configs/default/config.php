@@ -15,6 +15,8 @@
 		'project.name' 		=> 'Nom du site',
 		'project.url' 		=> 'http://www.domain.com',
 		'project.email' 	=> 'contact@domain.com',
+		
+		'uploads.path'		=> 'uploads/',
 	);
 
 	// Développement ---------------------------------------------------------
