@@ -27,8 +27,10 @@
 		}
 		
 		public function generateModels() {
-			Doctrine_Core::generateModelsFromYaml(MODELS.'schema/schema.yml', MODELS);	
-				
+			Doctrine_Core::generateModelsFromYaml(MODELS.'schema/schema.yml', MODELS, array( 
+				'generateTableClasses' => true 
+			));
+			
 			FlashComponent::set('info', 'Generate Models terminé.');
 			$this->redirect('/doctrine/scripts/index');
 		}
