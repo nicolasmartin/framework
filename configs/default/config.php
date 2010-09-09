@@ -17,12 +17,16 @@
 		'project.email' 	=> 'contact@domain.com',
 		
 		'uploads.path'		=> 'uploads/',
+		
+		'cache.pictures'	=> true,
 	);
 
 	// Développement ---------------------------------------------------------
 	$configs['dev'] = array(
 		'project.url' 		=> 'http://domain.localhost',
 		'project.email' 	=> 'jay@jaysalvat.com',
+		
+		'cache.pictures'	=> false,
 	);
 
 	// Production ------------------------------------------------------------
