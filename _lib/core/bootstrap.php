@@ -109,17 +109,16 @@
 				throw new Exception("Les chemins des modèles doivent être configurés avant l'appel de cette méthode.");	
 			}
 			
-			try {
-    			$manager = Doctrine_Manager::getInstance();
-			
-    			$pdo	= new PDO('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), Config::get('db.username'), Config::get('db.password'));
-    			$conn 	= Doctrine_Manager::connection($pdo, 'default');
-    			$conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
-		
-    			foreach($this->models as $model_path) {
-    				Doctrine_Core::loadModels($model_path);
-    			}
-			} catch(Exception $e) {}
+			if (Config::get('db.name')) {
+				$pdo	= new PDO('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), Config::get('db.username'), Config::get('db.password'));
+				$conn = Doctrine_Manager::connection($pdo, 'default');
+				$conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
+				$conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);
+				$conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, true);
+				foreach($this->models as $model_path) {
+					Doctrine_Core::loadModels($model_path);
+				}
+			}
 		}
 				
 		public  function dispatch($url = null) {

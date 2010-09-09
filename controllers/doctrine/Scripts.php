@@ -30,7 +30,7 @@
 			Doctrine_Core::generateModelsFromYaml(MODELS.'schema/schema.yml', MODELS, array( 
 				'generateTableClasses' => true 
 			));
-			
+				
 			FlashComponent::set('info', 'Generate Models terminé.');
 			$this->redirect('/doctrine/scripts/index');
 		}
@@ -43,14 +43,32 @@
 		}
 		
 		public function generateTables() {
-			try {
-			Doctrine_Manager::connection()->export->dropTable('users');
-			} catch(Exception $e) {
-			}
-			
+			$this->removeTables();
 			Doctrine_Core::createTablesFromModels(MODELS);
 			
 			FlashComponent::set('info', 'Generate Table terminé.');
 			$this->redirect('/doctrine/scripts/index');
+		}
+		
+		private function removeTables() {
+			$integrity_violation = 0;
+			Doctrine::loadModels(MODELS.'/generated');
+			Doctrine::loadModels(MODELS);
+			$models = Doctrine::getLoadedModels();
+			foreach($models as $model) {
+				try {
+					$Model = new $model();
+					$table = $Model->getTable()->tableName;
+					Doctrine_Manager::connection()->export->dropTable($table);
+				} catch(Exception $e) {
+					if ($e->getCode() == 23000) { // 23000: Integrity constraint violation
+						$integrity_violation = 	1;
+					}
+				}
+			}
+			if ($integrity_violation == 1) {
+				$integrity_violation = 0;
+				$this->removeTables();
+			}
 		}
 	}
