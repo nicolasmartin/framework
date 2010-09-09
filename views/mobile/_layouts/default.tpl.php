@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="/mobile/css/styles.combined.css">
     <link rel="stylesheet" href="/mobile/js/jqtouch/jqtouch.min.css">
     <link rel="stylesheet" href="/mobile/js/jqtouch/themes/jqt/theme.min.css">
-    <script type="text/javascript" src="/mobile/js/scripts.combined.js"></script>
-    <script type="text/javascript">
+    <script src="/mobile/js/scripts.combined.js"></script>
+    <script>
 	var jQT = new $.jQTouch({
 		addGlossToIcon: true,
 		statusBar: 'black',

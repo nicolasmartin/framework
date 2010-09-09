@@ -73,7 +73,7 @@
 }
 
 .row {
-	display: inline-block;
+	display: block;
 	clear: both;
 	float: none;
 }

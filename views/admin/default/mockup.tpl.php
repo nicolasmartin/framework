@@ -2,7 +2,7 @@
 	$this->set('TITLE', 		'Titre de la page');
 	$this->set('DESCRIPTION',	'Description de la page');
 ?>
-    <div id="content">
+    <div id="content" class="row">
 
     	<div id="main" class="col3-4 first">
             <ul class="breadcrumbs">
