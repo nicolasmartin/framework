@@ -1,5 +1,5 @@
 <?php
-class ImageHelper extends UrlComponent {
+class ImageHelper extends Helper {
     public static function thumbnail($src, $width, $height = null) {
         $html = '<img src="image.php?src='.$src.'&width='.$width;
         if ($height)  {
@@ -18,7 +18,7 @@ class ImageHelper extends UrlComponent {
         return $html;
     }
 
-    public static function display($src, $width, $height = null) {
+    public static function image($src, $width, $height = null) {
         //http_build_query;
         $html = '<img src="image.php?src='.$src.'&width='.$width;
         if ($height)  {
