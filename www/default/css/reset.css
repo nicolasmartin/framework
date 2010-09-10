@@ -19,66 +19,67 @@ time, mark, audio, video {
   vertical-align:baseline;
   background:transparent;
 }                 
- 
 article, aside, figure, footer, header,
 .hgroup, nav, section { 
 	display:block;
 }
-
 html {
-	overflow-y: scroll;
-	-webkit-font-smoothing: antialiased;
+	overflow-y:scroll;
+	-webkit-font-smoothing:antialiased;
 }
 body {
-	line-height: 1;
+	line-height:1;
 }
 h1, h2, h3, h4, h5, h6 {
-	text-rendering: optimizeLegibility;
+	text-rendering:optimizeLegibility;
 }
 ol, ul {
-	list-style: none;
+	list-style:none;
 }
 img {
-	-ms-interpolation-mode: bicubic;
+	-ms-interpolation-mode:bicubic;
 }
 blockquote, q {
-	quotes: none;
+	quotes:none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+	content:'';
+	content:none;
 }
 ins {
-	text-decoration: none;
+	text-decoration:none;
 }
 del {
-	text-decoration: line-through;
+	text-decoration:line-through;
 }
 table {
-	border-spacing: 0;
+	border-spacing:0;
 }
 td, td img { 
 	vertical-align:top;
 } 
 label[for], input[type=button], input[type=submit], button {
-	cursor: pointer;
+	cursor:pointer;
 }
 input, textarea, select {
 	font:99% Arial, Helvetica, sans-serif;	
 }
 input[type="radio"] {
-	vertical-align: text-bottom;
+	vertical-align:text-bottom;
 }
 input[type="checkbox"] { 
-	vertical-align: bottom; *vertical-align: baseline;
+	vertical-align:bottom; *vertical-align:baseline;
+}
+textarea {
+	overflow:auto;
 }
 button {
-	width: auto; overflow: visible;
+	width:auto; overflow:visible;
 }
 pre, code, kbd, samp { 
-	font-family: "Courier New", Courier, monospace, sans-serif;
+	font-family:"Courier New", Courier, monospace, sans-serif;
 }
 div, input, textarea, select, button {
-	-webkit-background-clip: padding-box;
+	-webkit-background-clip:padding-box;
 }

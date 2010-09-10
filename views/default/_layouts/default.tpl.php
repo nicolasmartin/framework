@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
     <meta charset="<?= $this->slot('CHARSET', 'UTF-8') ?>">
     <title><?= $this->slot('TITLE') ?></title>
@@ -14,8 +14,8 @@
     <script src="/default/js/scripts.combined.js"></script>
 <?= $this->slot('SCRIPTS') ?>
 </head>
-<body<?= $this->slot('ID', '', ' id="%s"') ?> <?= BrowserHelper::getClass(true) ?>>
 
+<body<?= $this->slot('ID', '', ' id="%s"') ?> <?= BrowserHelper::getClass(true) ?>>
 <div id="container">
 <?= $this->partial('header') ?>
 <?= $this->partial('nav') ?>
