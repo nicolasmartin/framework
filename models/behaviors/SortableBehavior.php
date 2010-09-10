@@ -30,7 +30,7 @@
  * @since       1.2
  * @version     $Revision$
  */
-class Doctrine_Template_Sortable extends Doctrine_Template
+class SortableBehavior extends Doctrine_Template
 {
     protected $_options = array('manyListsColumn' => null);
 

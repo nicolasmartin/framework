@@ -30,7 +30,7 @@
  * @since       1.2
  * @version     $Revision$
  */
-class Doctrine_Template_Listener_Sortable extends Doctrine_Record_Listener
+class SortableListener extends Doctrine_Record_Listener
 {
     public function postInsert(Doctrine_Event $event)
     {				
