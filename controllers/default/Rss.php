@@ -1,4 +1,4 @@
-<?
+<?php
   require_once($_SERVER['DOCUMENT_ROOT'].'../_lib/vendors/rss/class.rss.php');
 	
 	class RssController extends Controller {

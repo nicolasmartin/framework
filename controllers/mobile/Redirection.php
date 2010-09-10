@@ -1,4 +1,4 @@
-<?
+<?php
 	class RedirectionController extends Controller {
 
 		public function index() {

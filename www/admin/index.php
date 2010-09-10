@@ -1,4 +1,4 @@
-<?
+<?php
 	define('ROOT', 			realpath(dirname(__FILE__).'/../../')."/");
 	define('CONTROLLERS', 	ROOT.'controllers/admin/');
 	define('VIEWS', 		ROOT.'views/admin/');
