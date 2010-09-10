@@ -1,6 +1,7 @@
 <?
+  require_once($_SERVER['DOCUMENT_ROOT'].'../_lib/vendors/rss/class.rss.php');
+	
 	class RssController extends Controller {
-
 		public function index() {
 			$this->View->setAutorender(false);
 
@@ -8,9 +9,9 @@
 			$author = Config::get('project.owner');
 			
 			$Rss = new RssFeed();
-			$Rss->setTitle(__('default.title'));
-			$Rss->setDescription(__('default.description'));
-			$Rss->setDate(date('Y-m-d H:i:s'));
+			$Rss->setTitle(Config::get('project.name'));
+			$Rss->setDescription(Config::get('project.desc'));
+			$Rss->setDate(date('Y-m-d H:i:s', strtotime('-2 day')));
 			$Rss->setLink($site);
 
 			$data = array();
@@ -18,9 +19,9 @@
 				$Item = new RssItem();
 				$Item->setTitle('title');
 				$Item->setDescription('description');
-				$Item->setDate(date('Y-m-d H:i:s'));
-				$Item->setAuthor('no@email.com (author)');
-				$Item->setLink('http://domain.com/'); 
+				$Item->setDate('2010-12-25 00:00:00');
+				$Item->setAuthor('no@email.com ('.Config::get('project.owner').')');
+				$Item->setLink(Config::get('project.url')); 
 				
 				$Rss->addItem($Item);
 			}

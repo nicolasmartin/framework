@@ -13,7 +13,9 @@
 
 		'project.owner' 	=> 'Nom du propriétaire',
 		'project.name' 		=> 'Nom du site',
+		'project.desc' 		=> 'Description du site',
 		'project.url' 		=> 'http://www.domain.com',
+		'project.domain' 	=> 'domain.com',
 		'project.email' 	=> 'contact@domain.com',
 		
 		'uploads.path'		=> 'uploads/',

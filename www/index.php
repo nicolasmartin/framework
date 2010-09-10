@@ -1,12 +1,11 @@
 <?
-	define('ROOT', 			realpath(dirname(__FILE__).'/../')."/");
-	define('CONTROLLERS', 	ROOT.'controllers/default/');
-	define('VIEWS', 		ROOT.'views/default/');
-	define('MODELS', 		ROOT.'models/');
+	define('ROOT', 				realpath(dirname(__FILE__).'/../')."/");
+	define('CONTROLLERS', ROOT.'controllers/default/');
+	define('VIEWS', 			ROOT.'views/default/');
+	define('MODELS', 			ROOT.'models/');
 		
 	require_once ROOT.'_lib/core/_includes.php';
 	require_once ROOT.'_lib/vendors/doctrine/Doctrine.php';
-	require_once ROOT.'_lib/vendors/rss/class.rss.php';
 
 	// Environnements
 	include ROOT.'configs/env.php';
