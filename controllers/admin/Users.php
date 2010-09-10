@@ -1,6 +1,5 @@
 <?php
 	class UsersController extends Controller {
-
 		public function preExecute() {
 			$this->addComponent('protection');
 			parent::preExecute();

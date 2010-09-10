@@ -5,7 +5,7 @@
 		public function __construct($Controller, $options = array()) {
 			$default = array(
 				'login' 			=> '/admin/users/login',
-				'authorize'			=> array('login', 'logout'),
+				'authorize'		=> array('login', 'logout'),
 				'basic'				=> false
 			);
 			$this->options = array_merge($default, $options);

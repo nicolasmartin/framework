@@ -1,6 +1,5 @@
 <?php
 	class FlashComponent extends Component {
-	
 		static function set($type, $message) {
 			session_start();
 			$_SESSION['_flash'] = array($type => $message);
