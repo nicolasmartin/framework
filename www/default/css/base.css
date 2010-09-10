@@ -1,64 +1,64 @@
 /* ------- INFO ----------------
-	Color : Black 
-	Color : LightGray
-	Color : WhiteSmoke
-	Color : Ivory
-	Color : DarkBlue
-	Color : DarkGreen
-	Color : DarkBlue
-	Color : White
+	Color: Black 
+	Color: LightGray
+	Color: WhiteSmoke
+	Color: Ivory
+	Color: DarkBlue
+	Color: DarkGreen
+	Color: DarkBlue
+	Color: White
  ------------------------------ */
 body {
-	font: 12px/1.7 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+	font:12px/1.7 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 /* ------- HEADERS ---------------- */
 h1 {
-	font-size: 48px;
+	font-size:48px;
 	letter-spacing:-2px;
 }
 h2 {
-	font-size: 36px;
-	font-weight: normal; 
+	font-size:36px;
+	font-weight:normal; 
 }
 h3 {
-	font-size: 24px;
-	font-weight: normal; 
+	font-size:24px;
+	font-weight:normal; 
 }
 h4 {
-	font-size: 20px;
-	font-weight: normal; 
+	font-size:20px;
+	font-weight:normal; 
 }
 h5 {
-	font-size: 16px;
+	font-size:16px;
 }
 h6 {
-	font-size: 13px;
+	font-size:13px;
 }
 
 /* ------- ELEMENTS ---------------- */
 strong {
-	font-weight: bold;
+	font-weight:bold;
 }
 em {
-	font-style: italic;
+	font-style:italic;
 }
 blockquote {
-	background: transparent url(../img/elements/quotes.png) no-repeat left top;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-style: italic;
-	padding-left: 30px;
+	background:transparent url(../img/elements/quotes.png) no-repeat left top;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+	padding-left:30px;
 }
 address {
-	font-family: Georgia, "Times New Roman", Times, serif;
+	font-family:Georgia, "Times New Roman", Times, serif;
 }
 abbr {
-	border-bottom: 1px dotted Gray;
-	cursor: help;	
+	border-bottom:1px dotted Gray;
+	cursor:help;	
 }
 p,
 pre {
-	margin-bottom: 10px;
+	margin-bottom:10px;
 }
 dl,
 hr,
@@ -67,331 +67,331 @@ table,
 address,
 fieldset,
 blockquote {
-	margin-bottom: 20px;
-/*	padding: 0 20px;*/
+	margin-bottom:20px;
+/*	padding:0 20px;*/
 }
 .message,
 .chapo {
-	margin-bottom: 20px;	
+	margin-bottom:20px;	
 }
 
 /* ------- CLASSES ---------------- */
 .odd {
-	background: White;
+	background:White;
 }
 .even {
-	background: WhiteSmoke;
+	background:WhiteSmoke;
 }
 .small {
-	width: 30% !important;
+	width:30% !important;
 }
 .medium {
-	width: 50% !important;
+	width:50% !important;
 }
 .large {
-	width: 80% !important;
+	width:80% !important;
 }
 .ir {
-	 background-repeat: no-repeat;
-	 display: block;
-	 text-indent: -9999px; 
-	 overflow: hidden;
+	 background-repeat:no-repeat;
+	 display:block;
+	 text-indent:-9999px; 
+	 overflow:hidden;
 }
 .left {
-	float: left;
-	margin-right: 10px;
+	float:left;
+	margin-right:10px;
 }
 .right {
-	float: right;
-	margin-left: 10px;
+	float:right;
+	margin-left:10px;
 }
 .lettrine {
-	font-size: 46px;
-	float: left;
-	line-height: 40px;
-	padding-right: 5px;
+	font-size:46px;
+	float:left;
+	line-height:40px;
+	padding-right:5px;
 }
 .chapo {
-	font-size: 140%;
+	font-size:140%;
 }
 .hightlight {
-	background: LightGray;	
-	padding: 5px;
+	background:LightGray;	
+	padding:5px;
 }
 
 /* menus */
 .menu {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+	list-style:none;
+	margin:0;
+	padding:0;
 }
 	.menu a {
-		display: block;
-		padding: 5px 10px;
+		display:block;
+		padding:5px 10px;
 	}
 	.menu a:hover {
-		text-decoration: none;	
+		text-decoration:none;	
 	}
 	.menu.horizontal {
-		overflow: hidden;
-		padding: 20px 0;
+		overflow:hidden;
+		padding:20px 0;
 	}
 		.menu.horizontal li {
-			float: left;
-			display: inline-block;	
-			margin: 0;
+			float:left;
+			display:inline-block;	
+			margin:0;
 		}
 		.menu.horizontal li:hover {
-			background: Ivory;
-			cursor: pointer;
+			background:Ivory;
+			cursor:pointer;
 		}
 		.menu.horizontal .current {
-			background: WhiteSmoke;
-			font-weight: bold;
+			background:WhiteSmoke;
+			font-weight:bold;
 		}		
 	.menu.vertical {
 	}
 		.menu.vertical li {
-			margin: 0;
-			padding: 10px;
+			margin:0;
+			padding:10px;
 		}
 		.menu.vertical li:hover {
-			background: Ivory;
-			cursor: pointer;
+			background:Ivory;
+			cursor:pointer;
 		}
 		
 		.menu.vertical .current {
-			background: WhiteSmoke;
-			font-weight: bold;
+			background:WhiteSmoke;
+			font-weight:bold;
 		}
 		
 /* Messages */
 .message {
-	border: 2px solid #000;
-	font-weight: bold;
-	margin-bottom: 20px;
-	padding: 8px;
+	border:2px solid #000;
+	font-weight:bold;
+	margin-bottom:20px;
+	padding:8px;
 }
 	.message.error {
-		background: transparent url(../img/elements/icons.png) no-repeat -84px -226px;
-		border-color: DarkRed;
-		color: DarkRed;
-		padding-left: 50px;
+		background:transparent url(../img/elements/icons.png) no-repeat -84px -226px;
+		border-color:DarkRed;
+		color:DarkRed;
+		padding-left:50px;
 	}
 	
 	.message.success {
-		background: transparent url(../img/elements/icons.png) no-repeat -188px -122px; 
-		border-color: DarkGreen;
-		color: DarkGreen;
-		padding-left: 50px;
+		background:transparent url(../img/elements/icons.png) no-repeat -188px -122px; 
+		border-color:DarkGreen;
+		color:DarkGreen;
+		padding-left:50px;
 	}
 	
 	.message.info {
-		background: transparent url(../img/elements/icons.png) no-repeat -136px -174px;
-		border-color: DarkBlue;
-		color: DarkBlue;
-		padding-left: 50px;
+		background:transparent url(../img/elements/icons.png) no-repeat -136px -174px;
+		border-color:DarkBlue;
+		color:DarkBlue;
+		padding-left:50px;
 	}
 	
 .breadcrumbs {
-	list-style: none; 
-	overflow: hidden; 
+	list-style:none; 
+	overflow:hidden; 
 	margin:0;
 }
 	.breadcrumbs li { 
-		float: left; 
-		height: 26px;
-		line-height: 26px; 
+		float:left; 
+		height:26px;
+		line-height:26px; 
 		margin:0 10px 0 0px;
-		font-weight: bold;
+		font-weight:bold;
 	}	
 		.breadcrumbs a { 
-			font-weight: normal;
-			margin-right: 5px;
+			font-weight:normal;
+			margin-right:5px;
 		} 
 		.breadcrumbs a:hover {
-			color: LightGray; 
+			color:LightGray; 
 		}			
 
 .button {
-	background-color: #F0F0F0;
-	border: 1px solid #AAA;
-	border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
-	padding: 5px 20px;
-	text-decoration: none;
+	background-color:#F0F0F0;
+	border:1px solid #AAA;
+	border-radius:2px; -moz-border-radius:2px; -webkit-border-radius:2px;
+	padding:5px 20px;
+	text-decoration:none;
 }
 	.button:hover {
-		border: 1px solid Black ;
-		color: Black ;
-		cursor: pointer;
+		border:1px solid Black ;
+		color:Black ;
+		cursor:pointer;
 	}
 	
 /* ------- LINKS ---------------- */	
 a:focus {
-	outline: 1px dotted;
+	outline:1px dotted;
 }
 a:link, a:visited, a:active {
-	text-decoration: none;
+	text-decoration:none;
 }
 a:hover {
-	text-decoration: underline;
+	text-decoration:underline;
 }
 a.cancel {
-	color: DarkRed;
-	text-decoration: underline;	
+	color:DarkRed;
+	text-decoration:underline;	
 }
 .sprite { 
 	background:url(../img/elements/icons.png) no-repeat top left;
 }
 .sprite.icon { 
-	cursor: pointer;
-	display: inline-block;
-	height: 20px;
-	overflow: hidden;
-	text-indent: 100em;
-	width: 20px;
+	cursor:pointer;
+	display:inline-block;
+	height:20px;
+	overflow:hidden;
+	text-indent:100em;
+	width:20px;
 }
 *+html .sprite.icon { 
-	text-indent: 0; 
-	width: 0; 
-	padding-left: 16px;
+	text-indent:0; 
+	width:0; 
+	padding-left:16px;
 }
 .sprite.prefix { 
-	display: inline-block;
-	height: 20px;
-	padding-left: 20px; 
+	display:inline-block;
+	height:20px;
+	padding-left:20px; 
 }
 .sprite.right {
-	float: right; 
-	margin-left: 15px;
+	float:right; 
+	margin-left:15px;
 }
 .sprite.left {
-	float: left;
-	margin-right: 15px;
+	float:left;
+	margin-right:15px;
 }
 .lock { 
-	background-position: -336px -0px;
+	background-position:-336px -0px;
 }
 .download { 
-	background-position: -312px -26px;
+	background-position:-312px -26px;
 }
 .home { 
-	background-position: -286px -52px;
+	background-position:-286px -52px;
 }
 .user { 
-	background-position: -260px -78px;
+	background-position:-260px -78px;
 }
 .email { 
-	background-position: -234px -104px;
+	background-position:-234px -104px;
 }
 .success { 
-	background-position: -208px -130px; 
+	background-position:-208px -130px; 
 }
 .help { 
-	background-position: -182px -156px;
+	background-position:-182px -156px;
 }
 .info { 
-	background-position: -156px -182px;
+	background-position:-156px -182px;
 }
 .warning { 
-	background-position: -130px -208px;
+	background-position:-130px -208px;
 }
 .error {
-	background-position: -104px -234px;
+	background-position:-104px -234px;
 }
 .remove { 
-	background-position: -78px -260px;
+	background-position:-78px -260px;
 }
 .add { 
-	background-position: -52px -286px;
+	background-position:-52px -286px;
 }
 .delete { 
-	background-position: -26px -312px;
+	background-position:-26px -312px;
 }
 .edit { 
-	background-position: -0px -336px;
+	background-position:-0px -336px;
 }
 	
 /* ------- FORMS ---------------- */	
 form {		
 }
 	form div {
-		padding: 10px;
+		padding:10px;
 	}
 	form fieldset {
-		border: 1px solid Black;
-		padding: 0 20px 20px 20px;
+		border:1px solid Black;
+		padding:0 20px 20px 20px;
 	}
 	form legend {
-		font-size: 14px;
-		font-weight: bold;
-		margin: 5px;
-		padding: 5px;
+		font-size:14px;
+		font-weight:bold;
+		margin:5px;
+		padding:5px;
 	}
 	form label {
-		color: Black;
-		display: block;
-		font-weight: bold;
-		padding: 0 0 4px 0;
+		color:Black;
+		display:block;
+		font-weight:bold;
+		padding:0 0 4px 0;
 	}
 	form input[type=text],
 	form textarea,
 	form select {
-		border: 1px solid Gray;
-		font: 12px 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
-		padding: 10px;
+		border:1px solid Gray;
+		font:12px 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+		padding:10px;
 	}
 	form div.has-error {
-		background: Ivory;
+		background:Ivory;
 	}
 	form input[type=text]:focus,
 	form textarea:focus,
 	form select:focus {
-		border: 1px solid Black;
+		border:1px solid Black;
 	}
 	form .hint {
-		color: Gray;
-		display: block;
-		font-size: 11px;
-		padding: 4px 0;
+		color:Gray;
+		display:block;
+		font-size:11px;
+		padding:4px 0;
 	}
 	form input[type=text].error,
 	form textarea.error {
-		border: 1px solid DarkRed;
+		border:1px solid DarkRed;
 	}
 	form .errors {
-		background: transparent url(../img/elements/icons.png) no-repeat -104px -234px;
-		color: DarkRed;
-		list-style: none;
-		margin: 0;
+		background:transparent url(../img/elements/icons.png) no-repeat -104px -234px;
+		color:DarkRed;
+		list-style:none;
+		margin:0;
 	}
 		form .errors li {
-			margin: 0;
-			padding: 0 0 0 25px;
+			margin:0;
+			padding:0 0 0 25px;
 		}
 		
 /* ------- TABLES et LISTE ------------- */
 table {
-	width: 100%;
+	width:100%;
 }
 	table th,
 	table td {
-		padding: 5px;
+		padding:5px;
 	}
 	table tr:hover th,
 	table tr:hover td {
-		background: Ivory;
+		background:Ivory;
 	}
 	table th {
-		font-weight: bold;
+		font-weight:bold;
 	}
 	table thead th,
 	table thead td {
-		border-bottom: 1px solid Black;
+		border-bottom:1px solid Black;
 	}
 	table tfoot th,
 	table tfoot td {
-		border-top: 1px solid  Black;
+		border-top:1px solid  Black;
 	}
 	table tbody th,
 	table tbody td {
@@ -401,21 +401,21 @@ table {
 dl {
 }
 	dl dt {
-		font-weight: bold;
-		margin-bottom: 2px;
-		padding-bottom: 2px;
+		font-weight:bold;
+		margin-bottom:2px;
+		padding-bottom:2px;
 	}
 	dl dd {
-		margin-bottom: 10px;
+		margin-bottom:10px;
 	}
 	
 /* liste */
 ol {
-	list-style: decimal;
+	list-style:decimal;
 }
 ul {
-	list-style: square;
+	list-style:square;
 }
 	li {
-		margin-left: 20px;
+		margin-left:20px;
 	}
