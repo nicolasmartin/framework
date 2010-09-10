@@ -1,3 +1,3 @@
 $(function() {
-	$('html').removeClass('no-js');
+	$('html').addClass('js').removeClass('no-js');
 });

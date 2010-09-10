@@ -1,15 +1,16 @@
 $(function() {
-	$('html').removeClass('no-js');
+	$('html').addClass('js').removeClass('no-js');
 	
 	$('input, textarea, select').bind('change keypress', function() {
 		$(this).closest('form')
 			.find('input[type=submit]')
-			.addClass('changed');
+			.addClass('modified');
 	});
+	
 	$('form').bind('submit', function() {
 		$('<div id="overlay"></div>').hide().appendTo('body').fadeIn('fast');
 		$(this).find('input[type=submit]')
-			.removeClass('changed')
+			.removeClass('modified')
 			.addClass('loading')
 			.attr('disabled', 'disabled')
 			.css({ 
