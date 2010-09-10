@@ -38,21 +38,24 @@
 		$message .= '<li><b>Chemin :</b> <a href="'.$e->getFile().'">'.$e->getFile().'</a></li>';
 		$message .= '</ul>';
 		
+		$trace = $e->getTrace();
+		$trace = array_reverse($trace);
+		
 		$message .= "<h2>Trace :</h2>";
-		foreach ($e->getTrace() as $t) {
+		foreach ($trace as $t) {
 			$message .= '<ul style="margin-bottom:30px">';
 			if (!isset($t['file'])) {
 			    $t['file'] = $e->getFile();
 			    $t['line'] = $e->getLine();
 			}
-		    $message .= '<li><b>Fichier :</b> '.basename($t['file']).' [ ligne <span style="color:red">'.$t['line'].'</span> ]</li>';
-		    $message .= '<li><b>Chemin :</b> <a href="'.$t['file'].'">'.$t['file'].'</a></li>';
-			if ($t['class']) {
+		  $message .= '<li><b>Fichier :</b> '.basename($t['file']).' [ ligne <span style="color:red">'.$t['line'].'</span> ]</li>';
+		  $message .= '<li><b>Chemin :</b> <a href="'.$t['file'].'">'.$t['file'].'</a></li>';
+			if (isset($t['class']) && !empty($t['class'])) {
 				$message .= '<li><b>Classe :</b> '.$t['class'].$t['type'].$t['function'].'('.implode_r(', ', $t['args']).')</li>';
-			} else if ($t['function']) {
+			} else if (isset($t['function']) && !empty($t['function'])) {
 				$message .= '<li><b>Fonction :</b> '.$t['function'].'('.implode_r(', ', $t['args']).')</li>';
 			}
-			if ($t['args']) {
+			if (isset($t['args']) && !empty($t['args'])) {
 				$message .= '<li><b>Arguments :</b> <ul><li>'.implode_r(', ', $t['args']).'</li></ul></li>';
 			}
 			$message .= '</ul>';
@@ -62,30 +65,30 @@
 	}
 	set_exception_handler('exception_handler'); 
 
-    function implode_r($glue, $array, $format = '(%s)'){
-        $out = '';
-        foreach ($array as $item) {
-            if (is_array($item)) {
-                $out .= sprintf($format, implode_r($glue, $item));
-            } else {
-                if ($out) {
-                    $out .= $glue;
-                }
-                $out .= $item;
-            }
-        }
-        return $out;
-     }
-     
-     function explode_with_keys($seperator, $string) {
-         $output = array();
-         $array = explode($seperator, $string);
-         foreach ($array as $value) {
-             $row = explode("=", $value);
-             $output[$row[0]] = $row[1];
-         }
-         return $output;
-     }
+	function implode_r($glue, $array, $format = '(%s)'){
+			$out = '';
+			foreach ($array as $item) {
+					if (is_array($item)) {
+							$out .= sprintf($format, implode_r($glue, $item));
+					} else {
+							if ($out) {
+									$out .= $glue;
+							}
+							$out .= print_r($item, true);
+					}
+			}
+			return $out;
+	 }
+	 
+	 function explode_with_keys($seperator, $string) {
+			 $output = array();
+			 $array = explode($seperator, $string);
+			 foreach ($array as $value) {
+					 $row = explode("=", $value);
+					 $output[$row[0]] = $row[1];
+			 }
+			 return $output;
+	 }
 
 	function protection($username, $password) {
 		if (!isset($_SERVER['PHP_AUTH_USER'])
