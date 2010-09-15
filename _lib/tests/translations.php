@@ -1,14 +1,6 @@
 <?php
-	require_once(dirname(__FILE__).'/../core/_functions.php');
-	require_once(dirname(__FILE__).'/../core/i18n.php');
-	require_once(dirname(__FILE__).'/../i18n.php');
-	require_once(dirname(__FILE__).'/../core/Component.php');
-	require_once(dirname(__FILE__).'/../Component.php');
-	require_once(dirname(__FILE__).'/../core/Dispatcher.php');
-	require_once(dirname(__FILE__).'/../Dispatcher.php');
-	require_once(dirname(__FILE__).'/../../controllers/_components/Url.php');
-	
-	require_once(dirname(__FILE__) . '/../vendors/simpletest/autorun.php');
+	require_once(dirname(__FILE__).'/bootstrap.php');
+	require_once(dirname(__FILE__).'/../vendors/simpletest/autorun.php');
 
 	class TestOfTranslation extends UnitTestCase {
 		public $def = array(

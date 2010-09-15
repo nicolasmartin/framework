@@ -1,10 +1,6 @@
 <?php
-	require_once(dirname(__FILE__).'/../core/_functions.php');
-	require_once(dirname(__FILE__).'/../core/validate.php');
-	require_once(dirname(__FILE__).'/../core/filter.php');
-	require_once(dirname(__FILE__).'/../validate.php');
-	require_once(dirname(__FILE__).'/../filter.php');
-	require_once(dirname(__FILE__) . '/../vendors/simpletest/autorun.php');
+	require_once(dirname(__FILE__).'/bootstrap.php');
+	require_once(dirname(__FILE__).'/../vendors/simpletest/autorun.php');
 
 	class TestOfFilters extends UnitTestCase {
 		public function setUp() {

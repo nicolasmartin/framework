@@ -90,8 +90,10 @@
 				Config::set($key, $value);				
 			}
 			
-			foreach($configs[$this->env] as $key => $value) {
-				Config::set($key, $value);				
+			if (isset($configs[$this->env])) {
+				foreach($configs[$this->env] as $key => $value) {
+					Config::set($key, $value);				
+				}
 			}
 		}
 			

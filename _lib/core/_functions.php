@@ -92,7 +92,7 @@
 
 	function protection($username, $password) {
 		if (!isset($_SERVER['PHP_AUTH_USER'])
-		|| ($username != $_SERVER['PHP_AUTH_USER'] && $password != sha1($_SERVER['PHP_AUTH_PW']))) {
+		|| ($username != $_SERVER['PHP_AUTH_USER'] || $password != sha1($_SERVER['PHP_AUTH_PW']))) {
 			header('WWW-Authenticate: Basic realm="Forbidden"');
 			header('HTTP/1.0 401 Unauthorized');
 			return false;
