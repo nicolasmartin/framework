@@ -13,11 +13,9 @@
             </ul>
         
             <h1>Title of the page</h1>
-
-						<p>Daddy Bender, we're hungry. I could if you hadn't turned on the light and shut off my stereo. Oh, how I wish I could believe or understand that! There's only one reasonable course of action now: kill Flexo! Spare me your space age technobabble, Attila the Hun! And yet you haven't said what I told you to say! How can any of us trust you?</p>
+			<p>Daddy Bender, we're hungry. I could if you hadn't turned on the light and shut off my stereo. Oh, how I wish I could believe or understand that! There's only one reasonable course of action now: kill Flexo! Spare me your space age technobabble, Attila the Hun! And yet you haven't said what I told you to say! How can any of us trust you?</p>
 
             <h5>Tables &amp; lists</h5>
-                
             <div class="toolbar">
                 <ul>
                     <li><a class="sprite prefix edit" href="#">Ajouter</a></li>
@@ -193,55 +191,52 @@
                     
                     <div>
                         <input class="button" type="submit" value="Envoyer" /> or <a href="#" class="cancel">Cancel</a>
-										</div>
+					</div>
                 </fieldset>
             </form>
             
-						<a href="#" class="sprite lock icon right">Edit</a> 
-						<a href="#" class="sprite lock prefix right">Edit</a>
-						
-						<a href="#" class="sprite download icon right">Edit</a> 
-						<a href="#" class="sprite download prefix right">Edit</a>
-						
-						<a href="#" class="sprite home icon right">Edit</a> 
-						<a href="#" class="sprite home prefix right">Edit</a>
-						
-						<a href="#" class="sprite user icon right">Edit</a> 
-						<a href="#" class="sprite user prefix right">Edit</a>
-						
-						<a href="#" class="sprite email icon right">Edit</a> 
-						<a href="#" class="sprite email prefix right">Edit</a>
-						
-						<br />
-						
-						<a href="#" class="sprite success icon right">Edit</a> 
-						<a href="#" class="sprite success prefix right">Edit</a>
-						
-						<a href="#" class="sprite help icon right">Edit</a> 
-						<a href="#" class="sprite help prefix right">Edit</a>    
-						
-						<a href="#" class="sprite info icon right">Edit</a> 
-						<a href="#" class="sprite info prefix right">Edit</a>
-						
-						<a href="#" class="sprite warning icon right">Edit</a> 
-						<a href="#" class="sprite warning prefix right">Edit</a>
-						
-						<a href="#" class="sprite error icon right">Edit</a> 
-						<a href="#" class="sprite error prefix right">Edit</a>
-						
-						<br />
-						
-						<a href="#" class="sprite remove icon right">Edit</a> 
-						<a href="#" class="sprite remove prefix right">Edit</a>    
-						
-						<a href="#" class="sprite add icon right">Edit</a> 
-						<a href="#" class="sprite add prefix right">Edit</a>
-						
-						<a href="#" class="sprite delete icon right">Edit</a> 
-						<a href="#" class="sprite delete prefix right">Edit</a>
-						
-						<a href="#" class="sprite edit icon right">Edit</a> 
-						<a href="#" class="sprite edit prefix right">Edit</a>
+			<a href="#" class="sprite lock icon right">Edit</a> 
+			<a href="#" class="sprite lock prefix right">Edit</a>
+			
+			<a href="#" class="sprite download icon right">Edit</a> 
+			<a href="#" class="sprite download prefix right">Edit</a>
+			
+			<a href="#" class="sprite home icon right">Edit</a> 
+			<a href="#" class="sprite home prefix right">Edit</a>
+			
+			<a href="#" class="sprite user icon right">Edit</a> 
+			<a href="#" class="sprite user prefix right">Edit</a>
+			
+			<a href="#" class="sprite email icon right">Edit</a> 
+			<a href="#" class="sprite email prefix right">Edit</a>
+			
+			<a href="#" class="sprite success icon right">Edit</a> 
+			<a href="#" class="sprite success prefix right">Edit</a>
+			
+			<a href="#" class="sprite help icon right">Edit</a> 
+			<a href="#" class="sprite help prefix right">Edit</a>    
+			
+			<a href="#" class="sprite info icon right">Edit</a> 
+			<a href="#" class="sprite info prefix right">Edit</a>
+			
+			<a href="#" class="sprite warning icon right">Edit</a> 
+			<a href="#" class="sprite warning prefix right">Edit</a>
+			
+			<a href="#" class="sprite error icon right">Edit</a> 
+			<a href="#" class="sprite error prefix right">Edit</a>
+			
+	
+			<a href="#" class="sprite remove icon right">Edit</a> 
+			<a href="#" class="sprite remove prefix right">Edit</a>    
+			
+			<a href="#" class="sprite add icon right">Edit</a> 
+			<a href="#" class="sprite add prefix right">Edit</a>
+			
+			<a href="#" class="sprite delete icon right">Edit</a> 
+			<a href="#" class="sprite delete prefix right">Edit</a>
+			
+			<a href="#" class="sprite edit icon right">Edit</a> 
+			<a href="#" class="sprite edit prefix right">Edit</a>
         </div><!-- #main -->
     
         <div id="sidebar" class="col1-4 last">

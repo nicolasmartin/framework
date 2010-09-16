@@ -9,30 +9,37 @@
 	Color: White
  ------------------------------ */
 body {
-	font:12px/1.7 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+	color:#444;
+	font:12px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 /* ------- HEADERS ---------------- */
 h1 {
+	color:Black;
 	font-size:48px;
-	letter-spacing:-2px;
+	letter-spacing:-1px;
 }
 h2 {
+	color:Black;
 	font-size:36px;
 	font-weight:normal; 
 }
 h3 {
-	font-size:24px;
+	color:Black;
+	font-size:27px;
 	font-weight:normal; 
 }
 h4 {
-	font-size:20px;
-	font-weight:normal; 
+	color:Black;
+	font-size:21px;
+	font-weight:normal;
 }
 h5 {
+	color:Black;
 	font-size:16px;
 }
 h6 {
+	color:Black;
 	font-size:13px;
 }
 
@@ -44,7 +51,7 @@ em {
 	font-style:italic;
 }
 blockquote {
-	background:transparent url(../img/elements/quotes.png) no-repeat left top;
+	background:transparent url(../img/quotes.png) no-repeat left top;
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-style:italic;
 	padding-left:30px;
@@ -112,7 +119,8 @@ blockquote {
 	padding-right:5px;
 }
 .chapo {
-	font-size:140%;
+	font-size:130%;
+	font-weight:bold;
 }
 .hightlight {
 	background:LightGray;	
@@ -132,62 +140,55 @@ blockquote {
 	.menu a:hover {
 		text-decoration:none;	
 	}
+	.menu li {
+		padding:10px;	
+	}
+	.menu li:hover {
+		background:Ivory;
+		cursor:pointer;
+	}
+	.menu .current {
+		background:WhiteSmoke;
+		font-weight:bold;
+	}
+	
 	.menu.horizontal {
 		overflow:hidden;
-		padding:20px 0;
 	}
 		.menu.horizontal li {
 			float:left;
 			display:inline-block;	
 			margin:0;
 		}
-		.menu.horizontal li:hover {
-			background:Ivory;
-			cursor:pointer;
-		}
-		.menu.horizontal .current {
-			background:WhiteSmoke;
-			font-weight:bold;
-		}		
 	.menu.vertical {
 	}
 		.menu.vertical li {
 			margin:0;
-			padding:10px;
-		}
-		.menu.vertical li:hover {
-			background:Ivory;
-			cursor:pointer;
-		}
-		
-		.menu.vertical .current {
-			background:WhiteSmoke;
-			font-weight:bold;
 		}
 		
 /* Messages */
 .message {
-	border:2px solid #000;
+	border:2px solid Black;
 	font-weight:bold;
-	margin-bottom:20px;
+	margin:10px 0;
 	padding:8px;
 }
 	.message.error {
-		background:transparent url(../img/elements/icons.png) no-repeat -84px -226px;
+		background:transparent url(../img/icons.png) no-repeat -84px -226px;
 		border-color:DarkRed;
 		color:DarkRed;
 		padding-left:50px;
 	}
 	
 	.message.success {
-		background:transparent url(../img/elements/icons.png) no-repeat -188px -122px; 
+		background:transparent url(../img/icons.png) no-repeat -188px -122px; 
 		border-color:DarkGreen;
 		color:DarkGreen;
 		padding-left:50px;
 	}
 	
 	.message.info {
-		background:transparent url(../img/elements/icons.png) no-repeat -136px -174px;
+		background:transparent url(../img/icons.png) no-repeat -136px -174px;
 		border-color:DarkBlue;
 		color:DarkBlue;
 		padding-left:50px;
@@ -196,22 +197,16 @@ blockquote {
 .breadcrumbs {
 	list-style:none; 
 	overflow:hidden; 
-	margin:0;
 }
 	.breadcrumbs li { 
 		float:left; 
-		height:26px;
-		line-height:26px; 
-		margin:0 10px 0 0px;
-		font-weight:bold;
+		height:20px;
+		line-height:20px; 
+		margin:0 10px 0 0;
 	}	
 		.breadcrumbs a { 
-			font-weight:normal;
 			margin-right:5px;
-		} 
-		.breadcrumbs a:hover {
-			color:LightGray; 
-		}			
+		}	
 
 .button {
 	background-color:#F0F0F0;
@@ -221,8 +216,8 @@ blockquote {
 	text-decoration:none;
 }
 	.button:hover {
-		border:1px solid Black ;
-		color:Black ;
+		border:1px solid Black;
+		color:Black;
 		cursor:pointer;
 	}
 	
@@ -241,7 +236,7 @@ a.cancel {
 	text-decoration:underline;	
 }
 .sprite { 
-	background:url(../img/elements/icons.png) no-repeat top left;
+	background:url(../img/icons.png) no-repeat top left;
 }
 .sprite.icon { 
 	cursor:pointer;
@@ -337,7 +332,6 @@ form {
 	form input[type=text],
 	form textarea,
 	form select {
-		border:1px solid Gray;
 		font:12px 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 		padding:10px;
 	}
@@ -360,7 +354,7 @@ form {
 		border:1px solid DarkRed;
 	}
 	form .errors {
-		background:transparent url(../img/elements/icons.png) no-repeat -104px -234px;
+		background:transparent url(../img/icons.png) no-repeat -104px -234px;
 		color:DarkRed;
 		list-style:none;
 		margin:0;
@@ -401,6 +395,7 @@ table {
 dl {
 }
 	dl dt {
+		color:Black;
 		font-weight:bold;
 		margin-bottom:2px;
 		padding-bottom:2px;

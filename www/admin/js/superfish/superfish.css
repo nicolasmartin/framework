@@ -1,4 +1,3 @@
-
 /*** ESSENTIAL STYLES ***/
 .sf-menu, .sf-menu * {
 	margin:0;
@@ -53,6 +52,14 @@ ul.sf-menu li li li.sfHover ul {
 }
 /*
 /*** DEMO SKIN ***/
+.sf-menu ul {
+	border:1px solid Gray;
+	background:White;
+	box-shadow:2px 2px 2px Gray; -moz-box-shadow:2px 2px 2px Gray; -webkit-box-shadow:2px 2px 2px Gray;
+}
+.sf-menu ul li {
+	padding:0;	
+}
 .sf-menu {
 	float:left;
 	margin-bottom:1em;

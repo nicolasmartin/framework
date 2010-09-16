@@ -6,32 +6,37 @@
 	Color: White
  ------------------------------ */
 body {
-	color:#333;
-	font:13px/1.6 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+	color:#444;
+	font:12px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 /* ------- HEADERS ---------------- */
 h1 {
-	font-size:48px;
-	letter-spacing:-2px;
+	color:Black;
+	font-size:24px;
 }
 h2 {
-	font-size:36px;
+	color:Black;
+	font-size:22px;
 	font-weight:normal; 
 }
 h3 {
-	font-size:24px;
-	font-weight:normal; 
-}
-h4 {
+	color:Black;
 	font-size:20px;
 	font-weight:normal; 
 }
+h4 {
+	color:Black;
+	font-size:18px;
+	font-weight:normal;
+}
 h5 {
+	color:Black;
 	font-size:16px;
 }
 h6 {
-	font-size:13px;
+	color:Black;
+	font-size:14px;
 }
 
 /* ------- ELEMENTS ---------------- */
@@ -100,54 +105,32 @@ blockquote {
 	.menu a:hover {
 		text-decoration:none;	
 	}
-	.menu ul {
-		border:1px solid Gray;
+	.menu li {
 		background:White;
-		box-shadow:2px 2px 2px Gray; -moz-box-shadow:2px 2px 2px Gray; -webkit-box-shadow:2px 2px 2px Gray;
+		padding:2px;
 	}
-	.menu ul li {
-		background:White;
-		border-bottom:1px solid Gray;
-	}
-	.menu ul li:hover {
+	.menu li:hover {
 		background:Ivory;
+		cursor:pointer;
+	}
+	.menu .current {
+		background:WhiteSmoke;
+		font-weight:bold;
+		border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px;
+		padding:auto 30px;
 	}
 	.menu.horizontal {
-		/*overflow:hidden;*/
-		margin:20px 0;
 	}
 		.menu.horizontal li {
 			float:left;
-			display:inline-block;	
-		}
-		
-		.menu.horizontal > li {
+			display:inline-block;
 			margin-right:5px;	
 		}
-		.menu.horizontal li:hover {
-			background:Ivory;
-			cursor:pointer;
-		}
-		.menu.horizontal .current {
-			background:WhiteSmoke;
-			font-weight:bold;
-			border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px;
-			padding:auto 30px;
-		}	
 	.menu.vertical {
 	}
 		.menu.vertical li {
 			border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px;
-			margin:0;
-			padding:10px;
-		}
-		.menu.vertical li:hover {
-			background:Ivory ;
-			cursor:pointer;
-		}
-		.menu.vertical .current {
-			background:WhiteSmoke;
-			font-weight:bold;
+			margin-bottom:5px;
 		}
 
 .batch-actions {
@@ -233,7 +216,7 @@ blockquote {
 	border:2px solid #000;
 	border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px;
 	font-weight:bold;
-	margin-bottom:20px;
+	margin:10px 0;
 	padding:9px;
 }
 	.message.error {
@@ -258,22 +241,16 @@ blockquote {
 .breadcrumbs {
 	list-style:none; 
 	overflow:hidden; 
-	margin:0;
-} 
+}
 	.breadcrumbs li { 
 		float:left; 
-		height:26px;
-		line-height:26px; 
-		margin:0 10px 0 0px;
-		font-weight:bold;
-	}
+		height:20px;
+		line-height:20px; 
+		margin:0 10px 0 0;
+	}	
 		.breadcrumbs a { 
-			font-weight:normal;
 			margin-right:5px;
-		} 
-		.breadcrumbs a:hover {
-			color:Gray; 
-		}
+		}	
 
 .button {
 	background-color:#F0F0F0;
@@ -286,8 +263,8 @@ blockquote {
 	text-shadow:0 1px 1px #FFF;;
 }
 	.button:hover {
-		border:1px solid Black ;
-		color:Black ;
+		border:1px solid Black;
+		color:Black;
 		cursor:pointer;
 	}
 		
@@ -296,7 +273,7 @@ a:focus {
 	outline:1px dotted;
 }
 a:link, a:visited, a:active {
-	color:Black ;
+	color:Black;
 	text-decoration:none;
 }
 a:hover {
@@ -308,7 +285,6 @@ a.cancel {
 }
 .sprite { 
 	background:url(../img/icons.png) no-repeat top left;
-	
 }
 .sprite.icon { 
 	cursor:pointer;
@@ -419,7 +395,7 @@ form {
 	form input[type=text]:focus,
 	form textarea:focus,
 	form select:focus {
-		border:1px solid Black ;
+		border:1px solid Black;
 	}
 	form .hint {
 		color:#666;
@@ -506,13 +482,14 @@ table {
 	table tr:hover.even th,
 	table tr:hover.odd td,
 	table tr:hover.even td {
-		background:Ivory ;
+		background:Ivory;
 	}
 	
 /* définitions */
 dl {
 }
 	dl dt {
+		color:Black;
 		font-weight:bold;
 		margin-bottom:2px;
 		padding-bottom:2px;
