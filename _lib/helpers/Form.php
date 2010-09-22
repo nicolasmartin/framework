@@ -27,7 +27,11 @@ class FormHelper extends Helper {
 		if (isset($stack[$field])) {
 			$html .= '<ul class="errors">';
 			foreach($stack[$field] as $key) {
-				$html .= '<li>'.$Model->messages[$field][$key].'</li>';;
+				if (isset($Model->messages[$field][$key])) {
+					$html .= '<li>'.$Model->messages[$field][$key].'</li>';
+				} else {
+					$html .= '<li>Erreur inconnue : '.$key.'</li>';
+				}
 			}	
 			$html .= '</ul>';
 		}
