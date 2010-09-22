@@ -66,7 +66,7 @@
 				throw new Except("Le Controlleur '".$class."' n'existe pas", 404);
 			}
 			if (!method_exists($class, $action)) {
-				throw new Except("L'Action '".$action."' n'existe pas", 404);
+				throw new Except("L'Action '".$action."' n'existe pas dans ".$class, 404);
 			}
 
 			$method = strtolower($_SERVER['REQUEST_METHOD']);
