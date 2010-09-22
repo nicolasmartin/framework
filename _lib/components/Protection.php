@@ -35,7 +35,9 @@
 		
 		public function preExecute() {
 			if (is_array($this->options['basic'])) {
-				$this->basic($this->options['basic']['username'], $this->options['basic']['password']);
+				if (!$this->basic($this->options['basic']['username'], $this->options['basic']['password'])) {
+					die('Cette partie est privée, vous devez vous identifier.');
+				}
 			} else {
 				session_start();
 				$User = isset($_SESSION['_protection']) ? $_SESSION['_protection'] : null;
