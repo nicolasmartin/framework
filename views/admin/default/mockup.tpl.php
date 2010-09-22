@@ -140,7 +140,13 @@
                         <input class="large" type="text" value="I had more, but you go ahead." />		
                         <small class="hint">Field hint or description</small>		
                     </div>
-                    
+
+                    <div class="odd">
+                        <label>Editeur</label>
+                        <textarea class="editor large">I had more, but you go ahead.</textarea>		
+                        <small class="hint">Field hint or description</small>		
+                    </div>
+                 
                     <div class="even">
                         <label>Label</label>
                         <input class="medium" type="text" value="Anyone who laughs is a communist!" />	

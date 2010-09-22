@@ -6,9 +6,11 @@
     <link rel="stylesheet" type="text/css" href="/admin/css/styles.combined.css" media="screen, print">
     <link rel="stylesheet" type="text/css" href="/admin/themes/simple/css/styles.combined.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/admin/js/superfish/superfish.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/admin/js/yui-editor/skins/default/skin.css" media="screen">
 <?= $this->slot('SCRIPTS') ?>
     <script src="/admin/js/scripts.combined.js"></script>
     <script src="/admin/js/superfish/superfish.js"></script>
+    <script src="/admin/js/yui-editor/jquery.yui-editor.js"></script>
 <?= $this->slot('STYLES') ?>
 </head>
 
@@ -27,6 +29,8 @@
 		dropShadows:	false,
 		disableHI:  	false     	
 	});
+	
+	$('.editor').yuiEditor();
 </script>
 </body>
 </html>
