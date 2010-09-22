@@ -13,13 +13,14 @@
 		protected $Components 	= array();
 		
 		public function __construct($action = null, $params = array()) {
-			$this->name 		= str_replace('controller', '', strtolower(get_class($this)));	
-			$this->action 		= $action;
-			$this->params		= $params;
+			$this->name 	= str_replace('controller', '', strtolower(get_class($this)));	
+			$this->action 	= $action;
+			$this->params	= $params;
 
-			$this->Layout		= new Layout($this->layout);	
+			$this->Layout	= new Layout($this->layout);	
 			$this->Layout->setController($this);
-			$this->View 		= new View($this->name.'/'.$this->action, $this->Layout);	
+			
+			$this->View 	= new View($this->name.'/'.$this->action, $this->Layout);	
 			$this->View->setController($this);
 			$this->View->setAutoRender(true);
 		}
@@ -80,7 +81,7 @@
 		}
 		
 		public function getName() {
-			return $this->Controller;
+			return $this->name;
 		}
 
 		public function getAction() {
