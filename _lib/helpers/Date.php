@@ -23,8 +23,10 @@ class DateHelper extends Helper {
 		return $date; 
 	} 
 	
-	function prettyFormat($date, $format = '%A %d %B %Y') { 
-		$time            = strtotime($date); 
+	function prettyFormat($date, $format = '{day} {dd} {month} {yyyy}', $empty = 'indéfinie') { 
+		if (!$time = strtotime($date)) { 
+			return $empty; 
+		} 
 		$after           = strtotime("+7 day 00:00"); 
 		$afterTomorrow   = strtotime("+2 day 00:00"); 
 		$tomorrow        = strtotime("+1 day 00:00"); 
@@ -48,11 +50,11 @@ class DateHelper extends Helper {
 			} else if ($time >= $before) { 
 				$relative = strftime("%A", $time)." dernier"; 
 			} 
+			if (preg_match('/[0-2][0-9]:[0-5][0-9]/', $date)) { 
+				$relative .= ' à '.date('H:i', $time); 
+			} 
 		} else { 
-			$relative = 'le '.strftime($format, $time); 
-		} 
-		if (preg_match('[0-9]{2}:[0-9]{2}', $date)) { 
-			$relative .= ' à '.date('H:i', $time); 
+			$relative = 'le '.DateHelper::format($format);
 		} 
 		return $relative; 
 	} 
