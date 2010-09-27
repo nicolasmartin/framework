@@ -117,7 +117,7 @@
 				$conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
 				$conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);
 				$conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, true);
-
+				$conn->setAttribute(Doctrine_Core::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
 				foreach($this->models as $model_path) {
 					Doctrine_Core::loadModels($model_path);
 				}
