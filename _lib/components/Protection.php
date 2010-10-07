@@ -4,9 +4,9 @@
 		
 		public function __construct($Controller, $options = array()) {
 			$default = array(
-				'login' 			=> '/admin/users/login',
+				'login' 		=> '/admin/users/login',
 				'authorize'		=> array('login', 'logout'),
-				'basic'				=> false
+				'basic'			=> false
 			);
 			$this->options = array_merge($default, $options);
 			$this->Controller = $Controller;
@@ -43,7 +43,7 @@
 				$User = isset($_SESSION['_protection']) ? $_SESSION['_protection'] : null;
 				session_write_close();
 				if (!isset($User) && !in_array($this->Controller->action, $this->options['authorize'])) {
-					FlashComponent::set('error', "Cette partie est privée, vous devez vous identifier.");
+					FlashComponent::set('info', "Cette partie est privée, vous devez vous identifier.");
 					$this->Controller->redirect($this->options['login'], 403);
 				} else {
 					$this->setUser($User);
