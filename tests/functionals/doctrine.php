@@ -7,7 +7,7 @@ class TestOfDoctrine extends FunctionalWebTestCase {
 		$this->assertAuthentication();
 		$this->assertResponse('401');
 	
-		$this->authenticate('test', 'f10unctional');
+		$this->authenticate(SU_USERNAME, SU_PASSWORD);
 
 		$this->assertNoAuthentication();
 		$this->assertTitle('Scripts Doctrine');
