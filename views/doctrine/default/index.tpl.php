@@ -1,3 +1,5 @@
+<?php $this->set('TITLE', 'Scripts Doctrine'); ?>
+
     <h1>Doctrine</h1>
     
     <?= $this->partial('flash') ?>
