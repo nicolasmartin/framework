@@ -15,7 +15,7 @@
 		}
 
 		public function dumpData() {
-			Doctrine::dumpData(MODELS.'fixtures/', 1);
+			Doctrine::dumpData(MODELS.'fixtures/dev/', 1);
 			$this->dumpFiles('Picture');
 			$this->dumpFiles('File');
 			FlashComponent::set('info', 'Dump Data terminé.');
@@ -23,7 +23,7 @@
 		}
 				
 		public function loadData() {
-			Doctrine::LoadData(MODELS.'fixtures/');	
+			Doctrine::LoadData(MODELS.'fixtures/dev/');	
 			$this->loadFiles('Picture');
 			$this->loadFiles('File');
 			FlashComponent::set('info', 'Load Data terminé.');
@@ -79,7 +79,7 @@
 				'pathField'			=> 'path',
 				'findMethod' 		=> 'findAll',
 				'uploadMethod' 	=> 'upload',
-				'fixturePath'		=> MODELS.'fixtures/files/',
+				'fixturePath'		=> MODELS.'fixtures/dev/files/',
 				'uploadPath'		=> ROOT.'www/'.Config::get('uploads.path'),
 			);
 			$options = array_merge($default, $options);
@@ -100,7 +100,7 @@
 				'folder' 				=> 'uploads',
 				'pathField'			=> 'path',
 				'findMethod' 		=> 'findAll',
-				'fixturePath'		=> MODELS.'fixtures/files/',
+				'fixturePath'		=> MODELS.'fixtures/dev/files/',
 				'uploadPath'		=> ROOT.'www/'.Config::get('uploads.path'),
 			);
 			$options = array_merge($default, $options);
