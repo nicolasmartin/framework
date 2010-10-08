@@ -103,7 +103,7 @@
 		
 		public  function setDoctrine() {
 			spl_autoload_register(array('Doctrine', 'autoload'));
-			
+
 			if (!$configs = Config::get()) {
 				throw new Exception("Les configuration doit être configurées avant l'appel de cette méthode.");	
 			}
@@ -112,14 +112,15 @@
 			}
 			
 			if (Config::get('db.name')) {
-				$pdo	= new PDO('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), Config::get('db.username'), Config::get('db.password'));
-				$conn = Doctrine_Manager::connection($pdo, 'default');
+				$conn = Doctrine_Manager::connection(array('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), Config::get('db.username'), Config::get('db.password')), 'default');
+
+				$conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);	
+				$conn->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true); 
 				$conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
-				$conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);
 				$conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, true);
-				$conn->setAttribute(Doctrine_Core::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
+				
 				foreach($this->models as $model_path) {
-					Doctrine_Core::loadModels($model_path);
+					Doctrine::loadModels($model_path);
 				}
 			}
 		}
