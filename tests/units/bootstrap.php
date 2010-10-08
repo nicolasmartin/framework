@@ -25,3 +25,10 @@
 	$Bootstrap->addModelPath(ROOT.'models/generated/');
 	$Bootstrap->addModelPath(ROOT.'models/');
 	$Bootstrap->setDoctrine();
+
+	// Drop et recréé la base de tests avec les fixtures
+	$Conn = Doctrine_Manager::connection();
+	$Conn->dropDatabase();
+	$Conn->createDatabase();
+	Doctrine::createTablesFromModels(MODELS);
+	Doctrine::LoadData(MODELS.'fixtures/test/');
