@@ -3,7 +3,8 @@
 	define('CONTROLLERS', 	ROOT.'controllers/default/');
 	define('VIEWS', 		ROOT.'views/default/');
 	define('MODELS', 		ROOT.'models/');
-		
+
+	require_once(ROOT.'_lib/vendors/simpletest/autorun.php');
 	require_once ROOT.'_lib/core/_includes.php';
 	require_once ROOT.'_lib/vendors/doctrine/Doctrine.php';
 
