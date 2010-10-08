@@ -21,7 +21,7 @@
 		'uploads.path'		=> 'uploads/',
 		
 		'cache.pictures'	=> true,
-		'code.xhtml'			=> true,
+		'code.xhtml'		=> true,
 	);
 
 	// Développement ---------------------------------------------------------
@@ -30,6 +30,15 @@
 		'project.email' 	=> 'jay@jaysalvat.com',
 		
 		'cache.pictures'	=> false,
+	);
+	
+	// Tests ------------------------------------------------------------
+	$configs['test'] = array(
+		'project.url' 		=> 'http://domain.localhost',
+		'project.email' 	=> 'jay@jaysalvat.com',
+		
+		'su.username' 		=> 'test',
+		'su.password' 		=> 'ff90fc86a9aa0f1dcfa217183a233ce7e8d9bc34',
 	);
 
 	// Production ------------------------------------------------------------

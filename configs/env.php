@@ -1,6 +1,11 @@
 <?php
+	// Tests functionnels
+	if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' && isset($_SERVER['HTTP_USER_AGENT']) && $_SERVER['HTTP_USER_AGENT'] == 'Functional test') {
+		define('ENV', 'test');
+		ini_set('display_errors', 1);
+		
 	// Développement
-	if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
+	} else if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
 		define('ENV', 'dev');
 		ini_set('display_errors', 1);
 		
@@ -13,4 +18,3 @@
 	} else {
 		throw new Exception('Aucun environnement disponible.');	
 	}
-?>
