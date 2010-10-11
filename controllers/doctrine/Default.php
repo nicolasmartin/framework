@@ -78,7 +78,7 @@
 			$default = array(
 				'pathField'			=> 'path',
 				'findMethod' 		=> 'findAll',
-				'uploadMethod' 	=> 'upload',
+				'uploadMethod' 		=> 'upload',
 				'fixturePath'		=> MODELS.'fixtures/dev/files/',
 				'uploadPath'		=> ROOT.'www/'.Config::get('uploads.path'),
 			);
@@ -87,7 +87,7 @@
 				$Models = Doctrine::getTable($model)->{$options['findMethod']}();
 				foreach($Models as $Model) {
 					$mock = array(
-						'name'			=> $Model->{$options['pathField']},
+						'name'		=> $Model->{$options['pathField']},
 						'tmp_name' 	=> $options['fixturePath'].$Model->{$options['pathField']},
 					);
 					$Model->{$options['uploadMethod']}($mock, true);
@@ -97,7 +97,7 @@
 
 		private function dumpFiles($model, $options = array()) {
 			$default = array(
-				'folder' 				=> 'uploads',
+				'folder' 			=> 'uploads',
 				'pathField'			=> 'path',
 				'findMethod' 		=> 'findAll',
 				'fixturePath'		=> MODELS.'fixtures/dev/files/',
