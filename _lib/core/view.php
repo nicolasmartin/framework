@@ -7,14 +7,20 @@
 		protected $path;
 		protected $Layout;
 		protected $Controller;
+		protected $smartPath;
 		
-		public function __construct($path = null, Layout $Layout = null) {
+		public function __construct($path = null, Layout $Layout = null, $smartPath = true) {
+			$this->smartPath	= $smartPath;
+			$this->Layout 		= $Layout;
 			$this->setPath($path);
-			$this->Layout = $Layout;
 		}
 
 		public function setPath($path) {
-			$this->path = InflectionComponent::smartPath($path);
+			if ($this->smartPath == true) {
+				$this->path = InflectionComponent::smartPath($path);
+			} else {
+				$this->path = $path;
+			}
 		}
 		
 		public function getPath() {
@@ -115,7 +121,9 @@
 		}
 
 		public function partial($path) {
-			$path = InflectionComponent::smartPath($path, '_partials');
+			if ($this->smartPath == true) {
+				$path = InflectionComponent::smartPath($path, '_partials');
+			}
 			return $this->doRender($path);
 		}
 	
@@ -136,8 +144,12 @@
 				$path = $this->path;
 			}
 			
-			$full_path = VIEWS.$path;	
-
+			if ($this->smartPath == true) {
+				$full_path = VIEWS.$path;	
+			} else {
+				$full_path = $path;	
+			}
+			
 			if (!file_exists($full_path)) {
 				throw new Exception("La vue \"".$path."\" n'existe pas");
 			}
