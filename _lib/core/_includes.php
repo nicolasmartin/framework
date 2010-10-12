@@ -11,7 +11,8 @@
     include_once dirname(__FILE__).'/component.php';
     include_once dirname(__FILE__).'/bootstrap.php';
     include_once dirname(__FILE__).'/except.php';
-    
+    include_once dirname(__FILE__).'/generator.php';
+	 
     include_once dirname(__FILE__).'/../config.php';
     include_once dirname(__FILE__).'/../i18n.php';
     include_once dirname(__FILE__).'/../dispatcher.php';
@@ -22,3 +23,4 @@
     include_once dirname(__FILE__).'/../component.php';
     include_once dirname(__FILE__).'/../bootstrap.php';
     include_once dirname(__FILE__).'/../except.php';
+    include_once dirname(__FILE__).'/../generator.php';
