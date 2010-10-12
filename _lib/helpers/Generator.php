@@ -1,14 +1,21 @@
 <?php
 class GeneratorHelper extends Helper {
-	static function getPath($app, $controller) {
-		if ($app) {
+	static function getPath($app = null, $controller = null) {
+		if ($app && $controller) {
 			return '/'.strtolower($app).'/'.strtolower($controller);
-		} else {
+		} elseif ($app && !$controller) {
+			return '/'.strtolower($app);
+		} elseif (!$app && $controller) {
 			return '/'.strtolower($controller);
+		} else {
+			return '/';	
 		}
 	}
 	
-	static function getArticle($human) {
-		
+	static function field($field, $mapping) {
+		if (isset($mapping[$field])) {
+			return $mapping[$field];
+		};
+		return InflectionComponent::humanize($field);
 	}
 } 
