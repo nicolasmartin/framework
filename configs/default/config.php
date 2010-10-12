@@ -3,11 +3,6 @@
 
 	// Par défaut -----------------------------------------------------------
 	$configs['default'] = array(
-		'db.host'			=> '127.0.0.1',
-		'db.name'			=> '',
-		'db.username'		=> 'root',
-		'db.password'		=> '',
-
 		'su.username' 		=> 'admin',
 		'su.password' 		=> '1087f18bf25e2837fecc316f9ead454bd5f6cef7',
 
@@ -26,6 +21,11 @@
 
 	// Développement ---------------------------------------------------------
 	$configs['dev'] = array(
+		'db.host'			=> '127.0.0.1',
+		'db.name'			=> 'fw',
+		'db.username'		=> 'root',
+		'db.password'		=> '',
+		
 		'project.url' 		=> 'http://domain.localhost',
 		'project.email' 	=> 'jay@jaysalvat.com',
 		
@@ -34,6 +34,11 @@
 	
 	// Tests ------------------------------------------------------------
 	$configs['test'] = array(
+		'db.host'			=> '127.0.0.1',
+		'db.name'			=> 'fw_test',
+		'db.username'		=> 'root',
+		'db.password'		=> '',
+		
 		'project.url' 		=> 'http://domain.localhost',
 		'project.email' 	=> 'jay@jaysalvat.com',
 		
@@ -43,6 +48,10 @@
 
 	// Production ------------------------------------------------------------
 	$configs['prod'] = array(
+		'db.host'			=> '',
+		'db.name'			=> '',
+		'db.username'		=> '',
+		'db.password'		=> '',
 	);
 
 	// Configs ----------------------------------------------------------------
