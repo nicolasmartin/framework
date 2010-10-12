@@ -19,7 +19,7 @@
 			$this->dumpFiles('Picture');
 			$this->dumpFiles('File');
 			FlashComponent::set('info', 'Dump Data terminé.');
-			$this->redirect('/doctrine/scripts/index');
+			$this->redirect('/doctrine/default/index');
 		}
 				
 		public function loadData() {
@@ -27,7 +27,7 @@
 			$this->loadFiles('Picture');
 			$this->loadFiles('File');
 			FlashComponent::set('info', 'Load Data terminé.');
-			$this->redirect('/doctrine/scripts/index');
+			$this->redirect('/doctrine/default/index');
 		}
 		
 		public function generateModels() {
@@ -35,13 +35,13 @@
 				'generateTableClasses' => true 
 			));
 			FlashComponent::set('info', 'Generate Models terminé.');
-			$this->redirect('/doctrine/scripts/index');
+			$this->redirect('/doctrine/default/index');
 		}
 		
 		public function generateSchema() {
 			Doctrine_Core::generateYamlFromModels(MODELS.'schema/schema.yml', MODELS);
 			FlashComponent::set('info', 'Generate Schema terminé.');
-			$this->redirect('/doctrine/scripts/index');
+			$this->redirect('/doctrine/default/index');
 		}
 		
 		public function generateTables() {
@@ -49,7 +49,7 @@
 			Doctrine_Core::createTablesFromModels(MODELS);
 			
 			FlashComponent::set('info', 'Generate Table terminé.');
-			$this->redirect('/doctrine/scripts/index');
+			$this->redirect('/doctrine/default/index');
 		}
 
 		// PRIVATES -------------------------------
