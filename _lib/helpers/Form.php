@@ -12,11 +12,25 @@ class FormHelper extends Helper {
 		}
 		return '';
 	}
-	
-	static function getErrorClass($field, $Model) {
+
+	static function getHasErrorClass($field, $Model, $full = true) {
 		$stack = $Model->getErrorStack();
 		if (isset($stack[$field])) {
-			return 'class="error"';
+			if ($full) {
+				return 'class="has-error"';
+			}
+			return 'has-error';
+		}
+		return "";	
+	}
+		
+	static function getErrorClass($field, $Model, $full = true) {
+		$stack = $Model->getErrorStack();
+		if (isset($stack[$field])) {
+			if ($full) {
+				return 'class="error"';
+			}
+			return 'error';
 		}
 		return "";	
 	}
