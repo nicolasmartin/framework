@@ -1,7 +1,7 @@
 /* ------- INFO ----------------
-	Color:
-	Color:
-	Color:
+	Main color 1 :#CC9900
+	Main color 2 :#CC9900
+	Main color 3 :#CC9900
 	
 	- CONTAINER
 	- HEADER
@@ -25,7 +25,7 @@
 
 /* ------- HEADER ---------------- */
 	#header {
-		position:relative;	
+		position: relative;	
 	}
 		#header small {
 			display:none;
@@ -43,11 +43,11 @@
 	}
 	#logged {
 		position:absolute;
-		top:0px;
-		right:10px;
+		top: 0px;
+		right: 10px;
 	}
 		#logged .user {
-			font-weight:bold;
+			font-weight: bold;
 		}
 
 /* ------- CONTENT ---------------- */
@@ -60,7 +60,7 @@
 
 }
 	#main p {
-			text-align:justify;	
+			text-align: justify;	
 	}
 
 /* ------- SIDEBAR ---------------- */

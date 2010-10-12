@@ -1,42 +1,37 @@
 /* ------- INFO ----------------
-	Color: Black 
-	Color: Gray
-	Color: WhiteSmoke 
-	Color: Ivory
-	Color: White
+	Color :Black 
+	Color :Gray
+	Color :WhiteSmoke 
+	Color :Ivory
+	Color :White
  ------------------------------ */
 body {
-	color:#444;
-	font:12px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+	color:#333;
+	font:12px/1.6 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 /* ------- HEADERS ---------------- */
 h1 {
-	color:Black;
-	font-size:24px;
+	font-size:36px;
+	letter-spacing:-2px;
 }
 h2 {
-	color:Black;
-	font-size:22px;
+	font-size:24px;
 	font-weight:normal; 
 }
 h3 {
-	color:Black;
 	font-size:20px;
 	font-weight:normal; 
 }
 h4 {
-	color:Black;
-	font-size:18px;
-	font-weight:normal;
+	font-size:16px;
+	font-weight:normal; 
 }
 h5 {
-	color:Black;
-	font-size:16px;
+	font-size:14px;
 }
 h6 {
-	color:Black;
-	font-size:14px;
+	font-size:12px;
 }
 
 /* ------- ELEMENTS ---------------- */
@@ -59,7 +54,6 @@ address,
 fieldset,
 blockquote {
 	margin-bottom:20px;
-/*	padding:0 20px;*/
 }
 
 /* ------- CLASSES ---------------- */
@@ -105,32 +99,54 @@ blockquote {
 	.menu a:hover {
 		text-decoration:none;	
 	}
-	.menu li {
+	.menu ul {
+		border:1px solid Gray;
 		background:White;
-		padding:2px;
+		box-shadow:2px 2px 2px Gray; -moz-box-shadow:2px 2px 2px Gray; -webkit-box-shadow:2px 2px 2px Gray;
 	}
-	.menu li:hover {
+	.menu ul li {
+		background:White;
+		border-bottom:1px solid Gray;
+	}
+	.menu ul li:hover {
 		background:Ivory;
-		cursor:pointer;
-	}
-	.menu .current {
-		background:WhiteSmoke;
-		font-weight:bold;
-		border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px;
-		padding:auto 30px;
 	}
 	.menu.horizontal {
+		/*overflow:hidden;*/
+		margin:20px 0;
 	}
 		.menu.horizontal li {
 			float:left;
-			display:inline-block;
+			display:inline-block;	
+		}
+		
+		.menu.horizontal > li {
 			margin-right:5px;	
 		}
+		.menu.horizontal li:hover {
+			background:Ivory;
+			cursor:pointer;
+		}
+		.menu.horizontal .current {
+			background:WhiteSmoke;
+			font-weight:bold;
+			border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px;
+			padding:auto 30px;
+		}	
 	.menu.vertical {
 	}
 		.menu.vertical li {
 			border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px;
-			margin-bottom:5px;
+			margin:0;
+			padding:10px;
+		}
+		.menu.vertical li:hover {
+			background:Ivory ;
+			cursor:pointer;
+		}
+		.menu.vertical .current {
+			background:WhiteSmoke;
+			font-weight:bold;
 		}
 
 .batch-actions {
@@ -216,7 +232,7 @@ blockquote {
 	border:2px solid #000;
 	border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px;
 	font-weight:bold;
-	margin:10px 0;
+	margin-bottom:20px;
 	padding:9px;
 }
 	.message.error {
@@ -241,16 +257,22 @@ blockquote {
 .breadcrumbs {
 	list-style:none; 
 	overflow:hidden; 
-}
+	margin:0;
+} 
 	.breadcrumbs li { 
 		float:left; 
-		height:20px;
-		line-height:20px; 
-		margin:0 10px 0 0;
-	}	
+		height:26px;
+		line-height:26px; 
+		margin:0 10px 0 0px;
+		font-weight:bold;
+	}
 		.breadcrumbs a { 
+			font-weight:normal;
 			margin-right:5px;
-		}	
+		} 
+		.breadcrumbs a:hover {
+			color:Gray; 
+		}
 
 .button {
 	background-color:#F0F0F0;
@@ -263,8 +285,8 @@ blockquote {
 	text-shadow:0 1px 1px #FFF;;
 }
 	.button:hover {
-		border:1px solid Black;
-		color:Black;
+		border:1px solid Black ;
+		color:Black ;
 		cursor:pointer;
 	}
 		
@@ -273,7 +295,7 @@ a:focus {
 	outline:1px dotted;
 }
 a:link, a:visited, a:active {
-	color:Black;
+	color:Black ;
 	text-decoration:none;
 }
 a:hover {
@@ -285,6 +307,7 @@ a.cancel {
 }
 .sprite { 
 	background:url(../img/icons.png) no-repeat top left;
+	
 }
 .sprite.icon { 
 	cursor:pointer;
@@ -359,8 +382,9 @@ a.cancel {
 /* ------- FORMS ---------------- */	
 form {		
 }
-	form div {
-		padding:10px;
+	form .odd,
+	form .even {
+		padding:5px;
 	}
 	form fieldset {
 		border:1px solid #000;
@@ -368,7 +392,6 @@ form {
 		padding:0 20px 20px 20px;
 	}
 	form legend {
-		font-size:14px;
 		font-weight:bold;
 		margin:5px;
 		padding:5px;
@@ -379,6 +402,7 @@ form {
 		font-weight:bold;
 		padding:0 0 4px 0;
 	}
+	form input[type=password],
 	form input[type=text],
 	form textarea,
 	form select {
@@ -389,13 +413,11 @@ form {
 		font:12px 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 		padding:10px;
 	}
-	form div.has-error {
-		background:Ivory;
-	}
+	form input[type=password]:focus,
 	form input[type=text]:focus,
 	form textarea:focus,
 	form select:focus {
-		border:1px solid Black;
+		border:1px solid Black ;
 	}
 	form .hint {
 		color:#666;
@@ -403,9 +425,11 @@ form {
 		font-size:11px;
 		padding:4px 0;
 	}
-	form input[type=text].error,
-	form textarea.error {
+	form .error {
 		border:1px solid #C30;
+	}
+	form .has-error {
+		background:Ivory;
 	}
 	form .errors {
 		background:transparent url(../img/icons.png) no-repeat -104px -234px;
@@ -421,8 +445,7 @@ form {
 /* ------- TABLES et LISTE ------------- */
 table {
 	width:100%;
-	border-left:1px solid #CCC;
-	border-right:1px solid #CCC;
+	border:1px solid #CCC;
 }
 	table th {
 		font-weight:bold;
@@ -449,28 +472,26 @@ table {
 	table thead th,
 	table thead td {
 		border-bottom:1px solid #888;
-		border-top:1px dotted #666;
 	}
 	table tfoot th,
 	table tfoot td {
-		border-bottom:1px dotted #666;
 		border-top:1px solid #555;
 	}
 	table tbody th,
 	table tbody td {
-		border-bottom:1px solid #EEE;
+		border-bottom:1px solid #CCC;
 		font-size:11px;
 	}
+
 	table tbody th {
 		font-size:12px;	
 	}
 	table tbody th{
-		border-right:1px solid #EEE;
-		border-left:1px solid #EEE;
+		border-right:1px solid #DDD;
 	}
 	table th,
 	table td {
-		padding:8px;
+		padding:15px;
 	}
 	table tbody tr.odd th {
 		background:#FAFAFA;
@@ -482,14 +503,13 @@ table {
 	table tr:hover.even th,
 	table tr:hover.odd td,
 	table tr:hover.even td {
-		background:Ivory;
+		background:Ivory ;
 	}
-	
+
 /* définitions */
 dl {
 }
 	dl dt {
-		color:Black;
 		font-weight:bold;
 		margin-bottom:2px;
 		padding-bottom:2px;
@@ -498,7 +518,7 @@ dl {
 		margin-bottom:10px;
 	}
 	
-/* liste */
+/* liste
 ol {
 	list-style:decimal;
 }
@@ -508,3 +528,4 @@ ul {
 	li {
 		margin-left:20px;
 	}
+ */
