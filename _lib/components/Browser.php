@@ -1,11 +1,17 @@
 <?php
 	class BrowserComponent extends Component {
 		static function get($regexp) { 
+			if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+				return false;	
+			}
 			preg_match($regexp, $_SERVER['HTTP_USER_AGENT'], $match); 
 			return isset($match[1]) ? $match[1] : null; 
 		} 
 		
 		static function is($string) { 
+			if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+				return false;	
+			}
 			return (bool) stripos($_SERVER['HTTP_USER_AGENT'], $string); 
 		} 
 		
