@@ -1,6 +1,16 @@
 
 	// Index
 	public function index() {
-		$<?= $settings['collection'] ?> = Doctrine::getTable('<?= $model ?>')->findAll();
-		$this->View->set('<?= $settings['collection'] ?>', $<?= $settings['collection'] ?>);
+	    $page       = $this->getParam('page', 1);
+        $orderby    = $this->getParam('orderby', 'id');
+        $dir        = $this->getParam('dir', 'desc');
+        $perpage    = Config::get('perPage');
+
+		$Pager = new Doctrine_Pager(
+		    Doctrine::getTable('<?= $model ?>')
+		        ->createQuery()
+		        ->orderby($orderby.' '.$dir), 
+		    $page, $perpage
+		);
+		$this->View->set('<?= $settings['collection'] ?>', $Pager->execute());
 	}

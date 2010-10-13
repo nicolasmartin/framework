@@ -5,7 +5,7 @@
 	
 	$Generator = new Generator('admin', 'users', 'user', THEME_PATH);
 	$Generator->addPack('users');
-	$Generator->setOverwrite(false);
+	$Generator->setOverwrite(true);
 	$Generator->setProtection(true);
 	$Generator->setSettings(array(
 		'model'			=> 'User',
