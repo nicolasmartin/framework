@@ -13,7 +13,7 @@
 				$this->Components['protection']->login($Admin);
 				FlashComponent::set('success', "Connecté. Bienvenue Administrateur !");
 				$this->redirect('<?= ThisGeneratorHelper::getPath($app) ?>/');
-			} else if ($<?= $settings['model'] ?> && $<?= $settings['model'] ?>->isAuthorized($_POST['password'])) {
+			} else if ($<?= $settings['model'] ?> && $<?= $settings['model'] ?>->isAuthorized(sha1($_POST['password']))) {
 				$this->Components['protection']->login(<?= $settings['model'] ?>);
 				FlashComponent::set('success', "Connecté. Bienvenue ".$<?= $settings['model'] ?>['firstname']." !");
 				$this->redirect('<?= ThisGeneratorHelper::getPath($app) ?>/');
