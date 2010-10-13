@@ -11,9 +11,11 @@
 		</ul>
 
 [? $i=0; ?]
+		<form action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/batch/" method="post">
 <? $fields = Doctrine::getTable($model)->getColumns(); ?>
 		<table class="list">
 			<colgroup>
+				<col width="20" />
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
 				<col />
@@ -23,6 +25,7 @@
 			</colgroup>
 			<thead>
 				<tr>
+					<th scope="col"><input id="checkall" type="checkbox" /></th>
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
 					<th scope="col"><?= ucfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></th>
@@ -33,12 +36,19 @@
 			</thead>
 			<tfoot>
 				<tr>
-					<td colspan="100">&nbsp;</td>
+				<td colspan="100" class="batch-actions">
+					<select name="action">
+						<option value="">&#8212; Actions &#8212;</option>
+						<option value="delete">Supprimer</option>
+					</select>
+					<input class="button" type="submit" value="Appliquer" />
+				</td>
 				</tr>
 			</tfoot>
 			<tbody>
 [? foreach ($<?= $settings['collection'] ?> as $<?= $settings['model'] ?>): ?]
 				<tr class="[?= ++$i % 2 ? 'odd': 'even' ?]">
+					<td><input type="checkbox" name="id[]" value="[?= $<?= $settings['model'] ?>['id'] ?]" /></td>
 <? $r = 0; foreach($fields as $field => $options) : ?>
 <? if (++$r == 2) : ?>
 					<th scope="row">
@@ -68,3 +78,8 @@
 	</div><!-- #main -->
 </div><!-- #content -->
 
+<script type="text/javascript">
+	$('#checkall').click(function() {
+		$('input[type=checkbox]', $(this).closest('table')).attr('checked', $(this).is(':checked'));	
+	});
+</script>
