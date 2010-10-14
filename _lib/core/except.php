@@ -1,8 +1,8 @@
 <?php
 	abstract class ExceptCore extends Exception {
-		public function __construct($message, $code = 0, Exception $previous = null) {
+		public function __construct($message, $code = 0) {
 			if (ini_get('display_errors') == 1) {
-				return parent::__construct($message, $code, $previous);
+				return parent::__construct($message, $code);
 			}
 			switch ($code) {
 				case 404:
