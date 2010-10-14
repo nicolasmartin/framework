@@ -2,7 +2,7 @@
 	require_once(dirname(__FILE__).'/bootstrap.php');
 	require_once(dirname(__FILE__).'/../vendors/simpletest/autorun.php');
 
-	class TestOfTranslation extends UnitTestCase {
+	class TestOfI18n extends UnitTestCase {
 		public $def = array(
 			'dog'			=> 'chien',
 			'hi %%name%%!'	=> 'salut %%name%% !',

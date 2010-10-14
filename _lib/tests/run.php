@@ -5,7 +5,7 @@
 		function AllTests() {
 			$this->TestSuite('All tests');
 			$this->addFile(dirname(__FILE__).'/filters.php');
-			$this->addFile(dirname(__FILE__).'/translations.php');
+			$this->addFile(dirname(__FILE__).'/i18n.php');
 			// Ajouter les tests ici
 		}
 	}
