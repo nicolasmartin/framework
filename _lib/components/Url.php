@@ -8,16 +8,38 @@
 			return 'http://'.$url;
 		}
 	
-		static function www($path) {
+		static function www($path = null) {
+			$path = self::path($path);
 			$url = $_SERVER['SERVER_NAME'].$path;
 			if (isset($_SERVER['HTTPS'])) {
 				return 'https://'.$url;
 			}
 			return 'http://'.$url;
 		}
+		
+		static function blackList($blacklist = array()) {
+			$params = Dispatcher::getInstance()->getParams();
+			foreach($params as $key => $value) {
+				if (in_array($key, 	$blacklist)) {
+					unset($params[$key]);
+				}
+			}
+			return self::path(array('params' => $params));
+		}
+		
+		static function whiteList($whitelist = array()) {
+			$params = Dispatcher::getInstance()->getParams();
+			foreach($params as $key => $value) {
+				if (!in_array($key, $whitelist)) {
+					unset($params[$key]);
+				}
+			}
+			return self::path(array('params' => $params));
+		}
 
 		static function path($path = null) {		
 			$offset 	= 0;
+			$url 		= array();
 			$Dispatcher = Dispatcher::getInstance();
 			$default 	= array(
 				'app' 			=> null,
@@ -26,7 +48,7 @@
 				'action' 		=> null,
 				'params' 		=> null,
 			);
-
+			
 			if (!$path) {
 				$path = $Dispatcher->getUrl();
 			}
@@ -50,7 +72,7 @@
 						break;
 					}
 				}
-	
+
 				if (self::isApp($splits[0])) {
 					$url['app'] = @$splits[0];
 				} else {
@@ -63,7 +85,6 @@
 			} else {
 				$url = array_merge($default, $path);
 			}
-	
 			if (is_array($url['params'])) {
 				$params = array();
 				foreach($url['params'] as $key => $value) {
@@ -79,7 +100,7 @@
 			if ($url['action'] && !$url['controller']) {
 				$url['controller'] = $Dispatcher->getControllerName();
 			}
-	
+		
 			$splits = array();
 			$splits[0] = ($url['app']) 			? $url['app'] 			: $Dispatcher->getApp();
 			$splits[1] = ($url['lang']) 		? $url['lang'] 			: $lang;
@@ -91,7 +112,7 @@
 			$splits[1] = __($splits[1], null, null, 'url');
 			$splits[2] = __($splits[2], null, null, 'url');
 			$splits[3] = __($splits[3], null, null, 'url');
-			
+
 			$url = implode($splits, '/');
 			$url = '/'.$url.'/';
 			$url = preg_replace('~/{2,}~', '/', $url);
