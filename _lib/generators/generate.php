@@ -28,4 +28,4 @@
 		'firstname'	=> 'prénom',
 	));
 	$Generator->setVerbose(true);
-	$Generator->generate();
+	$Generator->generateAll();

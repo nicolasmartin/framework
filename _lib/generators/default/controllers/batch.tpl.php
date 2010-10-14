@@ -16,10 +16,10 @@
 
 		switch ($action) {
 			case "delete":
-				$Items = Doctrine::getTable('<?= $model ?>')
-						->createQuery()
-						->whereIn('id', $id)
-						->execute();
+                $Items = Doctrine::getTable('<?= $model ?>')
+                            ->createQuery()
+                            ->whereIn('id', $id)
+                            ->execute();
 				foreach ($Items as $Item) {
 					$Item->delete();
 				}

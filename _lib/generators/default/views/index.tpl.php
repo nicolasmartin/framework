@@ -42,6 +42,8 @@
 						<option value="delete">Supprimer</option>
 					</select>
 					<input class="button" type="submit" value="Appliquer" />
+					
+					[?= $this->partial('pagination'); ?]
 				</td>
 				</tr>
 			</tfoot>

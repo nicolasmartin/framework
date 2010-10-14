@@ -98,12 +98,7 @@
 		function getVerbose() {
 			return $this->verbose;	
 		}
-		
-		function generate() {
-			$this->generateController();
-			$this->generateViews();
-		}
-		
+			
 		function addPack($pack) {
 			$this->packs[$pack] = $pack;
 		}
@@ -112,6 +107,12 @@
 			if (isset($this->packs[$pack])) {
 				unset($this->packs[$pack]);
 			}
+		}
+
+		function generateAll() {
+			$this->generateController();
+			$this->generateViews();
+			$this->generatePartials();
 		}
 		
 		function generateController() {
@@ -212,7 +213,49 @@
 					
 			$this->debug('Génération totale des vues dans '.dirname($path));
 		}
-		
+
+		function generatePartials() {
+			$template_path = $this->getPath().'/partials';
+			$templates = $this->getTemplates($template_path);
+
+			$this->debug('---------------------------------');
+			$this->debug('Partiels pour le controller '.$this->getController());
+			$this->debug('---------------------------------');
+				
+			foreach($templates as $file) {
+				$View = new View($template_path.'/'.$file, null, false);
+				$View->set('app', 			$this->getApp());
+				$View->set('controller', 	$this->getController());
+				$View->set('model', 		$this->getModel());
+				$View->set('settings', 		$this->getSettings());
+			
+				$generated = $View->render();
+				$generated = str_replace('[?', '<?', $generated);
+				$generated = str_replace('?]', '?>', $generated);
+			
+				if ($this->getApp() == '') {
+					$path = VIEWS.'default/_partials/'.$file;
+				} else {
+					$path = VIEWS.strtolower($this->getApp()).'/_partials/'.$file;
+				}
+
+				foreach($this->packs as $pack) {
+					$dir = '_partials';
+					$path = preg_replace('~/'.$dir .'/'.$pack.'/~', '/'.$dir.'/', $path);
+				}
+
+				if (file_exists($path) && $this->getOverwrite() === false) {
+					throw new Exception('Le partiel '.$path.' existe déjà.');	
+				}
+			
+				file_put_contents($path, $generated);
+
+				$this->debug('- '.$file);
+			}
+					
+			$this->debug('Génération totale des partiels dans '.dirname($path));
+		}
+
 		private function getTemplates($path) {
 			$templates = array();
 			$handle = opendir($path);
