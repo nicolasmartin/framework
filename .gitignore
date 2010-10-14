@@ -1,6 +1,7 @@
 cache/*
 
 www/sandbox/*
+configs/sandbox/*
 controllers/sandbox/*
 views/sandbox/*
 models/Sandbox.php
