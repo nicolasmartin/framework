@@ -3,15 +3,15 @@
 	
 	define('THEME_PATH', dirname(__FILE__).'/default');
 	
-	$Generator = new Generator('admin', 'users', 'user', THEME_PATH);
-	$Generator->addPack('users');
-	$Generator->setOverwrite(false);
+	$Generator = new Generator('admin', 'tests', 'test', THEME_PATH);
+	//$Generator->addPack('users');
+	$Generator->setOverwrite(true);
 	$Generator->setProtection(true);
 	$Generator->setSettings(array(
-		'model'			=> 'User',
-		'collection'	=> 'Users',
-		'singular'		=> "utilisateur",
-		'plural'		=> "utilisateurs",
+		'model'			=> 'Test',
+		'collection'	=> 'Tests',
+		'singular'		=> "élément",
+		'plural'		=> "éléments",
 		'male'			=> true,
 		'a' 			=> "un ",
 		'the' 			=> "l'",
@@ -26,10 +26,6 @@
 	$Generator->setMapping(array(
 		'name' 		=> 'nom',
 		'firstname'	=> 'prénom',
-		'username' 	=> 'identifiant',
-		'password' 	=> 'mot de passe',
-		'logged_at'	=> 'connecté le',
-		'status'	=> 'statut'
 	));
 	$Generator->setVerbose(true);
 	$Generator->generate();
