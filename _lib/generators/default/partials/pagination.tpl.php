@@ -1,9 +1,11 @@
 [? if (isset($Pager)) : ?]
 <ul class="pagination">
 [? if ($Pager->haveToPaginate()): 
-   $range   = $Pager->getRange('Sliding', array('chunk' => 5));
+   $range   = $Pager->getRange('Sliding', array('chunk' => Config::get('pagination.chunk')));
    $pages   = $range->rangeAroundPage();
-   $path    = UrlComponent::path($this->getController()->name.'/index');
+   
+   $filter  = Config::get('pagination.filter');
+   $path    = UrlComponent::whitelist(array_remove($filter, 'page'));
 ?]
 [? if ($Pager->getPage() > 1) : ?]
     <li class="previous"><a href="[?= $path ?]page/[?= $Pager->getPreviousPage() ?]">&laquo; Précédente</a></li>

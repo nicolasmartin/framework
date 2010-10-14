@@ -28,7 +28,7 @@
 					<th scope="col"><input id="checkall" type="checkbox" /></th>
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
-					<th scope="col"><?= ucfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></th>
+					<th scope="col">[?= UrlHelper::orderBy('<?= $field ?>', '<?= ucfirst(ThisGeneratorHelper::field($field, $settings['map']))?>') ?]</th>
 <? endif ?>
 <? endforeach ?>
 					<th scope="col">&nbsp;</th>

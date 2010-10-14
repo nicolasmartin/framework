@@ -10,7 +10,7 @@
 	$Generator->setOverwriteViews(true);
 	$Generator->setOverwritePartials(false);
 	
-	$Generator->setProtection(true);
+	$Generator->setProtection(false);
 	
 	$Generator->setSettings(array(
 		'model'			=> 'Test',
