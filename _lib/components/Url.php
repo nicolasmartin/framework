@@ -1,22 +1,93 @@
 <?php
 	class UrlComponent extends ComponentCore {
-		static function url($path) {
-			$url = $_SERVER['SERVER_NAME'].selfUrlComponent::path($path);;
-			if (isset($_SERVER['HTTPS'])) {
-				return 'https://'.$url;
-			}
-			return 'http://'.$url;
-		}
-	
-		static function www($path = null) {
-			$path = self::path($path);
-			$url = $_SERVER['SERVER_NAME'].$path;
-			if (isset($_SERVER['HTTPS'])) {
-				return 'https://'.$url;
-			}
-			return 'http://'.$url;
-		}
 		
+		static function path($path = null) {		
+			$Dispatcher = Dispatcher::getInstance();
+			$default = array(
+				'app' 			=> null,
+				'controller' 	=> null,
+				'action' 		=> null,
+				'params' 		=> null,
+			);
+				
+			if (!$path) {
+				$path = '/'.$Dispatcher->getUrl();
+			}
+			
+			if (!is_array($path)) {
+				if ($path{0} !== '/') {
+					$path = '/'.$Dispatcher->getApp().'/'.$path;
+				}				
+				$path = preg_replace('~(^/|/$)~', '', $path);
+
+				$splits = explode('/', $path);
+				$path = array();
+
+				if (self::isApp($splits[0])) {
+					$path['app'] = @$splits[0];
+				} else {
+					$path['app'] = null;
+				}
+				$path['controller'] 	= @$splits[1];
+				$path['action'] 		= @$splits[2];
+				$path['params'] 		= @implode('/', array_slice($splits, 3));
+			}
+
+			$path = array_merge($default, $path);
+			if ($path['controller'] && $path['params']) {
+				if (!$path['action']) {
+					$path['action'] = 'index';
+				}
+			}
+			if ($path['app'] && $path['params']) {
+				if (!$path['controller']) {
+					$path['controller'] = 'default';
+				}
+				if (!$path['action']) {
+					$path['action'] = 'index';
+				}
+			}
+			if ($path['params'] && !$path['action']) {
+				$path['action'] = $Dispatcher->getActionName();
+			}
+			if ($path['action'] && !$path['controller']) {
+				$path['controller'] = $Dispatcher->getControllerName();
+			}
+			if ($path['controller'] && !$path['app']) {
+				$path['app'] = $Dispatcher->getApp();
+			}
+			if (!$path['app'] && !$path['controller'] && !$path['action'] && !$path['params']) {
+				$path['app'] = $Dispatcher->getApp();
+				$path['controller'] = $Dispatcher->getControllerName();
+				$path['action'] = $Dispatcher->getActionName();
+			}
+			if (is_array($path['params'])) {
+				$params = array();
+				foreach($path['params'] as $key => $value) {
+					$params[] = $key.'/'.$value;
+				}
+				$path['params'] = implode('/', $params);
+			}
+			
+			
+			$path['app'] 		= __($path['app'], null, null, 'url');
+			$path['controller'] = __($path['controller'], null, null, 'url');
+			$path['action'] 	= __($path['action'], null, null, 'url');
+			
+			$new_path = implode($path, '/');
+			$new_path = '/'.$new_path.'/';
+			$new_path = preg_replace('~/{2,}~', '/', $new_path);
+
+			return $new_path;
+		}
+
+		private static function isApp($name) {
+			if (file_exists(ROOT.'www/'.$name.'/.htaccess')) {
+				return true;
+			}
+			return false;
+		}
+
 		static function blackList($blacklist = array()) {
 			$params = Dispatcher::getInstance()->getParams();
 			foreach($params as $key => $value) {
@@ -28,6 +99,9 @@
 		}
 		
 		static function whiteList($whitelist = array()) {
+			if (!$whitelist) {
+				return self::path(array('params' => array()));
+			}
 			$params = Dispatcher::getInstance()->getParams();
 			foreach($params as $key => $value) {
 				if (!in_array($key, $whitelist)) {
@@ -37,103 +111,14 @@
 			return self::path(array('params' => $params));
 		}
 
-		static function path($path = null) {		
-			$offset 	= 0;
-			$url 		= array();
-			$Dispatcher = Dispatcher::getInstance();
-			$default 	= array(
-				'app' 			=> null,
-				'lang' 			=> null,
-				'controller' 	=> null,
-				'action' 		=> null,
-				'params' 		=> null,
-			);
-			
-			if (!$path) {
-				$path = $Dispatcher->getUrl();
+		static function url($path = null) {
+			$path = self::path($path);
+			$url = $_SERVER['SERVER_NAME'].$path;
+			if (isset($_SERVER['HTTPS'])) {
+				return 'https://'.$url;
 			}
-			
-			if (defined('LANG') && LANG) {
-				$lang = LANG;	
-			} else {
-				$lang = null;	
-			}
-			
-			if (!is_array($path)) {
-				$path 	= preg_replace('~^/|/$~', '', $path);
-				$splits = explode('/', $path);
-	
-				$url['lang'] = $lang;
-				for($i = 0; $i <= 1; $i++) {
-					if (self::isLang(@$splits[$i], $splits[0])) {
-						$url['lang'] = $splits[$i];
-						unset($splits[$i]);
-						$offset++;
-						break;
-					}
-				}
+			return 'http://'.$url;
+		}
 
-				if (self::isApp($splits[0])) {
-					$url['app'] = @$splits[0];
-				} else {
-					$offset--;
-					$url['app'] = null;	
-				}
-				$url['controller'] 	= @$splits[1+$offset];
-				$url['action'] 		= @$splits[2+$offset];
-				$url['params'] 		= @implode('/', array_slice($splits, 3+$offset));
-			} else {
-				$url = array_merge($default, $path);
-			}
-			if (is_array($url['params'])) {
-				$params = array();
-				foreach($url['params'] as $key => $value) {
-					$params[] = $key.'/'.$value;
-				}
-				$url['params'] = implode('/', $params);
-			}
-	
-			if ($url['params'] && !$url['action']) {
-				$url['action'] = $Dispatcher->getActionName();
-			}
-	
-			if ($url['action'] && !$url['controller']) {
-				$url['controller'] = $Dispatcher->getControllerName();
-			}
-		
-			$splits = array();
-			$splits[0] = ($url['app']) 			? $url['app'] 			: $Dispatcher->getApp();
-			$splits[1] = ($url['lang']) 		? $url['lang'] 			: $lang;
-			$splits[2] = ($url['controller'])	? $url['controller'] 	: null;
-			$splits[3] = ($url['action']) 		? $url['action'] 		: null;
-			$splits[4] = ($url['params']) 		? $url['params'] 		: null;	
-			
-			$splits[0] = __($splits[0], null, null, 'url');
-			$splits[1] = __($splits[1], null, null, 'url');
-			$splits[2] = __($splits[2], null, null, 'url');
-			$splits[3] = __($splits[3], null, null, 'url');
-
-			$url = implode($splits, '/');
-			$url = '/'.$url.'/';
-			$url = preg_replace('~/{2,}~', '/', $url);
-	
-			return $url;
-		}
-		
-		private static function isApp($name) {
-			if (file_exists(ROOT.'www/'.$name.'/.htaccess')) {
-				return true;
-			}
-			return false;
-		}
-	
-		private static function isLang($lang, $app = null) {
-			foreach(I18n::getDefinitionPath() as $path) {
-				if (file_exists($path.$lang.'.php')) {
-					return true;
-				}
-			}
-			return false;
-		}
 	}
     

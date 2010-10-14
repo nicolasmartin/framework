@@ -26,7 +26,7 @@
 		public function setUrl($url) {
 			$this->url 	= $url;	
 			$parsed		= $this->parseUrl($this->url);
-			
+
 			$this->url 			= $parsed['url'];
 			$this->app 			= $parsed['app'];
 			$this->controller 	= $parsed['controller'];
@@ -39,36 +39,36 @@
 			return $this->url;	
 		}
 
-		public function getApp() {
-			return $this->app;	
-		}
-
-		public function getControllerName() {
-			return $this->controller;	
-		}
-
-		public function getActionName() {
-			return $this->action;	
-		}
-			
-		public function getParams() {
-			return $this->params;	
-		}
-
 		public function setApp($app) {
 			$this->app = $app;
+		}
+
+		public function getApp() {
+			return $this->app;	
 		}
 
 		public function setControllerName($controller) {
 			$this->controller = $controller;
 		}
+		
+		public function getControllerName() {
+			return $this->controller;	
+		}
 
 		public function setActionName($action) {
 			$this->action = $action;
 		}
-			
+		
+		public function getActionName() {
+			return $this->action;	
+		}
+		
 		public function setParams($params) {
 			$this->params = $params;
+		}
+		
+		public function getParams() {
+			return $this->params;	
 		}
 
 		public function setRawParams($params) {
@@ -94,7 +94,7 @@
 			}
 
 			return array(
-				'url' 			=> $url,
+				'url' 			=> $app.'/'.$url,
 				'app' 			=> $app,
 				'controller' 	=> $controller,
 				'action' 		=> $action,
