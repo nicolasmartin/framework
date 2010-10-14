@@ -7,12 +7,14 @@
 		protected 	$get;	
 		protected 	$post;	
 		protected 	$method;	
+		protected 	$url;	
 		
 		public static $instance;
 								
 		public function __construct($url) {
 			$splits = explode('/', $url);
 
+			$this->url 			= $url;
 			$this->app 			= preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']);	
 			$this->controller 	= !empty($splits[0]) ? __($splits[0], null, true, 'url') : 'default';		
 			$this->action 		= !empty($splits[1]) ? __($splits[1], null, true, 'url') : 'index';
@@ -24,6 +26,10 @@
 				self::$instance = new self($url);
 			}
 			return self::$instance;
+		}
+		
+		public function getUrl() {
+			return $this->url;	
 		}
 
 		public function getApp() {

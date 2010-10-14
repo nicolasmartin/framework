@@ -15,8 +15,8 @@
 			}
 			return 'http://'.$url;
 		}
-		
-		static function path($path) {
+
+		static function path($path = null) {		
 			$offset 	= 0;
 			$Dispatcher = Dispatcher::getInstance();
 			$default 	= array(
@@ -26,6 +26,10 @@
 				'action' 		=> null,
 				'params' 		=> null,
 			);
+
+			if (!$path) {
+				$path = $Dispatcher->getUrl();
+			}
 			
 			if (defined('LANG') && LANG) {
 				$lang = LANG;	
@@ -48,10 +52,10 @@
 				}
 	
 				if (self::isApp($splits[0])) {
-					$url['app'] 		= @$splits[0];
+					$url['app'] = @$splits[0];
 				} else {
 					$offset--;
-					$url['app'] 		= null;	
+					$url['app'] = null;	
 				}
 				$url['controller'] 	= @$splits[1+$offset];
 				$url['action'] 		= @$splits[2+$offset];
@@ -69,11 +73,11 @@
 			}
 	
 			if ($url['params'] && !$url['action']) {
-				$url['action'] = $Dispatcher->getAction();
+				$url['action'] = $Dispatcher->getActionName();
 			}
 	
 			if ($url['action'] && !$url['controller']) {
-				$url['controller'] = $Dispatcher->getController();
+				$url['controller'] = $Dispatcher->getControllerName();
 			}
 	
 			$splits = array();
