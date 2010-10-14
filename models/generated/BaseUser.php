@@ -48,10 +48,15 @@ abstract class BaseUser extends Doctrine_Record
              'type' => 'boolean',
              'default' => 1,
              ));
+
+        $this->option('type', 'INNODB');
+        $this->option('collate', 'utf8_unicode_ci');
+        $this->option('charset', 'utf8');
     }
 
     public function setUp()
     {
         parent::setUp();
+        
     }
 }
