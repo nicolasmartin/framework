@@ -181,7 +181,12 @@
 			} else {
 				$path = CONTROLLERS.strtolower($this->getApp()).'/'.$this->getController().'.php';
 			}
-
+			
+			if (!file_exists(dirname($path))) {
+				mkdir(dirname($path));
+				$this->debug('Création du dossier '.dirname($path));
+			}
+			
 			if (file_exists($path) && $this->getOverwriteController() === false) {
 				$this->debug('Le controller existe déjà. '.$path.' est ignoré.');	
 			} else {
@@ -265,8 +270,13 @@
 					$path = preg_replace('~/'.$dir .'/'.$pack.'/~', '/'.$dir.'/', $path);
 				}
 
+				if (!file_exists(dirname($path))) {
+					mkdir(dirname($path));
+					$this->debug('Création du dossier '.dirname($path));
+				}
+
 				if (file_exists($path) && $this->getOverwritePartials() === false) {
-				$this->debug('Le partiel existe déjà. '.$path.' est ignoré.');		
+				    $this->debug('Le partiel existe déjà. '.$path.' est ignoré.');		
 				} else {
 					$this->debug('Création du partiel '.$path.'.');
 					file_put_contents($path, $generated);
