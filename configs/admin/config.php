@@ -3,6 +3,7 @@
 
 	// Par défaut ------------------------------------------------------------
 	$configs['default'] = array(
+	    'pagination.chunk'   	=> 5,
 	    'pagination.perpage'   	=> 10,
 		'pagination.filter'		=> array('page', 'orderby',	'dir', 'search'),
 	);
