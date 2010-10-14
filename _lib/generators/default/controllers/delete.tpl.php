@@ -1,8 +1,8 @@
 
 	// Delete
 	public function delete($id = null) {	
-		if (isset($_POST['id'])) {
-			$<?= $settings['model'] ?> = Doctrine::getTable('<?= $model ?>')->find($_POST['id']);
+		if (isset($this->post['id'])) {
+			$<?= $settings['model'] ?> = Doctrine::getTable('<?= $model ?>')->find($this->post['id']);
 			if (!$<?= $settings['model'] ?>) {
 				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
 			} else {

@@ -10,15 +10,12 @@
 [? else: ?]
     <li class="previous-off">&laquo; Précédente</li>
 [? endif ?]
-
 [? if ($pages[0] > 1) : ?]
    <li><a href="[?= $path ?]page/1">1</a></li>
 [? endif ?]
-
 [? if ($pages[0] > 2) : ?]
 	<li class="more">...</li>
 [? endif ?]
-
 [? foreach($pages as $page): ?]
 [? if ($page == $Pager->getPage()): ?]
     <li class="active">[?= $page ?]</li>
@@ -26,15 +23,12 @@
     <li><a href="[?= $path ?]page/[?= $page ?]">[?= $page ?]</a>
 [? endif; ?]
 [? endforeach; ?]
-
 [? if ($pages[4] < $Pager->getLastPage()-1) : ?]
 	<li class="more">...</li>
 [? endif ?]
-
 [? if ($pages[4] < $Pager->getLastPage()) : ?]
     <li><a href="[?= $path ?]page/[?= $Pager->getLastPage() ?]">[?= $Pager->getLastPage() ?]</a>
 [? endif ?]
-
 [? if ($Pager->getPage() < $Pager->getNextPage()) : ?]
     <li class="next"><a href="[?= $path ?]page/[?= $Pager->getNextPage() ?]">Suivante &raquo;</a></li>
 [? else: ?]
@@ -42,5 +36,5 @@
 [? endif ?]
 [? endif; ?]
 </ul>
-[? endif; ?]
 
+[? endif; ?]

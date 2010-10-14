@@ -1,8 +1,8 @@
 
 	// Batch action
 	public function batch() {
-		$id 	= $_POST['id'];
-		$action = $_POST['action'];
+		$id 	= $this->post['id'];
+		$action = $this->post['action'];
 
 		if (!$action) {
 			FlashComponent::set('error', "Une action doit être choisie.");
