@@ -30,4 +30,29 @@ class UrlHelper extends UrlComponent {
 		}
 		return false;
 	}
+	
+	static function orderBy($field, $label) {
+	    $Dispatcher = Dispatcher::getInstance();
+	    $params     = $Dispatcher->getParams();
+	    $orderby    = $field;
+	    $dir        = 'asc';
+	    $reverse    = 'desc';
+	    $class      = '';
+	    
+	    $filter     = Config::get('pagination.filter');
+	    $path       = UrlComponent::whitelist(array_remove($filter, array('orderby', 'dir')));
+
+	    if (isset($params['orderby']) && $params['orderby'] == $field) {
+	        $orderby = $params['orderby'];
+	        if (isset($params['dir']) && $params['dir'] == 'asc') {
+	            $class = 'class="order-asc"';
+	            $reverse = 'desc';
+	        } else {
+	            $class = 'class="order-desc"';
+	            $reverse = 'asc';
+	        }
+        }
+        return '<a href="'.$path.'orderby/'.$orderby.'/dir/'.$reverse.'" '.$class.'>'.$label.'</a>';
+	}
 }
+
