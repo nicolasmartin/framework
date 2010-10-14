@@ -4,7 +4,7 @@
 	    $page       = $this->getParam('page', 1);
         $orderby    = $this->getParam('orderby', 'id');
         $dir        = $this->getParam('dir', 'desc');
-        $perpage    = Config::get('perPage');
+        $perpage	= Config::get('pagination.perpage');
 
 		$Pager = new Doctrine_Pager(
 		    Doctrine::getTable('<?= $model ?>')
