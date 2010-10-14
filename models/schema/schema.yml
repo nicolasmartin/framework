@@ -23,3 +23,14 @@ User:
     status: 
       type: boolean
       default: 1
+
+Test:
+  connection: default
+  tableName:  tests
+  columns:
+    name:
+      notblank: true
+      type: string(50)
+    firstname:
+      notblank: true
+      type: string(50)
