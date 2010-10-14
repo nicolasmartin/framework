@@ -1,1 +1,8 @@
 cache/*
+
+www/sandbox/*
+controller/sandbox/*
+views/sandbox/*
+models/Sandbox.php
+models/SandboxTable.php
+models/generated/BaseSandbox.php

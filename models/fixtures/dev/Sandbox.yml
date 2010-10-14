@@ -1,0 +1,7 @@
+Sandbox:
+<?php for($i=0; $i<100; $i++) : ?>
+  Sandbox_<?php echo $i ?>:
+    name: Salvat<?php echo $i, "\n" ?>
+    firstname: Jay<?php echo $i, "\n" ?>
+
+<?php endfor ?>

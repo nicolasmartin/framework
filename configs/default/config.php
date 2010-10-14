@@ -21,10 +21,10 @@
 
 	// Développement ---------------------------------------------------------
 	$configs['dev'] = array(
-		'db.host'			=> '127.0.0.1',
+		'db.host'			=> 'localhost',
 		'db.name'			=> 'fw',
 		'db.username'		=> 'root',
-		'db.password'		=> '',
+		'db.password'		=> 'root',
 		
 		'project.url' 		=> 'http://domain.localhost',
 		'project.email' 	=> 'jay@jaysalvat.com',
@@ -34,10 +34,10 @@
 	
 	// Tests ------------------------------------------------------------
 	$configs['test'] = array(
-		'db.host'			=> '127.0.0.1',
+		'db.host'			=> 'localhost',
 		'db.name'			=> 'fw_test',
 		'db.username'		=> 'root',
-		'db.password'		=> '',
+		'db.password'		=> 'root',
 		
 		'project.url' 		=> 'http://domain.localhost',
 		'project.email' 	=> 'jay@jaysalvat.com',

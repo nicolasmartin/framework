@@ -24,7 +24,7 @@ User:
       type: boolean
       default: 1
 
-Test:
+Sandbox:
   connection: default
   tableName:  tests
   columns:
