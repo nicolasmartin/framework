@@ -5,8 +5,13 @@
 	
 	$Generator = new Generator('admin', 'tests', 'test', THEME_PATH);
 	//$Generator->addPack('users');
-	$Generator->setOverwrite(true);
+	
+	$Generator->setOverwriteController(true);
+	$Generator->setOverwriteViews(true);
+	$Generator->setOverwritePartials(false);
+	
 	$Generator->setProtection(true);
+	
 	$Generator->setSettings(array(
 		'model'			=> 'Test',
 		'collection'	=> 'Tests',

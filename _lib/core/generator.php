@@ -2,13 +2,16 @@
 	class GeneratorCore {
 		protected $app, $controller, $model;
 		protected $protection 	= true;
-		protected $overwrite 	= false;
 		protected $verbose 		= false;
 		protected $settings 	= array();
 		protected $exclude 		= array();
 		protected $mapping 		= array();
 		protected $packs 		= array();
-		
+
+		protected $overwriteController 	= false;
+		protected $overwriteViews 		= false;
+		protected $overwritePartials 	= false;
+				
 		function __construct($app = null, $controller = null, $model = null, $path = null, $settings = array()) {
 			$this->setApp($app);
 			$this->setController($controller);
@@ -83,14 +86,36 @@
 			return $this->protection;
 		}
 		
-		function setOverwrite($overwrite) {
-			$this->overwrite = $overwrite;
-		}
-		
-		function getOverwrite() {
-			return $this->overwrite;
+		function setOverwriteAll($overwrite) {
+			$this->overwriteController 	= $overwrite;
+			$this->overwriteViews 		= $overwrite;
+			$this->overwritePartials 	= $overwrite;
 		}
 
+		function setOverwriteController($overwrite) {
+			$this->overwriteController = $overwrite;
+		}
+		
+		function getOverwriteController() {
+			return $this->overwriteController;
+		}
+
+		function setOverwriteViews($overwrite) {
+			$this->overwriteViews = $overwrite;
+		}
+		
+		function getOverwriteViews() {
+			return $this->overwriteViews;
+		}
+		
+		function setOverwritePartials($overwrite) {
+			$this->overwritePartials = $overwrite;
+		}
+		
+		function getOverwritePartials() {
+			return $this->overwritePartials;
+		}
+		
 		function setVerbose($verbose) {
 			$this->verbose = $verbose;	
 		}
@@ -134,7 +159,7 @@
 			
 				$class .= $View->render();
 				
-				$this->debug('- '.$file);
+				$this->debug('Traitement de '.$file);
 			}
 			
 			$Base = new View($template_path.'/base.tpl.php', null, false);
@@ -149,7 +174,7 @@
 			$generated = str_replace('[?', '<?', $generated);
 			$generated = str_replace('?]', '?>', $generated);
 
-			$this->debug('Les templates sont intégrés dans base.tpl.php');
+			$this->debug('Intégration dans base.tpl.php');
 			
 			if ($this->getApp() == '') {
 				$path = CONTROLLERS.'default/'.$this->getController().'.php';
@@ -157,13 +182,12 @@
 				$path = CONTROLLERS.strtolower($this->getApp()).'/'.$this->getController().'.php';
 			}
 
-			if (file_exists($path) && $this->getOverwrite() === false) {
-				throw new Exception('Le controller '.$path.' existe déjà.');	
-			} 
-
-			file_put_contents($path, $generated);
-
-			$this->debug('Génération totale du controller dans '.dirname($path));
+			if (file_exists($path) && $this->getOverwriteController() === false) {
+				$this->debug('Le controller existe déjà. '.$path.' est ignoré.');	
+			} else {
+				$this->debug('Création du controller '.$path.'.');
+				file_put_contents($path, $generated);
+			}
 		}
 		
 		function generateViews() {
@@ -193,7 +217,7 @@
 				}
 
 				foreach($this->packs as $pack) {
-					$dir = strtolower($this->getController());
+					$dir = strtolower($this->getControllerViews());
 					$path = preg_replace('~/'.$dir .'/'.$pack.'/~', '/'.$dir.'/', $path);
 				}
 
@@ -202,16 +226,13 @@
 					$this->debug('Création du dossier '.dirname($path));
 				}
 				
-				if (file_exists($path) && $this->getOverwrite() === false) {
-					throw new Exception('La vue '.$path.' existe déjà.');	
+				if (file_exists($path) && $this->getOverwriteViews() === false) {
+				$this->debug('La vue existe déjà. '.$path.' est ignoré.');		
+				} else {
+					$this->debug('Création de la vue '.$path.'.');
+					file_put_contents($path, $generated);
 				}
-			
-				file_put_contents($path, $generated);
-
-				$this->debug('- '.$file);
 			}
-					
-			$this->debug('Génération totale des vues dans '.dirname($path));
 		}
 
 		function generatePartials() {
@@ -219,7 +240,7 @@
 			$templates = $this->getTemplates($template_path);
 
 			$this->debug('---------------------------------');
-			$this->debug('Partiels pour le controller '.$this->getController());
+			$this->debug('Partiels');
 			$this->debug('---------------------------------');
 				
 			foreach($templates as $file) {
@@ -244,16 +265,13 @@
 					$path = preg_replace('~/'.$dir .'/'.$pack.'/~', '/'.$dir.'/', $path);
 				}
 
-				if (file_exists($path) && $this->getOverwrite() === false) {
-					throw new Exception('Le partiel '.$path.' existe déjà.');	
+				if (file_exists($path) && $this->getOverwritePartials() === false) {
+				$this->debug('Le partiel existe déjà. '.$path.' est ignoré.');		
+				} else {
+					$this->debug('Création du partiel '.$path.'.');
+					file_put_contents($path, $generated);
 				}
-			
-				file_put_contents($path, $generated);
-
-				$this->debug('- '.$file);
 			}
-					
-			$this->debug('Génération totale des partiels dans '.dirname($path));
 		}
 
 		private function getTemplates($path) {
@@ -294,7 +312,7 @@
 				  $nl = "<br />";
 			 }
 			 if ($this->getVerbose()) {
-				 echo $string, $nl;
+				 echo str_replace(realpath($_SERVER['DOCUMENT_ROOT']), '', $string), $nl;
 			 }
 		}
 	}
