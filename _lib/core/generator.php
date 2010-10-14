@@ -222,7 +222,7 @@
 				}
 
 				foreach($this->packs as $pack) {
-					$dir = strtolower($this->getControllerViews());
+					$dir = strtolower($this->getController());
 					$path = preg_replace('~/'.$dir .'/'.$pack.'/~', '/'.$dir.'/', $path);
 				}
 
@@ -307,8 +307,6 @@
 						}
 					}
 					closedir($handle);
-				} else {
-					throw new Exception("Le pack ".$pack." n'existe pas.");	
 				}
 			}
 

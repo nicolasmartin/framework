@@ -3,8 +3,8 @@
 	
 	define('THEME_PATH', dirname(__FILE__).'/default');
 	
-	$Generator = new Generator('sandbox', 'sandbox', 'sandbox', THEME_PATH);
-	//$Generator->addPack('users');
+	$Generator = new Generator('sandbox', 'default', 'sandbox', THEME_PATH);
+	$Generator->addPack('init');
 	
 	$Generator->setOverwriteController(true);
 	$Generator->setOverwriteViews(true);
@@ -18,9 +18,9 @@
 		'singular'		=> "élément",
 		'plural'		=> "éléments",
 		'male'			=> true,
-		'a' 			=> "un ",
-		'the' 			=> "l'",
 		'this' 			=> "cet ",
+		'the' 			=> "l'",
+		'a' 			=> "un ",
 	));
 	$Generator->setExclude(array(
 		'id', 
