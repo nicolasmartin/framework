@@ -12,13 +12,7 @@
 		public static $instance;
 								
 		public function __construct($url) {
-			$splits = explode('/', $url);
-
-			$this->url 			= $url;
-			$this->app 			= preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']);	
-			$this->controller 	= !empty($splits[0]) ? __($splits[0], null, true, 'url') : 'default';		
-			$this->action 		= !empty($splits[1]) ? __($splits[1], null, true, 'url') : 'index';
-			$this->params 		= !empty($splits[2]) ? array_slice($splits, 2) 	: array();	
+			$this->setUrl($url);
 		}
 
 		public static function getInstance($url = null) {
@@ -27,7 +21,18 @@
 			}
 			return self::$instance;
 		}
-		
+
+		public function setUrl($url) {
+			$this->url 	= $url;	
+			$parsed		= $this->parseUrl($url);
+			
+			$this->url 			= $parsed['url'];
+			$this->app 			= $parsed['app'];
+			$this->controller 	= $parsed['controller'];
+			$this->action 		= $parsed['action'];
+			$this->params 		= $parsed['params'];
+		}
+
 		public function getUrl() {
 			return $this->url;	
 		}
@@ -62,6 +67,18 @@
 			
 		public function setParams($params) {
 			$this->params = $params;
+		}
+		
+		private function parseUrl($url) {
+			$splits = explode('/', $url);
+
+			return array(
+				'url' 			=> $url,
+				'app' 			=> preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']),
+				'controller' 	=> !empty($splits[0]) ? __($splits[0], null, true, 'url') : 'default',
+				'action' 		=> !empty($splits[1]) ? __($splits[1], null, true, 'url') : 'index',
+				'params' 		=> !empty($splits[2]) ? array_slice($splits, 2) : array()
+			);
 		}
 		
 		public function dispatch() {		
