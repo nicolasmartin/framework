@@ -464,16 +464,13 @@ table {
 	table thead a:visited {
 		color:#000;
 	}
-	table .order-desc a,
-	table .order-asc a {
-		background:transparent url(../img/pagination.png) no-repeat;
-		padding-left:16px;
+	table .order-asc {
+		padding-right:20px;
+		background:transparent url(../img/asc.png) no-repeat center right;
 	}
-	table .order-asc a {
-		background-position:-100px 3px;
-	}
-	table .order-desc a {
-		background-position:-80px -17px;
+	table .order-desc {
+		padding-right:20px;
+		background:transparent url(../img/desc.png) no-repeat center right;
 	}
 	table thead a:hover {
 		text-decoration:none;
