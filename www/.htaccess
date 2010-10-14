@@ -4,7 +4,7 @@ SetEnv PHP_VER 5
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(fr|en)?/?(.*)$ index.php?LANG=$1&URL=$2 [QSA,L]
+RewriteRule ^(.*)$ index.php?URL=$1 [QSA,L]
 
 # Pages d'erreur
 ErrorDocument 403 /pages/error403

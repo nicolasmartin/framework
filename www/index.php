@@ -9,13 +9,8 @@
 
 	// Environnements
 	include ROOT.'configs/env.php';
+	include ROOT.'configs/lang.php';
 
-	// Langues
-	if (isset($_GET['LANG']) && $_GET['LANG']) {
-		define('LANG', $_GET['LANG']);
-	} else {
-		define('LANG', i18n::detectLanguage(array('en', 'fr'), 'en'));
-	}
 	i18n::setCulture(LANG);
 	i18n::addDefinitionPath(ROOT.'configs/default/i18n/');
 	i18n::loadDefinitions();
