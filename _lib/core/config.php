@@ -6,9 +6,13 @@
 			self::$property[$name] = $value;
 		}
 
-		public static function get($name = null) {
+		public static function get($name = null, $default = null) {
 			if ($name) {
-				return self::$property[$name];
+			    if (isset(self::$property[$name])) {
+				    return self::$property[$name];
+			    } else {
+			        return $default;
+			    }
 			}
 			return self::$property;
 		}
