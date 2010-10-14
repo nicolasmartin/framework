@@ -182,7 +182,14 @@
 		}
 		return $array_clean;
 	}
-
+    
+    function array_remove($array,  $values) {
+        foreach((array) $values as $value) {
+            unset($array[array_search($value, $array)]);
+        }
+        return $array;
+    }
+    
 	function clean_filename($filename) {
 		$filename = strtolower($filename);
 		$filename = strtr($filename, 	'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ',
