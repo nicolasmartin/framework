@@ -21,7 +21,7 @@
 				<col />
 <? endif ?>
 <? endforeach ?>
-				<col width="100" />
+				<col width="90" />
 			</colgroup>
 			<thead>
 				<tr>
@@ -36,21 +36,22 @@
 			</thead>
 			<tfoot>
 				<tr>
-				<td colspan="100" class="batch-actions">
-					<select name="action">
-						<option value="">&#8212; Actions &#8212;</option>
-						<option value="delete">Supprimer</option>
-					</select>
-					<input class="button" type="submit" value="Appliquer" />
-					
-					[?= $this->partial('pagination'); ?]
-				</td>
+					<td colspan="2" class="batch-actions">
+						<select name="action">
+							<option value="">&#8212; Actions &#8212;</option>
+							<option value="delete">Supprimer</option>
+						</select>
+						<input class="button" type="submit" value="Appliquer" />
+					</td>
+					<td colspan="100">
+[?= $this->partial('pagination'); ?]
+					</td>
 				</tr>
 			</tfoot>
 			<tbody>
 [? foreach ($<?= $settings['collection'] ?> as $<?= $settings['model'] ?>): ?]
 				<tr class="[?= ++$i % 2 ? 'odd': 'even' ?]">
-					<td><input type="checkbox" name="id[]" value="[?= $<?= $settings['model'] ?>['id'] ?]" /></td>
+					<td class="checkboxes"><input type="checkbox" name="id[]" value="[?= $<?= $settings['model'] ?>['id'] ?]" /></td>
 <? $r = 0; foreach($fields as $field => $options) : ?>
 <? if (++$r == 2) : ?>
 					<th scope="row">
@@ -76,7 +77,7 @@
 [? endif ?]
 			</tbody>
 		</table>
-		
+		</form>
 	</div><!-- #main -->
 </div><!-- #content -->
 

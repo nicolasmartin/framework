@@ -1,37 +1,46 @@
 [? if (isset($Pager)) : ?]
-De [?= $Pager->getFirstIndice() ?] à [?= $Pager->getLastIndice() ?] sur [?= $Pager->getNumResults() ?]
+<ul class="pagination">
 [? if ($Pager->haveToPaginate()): 
    $range   = $Pager->getRange('Sliding', array('chunk' => 5));
    $pages   = $range->rangeAroundPage();
    $path    = UrlComponent::path($this->getController()->name.'/index');
 ?]
-, pages 
 [? if ($Pager->getPage() > 1) : ?]
-    <a href="[?= $path ?]page/[?= $Pager->getPreviousPage() ?]">&laquo;</a> 
+    <li class="previous"><a href="[?= $path ?]page/[?= $Pager->getPreviousPage() ?]">&laquo; Précédente</a></li>
+[? else: ?]
+    <li class="previous-off">&laquo; Précédente</li>
 [? endif ?]
 
 [? if ($pages[0] > 1) : ?]
-    <a href="[?= $path ?]page/1">1</a>
+   <li><a href="[?= $path ?]page/1">1</a></li>
 [? endif ?]
 
-[? if ($pages[0] > 2) : ?]...[? endif ?]
+[? if ($pages[0] > 2) : ?]
+	<li class="more">...</li>
+[? endif ?]
 
 [? foreach($pages as $page): ?]
 [? if ($page == $Pager->getPage()): ?]
-    <b>[?= $page ?]</b>
+    <li class="active">[?= $page ?]</li>
 [? else: ?]
-    <a href="[?= $path ?]page/[?= $page ?]">[?= $page ?]</a>
+    <li><a href="[?= $path ?]page/[?= $page ?]">[?= $page ?]</a>
 [? endif; ?]
 [? endforeach; ?]
 
-[? if ($pages[4] < $Pager->getLastPage()-1) : ?]...[? endif ?]
+[? if ($pages[4] < $Pager->getLastPage()-1) : ?]
+	<li class="more">...</li>
+[? endif ?]
 
 [? if ($pages[4] < $Pager->getLastPage()) : ?]
-    <a href="[?= $path ?]page/[?= $Pager->getLastPage() ?]">[?= $Pager->getLastPage() ?]</a>
+    <li><a href="[?= $path ?]page/[?= $Pager->getLastPage() ?]">[?= $Pager->getLastPage() ?]</a>
 [? endif ?]
 
 [? if ($Pager->getPage() < $Pager->getNextPage()) : ?]
-    <a href="[?= $path ?]page/[?= $Pager->getNextPage() ?]">&raquo;</a>
+    <li class="next"><a href="[?= $path ?]page/[?= $Pager->getNextPage() ?]">Suivante &raquo;</a></li>
+[? else: ?]
+    <li class="next-off">Suivante &raquo;</li>
+[? endif ?]
 [? endif; ?]
+</ul>
 [? endif; ?]
-[? endif; ?]
+
