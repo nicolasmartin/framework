@@ -198,7 +198,22 @@
         }
         return $array;
     }
-    
+
+    function array_extend($array1, $array2) {
+        foreach($array2 as $key => $value) {
+            if( is_array($value) ) {
+                if( !isset($array1[$key]) ) {
+                    $array1[$key] = $value;
+                } else {
+                    $array1[$key] = array_extend($array1[$key], $value);
+                }
+            } else {
+                $array1[$key] = $value;
+            }
+        }
+        return $array1;
+    }
+
 	function clean_filename($filename) {
 		$filename = strtolower($filename);
 		$filename = strtr($filename, 	'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ',
