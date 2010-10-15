@@ -1,10 +1,15 @@
 <?php
 	// Configurations
-	setlocale(LC_ALL, 'fr_FR');
-	Config::set('date.format.short', 	'{dd}/{mm}/{YYYY}');
-	Config::set('date.format.long', 	'{day} {montn} {YYYY}');
-	
-	// Définitions
+	setlocale(LC_ALL, 'fr_FR', 'fra');
+	Config::set('date.short', 		'%d/%m/%Y');
+	Config::set('date.medium', 		'%a %d %b %y');
+	Config::set('date.long', 		'%A %d %B %Y');
+
+	Config::set('datetime.short', 	'%d/%m/%Y %H:%M');
+	Config::set('datetime.medium', 	'%a %d %b %y, %H:%M');
+	Config::set('datetime.long', 	'%A %d %B %Y, %H:%M');
+
+	// Définitions	
 	$i18n = array();
 	
 	// Actions
