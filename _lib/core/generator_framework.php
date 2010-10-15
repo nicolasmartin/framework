@@ -52,7 +52,7 @@
 				$to 	= ROOT.'/'.$template;
 				
 				if (!file_exists(dirname($to))) {
-					mkdir(dirname($to), null, true);
+					mkdir(dirname($to), 0700, true);
 				}
 				
 				if (file_exists($to) && $this->getOverwriteFramework() === false) {

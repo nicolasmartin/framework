@@ -179,7 +179,7 @@
 			$path = ROOT.'/apps/'.strtolower($this->getApp()).'/controllers/'.$this->getController().'.php';
 
 			if (!file_exists(dirname($path))) {
-				mkdir(dirname($path), null, true);
+				mkdir(dirname($path), 0700, true);
 				$this->debug('Création du dossier '.dirname($path));
 			}
 			
@@ -219,7 +219,7 @@
 				}
 
 				if (!file_exists(dirname($path))) {
-					mkdir(dirname($path), null, true);
+					mkdir(dirname($path), 0700, true);
 					$this->debug('Création du dossier '.dirname($path));
 				}
 				
@@ -259,7 +259,7 @@
 				}
 
 				if (!file_exists(dirname($path))) {
-					mkdir(dirname($path), null, true);
+					mkdir(dirname($path), 0700, true);
 					$this->debug('Création du dossier '.dirname($path));
 				}
 

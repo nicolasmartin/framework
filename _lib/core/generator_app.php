@@ -85,7 +85,7 @@
 				$to 	= ROOT.'/apps/'.$this->getApp().'/'.$template;
 				
 				if (!file_exists(dirname($to))) {
-					mkdir(dirname($to), null, true);
+					mkdir(dirname($to), 0700, true);
 				}
 				
 				if (file_exists($to) && $this->getOverwriteApp() === false) {
@@ -109,7 +109,7 @@
 				$to 	= ROOT.'/www/'.$this->getApp().'/'.$template;
 				
 				if (!file_exists(dirname($to))) {
-					mkdir(dirname($to), null, true);
+					mkdir(dirname($to), 0700, true);
 				}
 				
 				if (file_exists($to) && $this->getOverwriteWww() === false) {
