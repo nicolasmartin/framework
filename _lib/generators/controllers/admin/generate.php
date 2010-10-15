@@ -26,6 +26,6 @@
 	$Generator->setOverwriteViews(true);
 	$Generator->setOverwritePartials(true);
 	
-	$Generator->setProtection(false);
+	$Generator->setProtection(true);
 
 	$Generator->generateAll();
