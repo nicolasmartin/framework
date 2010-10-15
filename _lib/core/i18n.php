@@ -30,7 +30,7 @@
 		
 		static function loadDefinition($path, $lang = null) {
 			if (!$lang && !self::$culture) {
-				throw new Exception("La culture doit être configuré avant l'appel de cette méthode.");	
+				throw new Exception("La culture doit être configurée avant l'appel de cette méthode.");	
 			}
 			
 			$file = $path.self::$culture.'.php';
@@ -44,16 +44,16 @@
 		
 		static function loadDefinitions() {
 			if (!self::$culture) {
-				throw new Exception("La culture doit être configuré avant l'appel de cette méthode.");	
+				throw new Exception("La culture doit être configurée avant l'appel de cette méthode.");	
 			}
 			
 			if (empty(self::$path)) {
-				throw new Exception("Des chemins de définitions doivent être configurés avant l'appel de cette méthode.");	
+				throw new Exception("Les chemins de définitions doivent être configurés avant l'appel de cette méthode.");	
 			}
 			
 			$found = false;
 			foreach(self::$path as $path) {
-				$file = $path.self::$culture.'.php';
+				$file = $path.'/'.self::$culture.'.php';
 				if (file_exists($file)) {
 					include $file;
 					self::$definitions = array_merge(self::$definitions, $i18n);

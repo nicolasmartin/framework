@@ -68,14 +68,14 @@
 				$path['params'] = implode('/', $params);
 			}
 			
-			
 			$path['app'] 		= __($path['app'], null, null, 'url');
 			$path['controller'] = __($path['controller'], null, null, 'url');
 			$path['action'] 	= __($path['action'], null, null, 'url');
 			
 			$new_path = implode($path, '/');
-			$new_path = '/'.$new_path.'/';
+			$new_path = '/'.$new_path;
 			$new_path = preg_replace('~/{2,}~', '/', $new_path);
+			$new_path = preg_replace('~/$~', '', $new_path);
 
 			return $new_path;
 		}
