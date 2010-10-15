@@ -12,7 +12,7 @@
 
 		}
 
-/*		public function setUp() {	
+		public function setUp() {	
 		}
 
 		public function testUrlEmpty() {
@@ -27,7 +27,7 @@
 
 		public function testBlacklist() {
 			$this->assertEqual(UrlComponent::blacklist(array('p1', 'p2')), '/myapp/mycontroller/myaction/p3/3/');
-		}*/
+		}
 
 		public function testWhitelist() {
 			$this->assertEqual(UrlComponent::whitelist(array()), '/myapp/mycontroller/myaction/');

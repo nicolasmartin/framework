@@ -1,27 +1,28 @@
 <?php
-	define('ROOT', 			realpath(dirname(__FILE__).'/../../')."/");
-	define('CONTROLLERS', 	ROOT.'controllers/default/');
-	define('VIEWS', 		ROOT.'views/default/');
-	define('MODELS', 		ROOT.'models/');
+    define('ROOT', 			realpath(dirname(__FILE__).'/../../'));
+    define('LIB', 			ROOT.'/_lib');
+    define('MODELS',		ROOT.'/models');	
 
-	require_once(ROOT.'_lib/vendors/simpletest/autorun.php');
-	require_once ROOT.'_lib/core/_includes.php';
-	require_once ROOT.'_lib/vendors/doctrine/Doctrine.php';
+    require_once LIB.'/core/_includes.php';
+    require_once LIB.'/vendors/doctrine/Doctrine.php';
+    require_once ROOT.'/configs/set.php';
+
+
+	require_once(LIB.'/vendors/simpletest/autorun.php');
 
 	// Environnement
 	define('ENV', 'test');
 
 	// Bootstrap
 	$Bootstrap = Bootstrap::getInstance();
-	$Bootstrap->setDefaultPath('default/index');	
 	$Bootstrap->setEnv(ENV);
 
-	$Bootstrap->addAutoloadPath(ROOT.'controllers/default/');
-	$Bootstrap->addAutoloadPath(ROOT.'controllers/default/_components/');
-	$Bootstrap->addAutoloadPath(ROOT.'views/default/_helpers/');
-
-	$Bootstrap->loadConfigs(ROOT.'configs/default/');
+	$Bootstrap->loadConfigs(ROOT.'/configs/');
 	
-	$Bootstrap->addModelPath(ROOT.'models/generated/');
-	$Bootstrap->addModelPath(ROOT.'models/');
+	$Bootstrap->addModelPath(MODELS.'/generated/');
+	$Bootstrap->addModelPath(MODELS);
 	$Bootstrap->setDoctrine();
+	
+	$Bootstrap = Bootstrap::getInstance();
+	$Bootstrap->setDefaultPath('default/index');	
+	$Bootstrap->setEnv(ENV);

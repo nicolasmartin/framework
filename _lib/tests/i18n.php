@@ -38,11 +38,10 @@
 		}	
 
 		public function testUrlTranslation() {
-			$url = UrlComponent::path('/gallery/index/');
+			$url = UrlComponent::path('gallery/index/');
 			$this->assertEqual($url, '/galerie/index/');
 		}	
 
-		public function tearDown() {
-			
+		public function tearDown() {	
 		}
 	}
