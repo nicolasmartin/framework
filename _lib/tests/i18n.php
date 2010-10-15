@@ -4,14 +4,18 @@
 
 	class TestOfI18n extends UnitTestCase {
 		public $def = array(
-			'dog'			=> 'chien',
-			'hi %%name%%!'	=> 'salut %%name%% !',
-			'url.gallery' 	=> 'galerie'
+			'dog'			    => 'chien',
+			'hi %%name%%!'	    => 'salut %%name%% !',
+			'url.app' 	        => 'application',
+			'url.controller'    => 'controlleur',
+			'url.action' 	    => 'action',
+			'url.param'         => 'parametre',
+			'url.value'         => 'valeur'
 		);
 	
 		public function __construct() {
 			$Dispatcher = Dispatcher::getInstance();
-			$Dispatcher->setApp(null);
+			$Dispatcher->setApp('app');
 			$Dispatcher->setControllerName('myController');
 			$Dispatcher->setActionName('myAction');
 			
@@ -33,13 +37,13 @@
 		}			
 
 		public function testPrefixTranslation() {
-			$this->assertEqual(i18n::translate('gallery', null, null, 'url'), 'galerie');
-			$this->assertEqual(i18n::translate('galerie', null, true, 'url'), 'gallery');
+			$this->assertEqual(i18n::translate('app', null, null, 'url'), 'application');
+			$this->assertEqual(i18n::translate('application', null, true, 'url'), 'app');
 		}	
 
 		public function testUrlTranslation() {
-			$url = UrlComponent::path('gallery/index/');
-			$this->assertEqual($url, '/galerie/index/');
+			$url = UrlComponent::path('/app/controller/action/param/value/');
+			$this->assertEqual($url, '/application/controlleur/action/param/value/');
 		}	
 
 		public function tearDown() {	
