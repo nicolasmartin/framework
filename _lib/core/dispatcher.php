@@ -1,8 +1,6 @@
 <?php
-	class DispatcherCore {
-		protected $app;
-		protected $controller;
-		protected $action;
+	class Dispatcher {
+		protected $app, $controller, $action;
 		protected $params = array();
 		protected $rawParams = array();
 		protected $get;	

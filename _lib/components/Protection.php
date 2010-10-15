@@ -47,7 +47,7 @@
 					$this->Controller->redirect($this->options['login'], 403);
 				} else {
 					$this->setUser($User);
-					$this->Controller->View->set('Protection', $User);
+					$this->Controller->View->set('ProtectionComponent', $User);
 				}
 			}
 		}

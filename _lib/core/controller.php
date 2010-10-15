@@ -1,5 +1,12 @@
 <?php
-	abstract class ControllerCore implements ControllerCoreInterface {
+	interface ControllerInterface {		
+		public function preExecute();
+		public function postExecute();
+		public function preRender();
+		public function postRender();
+	}
+	
+	class Controller implements ControllerInterface {
 		public $View;
 		public $app;
 		public $name;
@@ -17,10 +24,10 @@
 			$this->action 	= $action;
 			$this->params	= $params;
 
-			$this->Layout	= new Layout($this->layout);	
+			$this->Layout	= new Layout($this->layout);
 			$this->Layout->setController($this);
-			
-			$this->View 	= new View($this->name.'/'.$this->action, $this->Layout);	
+
+			$this->View 	= new View($this->name.'/'.$this->action, $this->Layout);
 			$this->View->setController($this);
 			$this->View->setAutoRender(true);
 		}
@@ -181,12 +188,4 @@
 		}
 	}
 	
-	interface ControllerCoreInterface {		
-		public function preExecute();
-		
-		public function postExecute();
-		
-		public function preRender();
-		
-		public function postRender();
-	}
+

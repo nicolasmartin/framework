@@ -1,5 +1,5 @@
 <?php
-	abstract class ViewCore {
+	class View {
 		protected $vars 		= array();
 		protected $scripts 		= array();
 		protected $styles 		= array();
@@ -7,17 +7,15 @@
 		protected $path;
 		protected $Layout;
 		protected $Controller;
-		protected $smartPath;
 		
-		public function __construct($path = null, Layout $Layout = null, $smartPath = true) {
-			$this->smartPath	= $smartPath;
-			$this->Layout 		= $Layout;
-			$this->setPath($path);
+		public function __construct($path = null, Layout $Layout = null, $smart = true) {
+			$this->Layout = $Layout;
+			$this->setPath($path, $smart);
 		}
 
-		public function setPath($path) {
-			if ($this->smartPath == true) {
-				$this->path = InflectionComponent::smartPath($path);
+		public function setPath($path, $smart = true) {
+			if ($smart) {
+				$this->path = VIEWS.'/'.$path.'.tpl.php';			
 			} else {
 				$this->path = $path;
 			}
@@ -120,9 +118,11 @@
 			return $default;
 		}
 
-		public function partial($path) {
-			if ($this->smartPath == true) {
-				$path = InflectionComponent::smartPath($path, '_partials');
+		public function partial($name, $smart = true) {
+			if ($smart) {
+				$path = VIEWS.'/_partials/'.$name.'.tpl.php';
+			} else {
+				$path = $name;	
 			}
 			return $this->doRender($path);
 		}
@@ -144,11 +144,7 @@
 				$path = $this->path;
 			}
 			
-			if ($this->smartPath == true) {
-				$full_path = VIEWS.$path;	
-			} else {
-				$full_path = $path;	
-			}
+			$full_path = $path;	
 			
 			if (!file_exists($full_path)) {
 				throw new Exception("La vue \"".$path."\" n'existe pas");

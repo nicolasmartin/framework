@@ -1,5 +1,5 @@
 <?php
-	abstract class ConfigCore {
+	class Config {
 		protected static $property = array();
 
 		public static function set($name, $value) {

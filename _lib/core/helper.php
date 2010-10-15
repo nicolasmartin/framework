@@ -1,5 +1,5 @@
 <?php
-	abstract class HelperCore {
+	abstract class Helper {
 		static function attributes($attributes) {
 			$html = array();
 			foreach($attributes as $key => $value) {

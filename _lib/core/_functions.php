@@ -1,4 +1,13 @@
 <?php
+	function app() {
+		$app = preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']);
+		return $app ? $app : 'default';
+	}
+
+	function base() {
+		return '/'.app();
+	}
+
 	function __($key, $params = array(), $reversed = null, $prefix = null) {
 		return I18N::translate($key, $params, $reversed, $prefix);
 	}
@@ -212,30 +221,23 @@
 		}
 	}
 
-    function readFolder($path, $relative = false) {
-		static $content = array();
-		
+    function read_folder($path, $content = array()) {
     	if ($handle = opendir($path)) {
     		while (false !== ($item = readdir($handle))) {
     			if ($item != '.' && $item != '..') {
     				if (is_dir($path.'/'.$item)) {
-    					readFolder($path.'/'.$item);
+    					$content = array_merge($content, read_folder($path.'/'.$item));
     				} else {
-    					$content[] = $path.'/'.$item;
+    					$content[] = preg_replace('~^(.*?)/~', '', $path.'/'.$item);
     				}
     			}
     		}
     		closedir($handle);
 		}
-		if ($relative) {
-			foreach($content as $key => $value) {
-				$content[$key] = preg_replace('~^'.$path.'/~', '', $value);
-			}			
-		}
     	return $content;
     }
-	
-    function deleteFolder($path) {
+
+    function delete_folder($path) {
     	if ($handle = opendir($path)) {
     		while (false !== ($item = readdir($handle))) {
     			if ($item != '.' && $item != '..') {
@@ -251,6 +253,6 @@
     	}
     }
 	
-	function createFolder($path) {
+	function create_folder($path) {
 		@mkdir($path);	
 	}

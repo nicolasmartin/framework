@@ -1,5 +1,5 @@
 <?php
-	abstract class I18nCore {
+	abstract class I18n {
 		public static $culture 		= null;
 		public static $path 		= array();
 		public static $definitions 	= array();
