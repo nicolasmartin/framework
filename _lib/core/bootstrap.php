@@ -2,7 +2,7 @@
 	class Bootstrap {
 		protected $path 		= array();
 		protected $models 		= array();
-		protected $default 		= 'default/index/';
+		protected $default 		= 'default/index';
 		protected $dispatching 	= true;
 		protected $env;
 		
@@ -18,8 +18,8 @@
 		public function __construct() {
 			spl_autoload_register(array($this, 'autoload'));
 			
-			$this->path[] = dirname(__FILE__).'/../components/';
-			$this->path[] = dirname(__FILE__).'/../helpers/';
+			$this->path[] = dirname(__FILE__).'/../components';
+			$this->path[] = dirname(__FILE__).'/../helpers';
 		}
 		
 		private function autoload($classname) {
@@ -81,7 +81,7 @@
 		}
 
 		public  function loadConfigs($path) {
-			require_once($path.'config.php');
+			require_once($path.'/config.php');
 			
 			if (!$this->env) {
 				throw new Exception("Un environnement doit être configuré avant l'appel de cette méthode.");	
@@ -110,19 +110,23 @@
 			spl_autoload_register(array('Doctrine', 'autoload'));
 
 			if (!$configs = Config::get()) {
-				throw new Exception("Les configuration doit être configurées avant l'appel de cette méthode.");	
+				throw new Exception("Les configurations doit être chargées avant l'appel de cette méthode.");	
 			}
 			if (empty($this->models)) {
 				throw new Exception("Les chemins des modèles doivent être configurés avant l'appel de cette méthode.");	
 			}
 			
 			if (Config::get('db.name')) {
-				$conn = Doctrine_Manager::connection(array('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), Config::get('db.username'), Config::get('db.password')), 'default');
+				$Conn = Doctrine_Manager::connection(array('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), 
+				    Config::get('db.username'), 
+				    Config::get('db.password')
+				    ), 
+				    'default');
 
-				$conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);	
-				$conn->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true); 
-				$conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
-				$conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, true);
+				$Conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);	
+				$Conn->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true); 
+				$Conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
+				$Conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, true);
 				
 				foreach($this->models as $model_path) {
 					Doctrine::loadModels($model_path);

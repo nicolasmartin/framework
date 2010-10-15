@@ -42,8 +42,8 @@
 		}	
 
 		public function testUrlTranslation() {
-			$url = UrlComponent::path('/app/controller/action/param/value/');
-			$this->assertEqual($url, '/application/controlleur/action/param/value/');
+			$url = UrlComponent::path('/app/controller/action/param/value');
+			$this->assertEqual($url, '/application/controlleur/action/param/value');
 		}	
 
 		public function tearDown() {	
