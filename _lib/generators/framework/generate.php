@@ -3,6 +3,7 @@
 	
 	define('ROOT', 	realpath(dirname(__FILE__).'/../../../'));
 	define('LIB', 	ROOT.'/_lib');
+
 	require_once LIB.'/core/_includes.php';
 	
 	$Generator = new GeneratorFramework();

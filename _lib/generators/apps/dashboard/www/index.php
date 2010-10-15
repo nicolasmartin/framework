@@ -1,7 +1,7 @@
 <?php
 	define('ROOT', realpath(dirname(__FILE__).'/../../'));
 	define('LIB', 			ROOT.'/_lib');
-	define('APP', 			ROOT.'/apps/'.preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']));
+	define('APP', 			ROOT.'/apps'.dirname($_SERVER['SCRIPT_NAME']));
 	define('MODELS',		ROOT.'/models');	
 	define('CONTROLLERS',	APP.'/controllers');
 	define('VIEWS',			APP.'/views');

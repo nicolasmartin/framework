@@ -13,7 +13,7 @@
 		'project.domain' 	=> 'domain.com',
 		'project.email' 	=> 'contact@domain.com',
 		
-		'uploads.path'		=> 'uploads/',
+		'uploads.path'		=> '/uploads',
 		
 		'cache.pictures'	=> true,
 		'code.xhtml'		=> true,
@@ -43,7 +43,7 @@
 		'project.email' 	=> 'jay@jaysalvat.com',
 		
 		'su.username' 		=> 'test',
-		'su.password' 		=> 'ff90fc86a9aa0f1dcfa217183a233ce7e8d9bc34',
+		'su.password' 		=> 'ff90fc86a9aa0f1dcfa217183a233ce7e8d9bc34', // f10unctional
 	);
 
 	// Production ------------------------------------------------------------
