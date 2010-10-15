@@ -6,9 +6,13 @@
 			$default = array(
 				'login' 		=> '/admin/users/login',
 				'authorize'		=> array('login', 'logout'),
-				'basic'			=> false
+				'basic'			=> array(
+				    'realm'     => 'Private',
+				    'username'  => '',
+				    'password'  => ''
+				)
 			);
-			$this->options = array_merge($default, $options);
+			$this->options = array_extend($default, $options);
 			$this->Controller = $Controller;
 		}
 		
@@ -26,7 +30,7 @@
 					$p = $_SERVER['PHP_AUTH_PW'];
 			}
 			if ($username != $u || $password != sha1($p)) {
-				header('WWW-Authenticate: Basic realm="Forbidden"');
+				header('WWW-Authenticate: Basic realm="'.$this->options['basic']['realm'].'"');
 				header('HTTP/1.0 401 Unauthorized');
 				return false;
 			}
@@ -34,7 +38,7 @@
 		}
 		
 		public function preExecute() {
-			if (is_array($this->options['basic'])) {
+			if ($this->options['basic']['username'] && $this->options['basic']['password']) {
 				if (!$this->basic($this->options['basic']['username'], $this->options['basic']['password'])) {
 					die('Cette partie est privée, vous devez vous identifier.');
 				}
