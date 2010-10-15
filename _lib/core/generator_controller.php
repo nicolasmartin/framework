@@ -274,10 +274,12 @@
 
 		private function getTemplates($path) {
 			$templates = array();
-			$handle = opendir($path);
-			if (!$handle) {
-				throw new Exception('Le dossier de template ne semble pas correct');	
+			
+			if (!is_dir($path)) {
+			    return $templates;
 			}
+			
+			$handle = opendir($path);
 			while ($file = readdir($handle)) {
 				if (strpos($file, '.tpl.php') !== false && $file != 'base.tpl.php') {
 					$templates[] = $file;
