@@ -1,0 +1,63 @@
+/* ------- INFO ----------------
+	Color:
+	Color:
+	Color:
+	
+	- CONTAINER
+	- HEADER
+	- CONTENT
+		- MAIN
+		- SIDEBAR
+	- FOOTER
+*/
+ 
+/* ------- CONTAINER ---------------- */
+#container {
+	width:1024px;
+	margin:20px auto;
+}
+#header, 
+#main,
+#sidebar,
+#footer {
+	padding-top:10px;
+}
+
+/* ------- HEADER ---------------- */
+	#logo {
+		margin:0; padding:0;	
+	}
+	#logo a {
+		background:transparent url(../img/logo.png) no-repeat;
+		display:block;
+		height:128px;
+		overflow:hidden;
+		text-indent:-9999px;
+		width:128px; 
+	}
+	#header small {
+		display:none;
+	}
+
+/* ------- CONTENT ---------------- */
+#content {
+	
+}
+
+	/* ------- MAIN ---------------- */
+	#main {
+		
+	}
+		#main p {
+			text-align:justify;	
+		}
+	
+	/* ------- SIDEBAR ---------------- */
+	#sidebar {
+		
+	}
+
+/* ------- FOOTER ---------------- */
+#footer {
+	
+}
