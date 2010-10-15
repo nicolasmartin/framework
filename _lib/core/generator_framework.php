@@ -2,7 +2,7 @@
 	class GeneratorFramework {
 		protected $path;
 		protected $verbose = true;
-		protected $overwriteFramework	= false;
+		protected $overwriteFramework = false;
 				
 		function __construct($path = '.') {
 			$this->setPath($path);
