@@ -1,5 +1,5 @@
 <?php
-	class BootstrapCore {
+	class Bootstrap {
 		protected $path 		= array();
 		protected $models 		= array();
 		protected $default 		= 'default/index/';
@@ -23,6 +23,10 @@
 		}
 		
 		private function autoload($classname) {
+			if (preg_match('~^Doctrine~', $classname)) {
+				return false;				
+			}
+			
 			$prefix = array(
 				'/(.+)Core$/' 		=> '\1',
 				'/(.+)Controller$/' => '\1',
@@ -33,7 +37,8 @@
 			$filename = preg_replace(array_keys($prefix), $prefix, $classname).'.php';		
 					
 			foreach($this->getAutoloadPath() as $folder) {
-				$path = $folder.$filename;
+				$path = $folder.'/'.$filename;
+
 				if (file_exists($path)) {
 					require_once $path;
 					if (class_exists($classname)) {

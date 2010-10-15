@@ -1,8 +1,8 @@
 <?php
-	abstract class LayoutCore extends ViewCore {	
-		public function setPath($path) {
-			if ($this->smartPath == true) {
-				$this->path = InflectionComponent::smartPath($path, '_layouts');
+	class Layout extends View {	
+		public function setPath($path, $smart = false) {
+			if ($smart) {
+				$this->path = VIEWS.'/_layouts/'.$path.'.tpl.php';			
 			} else {
 				$this->path = $path;
 			}

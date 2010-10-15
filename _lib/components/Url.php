@@ -1,6 +1,5 @@
 <?php
-	class UrlComponent extends ComponentCore {
-		
+	class UrlComponent extends Component {
 		static function path($path = null) {		
 			$Dispatcher = Dispatcher::getInstance();
 			$default = array(

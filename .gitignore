@@ -1,9 +1,0 @@
-cache/*
-
-www/sandbox/*
-configs/sandbox/*
-controllers/sandbox/*
-views/sandbox/*
-models/Sandbox.php
-models/SandboxTable.php
-models/generated/BaseSandbox.php

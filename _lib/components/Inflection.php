@@ -40,23 +40,4 @@
 			$string = ucfirst($string);
 			return $string;
 		}
-
-		public static function smartPath($path, $folder = null) {
-			if (strpos($path, '/') !== FALSE) {
-				if ($folder) {
-					if (strpos($path, '/', 1)) {
-						$path = preg_replace('~^/(.*)?/~', '../../$1/'.$folder.'/', $path);
-					} else if (strpos($path, '/') == 0) {
-						$path = preg_replace('~^/~', '../../'.$folder.'/', $path);
-					}
-				} else {
-					if (strpos($path, '/', 1)) {
-						$path = preg_replace('~^/(.*)?/~', '../$1/', $path);
-					} else if (strpos($path, '/') == 0) {
-						$path = preg_replace('~^/~', '../', $path);
-					}	
-				}
-			}
-			return $folder.'/'.$path.'.tpl.php';
-		}
 	}
