@@ -21,9 +21,9 @@
 
 	// Développement ---------------------------------------------------------
 	$configs['dev'] = array(
-		'db.host'			=> '',
+		'db.host'			=> 'localhost',
 		'db.name'			=> '',
-		'db.username'		=> '',
+		'db.username'		=> 'root',
 		'db.password'		=> '',
 		
 		'project.url' 		=> 'http://domain.localhost',
@@ -34,9 +34,9 @@
 	
 	// Tests ------------------------------------------------------------
 	$configs['test'] = array(
-		'db.host'			=> '',
+		'db.host'			=> 'localhost',
 		'db.name'			=> '',
-		'db.username'		=> '',
+		'db.username'		=> 'root',
 		'db.password'		=> '',
 		
 		'project.url' 		=> 'http://domain.localhost',
