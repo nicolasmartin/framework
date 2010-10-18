@@ -14,7 +14,3 @@
 	
 	// Traduction dans les url
 	$i18n['url.users'] 				= 'utilisateurs';
-
-	// Traductions
-	$i18n['or']						= "ou";
-	$i18n['cancel']					= "Annuler";

@@ -12,10 +12,6 @@
 	require_once ROOT.'/configs/env.php';
 	require_once ROOT.'/configs/lang.php';
 
-	i18n::setCulture(LANG);
-	i18n::addDefinitionPath(APP.'/configs/i18n');
-	i18n::loadDefinitions();
-	
 	$Bootstrap = Bootstrap::getInstance();
 	$Bootstrap->setDefaultPath('default/index');	
 	$Bootstrap->setEnv(ENV);
