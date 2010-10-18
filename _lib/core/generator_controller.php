@@ -1,16 +1,41 @@
 <?php
 	class GeneratorController {
 		protected $app, $controller, $model;
-		protected $protection 	= true;
-		protected $verbose 		= true;
-		protected $settings 	= array();
-		protected $exclude 		= array();
-		protected $mapping 		= array();
-		protected $packs 		= array();
-
+		protected $protection 			= true;
+		protected $verbose 				= true;
+		protected $packs 				= array();
 		protected $overwriteController 	= false;
 		protected $overwriteViews 		= false;
 		protected $overwritePartials 	= false;
+
+		protected $settings 	= array(
+			'model'			=> "Item",
+			'collection'	=> "Items",
+			'singular'		=> "élément",
+			'plural'		=> "éléments",
+			'male'			=> true,
+			'this' 			=> "cet ",
+			'the' 			=> "l'",
+			'a' 			=> "un ",
+		);
+		protected $exclude = array(
+			'id',
+			'slug',
+			'created_by',
+			'updated_by',
+		);
+		protected $mapping = array(
+			'name'			=> "nom",
+			'firstname'		=> "prénom",
+			'username'		=> "identifiant",
+			'password'		=> "mot de passe",
+			'address'		=> "adresse",
+			'postalcode'	=> "code postale",
+			'city'			=> "ville",
+			'phone'			=> "téléphone",
+			'mobile'		=> "téléphone portable",
+			'status'		=> "état",
+		);
 				
 		function __construct($app = null, $controller = null, $model = null, $path = '.', $settings = array()) {
 			$this->setApp($app);
@@ -54,7 +79,10 @@
 		}
 		
 		function setSettings($settings = array()) {
-			$this->settings = $settings;
+			$this->settings = array_merge(
+				$this->settings,
+				$settings
+			);
 		}
 
 		function getSettings() {
@@ -62,8 +90,11 @@
 		}
 		
 		function setExclude($exclude = array()) {
-			$this->settings['exclude'] = $exclude;
-			$this->exclude = $exclude;
+			$this->exclude = array_merge(
+				$this->exclude,
+				$exclude
+			);
+			$this->settings['exclude'] = $this->exclude;
 		}
 		
 		function getExclude() {
@@ -71,8 +102,11 @@
 		}
 		
 		function setMapping($mapping = array()) {
-			$this->mapping = $mapping;
-			$this->settings['map'] = $mapping;
+			$this->mapping = array_merge(
+				$this->mapping,
+				$mapping
+			);
+			$this->settings['map'] = $this->mapping;
 		}
 		
 		function getMapping() {
