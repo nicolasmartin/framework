@@ -1,6 +1,6 @@
 <div id="navbar" class="row">
 	<ul class="menu horizontal sf-menu">
-		<li class="current"><a href="<?= UrlHelper::path('/') ?>">Accueil</a>
+		<li<?= UrlHelper::getCurrentClass(array('controller' => 'default')) ?>><a href="<?= UrlHelper::path('/') ?>">Acceuil</a></li>
 			<ul>
 				<li><a href="<?= UrlHelper::path('/') ?>">Retour</a></li>
 			</ul>
@@ -8,3 +8,5 @@
 	</ul>
 </div><!-- #navbar -->
 
+
+		
