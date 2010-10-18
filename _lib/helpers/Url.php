@@ -52,7 +52,7 @@ class UrlHelper extends UrlComponent {
 	            $reverse = 'asc';
 	        }
         }
-        return '<a href="'.$path.'orderby/'.$orderby.'/dir/'.$reverse.'" '.$class.'>'.$label.'</a>';
+        return '<a href="'.$path.'/orderby/'.$orderby.'/dir/'.$reverse.'" '.$class.'>'.$label.'</a>';
 	}
 }
 
