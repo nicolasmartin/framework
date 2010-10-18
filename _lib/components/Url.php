@@ -8,7 +8,11 @@
 				'action' 		=> null,
 				'params' 		=> null,
 			);
-				
+			
+			if ($path == '/') {
+				return '/';
+			}
+
 			if (!$path) {
 				$path = '/'.$Dispatcher->getUrl();
 			}
@@ -18,15 +22,10 @@
 					$path = '/'.$Dispatcher->getApp().'/'.$path;
 				}				
 				$path = preg_replace('~(^/|/$)~', '', $path);
-
 				$splits = explode('/', $path);
 				$path = array();
-
-				if (self::isApp($splits[0])) {
-					$path['app'] = @$splits[0];
-				} else {
-					$path['app'] = null;
-				}
+				
+				$path['app'] 			= @$splits[0];
 				$path['controller'] 	= @$splits[1];
 				$path['action'] 		= @$splits[2];
 				$path['params'] 		= @implode('/', array_slice($splits, 3));
@@ -47,18 +46,18 @@
 				}
 			}
 			if ($path['params'] && !$path['action']) {
-				$path['action'] = $Dispatcher->getActionName();
+				$path['action'] 	= $Dispatcher->getActionName();
 			}
 			if ($path['action'] && !$path['controller']) {
 				$path['controller'] = $Dispatcher->getControllerName();
 			}
 			if ($path['controller'] && !$path['app']) {
-				$path['app'] = $Dispatcher->getApp();
+				$path['app'] 		= $Dispatcher->getApp();
 			}
 			if (!$path['app'] && !$path['controller'] && !$path['action'] && !$path['params']) {
-				$path['app'] = $Dispatcher->getApp();
+				$path['app'] 		= $Dispatcher->getApp();
 				$path['controller'] = $Dispatcher->getControllerName();
-				$path['action'] = $Dispatcher->getActionName();
+				$path['action']		= $Dispatcher->getActionName();
 			}
 			if (is_array($path['params'])) {
 				$params = array();
@@ -68,20 +67,35 @@
 				$path['params'] = implode('/', $params);
 			}
 			
-			$path['app'] 		= __($path['app'], null, null, 'url');
+			if ($path['app'] == 'default') {
+				unset($path['app']);
+			} else {
+				$path['app'] = __($path['app'], null, null, 'url');
+			}
 			$path['controller'] = __($path['controller'], null, null, 'url');
 			$path['action'] 	= __($path['action'], null, null, 'url');
-			
+
 			$new_path = implode($path, '/');
 			$new_path = '/'.$new_path;
 			$new_path = preg_replace('~/{2,}~', '/', $new_path);
 			$new_path = preg_replace('~/$~', '', $new_path);
 
+			if (!$new_path) {
+				return '/';
+			}
+
 			return $new_path;
 		}
 
-		private static function isApp($name) {
-			if (file_exists(ROOT.'www/'.$name.'/.htaccess')) {
+		private static function isApp($app) {
+			if (is_dir(ROOT.'apps/'.$app)) {
+				return true;
+			}
+			return false;
+		}
+
+		private static function isController($app, $controller) {
+			if (file_exists(ROOT.'apps/'.$app.'/'.ucfirst($controller).'.php')) {
 				return true;
 			}
 			return false;

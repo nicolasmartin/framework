@@ -1,9 +1,9 @@
 <?php
-    class TestOfHomepage extends FunctionalWebTestCase {
+    class TestOfTest extends FunctionalWebTestCase {
     	public function setUp() {	
     	}
     	
-        function testHomepage() {
+        function testTest() {
             $this->assertTrue($this->get(DOMAIN));
         }
         

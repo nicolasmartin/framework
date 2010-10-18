@@ -1,9 +1,16 @@
-[? $this->set('ID',    '<?= strtolower($settings['model']) ?>Page') ?]
-[? $this->set('TITLE', '<?= $settings['plural'] ?>') ?]
-<div id="content">
-	<div id="main" class="<?= strtolower($settings['collection']) ?>">
-		<h1><?= $settings['plural'] ?></h1>
+[?php
+	$this->set('TITLE', 		'<?= ucfirst($settings['plural']) ?>');
+	$this->set('DESCRIPTION',	'Les <?= ucfirst($settings['plural']) ?>');
+?]
+    <div id="content" class="row <?= strtolower($settings['collection']) ?>">
 
-	</div><!-- #main -->
-</div><!-- #content -->
+    	<div id="main" class="col3-4 first">
+			<h1><?= ucfirst($settings['plural']) ?></h1>
+			
+		</div><!-- #main -->
+    
+        <div id="sidebar" class="col1-4 last">
+			
+        </div><!-- #sidebar -->
 
+    </div><!-- #content -->

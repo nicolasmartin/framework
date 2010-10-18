@@ -9,7 +9,7 @@
 	class AllTests extends TestSuite {
 		function AllTests() {
 			$this->TestSuite('All tests');
-			$this->addFile(dirname(__FILE__).'/homepage.php');
+			$this->addFile(dirname(__FILE__).'/test.php');
             // Ajouter les tests ici
 		}
 	}

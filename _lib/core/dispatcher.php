@@ -78,11 +78,14 @@
 		}
 	
 		public function parseUrl($url) {
+			$where 		= preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']);
+			
 			$splits 	= explode('/', $url);
-			$app 		= preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']);
+			$app 		= !empty($where) 	 ? __($where, null, true, 'url') : 'default';
 			$controller = !empty($splits[0]) ? __($splits[0], null, true, 'url') : 'default';
 			$action		= !empty($splits[1]) ? __($splits[1], null, true, 'url') : 'index';
 			$params 	= !empty($splits[2]) ? array_slice($splits, 2) : array();
+
 
 			$clean = array();
 			for($i = 0; $i < count($params); $i=$i+2) {

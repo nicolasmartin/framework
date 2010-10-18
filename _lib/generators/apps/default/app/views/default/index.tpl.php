@@ -5,7 +5,7 @@
     <div id="content" class="row">
 
     	<div id="main" class="col3-4 first">
-			
+			<h1><?= __("Bienvenue !") ?></h1>
 		</div><!-- #main -->
     
         <div id="sidebar" class="col1-4 last">

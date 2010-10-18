@@ -2,7 +2,7 @@
 	require_once('../../bootstrap.php');
 	
 	$Generator = new GeneratorController('admin', 'default', 'sandbox');
-	$Generator->setSettings(array(
+/*	$Generator->setSettings(array(
 		'model'			=> 'Sandbox',
 		'collection'	=> 'Sandboxes',
 		'singular'		=> "élément",
@@ -21,7 +21,7 @@
 	$Generator->setMapping(array(
 		'name' 		=> 'nom',
 		'firstname'	=> 'prénom',
-	));
+	));*/
 	$Generator->setOverwriteController(true);
 	$Generator->setOverwriteViews(true);
 	$Generator->setOverwritePartials(true);
