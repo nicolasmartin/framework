@@ -48,6 +48,13 @@
 			)), '/myapp/mycontroller/myaction/newp1/a/newp2/b');
 			
 			$this->assertEqual(UrlComponent::path(array(
+				'params' => array(
+					'newp1' => 'a',
+					'newp2' => 'b'
+				)
+			)), '/myapp/mycontroller/myaction/newp1/a/newp2/b');
+			
+			$this->assertEqual(UrlComponent::path(array(
 				'action' => 'newaction'
 			)), '/myapp/mycontroller/newaction');
 			
@@ -114,6 +121,14 @@
 			$this->assertEqual(UrlComponent::path('mycontroller/myaction'), '/monapp/moncontroller/monaction');
 			$this->assertEqual(UrlComponent::path('/myapp/default/index'), '/monapp/default/index');
 			$this->assertEqual(UrlComponent::path('default/index'), '/monapp/default/index');
+		}
+		
+		public function testPathWithDefault() {
+			$_SERVER['SCRIPT_NAME'] = '/default/index.php';
+			$this->Dispatcher = Dispatcher::getInstance();
+			$this->Dispatcher->setUrl('mycontroller/myaction/p1/1/p2/2/p3/3');
+			
+			$this->assertEqual(UrlComponent::path('default/index'), '/default/index');	
 		}
 
 		public function tearDown() {
