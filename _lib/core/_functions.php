@@ -1,4 +1,13 @@
 <?php
+    function cfirst($string) { 
+        $string = utf8_decode($string);
+        $string = strtolower($string);
+        $string = ucfirst($string);
+        $first = strtr($str{0}, utf8_decode('äâàáåãéèëêòóôõöøìíîïùúûü'),utf8_decode('ÄÂÀÁÅÃÉÈËÊÒÓÔÕÖØÌÍÎÏÙÚÛÜ'));
+        $string = substr_replace($string, $first, 0, 1);
+        return $string; 
+    }
+
 	function app() {
 		$app = preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']);
 		return $app ? $app : 'default';
