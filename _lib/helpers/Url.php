@@ -31,6 +31,32 @@ class UrlHelper extends UrlComponent {
 		return false;
 	}
 	
+	static function getCurrentClass($check, $full = true) {
+		$current = false;
+		$Dispatcher = Dispatcher::getInstance();
+		$default = array(
+			'controller' 	=> null,
+			'action'		=> null,
+		);
+		$check = array_merge($default, $check);
+		
+		if ($check['controller'] == $Dispatcher->getControllerName()) {
+			$current = true;
+			if ($check['action'] && $check['action'] != $Dispatcher->getActionName()) {
+				$current = false;
+			}
+		}
+
+		if ($current) {
+			if ($full) {
+				return ' class="current"';	
+			} else {
+				return 'current';	
+			}
+		}
+		return '';
+	}
+	
 	static function orderBy($field, $label) {
 	    $Dispatcher = Dispatcher::getInstance();
 	    $params     = $Dispatcher->getParams();
