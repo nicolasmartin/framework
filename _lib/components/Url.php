@@ -8,7 +8,11 @@
 				'action' 		=> null,
 				'params' 		=> null,
 			);
-				
+			
+			if ($path == '/') {
+				return '/';
+			}
+
 			if (!$path) {
 				$path = '/'.$Dispatcher->getUrl();
 			}

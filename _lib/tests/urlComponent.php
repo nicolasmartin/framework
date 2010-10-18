@@ -37,6 +37,7 @@
 		
 		public function testPathEmpty() {
 			$this->assertEqual(UrlComponent::path(), '/myapp/mycontroller/myaction/p1/1/p2/2/p3/3');
+			$this->assertEqual(UrlComponent::path('/'), '/');
 		}
 		
 		public function testPathWithArray() {
