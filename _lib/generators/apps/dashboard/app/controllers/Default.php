@@ -36,7 +36,7 @@ class DefaultController extends Controller {
 
 	// generateModels
 	public function generateModels() {
-		Doctrine_Core::generateModelsFromYaml(MODELS.'/schema/schema.yml', MODELS, array( 
+		Doctrine_Core::generateModelsFromYaml(MODELS.'/schema/', MODELS, array( 
 			'generateTableClasses' => true 
 		));
 		FlashComponent::set('info', 'Generate Models terminé.');
@@ -45,7 +45,7 @@ class DefaultController extends Controller {
 
 	// generateSchema
 	public function generateSchema() {
-		Doctrine_Core::generateYamlFromModels(MODELS.'/schema/schema.yml', MODELS);
+		Doctrine_Core::generateYamlFromModels(MODELS.'/schema/generated.yml', MODELS);
 		FlashComponent::set('info', 'Generate Schema terminé.');
 		$this->redirect(UrlComponent::path(array('action' => 'index')));
 	}
