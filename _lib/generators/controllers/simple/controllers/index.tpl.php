@@ -1,5 +1,0 @@
-
-	// Index
-	public function index() {
-        
-	}
