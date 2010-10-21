@@ -156,9 +156,7 @@
 
 	function debug($string, $force = false) {
 		if ((defined('DEBUG') && DEBUG) || $force) {
-			echo '<pre style="background:#FFF; position:relative; z-index:10000; color:red; padding:5px;">';
-			print_r($string);
-			echo '</div>';
+			pr($string);
 		}			
 	}
 		
@@ -243,6 +241,25 @@
 		} else {
 			return uniqid();
 		}
+	}
+
+	function duplicate_filename($path, $filename) {
+		if (file_exists(str_replace('//', '/', $path.'/'.$filename))) {
+			return duplicate_filename($path, inc_filename($filename));
+		}
+		return $filename;
+	}
+
+	function inc_filename($filename) {
+		preg_match('~(.*?)(\((\d*)\))?(\..*?)$~', $filename, $match);
+		$inc = '.';
+		if ($match[3]) {
+			$inc = '('.($match[3]+1).')';
+		} else if (!$match[3]) {
+			$inc = '(1)';
+		}
+		$f = $match[1].$inc.$match[4];
+		return $f;		
 	}
 
     function read_folder($path, $content = array()) {
