@@ -199,9 +199,9 @@
 		return $array_clean;
 	}
     
-    function array_remove($array,  $values) {
+    function array_remove($array, $values) {
         foreach((array) $values as $value) {
-            unset($array[array_search($value, $array)]);
+            unset($array[array_search($value, (array) $array)]);
         }
         return $array;
     }
