@@ -82,7 +82,13 @@
 					'newp2' => 'b'
 				)
 			)), '/myapp/newcontroller/index/newp1/a/newp2/b');
-			
+
+			$this->assertEqual(UrlComponent::path(array(
+				'controller' => 'newcontroller',
+				'params' => array('a', 'b')
+				)
+			), '/myapp/newcontroller/index/a/b');
+	
 			$this->assertEqual(UrlComponent::path(array(
 				'controller' => 'newcontroller',
 				'action' => 'newaction'

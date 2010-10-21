@@ -62,7 +62,11 @@
 			if (is_array($path['params'])) {
 				$params = array();
 				foreach($path['params'] as $key => $value) {
-					$params[] = $key.'/'.$value;
+					if (is_int($key)) {
+						$params[] = $value;
+					} else {
+						$params[] = $key.'/'.$value;
+					}
 				}
 				$path['params'] = implode('/', $params);
 			}
