@@ -8,7 +8,6 @@
 			FlashComponent::set('error', "Une action doit être choisie.");
 			$this->redirect('<?= ThisGeneratorHelper::getPath($app, $controller) ?>/');
 		}
-
 		if (!count($id)) {
 			FlashComponent::set('error', "Un ou plusieurs <?= ucfirst($settings['plural']) ?> doivent être coché<?= $settings['male'] ? '' : 'e' ?>s.");
 			$this->redirect('<?= ThisGeneratorHelper::getPath($app, $controller) ?>/');
