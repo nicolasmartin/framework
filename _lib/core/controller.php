@@ -24,8 +24,12 @@
 			$this->action 	= $action;
 			$this->params	= $params;
 
-			$this->Layout	= new Layout($this->layout);
-			$this->Layout->setController($this);
+			if (!$this->isAjax()) {
+				$this->Layout	= new Layout($this->layout);
+				$this->Layout->setController($this);
+			} else {
+				$this->Layout = null;
+			}
 
 			$this->View 	= new View($this->name.'/'.$this->action, $this->Layout);
 			$this->View->setController($this);
