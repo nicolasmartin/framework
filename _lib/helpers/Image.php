@@ -17,10 +17,10 @@ class ImageHelper extends Helper {
     }
 
     public static function zoom($src, $width, $height = null, $attributes = array()) {
-				if (is_array($height)) {
-					$attributes = $height;
-					$height = $width;
-				}
+		if (is_array($height)) {
+			$attributes = $height;
+			$height = $width;
+		}
         $html = '<img src="/image.php?src='.$src.'&width='.$width;
         if ($height)  {
             $html .= '&height='.$height;
@@ -32,12 +32,19 @@ class ImageHelper extends Helper {
         return $html;
     }
 
-    public static function image($src, $width, $height = null, $attributes = array()) {
-				if (is_array($height)) {
-					$attributes = $height;
-					$height = $width;
-				}
-        $html = '<img src="/image.php?src='.$src.'&width='.$width;
+    public static function image($src, $width = null, $height = null, $attributes = array()) {
+		if (is_array($width)) {
+			$attributes = $width;
+		}
+
+		if (is_array($height)) {
+			$attributes = $height;
+			$height = $width;
+		}
+        $html = '<img src="/image.php?src='.$src;
+        if ($width)  {
+            $html .= '&width='.$width;
+        }
         if ($height)  {
             $html .= '&height='.$height;
         }

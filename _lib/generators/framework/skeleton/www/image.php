@@ -17,7 +17,7 @@
 	  
 	$default = array(
 		'src'       => false,
-		'width'     => 200,
+		'width'     => false,
 		'height'    => false,
 		'mode'      => false,
 	);
@@ -34,12 +34,12 @@
 		$Cache->open();
 	}
 	
-	$Image = new ImageComponent(ROOT.'www/'.$src);
+	$Image = new ImageComponent(ROOT.'www'.$src);
 	if ($mode == 'crop') {
 		$Image->thumbnail($width, $height);
 	} elseif ($mode == 'zoom') {
 		$Image->zoom($width, $height);    
-	} else {
+	} elseif ($width || $height) {
 		$Image->resize($width, $height);
 	}
 	$Image->show();
