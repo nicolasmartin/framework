@@ -241,11 +241,11 @@ blockquote {
 	border:2px solid #000;
 	border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px;
 	margin-bottom:20px;
-	padding:18px;
+	padding:15px;
 }
 	.message.tip {
 		background:transparent url(../img/messages.png) no-repeat -200px 0px;
-		padding-left:50px;
+		padding-left:60px;
 		border-color:#728193;
 	}
 	.message.tip strong {
@@ -253,7 +253,7 @@ blockquote {
 	}
 	.message.error {
 		background:transparent url(../img/messages.png) no-repeat -150px -50px;
-		padding-left:50px;
+		padding-left:60px;
 		border-color:#E34529;
 	}
 	.message.error strong {
@@ -261,7 +261,7 @@ blockquote {
 	}
 	.message.warning {
 		background:transparent url(../img/messages.png) no-repeat -100px -100px;
-		padding-left:50px;
+		padding-left:60px;
 		border-color:#FFAD1B;
 	}
 	.message.warning strong {
@@ -269,20 +269,22 @@ blockquote {
 	}
 	.message.info {
 		background:transparent url(../img/messages.png) no-repeat -50px -150px;
-		padding-left:50px;
+		padding-left:60px;
 		border-color:#3A83C9;
 	}
 	.message.info strong {
 		color:#3A83C9;
 	}
 	.message.success {
-		background:transparent url(../img/messages.png) no-repeat -0px -200px;
-		padding-left:50px;
+		background:transparent url(../img/messages.png) no-repeat 10px -200px;
+		padding-left:60px;
 		border-color:#94C500;
 	}
 	.message.success strong {
 		color:#94C500;
 	}
+
+/* Breadcrumbs */ 
 .breadcrumbs {
 	list-style:none; 
 	overflow:hidden; 

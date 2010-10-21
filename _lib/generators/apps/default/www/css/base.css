@@ -169,29 +169,32 @@ blockquote {
 /* Messages */
 .message {
 	border:2px solid Black;
-	font-weight:bold;
 	margin:10px 0;
 	padding:8px;
 }
 	.message.error {
 		background:transparent url(../img/icons.png) no-repeat -84px -226px;
 		border-color:DarkRed;
-		color:DarkRed;
 		padding-left:50px;
 	}
-	
+	.message.error strong {
+		color:DarkRed;
+	}
 	.message.success {
 		background:transparent url(../img/icons.png) no-repeat -188px -122px; 
 		border-color:DarkGreen;
-		color:DarkGreen;
 		padding-left:50px;
 	}
-	
+	.message.success strong {
+		color:DarkGreen;
+	}
 	.message.info {
 		background:transparent url(../img/icons.png) no-repeat -136px -174px;
 		border-color:DarkBlue;
-		color:DarkBlue;
 		padding-left:50px;
+	}
+	.message.info strong {
+		color:DarkBlue;
 	}
 	
 .breadcrumbs {
