@@ -37,6 +37,7 @@
 		public static function humanize($string) {
 			$string = InflectionComponent::unCamelCase($string);
 			$string = preg_replace('/_|-/', ' ', $string);
+			$string = preg_replace('/ {2,}/', ' ', $string);
 			$string = ucfirst($string);
 			return $string;
 		}
