@@ -9,7 +9,7 @@
 			$this->redirect('<?= ThisGeneratorHelper::getPath($app, $controller) ?>/');
 		}
 		if (!count($id)) {
-			FlashComponent::set('error', "Un ou plusieurs <?= ucfirst($settings['plural']) ?> doivent être coché<?= $settings['male'] ? '' : 'e' ?>s.");
+			FlashComponent::set('error', "Un<?= $settings['male'] ? '' : 'e' ?> ou plusieurs <?= ucfirst($settings['plural']) ?> doivent être coché<?= $settings['male'] ? '' : 'e' ?>s.");
 			$this->redirect('<?= ThisGeneratorHelper::getPath($app, $controller) ?>/');
 		}
 
