@@ -1,17 +1,18 @@
 [? $this->set('ID',    '<?= strtolower($settings['model']) ?>Page') ?]
 [? $this->set('TITLE', 'Liste des <?= $settings['plural'] ?>') ?]
+
 <div id="content">
 	<div id="main" class="<?= strtolower($settings['collection']) ?>">
 		<h1>Liste des <?= $settings['plural'] ?></h1>
 			
-[?= $this->partial("flash") ?]
+		[?= $this->partial("flash") ?]
 
 		<ul class="tools">
-			<li><a class="sprite prefix add" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/add/">Ajouter <?= $settings['a'] ?><?= $settings['singular'] ?></a></li>
+			<li><a class="sprite prefix add" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/add">Ajouter <?= $settings['a'] ?><?= $settings['singular'] ?></a></li>
 		</ul>
 
-[? $i=0; ?]
-		<form action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/batch/" method="post">
+		[? $i=0; ?]
+		<form action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/batch" method="post">
 <? $fields = Doctrine::getTable($model)->getColumns(); ?>
 		<table class="list">
 			<colgroup>
@@ -28,7 +29,7 @@
 					<th scope="col"><input id="checkall" type="checkbox" /></th>
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
-					<th scope="col">[?= UrlHelper::orderBy('<?= $field ?>', '<?= ucfirst(ThisGeneratorHelper::field($field, $settings['map']))?>') ?]</th>
+					<th scope="col">[?= UrlHelper::orderBy('<?= $field ?>', "<?= ucfirst(ThisGeneratorHelper::field($field, $settings['map']))?>") ?]</th>
 <? endif ?>
 <? endforeach ?>
 					<th scope="col">&nbsp;</th>
@@ -44,12 +45,12 @@
 						<input class="button" type="submit" value="Appliquer" />
 					</td>
 					<td colspan="100">
-[?= $this->partial('pagination', array('Pager' => $Pager)); ?]
+						[?= $this->partial('pagination', array('Pager' => $Pager)); ?]
 					</td>
 				</tr>
 			</tfoot>
 			<tbody>
-[? foreach ($<?= $settings['collection'] ?> as $<?= $settings['model'] ?>): ?]
+				[? foreach ($<?= $settings['collection'] ?> as $<?= $settings['model'] ?>): ?]
 				<tr class="[?= ++$i % 2 ? 'odd': 'even' ?]">
 					<td class="checkboxes"><input type="checkbox" name="id[]" value="[?= $<?= $settings['model'] ?>['id'] ?]" /></td>
 <? $r = 0; foreach($fields as $field => $options) : ?>
@@ -68,13 +69,13 @@
 						</ul>
 					</td>
 				</tr>
-[? endforeach ?]
+				[? endforeach ?]
 
-[? if (!count($<?= $settings['collection'] ?>)) : ?]
+				[? if (!count($<?= $settings['collection'] ?>)) : ?]
 				<tr class="empty [?= ++$i % 2 ? 'odd': 'even' ?]">
 					<td colspan="100">Aucun<?= $settings['male'] ? '' : 'e' ?> <?= $settings['singular'] ?>.</td>
 				</tr>
-[? endif ?]
+				[? endif ?]
 			</tbody>
 		</table>
 		</form>
