@@ -8,8 +8,9 @@
 		
 	require_once LIB.'/core/_includes.php';
 	require_once LIB.'/vendors/doctrine/Doctrine.php';
-	require_once ROOT.'/configs/set.php';
 	require_once ROOT.'/configs/env.php';
+	require_once ROOT.'/configs/lang.php';
+	require_once ROOT.'/configs/set.php';
 
 	$Bootstrap = Bootstrap::getInstance();
 	$Bootstrap->setDefaultPath('default/index');	
