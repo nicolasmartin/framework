@@ -1,10 +1,10 @@
-.col1-2 { width:48%; 		}
+.col1-2 { width:48%; 	}
 
 .col1-3 { width:30.66%;	}
 .col2-3 { width:65.33%;	}
 
-.col1-4 { width:22%; 		}
-.col3-4 { width:74%;		}
+.col1-4 { width:22%; 	}
+.col3-4 { width:74%;	}
 
 .col1-5 { width:16.8%; 	}
 .col2-5 { width:37.6%; 	}
@@ -22,11 +22,13 @@
 	position:relative;
 	display:inline;
 	float:left;
+	margin:0 	!important;
+	padding:0 	!important;
 	margin-left:2%;
 	margin-right:2%;
 }
 
-.push1-2 { left:52%; 			}
+.push1-2 { left:52%; 		}
 .pull1-2 { right:52%; 		}
 
 .push1-3 { left:34.66%; 	}
@@ -35,10 +37,10 @@
 .push2-3 { left:69.33%; 	}
 .pull2-3 { right:69.33%; 	}
 
-.push1-4 { left:26%; 			}
+.push1-4 { left:26%; 		}
 .pull1-4 { right:26%; 		}
-.push3-4 { left:78%;			}
-.pull3-4 { right:78%;			}
+.push3-4 { left:78%;		}
+.pull3-4 { right:78%;		}
 
 .push1-5 { left:20.8%; 		}
 .pull1-5 { right:20.8%; 	}
