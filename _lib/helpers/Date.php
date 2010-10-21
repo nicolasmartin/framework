@@ -1,11 +1,10 @@
 <?php
 class DateHelper extends Helper {
-	function format($date, $format = '{day} {dd} {month} {yyyy}', $empty = 'indéfinie') { 
+	static function format($date, $format = '{dd} {month} {yyyy}', $empty = 'indéfinie') { 
 		if (!$time = strtotime($date)) { 
 			return $empty; 
 		} 
 		$replace = array( 
-			'%'       => '%%', 
 			'{day}'   => '%A', 
 			'{da}'    => '%a', 
 			'{dd}'    => '%d', 
@@ -17,13 +16,41 @@ class DateHelper extends Helper {
 			'{HH}'    => '%H', 
 			'{MM}'    => '%M', 
 			'{SS}'    => '%S', 
+			'{AMPM}'  => '%p', 
 		); 
 		$format = str_replace(array_keys($replace), array_values($replace), $format); 
 		$date   = strftime($format, $time); 
 		return $date; 
 	} 
 	
-	function prettyFormat($date, $format = '{day} {dd} {month} {yyyy}', $empty = 'indéfinie') { 
+	static function short($date, $time = false, $empty = 'indéfinie') { 
+		if ($time) {
+			$format = Config::get('datetime.short', '%d/%m/%Y %H:%M');
+		} else {
+			$format = Config::get('date.short', '%d/%m/%Y');
+		}
+		return DateHelper::format($date, $format, $empty);
+	}
+
+	static function medium($date, $time = false, $empty = 'indéfinie') { 
+		if ($time) {
+			$format = Config::get('datetime.medium', '%a %d %b %y, %H:%M');
+		} else {
+			$format = Config::get('date.medium', '%a %d %b %y');
+		}
+		return DateHelper::format($date, $format, $empty);
+	}
+	
+	static function long($date, $time = false, $empty = 'indéfinie') { 
+		if ($time) {
+			$format = Config::get('datetime.long', '%A %d %B %Y, %H:%M');
+		} else {
+			$format = Config::get('date.long', '%A %d %B %Y');
+		}
+		return DateHelper::format($date, $format, $empty);
+	}
+	
+	static function prettyFormat($date, $format = '{day} {dd} {month} {yyyy}', $empty = 'indéfinie') { 
 		if (!$time = strtotime($date)) { 
 			return $empty; 
 		} 
@@ -59,7 +86,7 @@ class DateHelper extends Helper {
 		return $relative; 
 	} 
 	
-	function relative($date) { 
+	static function relative($date) { 
 		$time = time() - strtotime($date); 
 	 
 		if ($time > 0) { 
