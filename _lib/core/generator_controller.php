@@ -33,8 +33,13 @@
 			'postalcode'	=> "code postale",
 			'city'			=> "ville",
 			'phone'			=> "téléphone",
-			'mobile'		=> "téléphone portable",
+			'mobile'		=> "portable",
 			'status'		=> "état",
+			'path'			=> "chemin",
+			'width'			=> "largeur",
+			'height'		=> "hauteur",
+			'created_by'	=> "créé",
+			'updated_by'	=> "mis à jour",
 		);
 				
 		function __construct($app = null, $controller = null, $model = null, $path = '.', $settings = array()) {
