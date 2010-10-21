@@ -118,14 +118,25 @@
 			return $default;
 		}
 
-		public function partial($name, $smart = true) {
+		public function partial($name, $vars = array(), $smart = true) {
 			if ($smart) {
 				$path = VIEWS.'/_partials/'.$name.'.tpl.php';
 			} else {
 				$path = $name;	
 			}
-			return $this->doRender($path);
+			$Partial = new View($path, null, false);
+			$Partial->set($vars);
+			return $Partial->render();
 		}
+		
+//		public function partial($name, $smart = true) {
+//			if ($smart) {
+//				$path = VIEWS.'/_partials/'.$name.'.tpl.php';
+//			} else {
+//				$path = $name;	
+//			}
+//			return $this->doRender($path);
+//		}
 	
 		public function render() {
 			if ($this->Layout) {
