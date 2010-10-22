@@ -528,7 +528,11 @@ table {
 	table tr:hover.even th,
 	table tr:hover.odd td,
 	table tr:hover.even td {
-		background:Ivory ;
+		background:Ivory;
+	}
+	table tr.selected tr,
+	table tr.selected td {
+		background:Ivory !important;
 	}
 
 /* définitions */

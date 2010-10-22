@@ -83,7 +83,18 @@
 </div><!-- #content -->
 
 <script type="text/javascript">
-	$('#checkall').click(function() {
-		$('input[type=checkbox]', $(this).closest('table')).attr('checked', $(this).is(':checked'));	
+	// Coche / Décoche toutes les checkboxes
+	$('table.list').delegate('input[type=checkbox]', 'click', function() {
+		var $$ 		= $(this);
+		var $table 	= $$.closest('table');
+		
+		if ($$.is('#checkall')) {
+			$table.find('input[type=checkbox]')
+				.attr('checked', $$.is(':checked'));
+		}
+		$table.find('tr')
+			.removeClass('selected')
+		.find('input[type=checkbox]:not(#checkall):checked')
+			.closest('tr').addClass('selected');
 	});
 </script>
