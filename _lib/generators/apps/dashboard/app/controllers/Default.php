@@ -22,7 +22,7 @@ class DefaultController extends Controller {
 		$this->dumpFiles('Picture');
 		$this->dumpFiles('File');
 		FlashComponent::set('info', 'Dump Data terminé.');
-		$this->redirect(UrlComponent::path(array('action' => 'index')));
+		$this->redirect(array('action' => 'index'));
 	}
 
 	// loadData		
@@ -31,7 +31,7 @@ class DefaultController extends Controller {
 		$this->loadFiles('Picture');
 		$this->loadFiles('File');
 		FlashComponent::set('info', 'Load Data terminé.');
-		$this->redirect(UrlComponent::path(array('action' => 'index')));
+		$this->redirect(array('action' => 'index'));
 	}
 
 	// generateModels
@@ -40,14 +40,14 @@ class DefaultController extends Controller {
 			'generateTableClasses' => true 
 		));
 		FlashComponent::set('info', 'Generate Models terminé.');
-		$this->redirect(UrlComponent::path(array('action' => 'index')));
+		$this->redirect(array('action' => 'index'));
 	}
 
 	// generateSchema
 	public function generateSchema() {
 		Doctrine_Core::generateYamlFromModels(MODELS.'/schema/generated.yml', MODELS);
 		FlashComponent::set('info', 'Generate Schema terminé.');
-		$this->redirect(UrlComponent::path(array('action' => 'index')));
+		$this->redirect(array('action' => 'index'));
 	}
 
 	// generateTables
@@ -56,7 +56,7 @@ class DefaultController extends Controller {
 		Doctrine_Core::createTablesFromModels(MODELS);
 		
 		FlashComponent::set('info', 'Generate Table terminé.');
-		$this->redirect(UrlComponent::path(array('action' => 'index')));
+		$this->redirect(array('action' => 'index'));
 	}
 
 	// PRIVATES -------------------------------

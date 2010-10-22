@@ -6,11 +6,11 @@
 
 		if (!$action) {
 			FlashComponent::set('error', "Une action doit être choisie.");
-			$this->redirect('<?= ThisGeneratorHelper::getPath($app, $controller) ?>/');
+			$this->redirect(array('action' => 'index'));
 		}
 		if (!count($id)) {
 			FlashComponent::set('error', "Un<?= $settings['male'] ? '' : 'e' ?> ou plusieurs <?= ucfirst($settings['plural']) ?> doivent être coché<?= $settings['male'] ? '' : 'e' ?>s.");
-			$this->redirect('<?= ThisGeneratorHelper::getPath($app, $controller) ?>/');
+			$this->redirect(array('action' => 'index'));
 		}
 
 		switch ($action) {
@@ -25,5 +25,5 @@
 				FlashComponent::set('success', pluralize(count($id), "{<?= ucfirst($settings['singular']) ?>|<?= ucfirst($settings['plural']) ?>} effacé<?= $settings['male'] ? '' : 'e' ?>{s}"));
 			break;
 		}
-		$this->redirect('<?= ThisGeneratorHelper::getPath($app, $controller) ?>/');
+		$this->redirect(array('action' => 'index'));
 	}

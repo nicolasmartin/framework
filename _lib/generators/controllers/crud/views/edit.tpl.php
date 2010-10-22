@@ -19,13 +19,14 @@
 			<li><a class="button back" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>">Retour aux <?= $settings['plural'] ?></a></li>
 		</ul>
 
+		[? $i = 0 ?]
 		<div class="form">
 		[? if (!$<?= $settings['model'] ?>['id']) : ?]
 		<form method="post" action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/add">
 		[? else: ?]
 		<form method="post" action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/edit/[?= $<?= $settings['model'] ?>['id'] ?]">
 			<input type="hidden" name="id" value="[?= $<?= $settings['model'] ?>['id'] ?]">
-		[? endif; $i = 0 ?]
+		[? endif; ?]
 			<fieldset>
 			<legend>Informations sur <?= $settings['the'] ?><?= $settings['singular'] ?></legend>
 				

@@ -7,7 +7,7 @@
 			if ($<?= $settings['model'] ?>->isValid()) {
 				$<?= $settings['model'] ?>->save();
 				FlashComponent::set('success', "<?= ucfirst($settings['singular']) ?> créé<?= $settings['male'] ? '' : 'e' ?>.");
-				$this->redirect('<?= ThisGeneratorHelper::getPath($app, $controller) ?>/');
+				$this->redirect(array('action' => 'index'));
 			} else {
 				$errors = $<?= $settings['model'] ?>->getErrorStack();
 				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|#} erreur{s}.'));
