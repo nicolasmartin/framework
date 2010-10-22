@@ -8,7 +8,7 @@
 		[?= $this->partial("flash") ?]
 
 		<ul class="tools">
-			<li><a class="button back" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>">Retour aux <?= $settings['plural'] ?></a></li>
+			<li><a class="button back" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
 		</ul>
 
 		[? $i=0; ?]
@@ -31,8 +31,8 @@
 		</table>
 
 		<ul class="actions">
-			<li><a class="sprite left prefix edit" title="Editer" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/edit/[?= $<?= $settings['model'] ?>['id'] ?]">Editer</a></li>
-			<li><a class="sprite left prefix delete" title="Supprimer" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/delete/[?= $<?= $settings['model'] ?>['id'] ?]">Supprimer</a></li>
+			<li><a class="sprite left prefix edit" title="Editer" href="[?= UrlComponent::path(array('action' => 'edit'), $<?= $settings['model'] ?>['id']) ?]">Editer</a></li>
+			<li><a class="sprite left prefix delete" title="Supprimer" href="[?= UrlComponent::path(array('action' => 'delete'), $<?= $settings['model'] ?>['id']) ?]">Supprimer</a></li>
 		</ul>
 		
 	</div><!-- #main -->

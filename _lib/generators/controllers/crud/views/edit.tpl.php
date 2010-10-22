@@ -16,15 +16,15 @@
 		[?= $this->partial("flash") ?]
 
 		<ul class="tools">
-			<li><a class="button back" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>">Retour aux <?= $settings['plural'] ?></a></li>
+			<li><a class="button back" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
 		</ul>
 
 		[? $i = 0 ?]
 		<div class="form">
 		[? if (!$<?= $settings['model'] ?>['id']) : ?]
-		<form method="post" action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/add">
+		<form method="post" action="[?= UrlComponent::path(array('action' => 'add')) ?]">
 		[? else: ?]
-		<form method="post" action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/edit/[?= $<?= $settings['model'] ?>['id'] ?]">
+		<form method="post" action="[?= UrlComponent::path(array('action' => 'edit'), $<?= $settings['model'] ?>['id']) ?]">
 			<input type="hidden" name="id" value="[?= $<?= $settings['model'] ?>['id'] ?]">
 		[? endif; ?]
 			<fieldset>
@@ -47,7 +47,7 @@
 			<div>
 				<input class="button" type="submit" value="Enregistrer"> 
 				ou
-				<a class="cancel" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>">Annuler</a> 
+				<a class="cancel" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Annuler</a> 
 			</div>
 
 		</form>

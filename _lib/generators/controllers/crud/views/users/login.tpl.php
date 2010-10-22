@@ -8,7 +8,7 @@
 		[?= $this->partial("flash") ?][? $i = 0 ?]
 
 		<div class="form">
-			<form action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/login" method="post">
+			<form action="[?= UrlComponent::path(array('action' => 'login')) ?]" method="post">
 			<fieldset>
 			<legend>Identification</legend>
 				<div class="[?= ++$i % 2 ? 'odd': 'even' ?]">

@@ -8,7 +8,7 @@
 		[?= $this->partial("flash") ?]
 
 		<ul class="tools">
-			<li><a class="button back" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>">Retour aux <?= $settings['plural'] ?></a></li>
+			<li><a class="button back" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
 		</ul>
 
 		[? $i=0; ?]
@@ -31,13 +31,13 @@
 		</table>
 
 		<div class="form">
-		<form method="post" action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/delete/[?= $<?= $settings['model'] ?>['id'] ?]">
+		<form method="post" action="[?= UrlComponent::path(array('action' => 'delete'), $<?= $settings['model'] ?>['id']) ?]">
 			<input type="hidden" name="id" value="[?= $<?= $settings['model'] ?>['id'] ?]">
 			
 			<div>
 				<input class="button" type="submit" value="Supprimer"> 
 				ou
-				<a class="cancel" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>">Annuler</a> 
+				<a class="cancel" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Annuler</a> 
 			</div>
 
 		</form>

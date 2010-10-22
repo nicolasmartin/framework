@@ -8,11 +8,11 @@
 		[?= $this->partial("flash") ?]
 
 		<ul class="tools">
-			<li><a class="sprite prefix add" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/add">Ajouter <?= $settings['a'] ?><?= $settings['singular'] ?></a></li>
+			<li><a class="sprite prefix add" href="[?= UrlComponent::path(array('action' => 'add')) ?]">Ajouter <?= $settings['a'] ?><?= $settings['singular'] ?></a></li>
 		</ul>
 
 		[? $i=0; ?]
-		<form action="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/batch" method="post">
+		<form action="[?= UrlComponent::path(array('action' => 'batch')) ?]" method="post">
 <? $fields = Doctrine::getTable($model)->getColumns(); ?>
 		<table class="list">
 			<colgroup>
@@ -56,7 +56,7 @@
 <? $r = 0; foreach($fields as $field => $options) : ?>
 <? if (++$r == 2) : ?>
 					<th scope="row">
-						<a title="Voir le résumé" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/show/[?= $<?= $settings['model'] ?>['id'] ?]">[?= $<?= $settings['model'] ?>['<?= $field ?>'] ?]</a>
+						<a title="Voir le résumé" href="[?= UrlComponent::path(array('action' => 'show'), $<?= $settings['model'] ?>['id']) ?]">[?= $<?= $settings['model'] ?>['<?= $field ?>'] ?]</a>
 					</th>
 <? elseif (!in_array($field, $settings['exclude'])) : ?>
 					<td>[?= $<?= $settings['model'] ?>['<?= $field ?>'] ?]</td>
@@ -64,8 +64,8 @@
 <? endforeach ?>
 					<td>
 						<ul class="actions">
-							<li><a class="sprite icon edit" title="Editer" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/edit/[?= $<?= $settings['model'] ?>['id'] ?]">Editer</a></li>
-							<li><a class="sprite icon delete" title="Supprimer" href="<?= ThisGeneratorHelper::getPath($app, $controller) ?>/delete/[?= $<?= $settings['model'] ?>['id'] ?]">Supprimer</a></li>
+							<li><a class="sprite icon edit" title="Editer" href="[?= UrlComponent::path(array('action' => 'edit'), $<?= $settings['model'] ?>['id']) ?]">Editer</a></li>
+							<li><a class="sprite icon delete" title="Supprimer" href="[?= UrlComponent::path(array('action' => 'delete'), $<?= $settings['model'] ?>['id']) ?]">Supprimer</a></li>
 						</ul>
 					</td>
 				</tr>

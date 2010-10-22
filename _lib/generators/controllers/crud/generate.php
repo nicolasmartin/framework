@@ -1,7 +1,9 @@
 <?php
 	require_once('../../bootstrap.php');
 	
-	$Generator = new GeneratorController('library', 'mod', 'library');
+	$Generator = new GeneratorController('library', 'test', 'library');
+	$Generator->setProtection(false);
+	
 	$Generator->setSettings(array(
 		'model'			=> 'Picture',
 		'collection'	=> 'Pictures',
@@ -25,6 +27,4 @@
 	$Generator->setOverwriteViews(true);
 	$Generator->setOverwritePartials(true);
 	
-	$Generator->setProtection(true);
-
 	$Generator->generateAll();
