@@ -1,6 +1,6 @@
 <?php
 	class UrlComponent extends Component {
-		static function path($path = null) {		
+		static function path($path = null, $id = null) {		
 			$Dispatcher = Dispatcher::getInstance();
 			$default = array(
 				'app' 			=> null,
@@ -29,6 +29,10 @@
 				$path['controller'] 	= @$splits[1];
 				$path['action'] 		= @$splits[2];
 				$path['params'] 		= @implode('/', array_slice($splits, 3));
+			}
+
+			if (empty($path['params']) && $id) {
+				$path['params'] = array($id);
 			}
 
 			$path = array_merge($default, $path);

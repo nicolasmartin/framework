@@ -88,7 +88,24 @@
 				'params' => array('a', 'b')
 				)
 			), '/myapp/newcontroller/index/a/b');
-	
+
+			$this->assertEqual(UrlComponent::path(array(
+				'controller' => 'newcontroller',
+				'params' => 'a'
+				)
+			), '/myapp/newcontroller/index/a');
+			
+			$this->assertEqual(UrlComponent::path(array(
+				'controller' => 'newcontroller',
+				'params' => 'a'
+				), 'b'
+			), '/myapp/newcontroller/index/a');
+
+			$this->assertEqual(UrlComponent::path(array(
+				'controller' => 'newcontroller'
+				), 'b'
+			), '/myapp/newcontroller/index/b');
+
 			$this->assertEqual(UrlComponent::path(array(
 				'controller' => 'newcontroller',
 				'action' => 'newaction'
