@@ -87,7 +87,6 @@ blockquote {
 	margin-left:10px;
 }
 
-/* menus */
 .menu {
 	list-style:none;
 	padding:0;
@@ -112,7 +111,6 @@ blockquote {
 		background:Ivory;
 	}
 	.menu.horizontal {
-		/*overflow:hidden;*/
 		margin:20px 0;
 	}
 		.menu.horizontal li {
@@ -182,7 +180,7 @@ blockquote {
 		display:inline-block;
 		margin:0 3px;
 	}
-	
+
 .pagination {
 	border:0; 
 	margin:0; 
@@ -235,8 +233,7 @@ blockquote {
 		background:Ivory;
 		color:#000;
 	}
-	
-/* Messages */
+
 .message {
 	border:2px solid #000;
 	border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px;
@@ -284,7 +281,6 @@ blockquote {
 		color:#94C500;
 	}
 
-/* Breadcrumbs */ 
 .breadcrumbs {
 	list-style:none; 
 	overflow:hidden; 
