@@ -1,12 +1,13 @@
 <?php
-    function cfirst($string) { 
-        $string = utf8_decode($string);
-        $string = strtolower($string);
-        $string = ucfirst($string);
-        $first = strtr($str{0}, utf8_decode('äâàáåãéèëêòóôõöøìíîïùúûü'),utf8_decode('ÄÂÀÁÅÃÉÈËÊÒÓÔÕÖØÌÍÎÏÙÚÛÜ'));
-        $string = substr_replace($string, $first, 0, 1);
-        return $string; 
-    }
+	function cFirst($string) {
+		$string = utf8_decode(strtolower($string));
+		$replaced = strtr($string, 
+					utf8_decode('äâàáåãéèëêòóôõöøìíîïùúûüýñçþÿæœðø'), 
+					utf8_decode('ÄÂÀÁÅÃÉÈËÊÒÓÔÕÖØÌÍÎÏÙÚÛÜÝÑÇÞÝÆŒÐØ')
+				);
+		$string = substr(($replaced), 0, 1).substr(($string), 1);
+		return utf8_encode($string);
+	}
 
 	function app() {
 		$app = preg_replace('~(/index.php|^/)~', '', $_SERVER['SCRIPT_NAME']);

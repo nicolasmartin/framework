@@ -6,7 +6,7 @@
 			$<?= $settings['model'] ?>->fromArray($this->post);	
 			if ($<?= $settings['model'] ?>->isValid()) {
 				$<?= $settings['model'] ?>->save();
-				FlashComponent::set('success', "<?= ucfirst($settings['singular']) ?> créé<?= $settings['male'] ? '' : 'e' ?>.");
+				FlashComponent::set('success', "<?= cfirst($settings['singular']) ?> créé<?= $settings['male'] ? '' : 'e' ?>.");
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$errors = $<?= $settings['model'] ?>->getErrorStack();

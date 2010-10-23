@@ -1,8 +1,8 @@
-[? 	$this->set('ID', '<?= strtolower($settings['model']) ?>Page'); ?]		 
+[? 	$this->set('ID', "<?= strtolower($settings['model']) ?>Page"); ?]		 
 [? if ($<?= $settings['model'] ?>['id']) {
-	$this->set('TITLE', 'Edition d\'<?= $settings['a'] ?> <?= $settings['singular'] ?>');
+	$this->set('TITLE', "Edition d'<?= $settings['a'] ?> <?= $settings['singular'] ?>");
 } else {
-	$this->set('TITLE', 'Ajout d\'<?= $settings['a'] ?> <?= $settings['singular'] ?>');
+	$this->set('TITLE', "Ajout d'<?= $settings['a'] ?> <?= $settings['singular'] ?>");
 } ?]
 	 
 <div id="content">
@@ -13,7 +13,7 @@
 		<h1>Ajout d'<?= $settings['a'] ?> <?= $settings['singular'] ?></h1>
 		[? endif ?]
 
-		[?= $this->partial("flash") ?]
+		[?= $this->partial('flash') ?]
 
 		<ul class="tools">
 			<li><a class="button back" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
@@ -34,7 +34,7 @@
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
 			<div class="[?= ++$i % 2 ? 'odd': 'even' ?] [?= FormHelper::getHasErrorClass('<?= $field ?>', $<?= $settings['model'] ?>, false); ?]">
-				<label for="<?= $field ?>"><?= ucfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></label>
+				<label for="<?= $field ?>"><?= cfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></label>
 				<input size="40" type="text" id="<?= $field ?>" name="<?= $field ?>" value="[?= addslashes($<?= $settings['model'] ?>['<?= $field ?>']) ?]" [?= FormHelper::getErrorClass('<?= $field ?>', $<?= $settings['model'] ?>); ?]/>
 				<small class="hint">Obligatoire</small>
 				[?= FormHelper::displayErrors('<?= $field ?>', $<?= $settings['model'] ?>) ?]

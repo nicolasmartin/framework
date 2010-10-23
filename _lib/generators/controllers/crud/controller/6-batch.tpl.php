@@ -1,16 +1,17 @@
 
 	// Batch action
 	public function batch() {
-		$id 	= $this->post['id'];
-		$action = $this->post['action'];
-
-		if (!$action) {
+		if (!$this->post['action']) {
 			FlashComponent::set('error', "Une action doit être choisie.");
 			$this->redirect(array('action' => 'index'));
+		} else {
+    		$action = $this->post['action'];		    
 		}
-		if (!count($id)) {
-			FlashComponent::set('error', "Un<?= $settings['male'] ? '' : 'e' ?> ou plusieurs <?= ucfirst($settings['plural']) ?> doivent être coché<?= $settings['male'] ? '' : 'e' ?>s.");
+		if (!isset($this->post['id'])) {
+			FlashComponent::set('error', "Au moins un éléments doit être coché.");
 			$this->redirect(array('action' => 'index'));
+		} else {
+		    $id = $this->post['id'];
 		}
 
 		switch ($action) {
@@ -22,7 +23,7 @@
 				foreach ($Items as $Item) {
 					$Item->delete();
 				}
-				FlashComponent::set('success', pluralize(count($id), "{<?= ucfirst($settings['singular']) ?>|<?= ucfirst($settings['plural']) ?>} effacé<?= $settings['male'] ? '' : 'e' ?>{s}"));
+				FlashComponent::set('success', pluralize(count($id), "{<?= cfirst($settings['singular']) ?>|<?= cfirst($settings['plural']) ?>} effacé<?= $settings['male'] ? '' : 'e' ?>{s}"));
 			break;
 		}
 		$this->redirect(array('action' => 'index'));

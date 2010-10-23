@@ -1,11 +1,11 @@
-[? $this->set('ID',    '<?= strtolower($settings['model']) ?>Page') ?]
-[? $this->set('TITLE', 'Résumé d\'<?= $settings['a'] ?> <?= $settings['singular'] ?>') ?]
+[? $this->set('ID',    "<?= strtolower($settings['model']) ?>Page") ?]
+[? $this->set('TITLE', "Résumé d'<?= $settings['a'] ?> <?= $settings['singular'] ?>") ?]
 
 <div id="content">
 	<div id="main" class="<?= strtolower($settings['collection']) ?>">
 		<h1>Résumé d'<?= $settings['a'] ?> <?= $settings['singular'] ?></h1>
 
-		[?= $this->partial("flash") ?]
+		[?= $this->partial('flash') ?]
 
 		<ul class="tools">
 			<li><a class="button back" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
@@ -22,7 +22,7 @@
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
 				<tr class="[?= ++$i % 2 ? 'odd': 'even' ?]">
-					<th scope="row"><?= ucfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></th>
+					<th scope="row"><?= cfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></th>
 					<td>[?= $<?= $settings['model'] ?>['<?= $field ?>'] ?]</td>
 				</tr>
 <? endif ?>

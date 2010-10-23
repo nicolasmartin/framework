@@ -1,12 +1,13 @@
-[? $this->set('ID',    '<?= strtolower($settings['model']) ?>Page') ?]
-[? $this->set('TITLE', 'Identification') ?]
+[? $this->set('ID',    "<?= strtolower($settings['model']) ?>Page") ?]
+[? $this->set('TITLE', "Identification") ?]
 
 <div id="content">
 	<div id="main">
 		<h1>Accès privé</h1>
 		
-		[?= $this->partial("flash") ?][? $i = 0 ?]
-
+		[?= $this->partial('flash') ?]
+		
+		[? $i = 0 ?]
 		<div class="form">
 			<form action="[?= UrlComponent::path(array('action' => 'login')) ?]" method="post">
 			<fieldset>

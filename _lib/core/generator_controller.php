@@ -198,7 +198,7 @@
 			$Base->set('app', 			$this->getApp());
 			$Base->set('controller', 	$this->getController());
 			$Base->set('model', 		$this->getModel());
-			$View->set('settings', 		$this->getSettings());
+			$Base->set('settings', 		$this->getSettings());
 			$Base->set('class', 		$class);
 			
 			$generated = $Base->render();

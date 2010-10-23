@@ -1,11 +1,11 @@
-[? $this->set('ID',    '<?= strtolower($settings['model']) ?>Page') ?]
-[? $this->set('TITLE', 'Liste des <?= $settings['plural'] ?>') ?]
+[? $this->set('ID',    "<?= strtolower($settings['model']) ?>Page") ?]
+[? $this->set('TITLE', "Liste des <?= $settings['plural'] ?>") ?]
 
 <div id="content">
 	<div id="main" class="<?= strtolower($settings['collection']) ?>">
 		<h1>Liste des <?= $settings['plural'] ?></h1>
 			
-		[?= $this->partial("flash") ?]
+		[?= $this->partial('flash') ?]
 
 		<ul class="tools">
 			<li><a class="sprite prefix add" href="[?= UrlComponent::path(array('action' => 'add')) ?]">Ajouter <?= $settings['a'] ?><?= $settings['singular'] ?></a></li>
@@ -29,7 +29,7 @@
 					<th scope="col"><input id="checkall" type="checkbox" /></th>
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
-					<th scope="col">[?= UrlHelper::orderBy('<?= $field ?>', "<?= ucfirst(ThisGeneratorHelper::field($field, $settings['map']))?>") ?]</th>
+					<th scope="col">[?= UrlHelper::orderBy('<?= $field ?>', "<?= cfirst(ThisGeneratorHelper::field($field, $settings['map']))?>") ?]</th>
 <? endif ?>
 <? endforeach ?>
 					<th scope="col">&nbsp;</th>

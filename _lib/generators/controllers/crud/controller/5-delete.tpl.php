@@ -7,7 +7,7 @@
 				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
 			} else {
 				$<?= $settings['model'] ?>->delete();
-				FlashComponent::set('success', "<?= ucfirst($settings['singular']) ?> supprimé<?= $settings['male'] ? '' : 'e' ?>.");
+				FlashComponent::set('success', "<?= cfirst($settings['singular']) ?> supprimé<?= $settings['male'] ? '' : 'e' ?>.");
 			}
 			$this->redirect(array('action' => 'index'));
 		} else {

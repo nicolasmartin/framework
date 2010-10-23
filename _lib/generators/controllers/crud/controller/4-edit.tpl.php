@@ -10,7 +10,7 @@
 			$<?= $settings['model'] ?>->fromArray($this->post);
 			if ($<?= $settings['model'] ?>->isValid()) {
 				$<?= $settings['model'] ?>->save();
-				FlashComponent::set('success', "<?= ucfirst($settings['singular']) ?> édité<?= $settings['male'] ? '' : 'e' ?>.");
+				FlashComponent::set('success', "<?= cfirst($settings['singular']) ?> édité<?= $settings['male'] ? '' : 'e' ?>.");
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$errors = $<?= $settings['model'] ?>->getErrorStack();
