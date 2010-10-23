@@ -530,7 +530,7 @@ table {
 	table tr:hover.even td {
 		background:Ivory;
 	}
-	table tr.selected tr,
+	table tr.selected th,
 	table tr.selected td {
 		background:Ivory !important;
 	}
