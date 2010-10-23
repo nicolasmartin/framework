@@ -6,6 +6,6 @@
 
 	require_once LIB.'/core/_includes.php';
 	
-	$Generator = new GeneratorFramework();
-	$Generator->setOverwriteFramework(true);
+	$Generator = new GeneratorStructure();
+	$Generator->setOverwriteStructure(true);
 	$Generator->generateAll();
