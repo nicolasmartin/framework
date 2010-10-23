@@ -5,11 +5,13 @@
     <title><?= $this->slot('TITLE') ?></title>
     <meta name="description" content="<?= $this->slot('DESCRIPTION') ?>">
 	<meta name="keywords" content="<?= $this->slot('KEYWORDS') ?>">
-    <link type="text/css" rel="stylesheet" href="<?= base() ?>/css/styles.css" media="screen, print">
     <link type="image/png" rel="icon" href="<?= base() ?>/img/favicon.png">
     <link type="image/png" rel="apple-touch-icon" href="<?= base() ?>/img/favicon-apple.png">
     <link type="application/rss+xml" rel="alternate" href="<?= base() ?>/rss" title="Flux Rss">
+    <link type="text/css" rel="stylesheet" href="<?= base() ?>/css/styles.css" media="screen, print">
+    <?= $this->slot('STYLES') ?>
     <script src="<?= base() ?>/js/scripts.combined.js"></script>
+    <?= $this->slot('SCRIPTS') ?>
 </head>
 
 <body<?= $this->slot('ID', '', ' id="%s"') ?>>
