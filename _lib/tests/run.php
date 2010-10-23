@@ -7,6 +7,7 @@
 			$this->addFile(dirname(__FILE__).'/filters.php');
             $this->addFile(dirname(__FILE__).'/i18n.php');
             $this->addFile(dirname(__FILE__).'/urlComponent.php');
+            $this->addFile(dirname(__FILE__).'/formHelper.php');
 			// Ajouter les tests ici
 		}
 	}
