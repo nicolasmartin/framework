@@ -1,11 +1,21 @@
 <?php
-	define('ROOT', dirname(__FILE__).'/../');
-	require_once ROOT.'/_lib/core/_includes.php';
-
-	$Bootstrap = Bootstrap::getInstance();
-	$Bootstrap->disableDispatch();
+    define('ROOT',      realpath(dirname(__FILE__).'/../'));
+    define('LIB', 	    ROOT.'/_lib');
+    define('MODELS',	ROOT.'/models');
 	
-	include 'index.php';
+    require_once LIB.'/core/_includes.php';
+    require_once LIB.'/vendors/doctrine/Doctrine.php';
+    require_once ROOT.'/configs/env.php';
+
+    $Bootstrap = Bootstrap::getInstance();
+    $Bootstrap->setEnv(ENV);
+
+    $Bootstrap->loadConfigs(ROOT.'/configs');
+
+    $Bootstrap->addModelPath(MODELS.'/generated');
+    $Bootstrap->addModelPath(MODELS);
+
+    $Bootstrap->setDoctrine();
 ?>
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>' ?> 
 <urlset
@@ -15,16 +25,7 @@
 		http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 	<url>
-	  <loc>http://domain.com/</loc>
+	  <loc><?php echo Config::get('project.url') ?></loc>
 	  <lastmod><?php echo date(DATE_ISO8601, strtotime('-2 day')) ?></lastmod>
 	</url>
-	<url>
-	  <loc>http://domain.com/en/</loc>
-	  <lastmod><?php echo date(DATE_ISO8601, strtotime('-2 day')) ?></lastmod>
-	</url>
-	<url>
-	  <loc>http://domain.com/fr/</loc>
-	  <lastmod><?php echo date(DATE_ISO8601, strtotime('-2 day')) ?></lastmod>
-	</url>
-
 </urlset>
