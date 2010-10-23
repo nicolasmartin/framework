@@ -7,8 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base() ?>/js/superfish/superfish.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<?= base() ?>/js/yui-editor/skins/default/skin.css" media="screen">
     <?= $this->slot('STYLES') ?>
-    <script src="<?= base() ?>/js/scripts.combined.js"></script>
-    <script src="<?= base() ?>/js/superfish/superfish.js"></script>
+    <script src="<?= base() ?>/js/scripts.js"></script>
     <?= $this->slot('SCRIPTS') ?>
 </head>
 
@@ -29,7 +28,6 @@
 		dropShadows:	false,
 		disableHI:  	false     	
 	});
-	$('.editor').yuiEditor();
 </script>
 </body>
 </html>

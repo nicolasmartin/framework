@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?= base() ?>/css/styles.css">
     <link rel="stylesheet" href="<?= base() ?>/js/jqtouch/jqtouch.min.css">
     <link rel="stylesheet" href="<?= base() ?>/js/jqtouch/themes/jqt/theme.min.css">
-    <script src="<?= base() ?>/js/scripts.combined.js"></script>
+    <script src="<?= base() ?>/js/scripts.js"></script>
     <script>
 	var jQT = new $.jQTouch({
 		addGlossToIcon: true,

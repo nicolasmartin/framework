@@ -10,7 +10,7 @@
     <link type="application/rss+xml" rel="alternate" href="<?= base() ?>/rss" title="Flux Rss">
     <link type="text/css" rel="stylesheet" href="<?= base() ?>/css/styles.css" media="screen, print">
     <?= $this->slot('STYLES') ?>
-    <script src="<?= base() ?>/js/scripts.combined.js"></script>
+    <script src="<?= base() ?>/js/scripts.js"></script>
     <?= $this->slot('SCRIPTS') ?>
 </head>
 
