@@ -17,6 +17,13 @@
 		
 		'cache.pictures'	=> true,
 		'code.xhtml'		=> true,
+		
+		'date.short' 		=> '%d/%m/%Y',
+		'date.medium' 		=> '%a %d %b %y',
+		'date.long'			=> '%A %d %B %Y',
+		'datetime.short' 	=> '%d/%m/%Y %H:%M',
+		'datetime.medium' 	=> '%a %d %b %y, %H:%M',
+		'datetime.long'		=> '%A %d %B %Y, %H:%M',
 	);
 
 	// Développement ---------------------------------------------------------
