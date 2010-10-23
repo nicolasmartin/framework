@@ -16,6 +16,8 @@
 			'this' 			=> "cet ",
 			'the' 			=> "l'",
 			'a' 			=> "un ",
+			'exclude'		=> array(),
+			'map'			=> array(),
 		);
 		protected $exclude = array(
 			'id',
@@ -83,7 +85,7 @@
 		}
 		
 		function setSettings($settings = array()) {
-			$this->settings = array_merge(
+			$this->settings = array_extend(
 				$this->settings,
 				$settings
 			);
@@ -94,7 +96,7 @@
 		}
 		
 		function setExclude($exclude = array()) {
-			$this->exclude = array_merge(
+			$this->exclude = array_extend(
 				$this->exclude,
 				$exclude
 			);

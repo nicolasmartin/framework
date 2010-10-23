@@ -1,11 +1,12 @@
 <?php
 	function cFirst($string) {
-		$string = utf8_decode(strtolower($string));
-		$replaced = strtr($string, 
-					utf8_decode('äâàáåãéèëêòóôõöøìíîïùúûüýñçþÿæœðø'), 
-					utf8_decode('ÄÂÀÁÅÃÉÈËÊÒÓÔÕÖØÌÍÎÏÙÚÛÜÝÑÇÞÝÆŒÐØ')
-				);
-		$string = substr(($replaced), 0, 1).substr(($string), 1);
+		$string = utf8_decode($string);
+		$string = strtolower($string);
+		$first  = strtr($string{0}, 
+			utf8_decode('äâàáåãéèëêòóôõöøìíîïùúûüýñçþÿæœðø'), 
+			utf8_decode('ÄÂÀÁÅÃÉÈËÊÒÓÔÕÖØÌÍÎÏÙÚÛÜÝÑÇÞÝÆŒÐØ')
+		);
+		$string = ucfirst($first).substr($string, 1);
 		return utf8_encode($string);
 	}
 

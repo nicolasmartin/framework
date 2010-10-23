@@ -15,8 +15,8 @@
 
 		[?= $this->partial('flash') ?]
 
-		<ul class="tools">
-			<li><a class="button back" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
+		<ul class="toolbar">
+			<li><a class="sprite prefix back" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
 		</ul>
 
 		[? $i = 0 ?]

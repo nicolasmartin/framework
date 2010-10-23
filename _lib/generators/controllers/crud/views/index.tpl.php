@@ -7,7 +7,7 @@
 			
 		[?= $this->partial('flash') ?]
 
-		<ul class="tools">
+		<ul class="toolbar">
 			<li><a class="sprite prefix add" href="[?= UrlComponent::path(array('action' => 'add')) ?]">Ajouter <?= $settings['a'] ?><?= $settings['singular'] ?></a></li>
 		</ul>
 
