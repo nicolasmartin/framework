@@ -16,14 +16,12 @@
 			'this' 			=> "cet ",
 			'the' 			=> "l'",
 			'a' 			=> "un ",
-			'exclude'		=> array(),
-			'map'			=> array(),
 		);
 		protected $exclude = array(
 			'id',
 			'slug',
-			'created_by',
-			'updated_by',
+			'created_at',
+			'updated_at',
 		);
 		protected $mapping = array(
 			'name'			=> "nom",
@@ -39,8 +37,8 @@
 			'path'			=> "chemin",
 			'width'			=> "largeur",
 			'height'		=> "hauteur",
-			'created_by'	=> "créé",
-			'updated_by'	=> "mis à jour",
+			'created_at'	=> "créé",
+			'updated_at'	=> "mis à jour",
 		);
 				
 		function __construct($app = null, $controller = null, $model = null, $path = '.', $settings = array()) {
@@ -100,7 +98,6 @@
 				$this->exclude,
 				$exclude
 			);
-			$this->settings['exclude'] = $this->exclude;
 		}
 		
 		function getExclude() {
@@ -108,11 +105,10 @@
 		}
 		
 		function setMapping($mapping = array()) {
-			$this->mapping = array_merge(
+			$this->mapping = array_extend(
 				$this->mapping,
 				$mapping
 			);
-			$this->settings['map'] = $this->mapping;
 		}
 		
 		function getMapping() {
@@ -173,7 +169,14 @@
 			$this->generatePartials();
 		}
 		
+		function buildSettings() {
+			$this->settings['map'] = $this->mapping;			
+			$this->settings['exclude'] = $this->exclude;
+		}
+		
 		function generateController() {
+			$this->buildSettings();
+			
 			$template_path = $this->getPath().'/controller';
 			$templates = $this->getTemplates($template_path);
 			$class = '';
@@ -225,6 +228,8 @@
 		}
 		
 		function generateViews() {
+			$this->buildSettings();
+
 			$template_path = $this->getPath().'/views';
 			$templates = $this->getTemplates($template_path);
 
@@ -266,6 +271,8 @@
 		}
 
 		function generatePartials() {
+			$this->buildSettings();
+
 			$template_path = $this->getPath().'/partials';
 			$templates = $this->getTemplates($template_path);
 
