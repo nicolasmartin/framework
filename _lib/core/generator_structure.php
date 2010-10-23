@@ -1,5 +1,5 @@
 <?php
-	class GeneratorStructure {
+	class GeneratorStructure extends Generator {
 		protected $path;
 		protected $overwriteStructure = false;
 				

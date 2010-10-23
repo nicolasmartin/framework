@@ -255,7 +255,7 @@
 				}
 				
 				if (file_exists($path) && $this->getOverwriteViews() === false) {
-				$this->debug('La vue existe déjà. '.$path.' est ignoré.');		
+				    $this->debug('La vue existe déjà. '.$path.' est ignoré.');		
 				} else {
 					$this->debug('Création de la vue '.$path.'.');
 					file_put_contents($path, $generated);
@@ -268,7 +268,7 @@
 			$templates = $this->getTemplates($template_path);
 
 			$this->debug('---------------------------------');
-			$this->debug('Partiels');
+			$this->debug('Partiels pour le controller '.$this->getController());
 			$this->debug('---------------------------------');
 				
 			foreach($templates as $file) {

@@ -22,6 +22,11 @@
 		}
 
 		protected function getTemplates($path) {
+            if (!file_exists($path)) {
+                $this->debug('Pas de dossier '.$path.' à scanner.');
+                return array();
+            }
+            
 			$templates = array();
 			
 			if (!is_dir($path)) {
@@ -41,6 +46,11 @@
 		
 		
 		protected function copy($from_dir, $to_dir, $overide = false) {
+            if (!file_exists($from_dir)) {
+                $this->debug('Pas de dossier '.$from_dir.' à copier.');
+                return false;
+            }
+            
             $files = read_folder($from_dir);
             
             foreach($files as $file) {

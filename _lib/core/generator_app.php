@@ -80,7 +80,7 @@
 			$this->debug('---------------------------------');
 
             $from   = $this->getPath().'/app';
-            $to     = ROOT.'/app';
+            $to     = ROOT.'/apps/'.$this->getApp();
             
             $this->copy($from, $to, $this->getOverwriteApp());
 		}
@@ -91,7 +91,7 @@
 			$this->debug('---------------------------------');
 
             $from   = $this->getPath().'/www';
-            $to     = ROOT.'/www';
+            $to     = ROOT.'/www/'.$this->getApp();
             
             $this->copy($from, $to, $this->getOverwriteWww());
 		}
