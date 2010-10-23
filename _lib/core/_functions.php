@@ -269,7 +269,7 @@
     				if (is_dir($path.'/'.$item)) {
     					$content = array_merge($content, read_folder($path.'/'.$item));
     				} else {
-    					$content[] = preg_replace('~^(.*?)/~', '', $path.'/'.$item);
+    					$content[] = preg_replace('~^(\./)?(.*?)/~', '', $path.'/'.$item);
     				}
     			}
     		}

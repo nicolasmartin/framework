@@ -1,13 +1,13 @@
 <?php
-	class GeneratorApp {
+	class GeneratorApp extends Generator {
 		protected $app;
 		protected $path;
 		protected $protection 	= true;
-		protected $verbose 		= true;
 		protected $settings 	= array();
 
-		protected $overwriteApp	= false;
-		protected $overwriteWww	= false;
+		protected $overwriteApp	    = false;
+        protected $overwriteWww     = false;
+        protected $overwriteModels  = false;
 				
 		function __construct($app, $path = '.', $settings = array()) {
 			$this->setApp($app);
@@ -55,21 +55,22 @@
 		function setOverwriteWww($overwrite) {
 			$this->overwriteWww = $overwrite;
 		}
-		
+
 		function getOverwriteWww() {
 			return $this->overwriteApp;
 		}
 
-		function setVerbose($verbose) {
-			$this->verbose = $verbose;	
+		function setOverwriteModels($overwrite) {
+			$this->overwriteModels = $overwrite;
 		}
 
-		function getVerbose() {
-			return $this->verbose;	
+		function getOverwriteModels() {
+			return $this->overwriteModels;
 		}
-
+		
 		function generateAll() {
 			$this->generateApp();
+			$this->generateModels();
 			$this->generateWww();
 		}
 		
@@ -78,23 +79,10 @@
 			$this->debug('App '.$this->getApp());
 			$this->debug('---------------------------------');
 
-			$templates = read_folder('app');
-
-			foreach($templates as $template) {
-				$from 	= $this->getPath().'/app/'.$template;
-				$to 	= ROOT.'/apps/'.$this->getApp().'/'.$template;
-				
-				if (!file_exists(dirname($to))) {
-					mkdir(dirname($to), 0700, true);
-				}
-				
-				if (file_exists($to) && $this->getOverwriteApp() === false) {
-					$this->debug('Le fichier existe déjà. '.$to.' est ignoré.');	
-				} else {
-					$this->debug('Création du fichier '.$to.'.');
-					copy($from, $to);
-				}
-			}
+            $from   = $this->getPath().'/app';
+            $to     = ROOT.'/app';
+            
+            $this->copy($from, $to, $this->getOverwriteApp());
 		}
 		
 		function generateWww() {
@@ -102,34 +90,21 @@
 			$this->debug('WWW '.$this->getApp());
 			$this->debug('---------------------------------');
 
-			$templates = read_folder('www');
-
-			foreach($templates as $template) {
-				$from 	= $this->getPath().'/www/'.$template;
-				$to 	= ROOT.'/www/'.$this->getApp().'/'.$template;
-				
-				if (!file_exists(dirname($to))) {
-					mkdir(dirname($to), 0700, true);
-				}
-				
-				if (file_exists($to) && $this->getOverwriteWww() === false) {
-					$this->debug('Le fichier existe déjà. '.$to.' est ignoré.');	
-				} else {
-					$this->debug('Création du fichier '.$to.'.');
-					copy($from, $to);
-				}
-			}
+            $from   = $this->getPath().'/www';
+            $to     = ROOT.'/www';
+            
+            $this->copy($from, $to, $this->getOverwriteWww());
 		}
+		
+		function generateModels() {
+			$this->debug('---------------------------------');
+			$this->debug('Models '.$this->getApp());
+			$this->debug('---------------------------------');
 
-		private function debug($string) {
-			 if(php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR'])) {
-				  $nl = "\n";
-			 } else {
-				  $nl = "<br />";
-			 }
-			 if ($this->getVerbose()) {
-				 echo str_replace(realpath($_SERVER['DOCUMENT_ROOT']), '', $string), $nl;
-			 }
+            $from   = $this->getPath().'/models';
+            $to     = ROOT.'/models';
+            
+            $this->copy($from, $to, $this->getOverwriteModels());
 		}
 	}
 

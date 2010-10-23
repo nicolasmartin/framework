@@ -12,6 +12,7 @@
     include_once dirname(__FILE__).'/bootstrap.php';
     include_once dirname(__FILE__).'/except.php';
 
-    include_once dirname(__FILE__).'/generator_framework.php';
-    include_once dirname(__FILE__).'/generator_controller.php';
+    include_once dirname(__FILE__).'/generator.php';
+    include_once dirname(__FILE__).'/generator_structure.php';
     include_once dirname(__FILE__).'/generator_app.php';
+    include_once dirname(__FILE__).'/generator_controller.php';

@@ -1,14 +1,13 @@
 <?php
-	class GeneratorController {
+	class GeneratorController extends Generator {
 		protected $app, $controller, $model;
 		protected $protection 			= true;
-		protected $verbose 				= true;
 		protected $packs 				= array();
 		protected $overwriteController 	= false;
 		protected $overwriteViews 		= false;
 		protected $overwritePartials 	= false;
 
-		protected $settings 	= array(
+		protected $settings = array(
 			'model'			=> "Item",
 			'collection'	=> "Items",
 			'singular'		=> "élément",
@@ -117,6 +116,7 @@
 		function getMapping() {
 			return $this->mapping;
 		}
+		
 		function setProtection($protection) {
 			$this->protection = $protection;
 		}
@@ -154,14 +154,6 @@
 		function getOverwritePartials() {
 			return $this->overwritePartials;
 		}
-		
-		function setVerbose($verbose) {
-			$this->verbose = $verbose;	
-		}
-
-		function getVerbose() {
-			return $this->verbose;	
-		}
 			
 		function addPack($pack) {
 			$this->packs[$pack] = $pack;
@@ -180,7 +172,7 @@
 		}
 		
 		function generateController() {
-			$template_path = $this->getPath().'/controllers';
+			$template_path = $this->getPath().'/controller';
 			$templates = $this->getTemplates($template_path);
 			$class = '';
 			
@@ -310,47 +302,22 @@
 				}
 			}
 		}
-
-		private function getTemplates($path) {
-			$templates = array();
-			
-			if (!is_dir($path)) {
-			    return $templates;
-			}
-			
-			$handle = opendir($path);
-			while ($file = readdir($handle)) {
-				if (strpos($file, '.tpl.php') !== false && $file != 'base.tpl.php') {
-					$templates[] = $file;
-				}
-			}
-			closedir($handle);
-
-			foreach($this->packs as $pack) {
+		
+		function getTemplates($path) {
+		    $templates = parent::getTemplates($path);
+		    
+		    foreach($this->packs as $pack) {
 				$path = $path.'/'.$pack;
 				if (is_dir($path)) {
-					$handle = opendir($path);
-					while ($file = readdir($handle)) {
-						if (strpos($file, '.tpl.php') !== false) {
-							$templates[] = basename($path).'/'.$file;
-						}
+				    $pack_templates = parent::getTemplates($path);
+				    
+					foreach($pack_templates as $template) {
+    					$templates[] = $pack.'/'.$template;					    
 					}
-					closedir($handle);
 				}
 			}
-
+			
 			return $templates;
-		}
-		
-		private function debug($string) {
-			 if(php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR'])) {
-				  $nl = "\n";
-			 } else {
-				  $nl = "<br />";
-			 }
-			 if ($this->getVerbose()) {
-				 echo str_replace(realpath($_SERVER['DOCUMENT_ROOT']), '', $string), $nl;
-			 }
 		}
 	}
 

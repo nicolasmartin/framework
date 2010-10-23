@@ -18,7 +18,7 @@ class DefaultController extends Controller {
 
 	// dumpData
 	public function dumpData() {
-		Doctrine::dumpData(MODELS.'/fixtures/dev/', 1);
+		Doctrine::dumpData(MODELS.'/fixtures/dev', 1);
 		$this->dumpFiles('Picture');
 		$this->dumpFiles('File');
 		FlashComponent::set('info', 'Dump Data terminé.');
@@ -27,7 +27,7 @@ class DefaultController extends Controller {
 
 	// loadData		
 	public function loadData() {
-		Doctrine::LoadData(MODELS.'/fixtures/dev/');	
+		Doctrine::LoadData(MODELS.'/fixtures/dev');	
 		$this->loadFiles('Picture');
 		$this->loadFiles('File');
 		FlashComponent::set('info', 'Load Data terminé.');
@@ -36,7 +36,7 @@ class DefaultController extends Controller {
 
 	// generateModels
 	public function generateModels() {
-		Doctrine_Core::generateModelsFromYaml(MODELS.'/schema/', MODELS, array( 
+		Doctrine_Core::generateModelsFromYaml(MODELS.'/schema', MODELS, array( 
 			'generateTableClasses' => true 
 		));
 		FlashComponent::set('info', 'Generate Models terminé.');
@@ -86,7 +86,7 @@ class DefaultController extends Controller {
 			'pathField'			=> 'path',
 			'findMethod' 		=> 'findAll',
 			'uploadMethod' 		=> 'upload',
-			'fixturePath'		=> MODELS.'/fixtures/dev/files/',
+			'fixturePath'		=> MODELS.'/fixtures/dev/files',
 			'uploadPath'		=> ROOT.'www/'.Config::get('uploads.path'),
 		);
 		$options = array_merge($default, $options);
@@ -107,7 +107,7 @@ class DefaultController extends Controller {
 			'folder' 			=> 'uploads',
 			'pathField'			=> 'path',
 			'findMethod' 		=> 'findAll',
-			'fixturePath'		=> MODELS.'/fixtures/dev/files/',
+			'fixturePath'		=> MODELS.'/fixtures/dev/files',
 			'uploadPath'		=> ROOT.'www/'.Config::get('uploads.path'),
 		);
 		$options = array_merge($default, $options);
