@@ -1,4 +1,18 @@
 <?php
+	function contains($pattern, $string) {
+		$s = $e = '\b';
+		if (substr($pattern, 0, 1) == '*') {
+			$pattern = preg_replace('~^[*]~', '', $pattern);
+			$s = '';
+		}
+		if (substr($pattern, -1) == '*') {
+			$pattern = preg_replace('~[*]$~', '', $pattern);			
+			$e = '';
+		}
+		$pattern = preg_replace('~[*]~', '.*', $pattern);		
+		return preg_match('~'.$s.$pattern.$e.'~', $string);	;
+	}
+	
 	function cFirst($string) {
 		$string = utf8_decode($string);
 		$string = strtolower($string);
