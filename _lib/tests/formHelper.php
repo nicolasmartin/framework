@@ -50,39 +50,39 @@
 		public function testInputText() {
 		    $this->assertEqual(
 		        FormHelper::text('name', 'value', array('class' => 'myClass')),
-		        '<input type="text" id="name" name="name" class="myClass" value="value">');
+		        '<input type="text" name="name" class="myClass" value="value" id="name">');
 		}
 
 		public function testInputPassword() {
 		    $this->assertEqual(
 		        FormHelper::password('name', 'value', array('class' => 'myClass')),
-		        '<input type="password" id="name" name="name" class="myClass" value="value">');
+		        '<input type="password" name="name" class="myClass" value="value" id="name">');
 		}
 
 		public function testTextarea() {
 		    $this->assertEqual(
 		        FormHelper::textarea('name', 'value', array('class' => 'myClass')),
-		        '<textarea id="name" name="name" class="myClass">value</textarea>');
+		        '<textarea name="name" class="myClass" id="name">value</textarea>');
 		}
 
 		public function testSelect() {
 		    $this->assertEqual(
 		        FormHelper::select('name', array('1' => 'un', '2' => 'deux'), '1', array('class' => 'myClass')),
-		        '<select id="name" name="name" class="myClass">'.
+		        '<select name="name" class="myClass" id="name">'.
 		        '<option value="1" selected="selected">un</option>'.
 		        '<option value="2">deux</option>'.
 		        '</select>');
 
 		    $this->assertEqual(
 		        FormHelper::select('name', array('1' => 'un', '2' => 'deux'), array('1', '2'), array('class' => 'myClass')),
-		        '<select id="name" name="name" class="myClass">'.
+		        '<select name="name" class="myClass" id="name">'.
 		        '<option value="1" selected="selected">un</option>'.
 		        '<option value="2" selected="selected">deux</option>'.
 		        '</select>');
 		        
 		    $this->assertEqual(
 		        FormHelper::select('name', array('1' => 'un', '2' => 'deux'), array('1', '2'), array('empty' => '-- select --', 'class' => 'myClass')),
-		        '<select id="name" name="name" class="myClass">'.
+		        '<select name="name" class="myClass" id="name">'.
 		        '<option value="">-- select --</option>'.
 		        '<option value="1" selected="selected">un</option>'.
 		        '<option value="2" selected="selected">deux</option>'.
@@ -136,13 +136,13 @@
 		public function testHidden() {
 		    $this->assertEqual(
 		        FormHelper::hidden('name', 'value', array('class' => 'myClass')),
-		        '<input type="hidden" id="name" name="name" class="myClass" value="value">');		    
+		        '<input type="hidden" name="name" class="myClass" value="value" id="name">');		    
 		}
 		
 		public function testDate() {
 		    $this->assertEqual(
 		        FormHelper::date('name', null , range('2010', '2015'), array('class' => 'myClass')),
-		        '<select id="name_day" name="name_day" class="myClass">'.
+		        '<select name="name_day" class="myClass" id="name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
 		        '<option value="03">03</option>'.
@@ -175,7 +175,7 @@
 		        '<option value="30">30</option>'.
 		        '<option value="31">31</option>'.
 		        '</select>'.
-		        '<select id="name_month" name="name_month" class="myClass">'.
+		        '<select name="name_month" class="myClass" id="name_month">'.
 		        '<option value="01">janvier</option>'.
 		        '<option value="02">février</option>'.
 		        '<option value="03">mars</option>'.
@@ -189,7 +189,7 @@
 		        '<option value="11">novembre</option>'.
 		        '<option value="12">décembre</option>'.
 		        '</select>'.
-		        '<select id="name_year" name="name_year" class="myClass">'.
+		        '<select name="name_year" class="myClass" id="name_year">'.
 		        '<option value="2010">2010</option>'.
 		        '<option value="2011">2011</option>'.
 		        '<option value="2012">2012</option>'.
@@ -200,7 +200,7 @@
 
 		    $this->assertEqual(
 		        FormHelper::date('name', '2010-10-24 10:00:00' , range('2010', '2015'), array('class' => 'myClass')),
-		        '<select id="name_day" name="name_day" class="myClass">'.
+		        '<select name="name_day" class="myClass" id="name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
 		        '<option value="03">03</option>'.
@@ -233,7 +233,7 @@
 		        '<option value="30">30</option>'.
 		        '<option value="31">31</option>'.
 		        '</select>'.
-		        '<select id="name_month" name="name_month" class="myClass">'.
+		        '<select name="name_month" class="myClass" id="name_month">'.
 		        '<option value="01">janvier</option>'.
 		        '<option value="02">février</option>'.
 		        '<option value="03">mars</option>'.
@@ -247,7 +247,7 @@
 		        '<option value="11">novembre</option>'.
 		        '<option value="12">décembre</option>'.
 		        '</select>'.
-		        '<select id="name_year" name="name_year" class="myClass">'.
+		        '<select name="name_year" class="myClass" id="name_year">'.
 		        '<option value="2010" selected="selected">2010</option>'.
 		        '<option value="2011">2011</option>'.
 		        '<option value="2012">2012</option>'.

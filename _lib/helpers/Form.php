@@ -3,14 +3,16 @@ class FormHelper extends Helper {
     
     static function text($name, $value='', $attributes = array()) {
         $attributes['value'] = $value;
-        $html = '<input type="text" id="'.$name.'" name="'.$name.'" '.self::attributes($attributes);
+        $attributes['id'] = isset($attributes['id']) ? $attributes['id'] : $name;
+        $html = '<input type="text" name="'.$name.'" '.self::attributes($attributes);
         $html .= Helper::xhtml().'>';
         return $html;
     }
 
     static function password($name, $value='', $attributes = array()) {
         $attributes['value'] = $value;
-        $html = '<input type="password" id="'.$name.'" name="'.$name.'" '.self::attributes($attributes);
+        $attributes['id'] = isset($attributes['id']) ? $attributes['id'] : $name;
+        $html = '<input type="password" name="'.$name.'" '.self::attributes($attributes);
         $html .= Helper::xhtml().'>';
         return $html;
     }
@@ -65,24 +67,27 @@ class FormHelper extends Helper {
     
     static function hidden($name, $value='', $attributes = array()) {
         $attributes['value'] = $value;
-        $html = '<input type="hidden" id="'.$name.'" name="'.$name.'" '.self::attributes($attributes);
+        $attributes['id'] = isset($attributes['id']) ? $attributes['id'] : $name;
+        $html = '<input type="hidden" name="'.$name.'" '.self::attributes($attributes);
         $html .= Helper::xhtml().'>';
         return $html;
     }
     
     static function textarea($name, $value='', $attributes = array()) {
-        $html = '<textarea id="'.$name.'" name="'.$name.'" '.self::attributes($attributes).'>';
+        $attributes['id'] = isset($attributes['id']) ? $attributes['id'] : $name;
+        $html = '<textarea name="'.$name.'" '.self::attributes($attributes).'>';
         $html .= $value;
         $html .= '</textarea>';
         return $html;
     }
 
     static function select($name, $options  = array(), $selected='', $attributes = array()) {
+        $attributes['id'] = isset($attributes['id']) ? $attributes['id'] : $name;
         if (isset($attributes['empty'])) {
            $empty = $attributes['empty'];
            unset($attributes['empty']);
         }
-        $html = '<select id="'.$name.'" name="'.$name.'" '.self::attributes($attributes).'>';
+        $html = '<select name="'.$name.'" '.self::attributes($attributes).'>';
         if (isset($empty)) {
            $html .= '<option value="">'.$empty.'</option>';
         }
