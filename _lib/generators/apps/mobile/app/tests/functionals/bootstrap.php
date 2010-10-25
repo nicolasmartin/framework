@@ -19,7 +19,7 @@
     $Bootstrap->loadConfigs(ROOT.'/configs/');
     $Bootstrap->loadConfigs('../../configs/');
 
-    $Bootstrap->addModelPath(ROOT.'/models/generated/');
+    $Bootstrap->addModelPath(ROOT.'/models/bases/');
     $Bootstrap->addModelPath(ROOT.'/models/');
     $Bootstrap->setDoctrine();
 

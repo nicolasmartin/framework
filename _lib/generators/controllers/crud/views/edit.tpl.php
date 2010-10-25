@@ -35,7 +35,9 @@
 <? if (!in_array($field, $settings['exclude'])) : ?>
 			<div class="[?= ++$i % 2 ? 'odd': 'even' ?] [?= FormHelper::getHasErrorClass('<?= $field ?>', $<?= $settings['model'] ?>, false); ?]">
 				<label for="<?= $field ?>"><?= cfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></label>
+				<?= ThisGeneratorHelper::formElement($model, $field) ?><!--
 				<input size="40" type="text" id="<?= $field ?>" name="<?= $field ?>" value="[?= addslashes($<?= $settings['model'] ?>['<?= $field ?>']) ?]" [?= FormHelper::getErrorClass('<?= $field ?>', $<?= $settings['model'] ?>); ?]/>
+-->
 				<small class="hint">Obligatoire</small>
 				[?= FormHelper::displayErrors('<?= $field ?>', $<?= $settings['model'] ?>) ?]
 			</div>

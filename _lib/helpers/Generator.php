@@ -18,4 +18,11 @@ class GeneratorHelper extends Helper {
 		};
 		return InflectionComponent::humanize($field);
 	}
+	
+	static function formElement($model, $field) {
+		$Table = Doctrine::getTable($model);
+		$def = $Table->getColumnDefinition($field);
+		
+		pr($def);
+	}
 } 
