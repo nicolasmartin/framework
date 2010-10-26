@@ -3,7 +3,9 @@
 		static function attributes($attributes) {
 			$html = array();
 			foreach($attributes as $key => $value) {
-				$html[] = $key.'="'.$value.'"';
+				if ($value != '') {
+					$html[] = $key.'="'.$value.'"';
+				}
 			}
 			return implode(' ', $html);
 		}
