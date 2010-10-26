@@ -56,3 +56,11 @@
 		</div><!-- .form -->
   	</div><!-- #main -->
 </div><!-- #content -->
+
+[? $this->addStyle(base().'/js/yui-editor/skins/default/skin.css') ?]
+[? $this->addScript(base().'/js/yui-editor/jquery.yui-editor.js') ?]
+<script>
+$(function() {    
+    $('.editor').yuiEditor();
+});
+</script>
