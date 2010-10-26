@@ -1,4 +1,7 @@
 <?php
+	require_once(dirname(__FILE__).'/bootstrap.php');
+	require_once(dirname(__FILE__).'/../vendors/simpletest/autorun.php');
+	
 	class TestOfFilters extends UnitTestCase {
 		public function setUp() {
 		}

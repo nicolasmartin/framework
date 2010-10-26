@@ -147,12 +147,12 @@ class FormHelper extends Helper {
         }
         $html = self::date($name, $value, (array)$years, (array)$attributes);
         $html.= ' ';
-        $html.= '<input type="text" name="'.$name.'_hours" size="3" maxlength="2" '.Helper::xhtml().'>';
+        $html.= '<input type="text" name="'.$name.'_hours" size="3" maxlength="2"'.Helper::xhtml().'>';
         $html.= ' : ';
-        $html.= '<input type="text" name="'.$name.'_minutes" size="3" maxlength="2" '.Helper::xhtml().'>';
+        $html.= '<input type="text" name="'.$name.'_minutes" size="3" maxlength="2"'.Helper::xhtml().'>';
         if ($seconds) {
             $html.= ' : ';
-            $html.= '<input type="text" name="'.$name.'_seconds" size="3" maxlength="2" '.Helper::xhtml().'>';
+            $html.= '<input type="text" name="'.$name.'_seconds" size="3" maxlength="2"'.Helper::xhtml().'>';
         }
         return $html;
     }

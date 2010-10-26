@@ -7,45 +7,6 @@
 		
 		public function __construct() {
 		    Config::set('code.xhtml', false);
-		    
-		    echo FormHelper::text('name', 'value', array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::password('name', 'value', array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::textarea('name', 'value', array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::select('name', array('1' => 'un', '2' => 'deux'), '1', array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::select('name', array('1' => 'un', '2' => 'deux'), array('1', '2'), array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::select('name', array('1' => 'un', '2' => 'deux'), array('1', '2'), array('empty' => '-- select --', 'class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::checkbox('name', 'value', null, array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::checkbox('name', 'value', 'value', array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::checkboxes('name', '1', array('1' => 'un', '2' => 'deux'), array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::checkboxes('name', array('1', '2') , array('1' => 'un', '2' => 'deux'), array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::radio('name', 'value', null, array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::radio('name', 'value', 'value', array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::radios('name', '1', array('1' => 'un', '2' => 'deux'), array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::radios('name', array('1', '2') , array('1' => 'un', '2' => 'deux'), array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::hidden('name', 'value', array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::date('name', null , range('2010', '2015'), array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::date('name', '2010-10-24 10:00:00' , range('2010', '2015'), array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::datetime('name', null , range('2010', '2015'), array('class' => 'myClass'));
-		    echo '<br />';
-		    echo FormHelper::datetime('name', null , range('2010', '2015'), array('class' => 'myClass', 'seconds' => true));
-		    echo '<br />';
 		}
 
 		public function setUp() {
@@ -60,8 +21,7 @@
 
 		    $this->assertEqual(
 		        FormHelper::text('name', $this->Model, array('class' => 'myClass')),
-		        '<input type="text" name="name" class="myClass" value="obj" id="name">');		        
-		       
+		        '<input type="text" name="name" class="myClass" value="obj" id="name">');
 		}
 
 		public function testInputPassword() {
@@ -190,7 +150,8 @@
 		public function testDate() {
 		    $this->assertEqual(
 		        FormHelper::date('name', null , range('2010', '2015'), array('class' => 'myClass')),
-		        '<select name="name_day" class="myClass" id="name_day">'.
+		        utf8_decode(
+				'<select name="name_day" class="myClass" id="name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
 		        '<option value="03">03</option>'.
@@ -244,10 +205,12 @@
 		        '<option value="2013">2013</option>'.
 		        '<option value="2014">2014</option>'.
 		        '<option value="2015">2015</option>'.
-		        '</select>');	    
+		        '</select>')
+				);	    
 
 		    $this->assertEqual(
 		        FormHelper::date('name', '2010-10-24 10:00:00' , range('2010', '2015'), array('class' => 'myClass')),
+		        utf8_decode(
 		        '<select name="name_day" class="myClass" id="name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
@@ -302,12 +265,14 @@
 		        '<option value="2013">2013</option>'.
 		        '<option value="2014">2014</option>'.
 		        '<option value="2015">2015</option>'.
-		        '</select>');
+		        '</select>')
+				);
 		}
 
 		public function testDatetime() {
 		    $this->assertEqual(
 		        FormHelper::datetime('name', null , range('2010', '2015'), array('class' => 'myClass')),
+		        utf8_decode(
 		        '<select name="name_day" class="myClass" id="name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
@@ -363,13 +328,14 @@
 		        '<option value="2014">2014</option>'.
 		        '<option value="2015">2015</option>'.
 		        '</select> '.
-		        '<input type="text" name="name_hours" size="3" maxlength="2" >'.
+		        '<input type="text" name="name_hours" size="3" maxlength="2">'.
 		        ' : '.
-		        '<input type="text" name="name_minutes" size="3" maxlength="2" >'
+		        '<input type="text" name="name_minutes" size="3" maxlength="2">')
        		 );	
        		 
 		    $this->assertEqual(
 		        FormHelper::datetime('name', null , range('2010', '2015'), array('class' => 'myClass', 'seconds' => true)),
+		        utf8_decode(
 		        '<select name="name_day" class="myClass" id="name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
@@ -425,11 +391,11 @@
 		        '<option value="2014">2014</option>'.
 		        '<option value="2015">2015</option>'.
 		        '</select> '.
-		        '<input type="text" name="name_hours" size="3" maxlength="2" >'.
+		        '<input type="text" name="name_hours" size="3" maxlength="2">'.
 		        ' : '.
-		        '<input type="text" name="name_minutes" size="3" maxlength="2" >'.
+		        '<input type="text" name="name_minutes" size="3" maxlength="2">'.
 		        ' : '.
-		        '<input type="text" name="name_seconds" size="3" maxlength="2" >'
+		        '<input type="text" name="name_seconds" size="3" maxlength="2">')
     		 );
 		}		
 		

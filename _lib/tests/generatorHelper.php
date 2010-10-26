@@ -12,14 +12,7 @@
 
 		public function testFormElement() {
             $columns = Doctrine::getTable('generatorHelperModel')->getColumns();
-
             foreach($columns as $name => $column) {
-                
-                echo "<div>";
-                echo "<label>".$name."</label><br />";
-                echo GeneratorHelper::getFormElement($name, 'generatorHelperModel', 1);
-                echo "</div>";
-                
             }
 		}
 

@@ -1,15 +1,29 @@
 <?php
 class GeneratorHelper extends Helper {
-    
-    static function getFormElement($name, $model) {
+	
+    static function getFormHint($model, $field) {
         $columns = Doctrine::getTable($model)->getColumns();
+ 		$column = $columns[$field];
+		
+		if (isset($column['notblank']) && $column['notblank'] == true) {
+			return '<small class="hint">'.__("Champs obligatoire").'</small>';
+		}
+		return '';
+	}
+	
+    static function getFormElement($model, $field, $alias = null) {
+		if (!$alias) {
+			$alias = $model;
+		}
         
+		$model = ucfirst($model);
+		$alias = ucfirst($alias);
+		
+        $columns = Doctrine::getTable($model)->getColumns();     
         $default = array(
             'type'      => null,
-            'notblank'  => null,
             'length'    => null,
         );
-        
         $groups = array(
             'string'    => 'string',
             'char'      => 'string',
@@ -26,43 +40,44 @@ class GeneratorHelper extends Helper {
             'bool'      => 'boolean',
             'enum'      => 'select'
         );
-        $column = array_merge($default, $columns[$name]);
+        $column = array_merge($default, $columns[$field]);
         $group = isset($groups[$column['type']]) ? $groups[$column['type']] : 'string';
         
         extract($column);
-        
-        if ($name == 'id') {
-            return FormHelper::hidden($name, $name);
+		
+        if ($field == 'id') {
+            return "FormHelper::hidden('".$field."', $".$alias.");";
         }
-        if ($name == 'password') {
-            return FormHelper::password($name, $name);
+        if ($field == 'password') {
+            return "FormHelper::password('".$field."', $".$alias.");";
         }
         if ($group == 'string' && $length > 200 && $length <= 255) {
-            return FormHelper::textarea($name, $name);                
+            return "FormHelper::textarea('".$field."', $".$alias.", array('cols' => 120, 'rows' => 5));";      
         }
         if ($group == 'text' && $length && $length <= 255) {
-            return FormHelper::textarea($name, $name);                
+            return "FormHelper::textarea('".$field."', $".$alias.");"; 
         }
         if ($group == 'text') {
-            return FormHelper::textarea($name, 'editor '.$name, array('class' => 'editor'));                
+            return "FormHelper::textarea('".$field."', $".$alias.", array('class' => 'editor', 'cols' => 120, 'rows' => 5));";
         }
         if ($group == 'boolean') {
-            return FormHelper::radios($name, array('0' => 'Oui', '1' => 'Non'), 1);                
+            return "FormHelper::radios('".$field."', array('0' => __('Oui'), '1' => __('Non')), $".$alias.");";       
         }
         if ($group == 'date') {
-            return FormHelper::date($name, 'TODAY()', array(2000, 2010));                
+            return "FormHelper::date('".$field."', 'TODAY()');";    
         }
         if ($group == 'datetime') {
-            return FormHelper::datetime($name, $name, array(2000, 2010));
+            return "FormHelper::datetime('".$field."', $".$alias.");";
         }
         if ($group == 'digit') {
-            return FormHelper::text($name, $length, array('maxlength' => $length, 'size' => $length+5));                
+            return "FormHelper::text('".$field."', $".$alias.", array('maxlength' => ".$length.", 'size' => ".($length+1)."));";        
         }
         if ($group == 'select') {
-            return FormHelper::select($name, $values, '1');                
+            return "FormHelper::select('".$field."', $".$alias.", '1');";  
         }
-        return FormHelper::text($name, '');
+        return "FormHelper::text('".$field."', $".$alias.", array('size' => 100));"; 
     }
+
     
 	static function getPath($app = null, $controller = null) {
 		if ($app && $controller) {
@@ -81,12 +96,5 @@ class GeneratorHelper extends Helper {
 			return $mapping[$field];
 		};
 		return InflectionComponent::humanize($field);
-	}
-	
-	static function formElement($model, $field) {
-		$Table = Doctrine::getTable($model);
-		$def = $Table->getColumnDefinition($field);
-		
-		pr($def);
 	}
 } 
