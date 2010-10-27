@@ -149,9 +149,8 @@
 		
 		public function testDate() {
 		    $this->assertEqual(
-		        FormHelper::date('name', null , range('2010', '2015'), array('class' => 'myClass')),
-		        utf8_decode(
-				'<select name="name_day" class="myClass" id="name_day">'.
+		        FormHelper::date('name', 'empty', range('2010', '2015'), array('class' => 'myClass')),
+				'<select name="_name_day" class="myClass" id="_name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
 		        '<option value="03">03</option>'.
@@ -183,8 +182,8 @@
 		        '<option value="29">29</option>'.
 		        '<option value="30">30</option>'.
 		        '<option value="31">31</option>'.
-		        '</select>'.
-		        '<select name="name_month" class="myClass" id="name_month">'.
+		        '</select> / '.
+		        '<select name="_name_month" class="myClass" id="_name_month">'.
 		        '<option value="01">janvier</option>'.
 		        '<option value="02">février</option>'.
 		        '<option value="03">mars</option>'.
@@ -197,21 +196,20 @@
 		        '<option value="10">octobre</option>'.
 		        '<option value="11">novembre</option>'.
 		        '<option value="12">décembre</option>'.
-		        '</select>'.
-		        '<select name="name_year" class="myClass" id="name_year">'.
+		        '</select> / '.
+		        '<select name="_name_year" class="myClass" id="_name_year">'.
 		        '<option value="2010">2010</option>'.
 		        '<option value="2011">2011</option>'.
 		        '<option value="2012">2012</option>'.
 		        '<option value="2013">2013</option>'.
 		        '<option value="2014">2014</option>'.
 		        '<option value="2015">2015</option>'.
-		        '</select>')
+		        '</select>'
 				);	    
 
 		    $this->assertEqual(
 		        FormHelper::date('name', '2010-10-24 10:00:00' , range('2010', '2015'), array('class' => 'myClass')),
-		        utf8_decode(
-		        '<select name="name_day" class="myClass" id="name_day">'.
+		        '<select name="_name_day" class="myClass" id="_name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
 		        '<option value="03">03</option>'.
@@ -243,8 +241,8 @@
 		        '<option value="29">29</option>'.
 		        '<option value="30">30</option>'.
 		        '<option value="31">31</option>'.
-		        '</select>'.
-		        '<select name="name_month" class="myClass" id="name_month">'.
+		        '</select> / '.
+		        '<select name="_name_month" class="myClass" id="_name_month">'.
 		        '<option value="01">janvier</option>'.
 		        '<option value="02">février</option>'.
 		        '<option value="03">mars</option>'.
@@ -257,23 +255,22 @@
 		        '<option value="10" selected="selected">octobre</option>'.
 		        '<option value="11">novembre</option>'.
 		        '<option value="12">décembre</option>'.
-		        '</select>'.
-		        '<select name="name_year" class="myClass" id="name_year">'.
+		        '</select> / '.
+		        '<select name="_name_year" class="myClass" id="_name_year">'.
 		        '<option value="2010" selected="selected">2010</option>'.
 		        '<option value="2011">2011</option>'.
 		        '<option value="2012">2012</option>'.
 		        '<option value="2013">2013</option>'.
 		        '<option value="2014">2014</option>'.
 		        '<option value="2015">2015</option>'.
-		        '</select>')
+		        '</select>'
 				);
 		}
 
 		public function testDatetime() {
 		    $this->assertEqual(
-		        FormHelper::datetime('name', null , range('2010', '2015'), array('class' => 'myClass')),
-		        utf8_decode(
-		        '<select name="name_day" class="myClass" id="name_day">'.
+		        FormHelper::datetime('name', 'empty', range('2010', '2015'), array('class' => 'myClass')),
+		        '<select name="_name_day" class="myClass" id="_name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
 		        '<option value="03">03</option>'.
@@ -305,8 +302,8 @@
 		        '<option value="29">29</option>'.
 		        '<option value="30">30</option>'.
 		        '<option value="31">31</option>'.
-		        '</select>'.
-		        '<select name="name_month" class="myClass" id="name_month">'.
+		        '</select> / '.
+		        '<select name="_name_month" class="myClass" id="_name_month">'.
 		        '<option value="01">janvier</option>'.
 		        '<option value="02">février</option>'.
 		        '<option value="03">mars</option>'.
@@ -319,24 +316,25 @@
 		        '<option value="10">octobre</option>'.
 		        '<option value="11">novembre</option>'.
 		        '<option value="12">décembre</option>'.
-		        '</select>'.
-		        '<select name="name_year" class="myClass" id="name_year">'.
+		        '</select> / '.
+		        '<select name="_name_year" class="myClass" id="_name_year">'.
 		        '<option value="2010">2010</option>'.
 		        '<option value="2011">2011</option>'.
 		        '<option value="2012">2012</option>'.
 		        '<option value="2013">2013</option>'.
 		        '<option value="2014">2014</option>'.
 		        '<option value="2015">2015</option>'.
-		        '</select> '.
-		        '<input type="text" name="name_hours" size="3" maxlength="2">'.
+		        '</select> à '.
+		        '<input type="text" name="_name_hour" size="2" maxlength="2" id="_name_hour">'.
 		        ' : '.
-		        '<input type="text" name="name_minutes" size="3" maxlength="2">')
+		        '<input type="text" name="_name_minutes" size="2" maxlength="2" id="_name_minutes">'.
+		        '<input type="hidden" name="_name_seconds" id="_name_seconds">'
        		 );	
        		 
 		    $this->assertEqual(
-		        FormHelper::datetime('name', null , range('2010', '2015'), array('class' => 'myClass', 'seconds' => true)),
-		        utf8_decode(
-		        '<select name="name_day" class="myClass" id="name_day">'.
+		        FormHelper::datetime('name', 'empty', range('2010', '2015'), array('class' => 'myClass', 'seconds' => true)),
+
+		        '<select name="_name_day" class="myClass" id="_name_day">'.
 		        '<option value="01">01</option>'.
 		        '<option value="02">02</option>'.
 		        '<option value="03">03</option>'.
@@ -368,8 +366,8 @@
 		        '<option value="29">29</option>'.
 		        '<option value="30">30</option>'.
 		        '<option value="31">31</option>'.
-		        '</select>'.
-		        '<select name="name_month" class="myClass" id="name_month">'.
+		        '</select> / '.
+		        '<select name="_name_month" class="myClass" id="_name_month">'.
 		        '<option value="01">janvier</option>'.
 		        '<option value="02">février</option>'.
 		        '<option value="03">mars</option>'.
@@ -382,24 +380,23 @@
 		        '<option value="10">octobre</option>'.
 		        '<option value="11">novembre</option>'.
 		        '<option value="12">décembre</option>'.
-		        '</select>'.
-		        '<select name="name_year" class="myClass" id="name_year">'.
+		        '</select> / '.
+		        '<select name="_name_year" class="myClass" id="_name_year">'.
 		        '<option value="2010">2010</option>'.
 		        '<option value="2011">2011</option>'.
 		        '<option value="2012">2012</option>'.
 		        '<option value="2013">2013</option>'.
 		        '<option value="2014">2014</option>'.
 		        '<option value="2015">2015</option>'.
-		        '</select> '.
-		        '<input type="text" name="name_hours" size="3" maxlength="2">'.
+		        '</select> à '.
+		        '<input type="text" name="_name_hour" size="2" maxlength="2" id="_name_hour">'.
 		        ' : '.
-		        '<input type="text" name="name_minutes" size="3" maxlength="2">'.
+		        '<input type="text" name="_name_minutes" size="2" maxlength="2" id="_name_minutes">'.
 		        ' : '.
-		        '<input type="text" name="name_seconds" size="3" maxlength="2">')
+		        '<input type="text" name="_name_seconds" size="2" maxlength="2" id="_name_seconds">'
     		 );
 		}		
-		
-		
+
 		public function tearDown() {
 		}
 	}

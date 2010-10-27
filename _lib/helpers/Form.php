@@ -105,55 +105,71 @@ class FormHelper extends Helper {
         return $html;
     }
 
-    // TODO : javascript + hidden field
     static function date($name, $value = '', $years = array(), $attributes = array()) {
-        $value = is_object($value) ? $value[$name] : $value;
-        $date = $time = $year = $month = $day = null;
-        if ($value == 'NOW()' || $value == 'TODAY()') {
+        $prefix = '_'.$name.'_';
+        $value 	= is_object($value) ? $value[$name] : $value;
+        $date 	= $time = null;
+		$year 	= $month = $day = null;
+		
+        if (!$value || $value == 'NOW()' || $value == 'TODAY()') {
             $value = date('Y-m-d');
         }
         if (@list($date, $time) = explode(' ', $value)) {
             @list($year, $month, $day) = explode('-', $date);
         }
+
+		if (!$years) {
+			$years = array(date('Y'), date('Y')+5);	
+		}
+        $months = array();
+        for($i = 1; $i <= 12; $i++) {
+            $months[sprintf('%02d' , $i)] = utf8_encode(strftime('%B', strtotime('2000-'.$i.'-01')));
+        }
         $days = array();
         for($i = 1; $i <= 31; $i++) {
             $days[] = sprintf('%02d' , $i);
         }
-        $months = array();
-        for($i = 1; $i <= 12; $i++) {
-            $months[sprintf('%02d' , $i)] = strftime('%B', strtotime('2000-'.$i.'-01'));
-        }
+
         $html  = '';
-        $html .= self::select($name.'_day', array_combine($days, $days), $day, $attributes);
-        $html .= self::select($name.'_month', array_combine(array_keys($months), $months), $month, $attributes);
-        $html .= self::select($name.'_year', array_combine($years, $years), $year, $attributes);
+        $html .= self::select($prefix.'day', 	array_combine($days, $days), $day, $attributes);
+        $html .= ' / ';
+        $html .= self::select($prefix.'month', 	array_combine(array_keys($months), $months), $month, $attributes);
+        $html .= ' / ';
+		$html .= self::select($prefix.'year', 	array_combine($years, $years), $year, $attributes);
         return $html;
     }
     
-    // TODO : javascript + hidden field
-    // TODO : valeurs heure, minutes, secondes dans les textfield.
     static function datetime($name, $value = '', $years = array(), $attributes = array()) {
-        $value = is_object($value) ? $value[$name] : $value;
-        $date = $time = $year = $month = $day = $seconds = null;
-        if ($value == 'NOW()' || $value == 'TODAY()') {
+        $prefix = '_'.$name.'_';
+		$value 	= is_object($value) ? $value[$name] : $value;
+        $date 	= $time = null;
+		$year 	= $month = $day = null;
+		$hour 	= $minutes = $seconds = null;
+		$with_seconds = null;
+		
+        if (!$value || $value == 'NOW()' || $value == 'TODAY()') {
             $value = date('Y-m-d H:i:s');
         }
         if (isset($attributes['seconds']) && $attributes['seconds'] == true) {
-            $seconds = true;
+            $with_seconds = true;
             unset($attributes['seconds']);   
         }
         if (@list($date, $time) = explode(' ', $value)) {
             @list($year, $month, $day) = explode('-', $date);
+			@list($hour, $minutes, $seconds) = explode(':', $time);
         }
+		
         $html = self::date($name, $value, (array)$years, (array)$attributes);
-        $html.= ' ';
-        $html.= '<input type="text" name="'.$name.'_hours" size="3" maxlength="2"'.Helper::xhtml().'>';
-        $html.= ' : ';
-        $html.= '<input type="text" name="'.$name.'_minutes" size="3" maxlength="2"'.Helper::xhtml().'>';
-        if ($seconds) {
-            $html.= ' : ';
-            $html.= '<input type="text" name="'.$name.'_seconds" size="3" maxlength="2"'.Helper::xhtml().'>';
-        }
+        $html.= ' '.__('à').' ';
+		$html .= FormHelper::text($prefix.'hour', $hour, array('size' => 2, 'maxlength' => 2));
+        $html .= ' : ';
+		$html .= FormHelper::text($prefix.'minutes', $minutes, array('size' => 2, 'maxlength' => 2));
+        if ($with_seconds) {
+            $html .= ' : ';
+			$html .= FormHelper::text($prefix.'seconds', $seconds, array('size' => 2, 'maxlength' => 2));
+        } else {
+			$html .= FormHelper::hidden($prefix.'seconds', $seconds);
+		}
         return $html;
     }
       
