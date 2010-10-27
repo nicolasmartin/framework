@@ -11,6 +11,7 @@
     include_once dirname(__FILE__).'/component.php';
     include_once dirname(__FILE__).'/bootstrap.php';
     include_once dirname(__FILE__).'/except.php';
+	include_once dirname(__FILE__).'/request.php';
 
     include_once dirname(__FILE__).'/generator.php';
     include_once dirname(__FILE__).'/generator_structure.php';
