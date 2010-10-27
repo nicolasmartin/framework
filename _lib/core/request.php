@@ -15,42 +15,60 @@
 			$this->request 		= array_merge($this->get, $this->post);
 		}
 		
-		public function post($key, $default = null) {
+		public function post($key = null, $default = null) {
+			if (!$key) {
+				return $this->post;
+			}
 			if (isset($this->post[$key])) {
 				return $this->post[$key];
 			}
 			return $default;
 		}
 
-		public function get($key, $default = null) {
+		public function get($key = null, $default = null) {
+			if (!$key) {
+				return $this->get;
+			}
 			if (isset($this->get[$key])) {
 				return $this->get[$key];
 			}
 			return $default;
 		}
 		
-		public function request($key, $default = null) {
+		public function request($key = null, $default = null) {
+			if (!$key) {
+				return $this->request;
+			}
 			if (isset($this->request[$key])) {
 				return $this->request[$key];
 			}
 			return $default;
 		}
 
-		public function rawPost($key, $default = null) {
+		public function rawPost($key = null, $default = null) {
+			if (!$key) {
+				return $this->rawPost;
+			}
 			if (isset($this->rawPost[$key])) {
 				return $this->rawPost[$key];
 			}
 			return $default;
 		}
 
-		public function rawGet($key, $default = null) {
+		public function rawGet($key = null, $default = null) {
+			if (!$key) {
+				return $this->rawGet;
+			}
 			if (isset($this->rawGet[$key])) {
 				return $this->rawGet[$key];
 			}
 			return $default;
 		}
 		
-		public function rawRequest($key, $default = null) {
+		public function rawRequest($key = null, $default = null) {
+			if (!$key) {
+				return $this->rawRequest;
+			}
 			if (isset($this->rawRequest[$key])) {
 				return $this->rawRequest[$key];
 			}

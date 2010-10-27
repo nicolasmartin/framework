@@ -4,10 +4,18 @@
 
 	class TestOfRequest extends UnitTestCase {
 		public function __construct() {
-			
 		}
 
 		public function setUp() {	
+		}
+		
+		public function testSingleton() {
+			$_GET['value'] = 'get';		
+			$Request = Request::getInstance();
+			$this->assertIsA($Request, 'Request');
+			$this->assertEqual($Request->get('value'), 'get');
+			$_GET['value'] = 'other';
+			$this->assertEqual($Request->get('value'), 'get');		
 		}
 
 		public function testMethods() {
@@ -26,6 +34,28 @@
 			$this->assertFalse($Request->isAjax());
 			$_SERVER['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
 			$this->assertTrue($Request->isAjax());
+		}
+		
+		public function testGetter() {
+			$_GET['value'] = 'get';		
+			$Request = new Request();
+			$this->assertEqual($Request->get('value'), 'get');
+			$this->assertEqual($Request->get('null', 'default'), 'default');
+			
+			$_POST['value'] = 'post';		
+			$Request = new Request();
+			$this->assertEqual($Request->post('value'), 'post');
+			$this->assertEqual($Request->post('null', 'default'), 'default');
+
+			$_POST['value'] = 'post';	
+			$_GET['value'] 	= 'get';		
+			$Request = new Request();
+			$this->assertEqual($Request->request('value'), 'post');
+						
+			$this->assertEqual($Request->post(), $_POST);
+			$this->assertEqual($Request->get(), $_GET);
+			$this->assertEqual($Request->rawPost(), $_POST);
+			$this->assertEqual($Request->rawGet(), $_GET);
 		}
 		
 		public function testSanatize() {
@@ -84,7 +114,7 @@
 			$_GET['_date_year'] 	= '2002';
 			$_GET['_date_hour'] 	= '13';
 			$_GET['_date_minutes'] 	= '25';
-			$_GET['_date_secosnds'] = '36';
+			$_GET['_date_seconds'] = '36';
 			
 			$Request = new Request();
 			$this->assertEqual($Request->get('date'), '2002-12-22 13:25:36');
