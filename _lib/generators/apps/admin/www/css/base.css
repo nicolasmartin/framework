@@ -6,7 +6,7 @@
 	Color :White
  ------------------------------ */
 body {
-	background:WhiteSmoke;	
+	background:White;	
 	color:#333;
 	font:12px/1.6 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
@@ -453,10 +453,15 @@ form {
 		padding:4px 0;
 	}
 	form .error {
-		border:1px solid #C30;
-	}
-	form .has-error {
 		background:Ivory;
+	}
+	form .error input[type=password],
+	form .error input[type=text],
+	form .error input[type=radio],
+	form .error input[type=checkbox],
+	form .error textarea,
+	form .error select {
+		border:1px solid #C30;
 	}
 	form .errors {
 		background:transparent url(../img/icons.png) no-repeat -104px -234px;

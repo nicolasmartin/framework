@@ -33,7 +33,7 @@
 <? $fields = Doctrine::getTable($model)->getColumns(); ?>
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
-			<div class="[?= ++$i % 2 ? 'odd': 'even' ?] [?= FormHelper::getHasErrorClass('<?= $field ?>', $<?= $settings['model'] ?>, false); ?]">
+			<div class="[?= ++$i % 2 ? 'odd': 'even' ?] [?= FormHelper::getErrorClass('<?= $field ?>', $<?= $settings['model'] ?>, false); ?]">
 				<label for="<?= $field ?>"><?= cfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></label>
 				[?= <?= ThisGeneratorHelper::getFormElement($model, $field, $settings['model']) ?> ?]
 				<?= ThisGeneratorHelper::getFormHint($model, $field, $settings['model']) ?>
