@@ -98,6 +98,16 @@
 		return $array;
 	}
 
+	function strcut($string, $len, $end = '...') {
+		if (strlen($string) <= $len) {
+			return $string;
+		}
+		$str = substr($string, 0, $len);
+		$splits = explode(' ', $str);
+		$chars = strlen($splits[count($splits)-1]);
+		return substr($str, 0, ($chars+1)*-1).$end;
+	}
+
 	function exception_handler($e) {
 		$message  = "<div style='padding:20px; font:12px/1.7 Arial'>";
 		$message .= "<h1>[".$e->getCode()."] ".$e->getMessage()."</h1>";
@@ -120,12 +130,12 @@
 		  $message .= '<li><b>Fichier :</b> '.basename($t['file']).' [ ligne <span style="color:red">'.$t['line'].'</span> ]</li>';
 		  $message .= '<li><b>Chemin :</b> <a href="'.$t['file'].'">'.$t['file'].'</a></li>';
 			if (isset($t['class']) && !empty($t['class'])) {
-				$message .= '<li><b>Classe :</b> '.$t['class'].$t['type'].$t['function'].'('.implode_r(', ', $t['args']).')</li>';
+				$message .= '<li><b>Classe :</b> '.$t['class'].$t['type'].$t['function'].'('.strcut(implode_r(', ', $t['args']), 5000, '<b style="color:red">[ ... ]</b>').')</li>';
 			} else if (isset($t['function']) && !empty($t['function'])) {
-				$message .= '<li><b>Fonction :</b> '.$t['function'].'('.implode_r(', ', $t['args']).')</li>';
+				$message .= '<li><b>Fonction :</b> '.$t['function'].'('.strcut(implode_r(', ', $t['args']), 5000, '<b style="color:red">[ ... ]</b>').')</li>';
 			}
 			if (isset($t['args']) && !empty($t['args'])) {
-				$message .= '<li><b>Arguments :</b> <ul><li>'.implode_r(', ', $t['args']).'</li></ul></li>';
+				$message .= '<li><b>Arguments :</b> <ul><li>'.strcut(implode_r(', ', $t['args']), 5000, '<b style="color:red">[ ... ]</b>').'</li></ul></li>';
 			}
 			$message .= '</ul>';
 		}
@@ -135,18 +145,18 @@
 	set_exception_handler('exception_handler'); 
 
 	function implode_r($glue, $array, $format = '(%s)'){
-			$out = '';
-			foreach ($array as $item) {
-					if (is_array($item)) {
-							$out .= sprintf($format, implode_r($glue, $item));
-					} else {
-							if ($out) {
-									$out .= $glue;
-							}
-							$out .= print_r($item, true);
-					}
+		$out = '';
+		foreach ($array as $item) {
+			if (is_array($item)) {
+				$out .= sprintf($format, implode_r($glue, $item));
+			} else {
+				if ($out) {
+					$out .= $glue;
+				}
+				$out .= print_r($item, true);
 			}
-			return $out;
+		}
+		return $out;
 	 }
 	 
 	 function explode_with_keys($seperator, $string) {
