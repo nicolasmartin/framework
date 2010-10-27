@@ -124,6 +124,16 @@
 			$this->assertNull($Request->get('_date_hour'));
 			$this->assertNull($Request->get('_date_minutes'));
 			$this->assertNull($Request->get('_date_seconds'));
+			
+			$_GET['_date_at_day'] 	= '20';
+			$_GET['_date_at_month'] = '10';
+			$_GET['_date_at_year'] 	= '2000';
+
+			$Request = new Request();
+			$this->assertEqual($Request->get('date_at'), '2000-10-20');
+			$this->assertNull($Request->get('_date_at_day'));
+			$this->assertNull($Request->get('_date_at_month'));
+			$this->assertNull($Request->get('_date_at_year'));
 		}
 		
 		public function tearDown() {

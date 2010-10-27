@@ -115,7 +115,7 @@
 		
 		private function smartDates($data) {
 			foreach($data as $key => $value) {
-				if (preg_match('/_(.*?)_/', $key, $match)) {
+				if (preg_match('/_(.*)_/', $key, $match)) {
 					$field  	= $match[1];
 					$prefix 	= '_'.$match[1].'_';
 					$time 		= null;
