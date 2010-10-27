@@ -8,7 +8,7 @@
 		[?= $this->partial('flash') ?]
 
 		<ul class="toolbar">
-			<li><a class="sprite prefix back" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
+			<li><a class="sprite prefix home" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
 		</ul>
 
 		[? $i=0; ?]

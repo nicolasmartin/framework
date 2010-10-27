@@ -16,7 +16,7 @@
 		<?= $this->partial("flash") ?>
 
 		<ul class="toolbar">
-			<li><a class="sprite prefix back" href="<?= UrlHelper::path(array('action' => 'index')) ?>">Retour aux images</a></li>
+			<li><a class="sprite prefix home" href="<?= UrlHelper::path(array('action' => 'index')) ?>">Retour aux images</a></li>
 		</ul>
 
 		<div class="form">
