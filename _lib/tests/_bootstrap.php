@@ -43,12 +43,8 @@
 					'+' => '<ins style="color:blue">%s</ins>',
 					'-' => '<del style="color:red">%s</del>',
 				);
-				$message = str_replace($matches[1][0], '<code>'.htmlDiff($matches[2][0], $matches[2][1], $styles).'</code>', $message);
-				$styles = array(
-					'-' => '<ins style="color:blue">%s</ins>',
-					'+' => '<del style="color:red">%s</del>',
-				);
-				$message = str_replace($matches[1][1], '<code>'.htmlDiff($matches[2][1], $matches[2][0], $styles).'</code>', $message);
+				$message = str_replace($matches[1][0], '<code>'.htmlDiff($matches[2][1], $matches[2][0], $styles).'</code>', $message);
+				$message = str_replace($matches[1][1], '<code>'.htmlDiff($matches[2][0], $matches[2][1], $styles).'</code>', $message);
 			}
 			
 			parent::paintFail($message);	
