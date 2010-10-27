@@ -1,9 +1,9 @@
 
 	// Add
 	public function add() {						
-		if ($this->post) {
+		if ($this->Request()->isPost()) {
 			$<?= $settings['model'] ?> = new <?= $model ?>();
-			$<?= $settings['model'] ?>->fromArray($this->post);	
+			$<?= $settings['model'] ?>->fromArray($this->Request()->post());	
 			if ($<?= $settings['model'] ?>->isValid()) {
 				$<?= $settings['model'] ?>->save();
 				FlashComponent::set('success', "<?= cfirst($settings['singular']) ?> créé<?= $settings['male'] ? '' : 'e' ?>.");

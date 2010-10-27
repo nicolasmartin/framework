@@ -1,17 +1,17 @@
 
 	// Batch action
 	public function batch() {
-		if (!$this->post['action']) {
+		if (!$this->Request()->post('action')) {
 			FlashComponent::set('error', "Une action doit être choisie.");
 			$this->redirect(array('action' => 'index'));
 		} else {
-    		$action = $this->post['action'];		    
+    		$action = $this->Request()->post('action');		    
 		}
-		if (!isset($this->post['id'])) {
+		if (!$this->Request()->post('id')) {
 			FlashComponent::set('error', "Au moins un éléments doit être coché.");
 			$this->redirect(array('action' => 'index'));
 		} else {
-		    $id = $this->post['id'];
+		    $id = $this->Request()->post('id');
 		}
 
 		switch ($action) {

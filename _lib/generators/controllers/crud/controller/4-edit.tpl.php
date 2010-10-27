@@ -1,13 +1,13 @@
 
 	// Edit
 	public function edit($id = null) {	
-		if (isset($this->post['id'])) {
-			$<?= $settings['model'] ?> = Doctrine::getTable('<?= $model ?>')->find($this->post['id']);
+		if ($this->Request()->post('id')) {
+			$<?= $settings['model'] ?> = Doctrine::getTable('<?= $model ?>')->find($this->Request()->post('id'));
 			if (!$<?= $settings['model'] ?>) {
 				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
 				$this->redirect(array('action' => 'index'));
 			}
-			$<?= $settings['model'] ?>->fromArray($this->post);
+			$<?= $settings['model'] ?>->fromArray($this->Request()->post());
 			if ($<?= $settings['model'] ?>->isValid()) {
 				$<?= $settings['model'] ?>->save();
 				FlashComponent::set('success', "<?= cfirst($settings['singular']) ?> édité<?= $settings['male'] ? '' : 'e' ?>.");

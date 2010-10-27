@@ -86,7 +86,6 @@
 			$action		= !empty($splits[1]) ? __($splits[1], null, true, 'url') : 'index';
 			$params 	= !empty($splits[2]) ? array_slice($splits, 2) : array();
 
-
 			$clean = array();
 			for($i = 0; $i < count($params); $i=$i+2) {
 				if (isset($params[$i+1])) {
@@ -116,28 +115,20 @@
 				throw new Except("L'Action '".$action."' n'existe pas dans ".$class, 404);
 			}
 
-			$method = strtolower($_SERVER['REQUEST_METHOD']);
-			$get	= isset($_GET)  ? FilterComponent::sanitize($_GET) : array();
-			$post	= isset($_POST) ? FilterComponent::sanitize($_POST) : array();
+			$get	= Request::getInstance()->get();
+			$post	= Request::getInstance()->post();
 
 			$Controller = new $class($action);
-			$Controller->app 		= $this->app;
-			$Controller->method 	= $method;
-			$Controller->get 		= $get;
-			$Controller->post 		= $post;	
+			$Controller->app = $this->app;
 				
 			foreach($this->params as $key => $value) {
 				$Controller->setParam($key, $value);
 			}
-			if (isset($get) && !empty($get)) {		
-				foreach($get as $key => $value) {
-					$Controller->setParam($key, $value);
-				}
+			foreach($get as $key => $value) {
+				$Controller->setParam($key, $value);
 			}
-			if (isset($post) && !empty($post)) {		
-				foreach($post as $key => $value) {
-					$Controller->setParam($key, $value);
-				}
+			foreach($post as $key => $value) {
+				$Controller->setParam($key, $value);
 			}
 			$Controller->preExecute();	
 				

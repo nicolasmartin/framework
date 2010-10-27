@@ -24,16 +24,20 @@
 			$this->action 	= $action;
 			$this->params	= $params;
 
-			if (!$this->isAjax()) {
-				$this->Layout	= new Layout($this->layout);
+			if (!$this->Request()->isAjax()) {
+				$this->Layout = new Layout($this->layout);
 				$this->Layout->setController($this);
 			} else {
 				$this->Layout = null;
 			}
 
-			$this->View 	= new View($this->name.'/'.$this->action, $this->Layout);
+			$this->View = new View($this->name.'/'.$this->action, $this->Layout);
 			$this->View->setController($this);
 			$this->View->setAutoRender(true);
+		}
+		
+		public function Request() {
+			return Request::getInstance();	
 		}
 		
 		public function addComponent($name, $options = array()) {
@@ -102,24 +106,6 @@
 		public function getApp() {
 			return $this->app;
 		}
-
-		public function getMethod() {
-			return $this->method;	
-		}
-
-		public function getPost($name, $default = null) {
-			if (isset($this->post[$name])) {
-				return $this->post[$name];
-			}
-			return $default;
-		}
-		
-		public function getGet($name, $default = null) {
-			if (isset($this->get[$name])) {
-				return $this->get[$name];
-			}
-			return $default;
-		}
 		
 		public function getParam($name, $default = null) {
 			if (isset($this->params[$name])) {
@@ -174,12 +160,12 @@
 			exit;
 		}
 		
-		public function isAjax() {
+/*		public function isAjax() {
 			if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == "XMLHttpRequest") { 
 				return true;
 			}
 			return false;
-		}
+		}*/
 
 		public function spit() {
 			if ($this->View->getAutoRender()) {

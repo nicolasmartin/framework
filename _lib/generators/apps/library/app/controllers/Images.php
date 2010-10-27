@@ -16,7 +16,7 @@ class ImagesController extends Controller {
 	}
 	
 	public function savelot() {
-		foreach($this->post['name'] as $id => $name) {
+		foreach($this->Request()->post('name') as $id => $name) {
 			$Picture = Doctrine::getTable('Library')->find($id);
 			$Picture['name'] = $name;
 			$Picture->save();
@@ -64,9 +64,9 @@ class ImagesController extends Controller {
 
 	// Add
 	public function add() {						
-		if ($this->post) {
+		if ($this->Request()->post()) {
 			$Picture = new Library();
-			$Picture->fromArray($this->post);	
+			$Picture->fromArray($this->Request()->post());	
 			if ($Picture->isValid()) {
 				$this->doUpload();
 				$Picture->refresh();
@@ -84,8 +84,8 @@ class ImagesController extends Controller {
 
 	// Batch action
 	public function batch() {
-		$id 	= $this->post['id'];
-		$action = $this->post['action'];
+		$id 	= $this->Request()->post('id');
+		$action = $this->Request()->post('action');
 
 		if (!$action) {
 			FlashComponent::set('error', "Une action doit être choisie.");
@@ -114,16 +114,16 @@ class ImagesController extends Controller {
 
 	// Delete
 	public function delete($id = null) {	
-		if (isset($this->post['id'])) {
-			$Picture = Doctrine::getTable('Library')->find($this->post['id']);
+		if ($this->Request()->post('id')) {
+			$Picture = Doctrine::getTable('Library')->find($this->Request()->post('id'));
 			if (!$Picture) {
 				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
 			} else {
 				$Picture->delete();
 				FlashComponent::set('success', "Image supprimée.");
 			}
-			if ($this->isAjax()) {
-				die('ok');	
+			if ($this->Request()->isAjax()) {
+				die('1');
 			} else {
 				$this->redirect(array('action' => 'index'));	
 			}
@@ -139,13 +139,13 @@ class ImagesController extends Controller {
 
 	// Edit
 	public function edit($id = null) {	
-		if (isset($this->post['id'])) {
-			$Picture = Doctrine::getTable('Library')->find($this->post['id']);
+		if ($this->Request()->post('id')) {
+			$Picture = Doctrine::getTable('Library')->find($this->Request()->post('id'));
 			if (!$Picture) {
 				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
 				$this->redirect(array('action' => 'index'));
 			}
-			$Picture->fromArray($this->post);
+			$Picture->fromArray($this->Request()->post());
 			if ($Picture->isValid()) {
 				$Picture->save();
 				FlashComponent::set('success', "Image éditée.");
