@@ -20,6 +20,7 @@
 			
 			$this->path[] = dirname(__FILE__).'/../components';
 			$this->path[] = dirname(__FILE__).'/../helpers';
+			$this->path[] = dirname(__FILE__).'/../../models/default';
 		}
 		
 		private function autoload($classname) {
@@ -107,8 +108,9 @@
 		}
 		
 		public  function setDoctrine() {
+			spl_autoload_register(array('Doctrine', 'modelsAutoload'));
 			spl_autoload_register(array('Doctrine', 'autoload'));
-
+			
 			if (!$configs = Config::get()) {
 				throw new Exception("Les configurations doit être chargées avant l'appel de cette méthode.");	
 			}
@@ -120,14 +122,14 @@
 				$Conn = Doctrine_Manager::connection(array('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), 
 				    Config::get('db.username'), 
 				    Config::get('db.password')
-				    ), 
-				    'default');
+				), 
+				'default');
 
-				$Conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);	
-				$Conn->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true); 
-				$Conn->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
-				$Conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, true);
-				
+				$Conn->setAttribute(Doctrine::ATTR_VALIDATE, 				Doctrine::VALIDATE_ALL);
+				$Conn->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE,  true); 
+				$Conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, 		true);
+				$Conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, 			Doctrine::MODEL_LOADING_CONSERVATIVE);
+
 				foreach($this->models as $model_path) {
 					Doctrine::loadModels($model_path);
 				}

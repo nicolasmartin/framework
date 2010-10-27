@@ -207,7 +207,7 @@ class FormHelper extends Helper {
 			}
 			return 'error';
 		}
-		return "";	
+		return '';	
 	}
 	
 	static function displayErrors($field, $Model) {
@@ -216,10 +216,10 @@ class FormHelper extends Helper {
 		if (isset($stack[$field])) {
 			$html .= '<ul class="errors">';
 			foreach($stack[$field] as $key) {
-				if (isset($Model->messages) && isset($Model->messages[$field][$key])) {
-					$html .= '<li>'.$Model->messages[$field][$key].'</li>';
+				if ($message = $Model->getErrorMessage($key, $field)) {
+					$html .= '<li>'.$message.'</li>';
 				} else {
-					$html .= '<li>Erreur inconnue : '.$key.'</li>';
+					$html .= '<li>'.__('Erreur inconnue :').' '.$key.'</li>';
 				}
 			}	
 			$html .= '</ul>';
