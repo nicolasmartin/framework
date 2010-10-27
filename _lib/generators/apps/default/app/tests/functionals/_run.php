@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(__FILE__).'/bootstrap.php');
+	require_once(dirname(__FILE__).'/_bootstrap.php');
 
 	define('DOMAIN', 		Config::get('project.url'));
 	define('USER_AGENT', 	'Functional test');

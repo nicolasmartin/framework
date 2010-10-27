@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(__FILE__).'/bootstrap.php');
+	require_once(dirname(__FILE__).'/_bootstrap.php');
 	
 	class AllTests extends TestSuite {
 		function AllTests() {
