@@ -94,10 +94,7 @@
 		}
 		
 		function setExclude($exclude = array()) {
-			$this->exclude = array_extend(
-				$this->exclude,
-				$exclude
-			);
+			$this->exclude = $exclude;
 		}
 		
 		function getExclude() {
