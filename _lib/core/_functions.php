@@ -22,13 +22,13 @@
 	}
 
 	function htmlDiff($old, $new, $format = array('+' => '<ins>%s</ins>', '-' => '<del>%s</del>')) {
-		$diff = diff(explode(' ', $old), explode(' ', $new));
+		$diff = diff(str_split($old), str_split($new));
 		$ret = '';
 		foreach($diff as $k) {
 			if(is_array($k)) {
-				$ret .= (!empty($k['d']) ? sprintf($format['-'], implode(' ',$k['d'])).' ' : '').(!empty($k['i']) ? sprintf($format['+'], implode(' ',$k['i'])).' ' : '');
+				$ret .= (!empty($k['d']) ? sprintf($format['-'], implode('', $k['d'])) : '').(!empty($k['i']) ? sprintf($format['+'], implode('',$k['i'])) : '');
 			} else { 
-				$ret .= $k . ' ';
+				$ret .= $k . '';
 			}
 		}
 		return $ret;

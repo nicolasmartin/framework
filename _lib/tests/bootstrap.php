@@ -21,27 +21,40 @@
 			return "[".htmlentities($matches[1], ENT_COMPAT, 'UTF-8')."]";
 		}
 		
-		protected function htmlEntities($message) {
+		function paintFail($message) {
 			$message = utf8_encode($message);
 
 			$message = str_replace(str_replace('/', '\\', dirname($_SERVER['SCRIPT_FILENAME'])).'\\', '', $message);
-			$message = preg_replace('~ with \[~', 	 '<br/>'.str_repeat('&nbsp;', 10).'[', $message);
-			$message = preg_replace('~\] and \[~', 	']<br/>'.str_repeat('&nbsp;', 10).'[', $message);
+			$message = preg_replace('~ with \[~', 	 '<br/>'.str_repeat('&nbsp;', 10).'[DIFF', 
+				$message
+			);
+			$message = preg_replace('~\] and \[~', 	']<br/>'.str_repeat('&nbsp;', 10).'[DIFF', 
+				$message
+			);
 			$message = preg_replace('~\] at \[~',   ']<br/>In [', $message);
 			$message = preg_replace_callback(
 				'~\[(.*?)\]~', array('self', 'clear'), $message
 			);
 			
-			preg_match_all('~\[(.*?)\]~', $message, $matches);
-			if (isset($matches[1][0]) && isset($matches[1][1])) {
+			preg_match_all('~\[(DIFF(.*?))\]~', $message, $matches);
+
+			if (isset($matches[2][0]) && isset($matches[2][1])) {
 				$styles = array(
 					'+' => '<ins style="color:blue">%s</ins>',
 					'-' => '<del style="color:red">%s</del>',
 				);
-				$message = str_replace($matches[1][0], '<code>'.htmlDiff($matches[1][1], $matches[1][0], $styles).'</code>', $message);
-				$message = str_replace($matches[1][1], '<code>'.htmlDiff($matches[1][0], $matches[1][1], $styles).'</code>', $message);
+				$message = str_replace($matches[1][0], '<code>'.htmlDiff($matches[2][0], $matches[2][1], $styles).'</code>', $message);
+				$styles = array(
+					'-' => '<ins style="color:blue">%s</ins>',
+					'+' => '<del style="color:red">%s</del>',
+				);
+				$message = str_replace($matches[1][1], '<code>'.htmlDiff($matches[2][1], $matches[2][0], $styles).'</code>', $message);
 			}
-				
+			
+			parent::paintFail($message);	
+		}
+		
+		protected function htmlEntities($message) {
 			return $message;
 		}
 		
