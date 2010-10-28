@@ -16,15 +16,15 @@
 		<form action="<?= UrlHelper::path(array('action' => 'batch')) ?>" method="post">
 		<table class="list">
 			<colgroup>
-				<col width="20" />
-				<col width="100" />
-				<col />
-				<col width="200" />
-				<col width="90" />
+				<col style="width:20px">
+				<col style="width:100px">
+				<col>
+				<col style="width:200px">
+				<col style="width:90px">
 			</colgroup>
 			<thead>
 				<tr>
-					<th scope="col"><input id="checkall" type="checkbox" /></th>
+					<th scope="col"><input id="checkall" type="checkbox"></th>
 					<th scope="col"><?= UrlHelper::orderBy('name', "Image") ?></th>
 					<th scope="col">&nbsp;</th>
 					<th scope="col"><?= UrlHelper::orderBy('created_at', "Mise en ligne") ?></th>
@@ -38,7 +38,7 @@
 							<option value="">&#8212; Actions &#8212;</option>
 							<option value="delete">Supprimer</option>
 						</select>
-						<input class="button" type="submit" value="Appliquer" />
+						<input class="button" type="submit" value="Appliquer">
 					</td>
 					<td colspan="100">
 						<?= $this->partial('pagination', array('Pager', $Pager)); ?>
@@ -48,14 +48,14 @@
 			<tbody>
 				<? foreach ($Pictures as $Picture): ?>
 				<tr class="<?= ++$i % 2 ? 'odd': 'even' ?>">
-					<td class="checkboxes"><input type="checkbox" name="id[]" value="<?= $Picture['id'] ?>" /></td>
+					<td class="checkboxes"><input type="checkbox" name="id[]" value="<?= $Picture['id'] ?>"></td>
 					<td>
 						<a href="<?= UrlHelper::path(array('action' => 'show'), $Picture['id']) ?>"><?= ImageHelper::thumbnail($Picture['path'], 55) ?></a>
 					</td>
 					<td>
-						<strong><a href="<?= UrlHelper::path(array('action' => 'show'), $Picture['id']) ?>"><?= $Picture['name'] ?></a></strong><br />
-						<?= $Picture['width'] ?> x <?= $Picture['height'] ?> pixels<br />
-						<?= ucfirst($Picture['type']) ?><br />
+						<strong><a href="<?= UrlHelper::path(array('action' => 'show'), $Picture['id']) ?>"><?= $Picture['name'] ?></a></strong><br>
+						<?= $Picture['width'] ?> x <?= $Picture['height'] ?> pixels<br>
+						<?= ucfirst($Picture['type']) ?><br>
 					</td>
 					<td><?= DateHelper::format($Picture['created_at'], '{dd} {month} {yy} à {HH}:{MM}') ?></td>
 					<td>

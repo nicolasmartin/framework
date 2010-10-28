@@ -3,9 +3,9 @@
 <head>
     <meta charset="<?= $this->slot('CHARSET', 'UTF-8') ?>">
     <title>Administration : <?= $this->slot('TITLE') ?></title>
-    <link rel="stylesheet" type="text/css" href="<?= base() ?>/css/styles.css" media="screen, print">
-    <link rel="stylesheet" type="text/css" href="<?= base() ?>/js/superfish/superfish.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="<?= base() ?>/js/yui-editor/skins/default/skin.css" media="screen">
+    <link rel="stylesheet" href="<?= base() ?>/css/styles.css" media="screen, print">
+    <link rel="stylesheet" href="<?= base() ?>/js/superfish/superfish.css" media="screen">
+    <link rel="stylesheet" href="<?= base() ?>/js/yui-editor/skins/default/skin.css" media="screen">
     <?= $this->slot('STYLES') ?>
     <script src="<?= base() ?>/js/scripts.js"></script>
     <?= $this->slot('SCRIPTS') ?>

@@ -14,16 +14,16 @@
 			<legend>Identification</legend>
 				<div class="[?= ++$i % 2 ? 'odd': 'even' ?]">
 					<label>Identifiant</label>
-					<input type="text" name="username" value="[?= $<?= $settings['model'] ?>['username'] ?]" size="40" placeholder="Votre identifiant" />
+					<input type="text" name="username" value="[?= $<?= $settings['model'] ?>['username'] ?]" size="40" placeholder="Votre identifiant">
 				</div>
 				
 				<div class="[?= ++$i % 2 ? 'odd': 'even' ?]">
 					<label>Mot de passe</label>
-					<input type="password" name="password" value="[?= $<?= $settings['model'] ?>['password'] ?]" size="40" />
+					<input type="password" name="password" value="[?= $<?= $settings['model'] ?>['password'] ?]" size="40">
 				</div>
 				
 				<div class="[?= ++$i % 2 ? 'odd': 'even' ?]">
-					<input class="button" type="submit" value="S'identifier" /> 
+					<input class="button" type="submit" value="S'identifier"> 
 				</div>	
 			</fieldset>	
 			</form>

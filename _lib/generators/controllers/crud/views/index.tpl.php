@@ -16,17 +16,17 @@
 <? $fields = Doctrine::getTable($model)->getColumns(); ?>
 		<table class="list">
 			<colgroup>
-				<col width="20" />
+				<col style="width:20px">
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
-				<col />
+				<col>
 <? endif ?>
 <? endforeach ?>
-				<col width="90" />
+				<col style="width:90px">
 			</colgroup>
 			<thead>
 				<tr>
-					<th scope="col"><input id="checkall" type="checkbox" /></th>
+					<th scope="col"><input id="checkall" type="checkbox"></th>
 <? foreach($fields as $field => $options) : ?>
 <? if (!in_array($field, $settings['exclude'])) : ?>
 					<th scope="col">[?= UrlHelper::orderBy('<?= $field ?>', "<?= cfirst(ThisGeneratorHelper::field($field, $settings['map']))?>") ?]</th>
@@ -42,7 +42,7 @@
 							<option value="">&#8212; Actions &#8212;</option>
 							<option value="delete">Supprimer</option>
 						</select>
-						<input class="button" type="submit" value="Appliquer" />
+						<input class="button" type="submit" value="Appliquer">
 					</td>
 					<td colspan="100">
 						[?= $this->partial('pagination', array('Pager' => $Pager)); ?]
@@ -52,7 +52,7 @@
 			<tbody>
 				[? foreach ($<?= $settings['collection'] ?> as $<?= $settings['model'] ?>): ?]
 				<tr class="[?= ++$i % 2 ? 'odd': 'even' ?]">
-					<td class="checkboxes"><input type="checkbox" name="id[]" value="[?= $<?= $settings['model'] ?>['id'] ?]" /></td>
+					<td class="checkboxes"><input type="checkbox" name="id[]" value="[?= $<?= $settings['model'] ?>['id'] ?]"></td>
 <? $r = 0; foreach($fields as $field => $options) : ?>
 <? if (++$r == 2) : ?>
 					<th scope="row">

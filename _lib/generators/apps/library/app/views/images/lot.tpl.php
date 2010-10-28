@@ -5,14 +5,14 @@
 <div id="content" class="row">
 	<div id="main">
 		<h1>Ajouter des images</h1>
-		<p>Choisissez les fichiers à envoyer en cliquant sur <em>parcourir</em>.<br />
+		<p>Choisissez les fichiers à envoyer en cliquant sur <em>parcourir</em>.<br>
 		<small>Taille maximum : <?= ini_get('upload_max_filesize') ?></small></p>
 		
-		<p><input type="file" name="uploadify" id="uploadify" /></p>
+		<p><input type="file" name="uploadify" id="uploadify"></p>
 	
 		<form action="<?= UrlHelper::path(array('action' => 'savelot')) ?>" method="post">
 		<div id="uploaded"></div>
-		<input id="save" class="button" style="display:none" type="submit" value="Sauver" />
+		<input id="save" class="button" style="display:none" type="submit" value="Sauver">
 		</form>
 
 		<div id="uploading"></div>

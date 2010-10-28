@@ -3,7 +3,7 @@
 
 <div id="content">
 	<div id="main" class="pictures">
-		<h1>Résumé d'une  image</h1>
+		<h1>Résumé d'une image</h1>
 
 		<?= $this->partial("flash") ?>
 
@@ -14,8 +14,8 @@
 		<? $i=0; ?>
 		<table class="summary">
 			<colgroup>
-				<col width="20%" />
-				<col />
+				<col style="width:20%">
+				<col>
 			</colgroup>
 			<tbody>
 				<tr class="<?= ++$i % 2 ? 'odd': 'even' ?>">

@@ -15,8 +15,8 @@
 <? $fields = Doctrine::getTable($model)->getColumns(); ?>
 		<table class="summary">
 			<colgroup>
-				<col width="20%" />
-				<col />
+				<col style="width:20%">
+				<col>
 			</colgroup>
 			<tbody>
 <? foreach($fields as $field => $options) : ?>

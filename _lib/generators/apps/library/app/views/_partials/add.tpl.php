@@ -1,7 +1,7 @@
 	<table class="summary">
 		<colgroup>
-			<col width="20%" />
-			<col />
+			<col style="width:20%">
+			<col>
 		</colgroup>
 		<tbody>
 			<tr>

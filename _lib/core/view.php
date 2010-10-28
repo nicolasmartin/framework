@@ -95,7 +95,11 @@
 		public function renderStyles() {
 			$css = array();
 			foreach($this->styles as $path) {
-				$css[$path] = '<link rel="stylesheet" type="text/css" href="'.$path.'" />';
+				if (Config::get('code.xhtml') == true) {
+					$css[$path] = '<link rel="stylesheet" type="text/css" href="'.$path.'" />\n';
+				} else {
+					$css[$path] = '<link rel="stylesheet" href="'.$path.'">\n';
+				}
 			}
 			return implode("\n", $css);
 		}
@@ -103,7 +107,11 @@
 		public function renderScripts() {
 			$scripts = array();
 			foreach($this->scripts as $path) {
-				$scripts[$path] = '<script type="text/javascript" src="'.$path.'"></script>';
+				if (Config::get('code.xhtml') == true) {
+					$scripts[$path] = '<script type="text/javascript" src="'.$path.'"></script>\n';
+				} else {
+					$scripts[$path] = '<script src="'.$path.'"></script>\n';
+				}
 			}
 			return implode("\n", $scripts);	
 		}

@@ -14,8 +14,8 @@
 		<? $i=0; ?>
 		<table class="summary">
 			<colgroup>
-				<col width="30%" />
-				<col />
+				<col style="width:30%">
+				<col>
 			</colgroup>
 			<tbody>
 				<tr class="<?= ++$i % 2 ? 'odd': 'even' ?>">

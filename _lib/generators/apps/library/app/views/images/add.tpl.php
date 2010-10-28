@@ -16,13 +16,13 @@
 			<form method="post" action="<?= UrlHelper::path() ?>" enctype="multipart/form-data">
 			<table class="summary">
 				<colgroup>
-					<col width="20%" />
-					<col />
+					<col style="width:20%">
+					<col>
 				</colgroup>
 				<tbody>
 					<tr class="<?= ++$i % 2 ? 'odd': 'even' ?>">
 						<th scope="row">Image</th>
-						<td><input type="file" name="uploaded" id="uploaded" /></td>
+						<td><input type="file" name="uploaded" id="uploaded"></td>
 					</tr>
 					<tr class="<?= ++$i % 2 ? 'odd': 'even' ?>">
 						<th scope="row">Nom</th>

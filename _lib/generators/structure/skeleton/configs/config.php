@@ -16,7 +16,7 @@
 		'uploads.path'		=> '/uploads',
 		
 		'cache.pictures'	=> true,
-		'code.xhtml'		=> true,
+		'code.xhtml'		=> false,
 		
 		'date.short' 		=> '%d/%m/%Y',
 		'date.medium' 		=> '%a %d %b %y',
