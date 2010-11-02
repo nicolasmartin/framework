@@ -82,14 +82,22 @@
 		}
 
 		public  function loadConfigs($path) {
-			require_once($path.'/config.php');
+		    if (!is_dir($path)) {
+				throw new Exception("Un dossier contenant les fichiers de configuration doit être donné.");			        
+		    }
 			
 			if (!$this->env) {
 				throw new Exception("Un environnement doit être configuré avant l'appel de cette méthode.");	
 			}
+
+			require_once($path.'/config.php');
 			
-			if (!isset($configs['default'])) {
-				throw new Exception("Le fichier de configuration ne semble pas être correct.");
+			$config_files = read_folder($path);
+			foreach ($config_files as $file) {
+			    if (contains('config.*', basename($file)) && basename($file) != 'config.php') {
+			        echo $file, '<br>';
+			        require_once('/'.$file);
+			    }
 			}
 			
 			foreach($configs['default'] as $key => $value) {
