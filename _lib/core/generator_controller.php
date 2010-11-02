@@ -224,7 +224,7 @@
 			}
 			
 			if (file_exists($path) && $this->getOverwriteController() === false) {
-				$this->debug('Le controller existe déjà. '.$path.' est ignoré.');	
+				$this->debug('Le controller existe déjà. '.$path.' est ignoré.', true);	
 			} else {
 				$this->debug('Création du controller '.$path.'.');
 				file_put_contents($path, $generated);
@@ -267,7 +267,7 @@
 				}
 				
 				if (file_exists($path) && $this->getOverwriteViews() === false) {
-				    $this->debug('La vue existe déjà. '.$path.' est ignoré.');		
+				    $this->debug('La vue existe déjà. '.$path.' est ignoré.', true);		
 				} else {
 					$this->debug('Création de la vue '.$path.'.');
 					file_put_contents($path, $generated);
@@ -310,7 +310,7 @@
 				}
 
 				if (file_exists($path) && $this->getOverwritePartials() === false) {
-				    $this->debug('Le partiel existe déjà. '.$path.' est ignoré.');		
+				    $this->debug('Le partiel existe déjà. '.$path.' est ignoré.', true);		
 				} else {
 					$this->debug('Création du partiel '.$path.'.');
 					file_put_contents($path, $generated);

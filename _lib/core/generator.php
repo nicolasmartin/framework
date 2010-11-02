@@ -46,14 +46,19 @@
 			return $this->varFormat();	
 		}
 		
-		protected function debug($string) {
-			 if(php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR'])) {
-				  $nl = "\n";
-			 } else {
-				  $nl = "<br />";
-			 }
+		protected function debug($string, $error = false) {
 			 if ($this->getVerbose()) {
-				 echo str_replace(realpath($_SERVER['DOCUMENT_ROOT']), '', $string), $nl;
+				 if (!is_cli() && $error) {
+    			     $format = '<span style="color:red">%s</span>';
+    			 } else {
+    			     $format = "%s";
+    			 }
+				 printf($format, str_replace(realpath($_SERVER['DOCUMENT_ROOT']), '', $string));
+    			 if (is_cli()) {
+    			     echo "\n";
+    			 } else {
+    			     echo '<br>';
+    			 }
 			 }
 		}
 
@@ -97,7 +102,7 @@
                  }
  
                  if (file_exists($to) && $overide === false) {
-                     $this->debug('Le fichier existe déjà. '.$to.' est ignoré.');    
+                     $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
                  } else {
                      $this->debug('Création du fichier '.$to.'.');
                      $content = file_get_contents($from);
@@ -124,7 +129,7 @@
                  }
  
                  if (file_exists($to) && $overide === false) {
-                     $this->debug('Le fichier existe déjà. '.$to.' est ignoré.');    
+                     $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
                  } else {
                      $this->debug('Création du fichier '.$to.'.');
                      copy($from, $to);
