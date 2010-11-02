@@ -20,7 +20,7 @@
 			
 			$this->path[] = dirname(__FILE__).'/../components';
 			$this->path[] = dirname(__FILE__).'/../helpers';
-			$this->path[] = dirname(__FILE__).'/../../models/default';
+			$this->path[] = dirname(__FILE__).'/../../models/bases/default';
 		}
 		
 		private function autoload($classname) {
@@ -129,6 +129,7 @@
 				$Conn->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE,  true); 
 				$Conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, 		true);
 				$Conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, 			Doctrine::MODEL_LOADING_CONSERVATIVE);
+				$Conn->setAttribute(Doctrine::ATTR_COLLECTION_CLASS, 		'DefaultCollection');
 
 				foreach($this->models as $model_path) {
 					Doctrine::loadModels($model_path);
