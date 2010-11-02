@@ -96,9 +96,9 @@
 			$css = array();
 			foreach($this->styles as $path) {
 				if (Config::get('code.xhtml') == true) {
-					$css[$path] = '   <link rel="stylesheet" type="text/css" href="'.$path.'" />';
+					$css[$path] = '    <link rel="stylesheet" type="text/css" href="'.$path.'" />';
 				} else {
-					$css[$path] = '   <link rel="stylesheet" href="'.$path.'">';
+					$css[$path] = '    <link rel="stylesheet" href="'.$path.'">';
 				}
 			}
 			return implode("\n", $css)."\n";	
@@ -108,9 +108,9 @@
 			$scripts = array();
 			foreach($this->scripts as $path) {
 				if (Config::get('code.xhtml') == true) {
-					$scripts[$path] = '   <script type="text/javascript" src="'.$path.'"></script>';
+					$scripts[$path] = '    <script type="text/javascript" src="'.$path.'"></script>';
 				} else {
-					$scripts[$path] = '   <script src="'.$path.'"></script>';
+					$scripts[$path] = '    <script src="'.$path.'"></script>';
 				}
 			}
 			return implode("\n", $scripts)."\n";	
