@@ -2,8 +2,10 @@
 	class GeneratorStructure extends Generator {
 		protected $overwrite = false;
 				
-		function __construct($app = 'generated', $path = '.') {
+		function __construct($app = 'generated', $controller = 'generated', $model = 'generated', $path = '.') {
 			$this->setVar('app', $app);
+			$this->setVar('controller', $controller);
+			$this->setVar('model', $model);
 			$this->setPath($path);
 		}
 
@@ -21,7 +23,7 @@
 		
 		function generateStructure() {
 			$this->debug('---------------------------------');
-			$this->debug('Module');
+			$this->debug('Structure');
 			$this->debug('---------------------------------');
 
             $from   = $this->getPath().'/skeleton';
