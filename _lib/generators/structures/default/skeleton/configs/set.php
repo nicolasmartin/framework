@@ -9,6 +9,7 @@
 	ini_set('session.use_trans_sid','off');
 	ini_set('upload_max_filesize', 	'10M');
 	ini_set('post_max_size', 		'10M');
+	ini_set('memory_limit',         '64M');
 
 	setlocale(LC_ALL, 'fr_FR', 'fra');
 	Config::set('date.short', 		'%d/%m/%Y');
