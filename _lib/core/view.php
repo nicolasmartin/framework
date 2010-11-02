@@ -96,24 +96,24 @@
 			$css = array();
 			foreach($this->styles as $path) {
 				if (Config::get('code.xhtml') == true) {
-					$css[$path] = '<link rel="stylesheet" type="text/css" href="'.$path.'" />\n';
+					$css[$path] = '   <link rel="stylesheet" type="text/css" href="'.$path.'" />';
 				} else {
-					$css[$path] = '<link rel="stylesheet" href="'.$path.'">\n';
+					$css[$path] = '   <link rel="stylesheet" href="'.$path.'">';
 				}
 			}
-			return implode("\n", $css);
+			return implode("\n", $css)."\n";	
 		}
 		
 		public function renderScripts() {
 			$scripts = array();
 			foreach($this->scripts as $path) {
 				if (Config::get('code.xhtml') == true) {
-					$scripts[$path] = '<script type="text/javascript" src="'.$path.'"></script>\n';
+					$scripts[$path] = '   <script type="text/javascript" src="'.$path.'"></script>';
 				} else {
-					$scripts[$path] = '<script src="'.$path.'"></script>\n';
+					$scripts[$path] = '   <script src="'.$path.'"></script>';
 				}
 			}
-			return implode("\n", $scripts);	
+			return implode("\n", $scripts)."\n";	
 		}
 		
 		public function slot($name, $default = null, $format = null) {

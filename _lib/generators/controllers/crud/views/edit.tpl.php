@@ -4,7 +4,10 @@
 } else {
 	$this->set('TITLE', "Ajout d'<?= $settings['a'] ?> <?= $settings['singular'] ?>");
 } ?]
-	 
+<? if(file_exists(ROOT.'/www/'.$app.'/js/tinymce/config.js')) : ?>
+[? $this->addScript(base().'/js/tinymce/config.js') ?]
+<? endif ?>
+
 <div id="content">
 	<div id="main" class="<?= strtolower($settings['collection']) ?>">
 		[? if ($<?= $settings['model'] ?>['id']) : ?]
@@ -54,11 +57,3 @@
 		</div><!-- .form -->
   	</div><!-- #main -->
 </div><!-- #content -->
-
-[? $this->addStyle(base().'/js/yui-editor/skins/default/skin.css') ?]
-[? $this->addScript(base().'/js/yui-editor/jquery.yui-editor.js') ?]
-<script>
-$(function() {    
-    $('.editor').yuiEditor();
-});
-</script>

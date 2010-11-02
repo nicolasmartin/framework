@@ -5,10 +5,9 @@
     <title>Administration : <?= $this->slot('TITLE') ?></title>
     <link rel="stylesheet" href="<?= base() ?>/css/styles.css" media="screen, print">
     <link rel="stylesheet" href="<?= base() ?>/js/superfish/superfish.css" media="screen">
-    <link rel="stylesheet" href="<?= base() ?>/js/yui-editor/skins/default/skin.css" media="screen">
-    <?= $this->slot('STYLES') ?>
+<?= $this->slot('STYLES') ?>
     <script src="<?= base() ?>/js/scripts.js"></script>
-    <?= $this->slot('SCRIPTS') ?>
+ <?= $this->slot('SCRIPTS') ?>
 </head>
 
 <body<?= $this->slot('ID', '', ' id="%s"') ?>>
@@ -19,9 +18,6 @@
 <?= $this->slot('CONTENT') ?>
 <?= $this->partial('footer') ?>
 </div><!-- #container -->
-</body>
-
-</html>
 <script>
 	$('#navbar .menu').superfish({
 		speed: 			'fast',
