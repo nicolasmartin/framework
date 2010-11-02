@@ -23,6 +23,7 @@
 
 		function setVar($name, $value) {
 			$this->vars[$name] = $value;
+			$this->vars[ucfirst($name)] = ucfirst($value);
 		}
 
 		function getVar($name) {
