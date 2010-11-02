@@ -54,6 +54,7 @@
 
 		function setApp($app) {
 			$this->app = strtolower($app);
+			$this->setVar('app', $app);
 		}
 		
 		function getApp() {
@@ -62,6 +63,7 @@
 		
 		function setController($controller) {
 			$this->controller = ucfirst(strtolower($controller));
+			$this->setVar('controller', $controller);
 		}
 			
 		function getController() {
@@ -70,6 +72,7 @@
 		
 		function setModel($model) {
 			$this->model = ucfirst(strtolower($model));
+			$this->setVar('model', $model);
 		}
 
 		function getModel() {
@@ -193,7 +196,7 @@
 				$View->set('model', 		$this->getModel());
 				$View->set('settings', 		$this->getSettings());
 			
-				$class .= $View->render();
+				$class .= $this->replace($View->render());
 				
 				$this->debug('Traitement de '.$file);
 			}
@@ -209,6 +212,7 @@
 			$generated = $Base->render();
 			$generated = str_replace('[?', '<?', $generated);
 			$generated = str_replace('?]', '?>', $generated);
+			$generated = $this->replace($generated);
 
 			$this->debug('Intégration dans base.tpl.php');
 			
@@ -248,7 +252,8 @@
 				$generated = $View->render();
 				$generated = str_replace('[?', '<?', $generated);
 				$generated = str_replace('?]', '?>', $generated);
-			
+				$generated = $this->replace($generated);
+
 				$path = ROOT.'/apps/'.strtolower($this->getApp()).'/views/'.strtolower($this->getController()).'/'.$file;
 
 				foreach($this->packs as $pack) {
@@ -290,7 +295,8 @@
 				$generated = $View->render();
 				$generated = str_replace('[?', '<?', $generated);
 				$generated = str_replace('?]', '?>', $generated);
-			
+				$generated = $this->replace($generated);
+
 				$path = ROOT.'/apps/'.strtolower($this->getApp()).'/views/_partials/'.$file;
 				
 				foreach($this->packs as $pack) {

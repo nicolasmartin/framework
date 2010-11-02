@@ -86,16 +86,10 @@
             }
             
             $files = read_folder($from_dir);
-			
-			$vars = $values = array();
-			foreach($this->vars as $name => $value) {
-				$vars[] 	= sprintf($this->varFormat, $name);
-				$values[] 	= $value;	
-			}
-            
+			            
             foreach($files as $file) {
                  $from   = $from_dir.'/'.$file;
-                 $to     = str_replace($vars, $values, $to_dir.'/'.$file);
+				 $to     = $this->replace($to_dir.'/'.$file);
  
                  if (!file_exists(dirname($to))) {
                      mkdir(dirname($to), 0700, true);
@@ -106,7 +100,7 @@
                  } else {
                      $this->debug('Création du fichier '.$to.'.');
                      $content = file_get_contents($from);
-                	 $content = str_replace($vars, $values, $content);
+                	 $content = $this->replace($content);
 					 file_put_contents($to, $content);
                  }
             }		    
@@ -135,6 +129,15 @@
                      copy($from, $to);
                  }
             }		    
+		}
+		
+		protected function replace($content) {
+			$vars = $values = array();
+			foreach($this->vars as $name => $value) {
+				$vars[] 	= sprintf($this->varFormat, $name);
+				$values[] 	= $value;	
+			}
+			return str_replace($vars, $values, $content);
 		}
 	}
 
