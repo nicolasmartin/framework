@@ -1,10 +1,6 @@
 <?php
 	require_once('../../bootstrap.php');
 	
-	$Generator = new GeneratorApp('library');
-	
-	$Generator->setOverwriteApp(true);
-	$Generator->setOverwriteWww(true);
-	$Generator->setOverwriteModels(true);
-
-	$Generator->generateAll();
+	$Generator = new GeneratorStructure('library');
+	$Generator->setOverwrite(true);
+	$Generator->generate();

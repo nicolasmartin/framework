@@ -1,13 +1,48 @@
 <?php
 	abstract class Generator {
 		protected $verbose = true;
-
+		protected $varFormat = '{#%s#}';
+		protected $vars;
+		protected $path;
+		
 		function setVerbose($verbose) {
 			$this->verbose = $verbose;	
 		}
 
 		function getVerbose() {
 			return $this->verbose;	
+		}
+
+		function setPath($path) {
+			$this->path = $path;
+		}
+
+		function getPath() {
+			return $this->path;
+		}
+
+		function setVar($name, $value) {
+			$this->vars[$name] = $value;
+		}
+
+		function getVar($name) {
+			return $this->vars[$name] = $value;
+		}
+		
+		function setVars($vars) {
+			$this->vars = $vars;
+		}
+		
+		function getVars() {
+			return $this->vars;
+		}
+		
+		function setVarFormat($format) {
+			$this->varFormat = $format;
+		}
+		
+		function getVarFormat() {
+			return $this->varFormat();	
 		}
 		
 		protected function debug($string) {
@@ -44,8 +79,40 @@
 			return $templates;
 		}
 		
-		
 		protected function copy($from_dir, $to_dir, $overide = false) {
+            if (!file_exists($from_dir)) {
+                $this->debug('Pas de dossier '.$from_dir.' à copier.');
+                return false;
+            }
+            
+            $files = read_folder($from_dir);
+			
+			$vars = $values = array();
+			foreach($this->vars as $name => $value) {
+				$vars[] 	= sprintf($this->varFormat, $name);
+				$values[] 	= $value;	
+			}
+            
+            foreach($files as $file) {
+                 $from   = $from_dir.'/'.$file;
+                 $to     = str_replace($vars, $values, $to_dir.'/'.$file);
+ 
+                 if (!file_exists(dirname($to))) {
+                     mkdir(dirname($to), 0700, true);
+                 }
+ 
+                 if (file_exists($to) && $overide === false) {
+                     $this->debug('Le fichier existe déjà. '.$to.' est ignoré.');    
+                 } else {
+                     $this->debug('Création du fichier '.$to.'.');
+                     $content = file_get_contents($from);
+                	 $content = str_replace($vars, $values, $content);
+					 file_put_contents($to, $content);
+                 }
+            }		    
+		}
+		
+		protected function duplicate($from_dir, $to_dir, $overide = false) {
             if (!file_exists($from_dir)) {
                 $this->debug('Pas de dossier '.$from_dir.' à copier.');
                 return false;

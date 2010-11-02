@@ -9,4 +9,4 @@
 	
 	$Generator->setProtection(false);
 
-	$Generator->generateAll();
+	$Generator->generate();

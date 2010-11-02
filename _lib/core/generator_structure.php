@@ -1,45 +1,33 @@
 <?php
 	class GeneratorStructure extends Generator {
-		protected $path;
-		protected $overwriteStructure = false;
+		protected $overwrite = false;
 				
-		function __construct($path = '.') {
+		function __construct($app = 'generated', $path = '.') {
+			$this->setVar('app', $app);
 			$this->setPath($path);
 		}
 
-		function setPath($path) {
-			$this->path = $path;
-		}
-
-		function getPath() {
-			return $this->path;
-		}
-
-		function setOverwriteAll($overwrite) {
-			$this->overwriteStructure = $overwrite;
+		function setOverwrite($overwrite) {
+			$this->overwrite = $overwrite;
 		}
 		
-		function setOverwriteStructure($overwrite) {
-			$this->overwriteStructure = $overwrite;
+		function getOverwrite() {
+			return $this->overwrite;
 		}
 
-		function getOverwriteStructure() {
-			return $this->overwriteStructure;
-		}
-
-		function generateAll() {
+		function generate() {
 			$this->generateStructure();
 		}
 		
 		function generateStructure() {
 			$this->debug('---------------------------------');
-			$this->debug('Structure');
+			$this->debug('Module');
 			$this->debug('---------------------------------');
 
             $from   = $this->getPath().'/skeleton';
             $to     = ROOT;
             
-            $this->copy($from, $to, $this->getOverwriteStructure());
+            $this->copy($from, $to, $this->getOverwrite());
 		}
 	}
 

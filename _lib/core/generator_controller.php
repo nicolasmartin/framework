@@ -44,7 +44,7 @@
 			'updated_at'	=> "mis à jour",
 		);
 				
-		function __construct($app = null, $controller = null, $model = null, $path = '.', $settings = array()) {
+		function __construct($controller, $model = null, $app = null, $path = '.', $settings = array()) {
 			$this->setApp($app);
 			$this->setController($controller);
 			$this->setModel($model);
@@ -123,7 +123,7 @@
 			return $this->protection;
 		}
 		
-		function setOverwriteAll($overwrite) {
+		function setOverwrite($overwrite) {
 			$this->overwriteController 	= $overwrite;
 			$this->overwriteViews 		= $overwrite;
 			$this->overwritePartials 	= $overwrite;
@@ -163,7 +163,7 @@
 			}
 		}
 
-		function generateAll() {
+		function generate() {
 			$this->generateController();
 			$this->generateViews();
 			$this->generatePartials();

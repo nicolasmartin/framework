@@ -1,8 +1,6 @@
 <?php
 	require_once('../../bootstrap.php');
 	
-	$Generator = new GeneratorApp('dashboard');
-	
-	$Generator->setOverwriteApp(true);
-
-	$Generator->generateAll();
+	$Generator = new GeneratorStructure('dashboard');
+	$Generator->setOverwrite(true);
+	$Generator->generate();
