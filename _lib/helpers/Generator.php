@@ -31,7 +31,7 @@ class GeneratorHelper extends Helper {
             'char'      => 'string',
             'varchar'   => 'string',
             'blob'      => 'text',
-            'cblob'     => 'text',
+            'clob'      => 'text',
             'int'       => 'digit',
             'integer'   => 'digit',
             'float'     => 'digit',
@@ -59,7 +59,7 @@ class GeneratorHelper extends Helper {
         if ($group == 'text' && $length && $length <= 255) {
             return "FormHelper::textarea('".$field."', $".$alias.", array('class' => 'editor-tiny', 'cols' => 120, 'rows' => 10));";
         }
-        if ($group == 'text' && (!$length ||$length > 255)) {
+        if ($group == 'text' && (!$length || $length > 255)) {
             return "FormHelper::textarea('".$field."', $".$alias.", array('class' => 'editor', 'cols' => 140, 'rows' => 40));";
         }
         if ($group == 'boolean') {
