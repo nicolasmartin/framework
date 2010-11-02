@@ -123,18 +123,18 @@
 		public function testRadios() {
 		    $this->assertEqual(
 		        FormHelper::radios('name', array('1' => 'un', '2' => 'deux'), '1', array('class' => 'myClass')),
-		        '<input type="radio" name="name[]" class="myClass" value="1" checked="checked"> un '.
-		        '<input type="radio" name="name[]" class="myClass" value="2"> deux ');
+		        '<input type="radio" name="name" class="myClass" value="1" checked="checked"> un '.
+		        '<input type="radio" name="name" class="myClass" value="2"> deux ');
 
 		    $this->assertEqual(
 		        FormHelper::radios('name', array('1' => 'un', '2' => 'deux'), array('1', '2'), array('class' => 'myClass')),
-		        '<input type="radio" name="name[]" class="myClass" value="1" checked="checked"> un '.
-		        '<input type="radio" name="name[]" class="myClass" value="2" checked="checked"> deux ');
+		        '<input type="radio" name="name" class="myClass" value="1" checked="checked"> un '.
+		        '<input type="radio" name="name" class="myClass" value="2" checked="checked"> deux ');
 		        
  		    $this->assertEqual(
  		        FormHelper::radios('name', array('obj' => 'un', '2' => 'deux'), $this->Model, array('class' => 'myClass')),
- 		        '<input type="radio" name="name[]" class="myClass" value="obj" checked="checked"> un '.
- 		        '<input type="radio" name="name[]" class="myClass" value="2"> deux ');
+ 		        '<input type="radio" name="name" class="myClass" value="obj" checked="checked"> un '.
+ 		        '<input type="radio" name="name" class="myClass" value="2"> deux ');
 		}
 		
 		public function testHidden() {
