@@ -24,6 +24,8 @@ class GeneratorHelper extends Helper {
             'type'      => null,
             'length'    => null,
         );
+		// Types Doctrine : 
+		// http://www.symfony-project.org/doctrine/1_2/en/04-Schema-Files
         $groups = array(
             'string'    => 'string',
             'char'      => 'string',
@@ -48,17 +50,17 @@ class GeneratorHelper extends Helper {
         if ($field == 'id') {
             return "FormHelper::hidden('".$field."', $".$alias.");";
         }
-        if ($field == 'password') {
+        if (contains($field,'*password')) {
             return "FormHelper::password('".$field."', $".$alias.");";
         }
-        if ($group == 'string' && $length > 200 && $length <= 255) {
-            return "FormHelper::textarea('".$field."', $".$alias.", array('cols' => 120, 'rows' => 5));";      
+        if ($group == 'string' && $length == 255) {
+            return "FormHelper::textarea('".$field."', $".$alias.", array('cols' => 100, 'rows' => 4));";
         }
         if ($group == 'text' && $length && $length <= 255) {
-            return "FormHelper::textarea('".$field."', $".$alias.");"; 
+            return "FormHelper::textarea('".$field."', $".$alias.", array('class' => 'editor-tiny', 'cols' => 120, 'rows' => 10));";
         }
-        if ($group == 'text') {
-            return "FormHelper::textarea('".$field."', $".$alias.", array('class' => 'editor', 'cols' => 120, 'rows' => 5));";
+        if ($group == 'text' && (!$length ||$length > 255)) {
+            return "FormHelper::textarea('".$field."', $".$alias.", array('class' => 'editor', 'cols' => 140, 'rows' => 40));";
         }
         if ($group == 'boolean') {
             return "FormHelper::radios('".$field."', array('0' => __('Oui'), '1' => __('Non')), $".$alias.");";       

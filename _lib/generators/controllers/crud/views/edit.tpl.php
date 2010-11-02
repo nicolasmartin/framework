@@ -5,6 +5,7 @@
 	$this->set('TITLE', "Ajout d'<?= $settings['a'] ?> <?= $settings['singular'] ?>");
 } ?]
 <? if(file_exists(ROOT.'/www/'.$app.'/js/tinymce/config.js')) : ?>
+[? $this->addScript(base().'/js/tinymce/tiny_mce.js') ?]
 [? $this->addScript(base().'/js/tinymce/config.js') ?]
 <? endif ?>
 
