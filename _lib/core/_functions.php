@@ -1,4 +1,8 @@
 <?php
+    function is_cli() {
+        return (php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR']));
+    }
+    
 	function diff($old, $new){
 		$maxlen = 0;
 		foreach($old as $oindex => $ovalue){
