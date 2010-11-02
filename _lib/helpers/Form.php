@@ -73,7 +73,7 @@ class FormHelper extends Helper {
         $html = '';
         foreach((array) $options as $key => $value) {
             $attributes['value'] = $key;
-            $html .= '<input type="radio" name="'.$name.'[]" '.self::attributes($attributes);
+            $html .= '<input type="radio" name="'.$name.'" '.self::attributes($attributes);
             if ($key == $checked || (is_array($checked) && in_array($key, $checked))) {
                 $html .= ' checked="checked"';                
             }
