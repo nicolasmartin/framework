@@ -1,0 +1,22 @@
+options:
+  type:    INNODB
+  collate: utf8_unicode_ci
+  charset: utf8
+
+Library:
+  connection: default
+  tableName:  library
+  columns:
+    name:
+      type: string(50)
+      notblank: true
+    path:
+      type: string(255)
+    width:
+      type: int(4)
+    height:
+      type: int(4)
+    type:
+      type: string(20)
+  actAs:
+    timestampable: ~
