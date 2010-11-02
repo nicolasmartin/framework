@@ -95,7 +95,6 @@
 			$config_files = read_folder($path);
 			foreach ($config_files as $file) {
 			    if (contains('config.*', basename($file)) && basename($file) != 'config.php') {
-			        echo $file, '<br>';
 			        require_once('/'.$file);
 			    }
 			}
