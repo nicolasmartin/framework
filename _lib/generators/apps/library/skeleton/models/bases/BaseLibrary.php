@@ -18,7 +18,7 @@ Doctrine_Manager::getInstance()->bindComponent('Library', 'default');
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-abstract class BaseLibrary extends Doctrine_Record
+abstract class BaseLibrary extends DefaultRecord
 {
     public function setTableDefinition()
     {
