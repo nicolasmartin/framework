@@ -1,7 +1,15 @@
 (function() {
+	var DOM = tinymce.DOM;
+	
 	tinymce.create('tinymce.plugins.LibraryPlugin', {
+		
 		init : function(ed, url) {
 			this.editor = ed;
+
+			// Replace window manager
+			ed.onBeforeRenderUI.add(function() {
+				DOM.loadCSS(url + '/css/button.css');
+			});
 
 			// Register commands
 			ed.addCommand('libraryCommand', function() {

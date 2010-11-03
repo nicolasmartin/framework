@@ -20,7 +20,7 @@
 
 		inlinepopups_skin: 					"custom",
 		
-		plugins:							"editimage,inlinepopups,wordcount"
+		plugins:							"inlinepopups,wordcount"
 	});
 	
 	// Simple Editor
@@ -45,7 +45,7 @@
 		apply_source_formatting:  			true,
 
 		inlinepopups_skin: 					"custom",
-		plugins: 							"editimage,fullscreen,visualchars,inlinepopups,wordcount"
+		plugins: 							"library,fullscreen,visualchars,inlinepopups,wordcount"
 	});
 	
 	// Editor
@@ -69,5 +69,5 @@
 		theme_advanced_blockformats:  		"h1,h2,h3,h4,h5,h6,p,pre",
 
 		inlinepopups_skin: 					"custom",
-		plugins: 							"editimage,library,fullscreen,searchreplace,visualchars,inlinepopups,wordcount"
+		plugins: 							"library,fullscreen,searchreplace,visualchars,inlinepopups,wordcount"
 	});
