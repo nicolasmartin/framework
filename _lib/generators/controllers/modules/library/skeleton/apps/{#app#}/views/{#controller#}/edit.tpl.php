@@ -1,8 +1,8 @@
-<? 	$this->set('ID', 'picturePage'); ?>		 
+<? $this->set('ID', "library-page"); ?>		 
 <? if ($Picture['id']) {
-	$this->set('TITLE', 'Edition d\'une  image');
+	$this->set('TITLE', "Edition d'une image");
 } else {
-	$this->set('TITLE', 'Ajout d\'une  image');
+	$this->set('TITLE', "Ajout d'une image");
 } ?>
 		 
 <div id="content">

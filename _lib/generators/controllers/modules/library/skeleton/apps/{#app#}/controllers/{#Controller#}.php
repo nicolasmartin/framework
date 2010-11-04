@@ -1,21 +1,29 @@
 <?php
-class {#Controller#}Controller extends Controller { 
+class LibraryController extends Controller { 
+
 	// Ajout par lot
-	public function lot() {
+	public function bunch() {
 	}
 
 	// Upload
 	public function upload() {
-		$this->View->setAutoRender(false);
-		echo $this->doUpload();
+		if (!empty($_FILES)) {
+			$this->View->setAutoRender(false);
+			echo $this->doUpload();
+		}
 	}
 
-	public function editlot($id = null) {
+	// Edit ajax
+	public function name($id = null) {
+		if (!$this->Request()->isAjax()) {
+			return false;	
+		}
 		$Picture = Doctrine::getTable('Library')->find($id);
 		$this->View->set('Picture', $Picture);
 	}
-	
-	public function savelot() {
+
+	// Save
+	public function save() {
 		foreach($this->Request()->post('name') as $id => $name) {
 			$Picture = Doctrine::getTable('Library')->find($id);
 			$Picture['name'] = $name;
@@ -23,43 +31,32 @@ class {#Controller#}Controller extends Controller {
 		}
 		$this->redirect(array('action' => 'index'));
 	}
-	// Delete
-	public function deleteLot($id = null) {	
-		$Picture = Doctrine::getTable('Library')->find($id);
-		$Picture->delete();
-		die('ok');
+
+	// Index
+	public function index() {
+	    $page       = $this->getParam('page', 1);
+        $orderby    = $this->getParam('orderby', 'id');
+        $dir        = $this->getParam('dir', 'desc');
+        $perpage	= Config::get('pagination.perpage');
+
+		$Pager = new Doctrine_Pager(
+		    Doctrine::getTable('Library')
+		        ->createQuery()
+		        ->orderby($orderby.' '.$dir), 
+		    $page, $perpage
+		);
+		$this->View->set('Pictures', $Pager->execute());
+		$this->View->set('Pager', $Pager);
 	}
 	
-	private function doUpload() {
-		if (!empty($_FILES)) {
-			$file 		= $_FILES['uploaded'];
-			$file_name	= clean_filename($file['name']);
-					
-			$path 		= '/uploads/'.date('Y').'/'.date('m');
-			$full_path 	= $path.'/'.duplicate_filename(ROOT.'/www/'.$path, $file_name);
-			
-			$to_path	= ROOT.'/www/'.$full_path;
-
-			@mkdir(dirname($to_path), 0755, true);
-			move_uploaded_file($file['tmp_name'], $to_path);
-
-			if (isset($_POST['name']) && $_POST['name']) {
-				$name = $_POST['name'];
-			} else {
-				$name = InflectionComponent::humanize(preg_replace('~\.(.*?)$~', '', $file['name']));	
-			}
-
-			$info = getimagesize($to_path);
-			$File = new Library();
-			$File['name'] 	= $name;
-			$File['path'] 	= $full_path;
-			$File['width'] 	= $info[0];
-			$File['height'] = $info[1];
-			$File['type']   = $info['mime'];
-			$File->save();
-			
-			return $File['id'];
+	// Show
+	public function show($id = null) {
+		$Picture = Doctrine::getTable('Library')->find($id);
+		if (!$Picture) {
+			FlashComponent::set('error', "Cet enregistrement n'existe pas.");
+			$this->redirect(array('action' => 'index'));
 		}
+		$this->View->set('Picture', $Picture);
 	}
 
 	// Add
@@ -81,6 +78,71 @@ class {#Controller#}Controller extends Controller {
 		}
 		$this->View->set('Picture', $Picture);
 	}
+	
+	// Edit
+	public function edit($id = null) {	
+		if ($this->Request()->post('id')) {
+			$Picture = Doctrine::getTable('Library')->find($this->Request()->post('id'));
+			if (!$Picture) {
+				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
+				$this->redirect(array('action' => 'index'));
+			}
+			$Picture->fromArray($this->Request()->post());
+			if ($Picture->isValid()) {
+				$Picture->save();
+				FlashComponent::set('success', "Image éditée.");
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$errors = $Picture->getErrorStack();
+				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|#} erreur{s}.'));
+			}
+		} else {
+			$Picture = Doctrine::getTable('Library')->find($id);
+			if (!$Picture) {
+				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
+				$this->redirect(array('action' => 'index'));
+			}
+		}
+		$this->View->set('Picture', $Picture);
+	}
+	
+	// Delete
+	public function delete($id = null) {
+		if ($this->Request()->isAjax()) {
+			$this->View->setAutoRender(false);
+			$Picture = Doctrine::getTable('Library')->find($id);
+			if($Picture) {
+				$Picture->delete();
+				echo 'ok';
+			} else {
+				echo 'error';
+			}
+			return;
+		}
+
+		if ($this->Request()->post('id')) {
+			$Picture = Doctrine::getTable('Library')->find($this->Request()->post('id'));
+			if (!$Picture) {
+				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
+			} else {
+				$Picture->delete();
+				FlashComponent::set('success', "Image supprimée.");
+			}
+			if ($this->Request()->isAjax()) {
+				die('1');
+			} else {
+				$this->redirect(array('action' => 'index'));	
+			}
+		} else {
+			$Picture = Doctrine::getTable('Library')->find($id);
+			if (!$Picture) {
+				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
+				$this->redirect(array('action' => 'index'));
+			}
+		}
+		$this->View->set('Picture', $Picture);
+	}
+
 
 	// Batch action
 	public function batch() {
@@ -112,83 +174,37 @@ class {#Controller#}Controller extends Controller {
 		$this->redirect(array('action' => 'index'));
 	}
 
-	// Delete
-	public function delete($id = null) {	
-		if ($this->Request()->post('id')) {
-			$Picture = Doctrine::getTable('Library')->find($this->Request()->post('id'));
-			if (!$Picture) {
-				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
-			} else {
-				$Picture->delete();
-				FlashComponent::set('success', "Image supprimée.");
-			}
-			if ($this->Request()->isAjax()) {
-				die('1');
-			} else {
-				$this->redirect(array('action' => 'index'));	
-			}
-		} else {
-			$Picture = Doctrine::getTable('Library')->find($id);
-			if (!$Picture) {
-				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
-				$this->redirect(array('action' => 'index'));
-			}
-		}
-		$this->View->set('Picture', $Picture);
-	}
+ 	// Private Upload
+ 	private function doUpload() {
+		if (!empty($_FILES)) {
+			$file 		= $_FILES['uploaded'];
+			$file_name	= clean_filename($file['name']);
+			
+			// TODO: mettre le dosser d'upload dans des configs	
+			$path 		= '/uploads/'.date('Y').'/'.date('m');
+			$full_path 	= $path.'/'.duplicate_filename(ROOT.'/www/'.$path, $file_name);
+			
+			$to_path	= ROOT.'/www/'.$full_path;
 
-	// Edit
-	public function edit($id = null) {	
-		if ($this->Request()->post('id')) {
-			$Picture = Doctrine::getTable('Library')->find($this->Request()->post('id'));
-			if (!$Picture) {
-				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
-				$this->redirect(array('action' => 'index'));
-			}
-			$Picture->fromArray($this->Request()->post());
-			if ($Picture->isValid()) {
-				$Picture->save();
-				FlashComponent::set('success', "Image éditée.");
-				$this->redirect(array('action' => 'index'));
+			@mkdir(dirname($to_path), 0755, true);
+			move_uploaded_file($file['tmp_name'], $to_path);
+
+			if (isset($_POST['name']) && $_POST['name']) {
+				$name = $_POST['name'];
 			} else {
-				$errors = $Picture->getErrorStack();
-				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|#} erreur{s}.'));
+				$name = InflectionComponent::humanize(preg_replace('~\.(.*?)$~', '', $file['name']));	
 			}
-		} else {
-			$Picture = Doctrine::getTable('Library')->find($id);
-			if (!$Picture) {
-				FlashComponent::set('error', "Cet enregistrement n'existe pas.");
-				$this->redirect(array('action' => 'index'));
-			}
-		}
-		$this->View->set('Picture', $Picture);
-	}
 
-	// Index
-	public function index() {
-	    $page       = $this->getParam('page', 1);
-        $orderby    = $this->getParam('orderby', 'id');
-        $dir        = $this->getParam('dir', 'desc');
-        $perpage	= Config::get('pagination.perpage');
-
-		$Pager = new Doctrine_Pager(
-		    Doctrine::getTable('Library')
-		        ->createQuery()
-		        ->orderby($orderby.' '.$dir), 
-		    $page, $perpage
-		);
-		$this->View->set('Pictures', $Pager->execute());
-		$this->View->set('Pager', $Pager);
-	}
-	
-	// Show
-	public function show($id = null) {
-		$Picture = Doctrine::getTable('Library')->find($id);
-		if (!$Picture) {
-			FlashComponent::set('error', "Cet enregistrement n'existe pas.");
-			$this->redirect(array('action' => 'index'));
+			$info = getimagesize($to_path);
+			$File = new Library();
+			$File['name'] 	= $name;
+			$File['path'] 	= $full_path;
+			$File['width'] 	= $info[0];
+			$File['height'] = $info[1];
+			$File['type']   = $info['mime'];
+			$File->save();
+			
+			return $File['id'];
 		}
-		$this->View->set('Picture', $Picture);
 	}
-  
 }

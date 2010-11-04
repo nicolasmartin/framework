@@ -1,5 +1,5 @@
-<? $this->set('ID',    'picturePage') ?>
-<? $this->set('TITLE', 'Suppression d\'une  image') ?>
+<? $this->set('ID',    	"library-page") ?>
+<? $this->set('TITLE', 	"Suppression d'une image") ?>
 
 <div id="content">
 	<div id="main" class="pictures">
@@ -14,7 +14,7 @@
 		<? $i=0; ?>
 		<table class="summary">
 			<colgroup>
-				<col style="width:30%">
+				<col style="width:20%">
 				<col>
 			</colgroup>
 			<tbody>

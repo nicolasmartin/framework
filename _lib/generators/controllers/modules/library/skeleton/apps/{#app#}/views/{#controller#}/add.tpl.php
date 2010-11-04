@@ -1,5 +1,5 @@
-<? 	$this->set('ID', 'picturePage'); ?>		 
-<? 	$this->set('TITLE', 'Ajout d\'une  image'); ?>	
+<? $this->set('ID', 	"library-page"); ?>		 
+<? $this->set('TITLE', 	"Ajout d'une image"); ?>	
 	 
 <div id="content">
 	<div id="main" class="pictures">

@@ -1,5 +1,5 @@
-<? $this->set('ID',    'picturePage') ?>
-<? $this->set('TITLE', 'Liste des images') ?>
+<? $this->set('ID',    	"library-page") ?>
+<? $this->set('TITLE', 	"Liste des images") ?>
 
 <div id="content">
 	<div id="main" class="pictures">
@@ -9,7 +9,7 @@
 
 		<ul class="toolbar">
 			<li><a class="sprite left prefix add" href="<?= UrlHelper::path(array('action' => 'add')) ?>">Ajouter une image</a></li>
-			<li><a class="sprite left prefix download" href="<?= UrlHelper::path(array('action' => 'lot')) ?>">Ajouter des images</a></li>
+			<li><a class="sprite left prefix download" href="<?= UrlHelper::path(array('action' => 'bunch')) ?>">Ajouter des images</a></li>
 		</ul>
 
 		<? $i=0; ?>
