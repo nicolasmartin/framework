@@ -1,7 +1,7 @@
 <?php
-	require_once('../../bootstrap.php');
-
-	$Generator = new GeneratorController('sandboxes', 'library', 'admin');
+	require_once('../../../bootstrap.php');
+	
+	$Generator = new GeneratorController('library', 'test2');
 
 	$Generator->setOverwriteController(true);
 	$Generator->setOverwriteViews(true);

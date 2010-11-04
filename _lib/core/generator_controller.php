@@ -36,7 +36,7 @@
 			'status'		=> "état",
 			'path'			=> "chemin",
 			'price'			=> "prix",
-			'body'			=> "corp",
+			'body'			=> "corps",
 			'title'			=> "titre",
 			'width'			=> "largeur",
 			'height'		=> "hauteur",
