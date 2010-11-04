@@ -12,6 +12,6 @@
 		        ->orderby($orderby.' '.$dir), 
 		    $page, $perpage
 		);
-		$this->View->set('<?= $settings['collection'] ?>', $Pager->execute());
+		$this->View->set('{#Collection#}', $Pager->execute());
 		$this->View->set('Pager', $Pager);
 	}

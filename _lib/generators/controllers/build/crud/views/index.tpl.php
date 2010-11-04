@@ -1,14 +1,14 @@
-[? $this->set('ID',    "<?= strtolower($settings['model']) ?>Page") ?]
-[? $this->set('TITLE', "Liste des <?= $settings['plural'] ?>") ?]
+[? $this->set('ID',    "{#controller#}-page") ?]
+[? $this->set('TITLE', "Liste des {#plural#}") ?]
 
 <div id="content">
-	<div id="main" class="<?= strtolower($settings['collection']) ?>">
-		<h1>Liste des <?= $settings['plural'] ?></h1>
+	<div id="main" class="{#collection#}">
+		<h1>Liste des {#plural#}</h1>
 			
 		[?= $this->partial('flash') ?]
 
 		<ul class="toolbar">
-			<li><a class="sprite prefix add" href="[?= UrlComponent::path(array('action' => 'add')) ?]">Ajouter <?= $settings['a'] ?><?= $settings['singular'] ?></a></li>
+			<li><a class="sprite prefix add" href="[?= UrlComponent::path(array('action' => 'add')) ?]">Ajouter {#a#}</a></li>
 		</ul>
 
 		[? $i=0; ?]
@@ -18,7 +18,7 @@
 			<colgroup>
 				<col style="width:20px">
 <? foreach($fields as $field => $options) : ?>
-<? if (!in_array($field, $settings['exclude'])) : ?>
+<? if (!in_array($field, $exclude)) : ?>
 				<col>
 <? endif ?>
 <? endforeach ?>
@@ -28,8 +28,8 @@
 				<tr>
 					<th scope="col"><input id="checkall" type="checkbox"></th>
 <? foreach($fields as $field => $options) : ?>
-<? if (!in_array($field, $settings['exclude'])) : ?>
-					<th scope="col">[?= UrlHelper::orderBy('<?= $field ?>', "<?= cfirst(ThisGeneratorHelper::field($field, $settings['map']))?>") ?]</th>
+<? if (!in_array($field, $exclude)) : ?>
+					<th scope="col">[?= UrlHelper::orderBy('<?= $field ?>', "<?= cfirst(ThisGeneratorHelper::field($field, $mapping))?>") ?]</th>
 <? endif ?>
 <? endforeach ?>
 					<th scope="col">&nbsp;</th>
@@ -50,30 +50,30 @@
 				</tr>
 			</tfoot>
 			<tbody>
-				[? foreach ($<?= $settings['collection'] ?> as $<?= $settings['model'] ?>): ?]
+				[? foreach (${#Collection#} as ${#Model#}): ?]
 				<tr class="[?= ++$i % 2 ? 'odd': 'even' ?]">
-					<td class="checkboxes"><input type="checkbox" name="id[]" value="[?= $<?= $settings['model'] ?>['id'] ?]"></td>
+					<td class="checkboxes"><input type="checkbox" name="id[]" value="[?= ${#Model#}['id'] ?]"></td>
 <? $r = 0; foreach($fields as $field => $options) : ?>
 <? if (++$r == 2) : ?>
 					<th scope="row">
-						<a title="Voir le résumé" href="[?= UrlComponent::path(array('action' => 'show'), $<?= $settings['model'] ?>['id']) ?]">[?= $<?= $settings['model'] ?>['<?= $field ?>'] ?]</a>
+						<a title="Voir le résumé" href="[?= UrlComponent::path(array('action' => 'show'), ${#Model#}['id']) ?]">[?= ${#Model#}['<?= $field ?>'] ?]</a>
 					</th>
-<? elseif (!in_array($field, $settings['exclude'])) : ?>
-					<td>[?= $<?= $settings['model'] ?>['<?= $field ?>'] ?]</td>
+<? elseif (!in_array($field, $exclude)) : ?>
+					<td>[?= ${#Model#}['<?= $field ?>'] ?]</td>
 <? endif ?>
 <? endforeach ?>
 					<td>
 						<ul class="actions">
-							<li><a class="sprite icon edit" title="Editer" href="[?= UrlComponent::path(array('action' => 'edit'), $<?= $settings['model'] ?>['id']) ?]">Editer</a></li>
-							<li><a class="sprite icon delete" title="Supprimer" href="[?= UrlComponent::path(array('action' => 'delete'), $<?= $settings['model'] ?>['id']) ?]">Supprimer</a></li>
+							<li><a class="sprite icon edit" title="Editer" href="[?= UrlComponent::path(array('action' => 'edit'), ${#Model#}['id']) ?]">Editer</a></li>
+							<li><a class="sprite icon delete" title="Supprimer" href="[?= UrlComponent::path(array('action' => 'delete'), ${#Model#}['id']) ?]">Supprimer</a></li>
 						</ul>
 					</td>
 				</tr>
 				[? endforeach ?]
 
-				[? if (!count($<?= $settings['collection'] ?>)) : ?]
+				[? if (!count(${#Collection#})) : ?]
 				<tr class="empty [?= ++$i % 2 ? 'odd': 'even' ?]">
-					<td colspan="100">Aucun<?= $settings['male'] ? '' : 'e' ?> <?= $settings['singular'] ?>.</td>
+					<td colspan="100">Aucun{#female#} {#singular#}.</td>
 				</tr>
 				[? endif ?]
 			</tbody>

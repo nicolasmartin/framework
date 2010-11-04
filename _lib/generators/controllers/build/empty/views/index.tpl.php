@@ -1,11 +1,12 @@
 [?php
-	$this->set('TITLE', 		"<?= cfirst($settings['plural']) ?>");
-	$this->set('DESCRIPTION',	"Les <?= cfirst($settings['plural']) ?>");
+	$this->set('ID', 			"{#controller#}-page") ?>");
+	$this->set('TITLE', 		"<?= cfirst("{#plural#}") ?>");
+	$this->set('DESCRIPTION',	"Les {#plural#}");
 ?]
 
-<div id="content" class="row <?= strtolower($settings['collection']) ?>">
+<div id="content" class="row {#collection#}">
 	<div id="main" class="col3-4 first">
-		<h1><?= ucfirst($settings['plural']) ?></h1>
+		<h1><?= ucfirst("{#plural#}") ?></h1>
 
 		[?= $this->partial('flash') ?]
 	</div><!-- #main -->

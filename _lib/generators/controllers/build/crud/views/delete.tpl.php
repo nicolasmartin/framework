@@ -1,14 +1,14 @@
-[? $this->set('ID',    "<?= strtolower($settings['model']) ?>Page") ?]
-[? $this->set('TITLE', "Suppression d'<?= $settings['a'] ?> <?= $settings['singular'] ?>") ?]
+[? $this->set('ID',    "{#controller#}-page") ?]
+[? $this->set('TITLE', "Suppression d'{#a#}") ?]
 
 <div id="content">
-	<div id="main" class="<?= strtolower($settings['collection']) ?>">
-		<h1>Suppression d'<?= $settings['a'] ?><?= $settings['singular'] ?></h1>
+	<div id="main" class="{#collection#}">
+		<h1>Suppression d'{#a#}</h1>
 
 		[?= $this->partial('flash') ?]
 
 		<ul class="toolbar">
-			<li><a class="sprite prefix home" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux <?= $settings['plural'] ?></a></li>
+			<li><a class="sprite prefix home" href="[?= UrlComponent::path(array('action' => 'index')) ?]">Retour aux {#plural#}</a></li>
 		</ul>
 
 		[? $i=0; ?]
@@ -20,10 +20,10 @@
 			</colgroup>
 			<tbody>
 <? foreach($fields as $field => $options) : ?>
-<? if (!in_array($field, $settings['exclude'])) : ?>
+<? if (!in_array($field, $exclude)) : ?>
 				<tr class="[?= ++$i % 2 ? 'odd': 'even' ?]">
-					<th scope="row"><?= cfirst(ThisGeneratorHelper::field($field, $settings['map'])) ?></th>
-					<td>[?= $<?= $settings['model'] ?>['<?= $field ?>'] ?]</td>
+					<th scope="row"><?= cfirst(ThisGeneratorHelper::field($field, $mapping)) ?></th>
+					<td>[?= ${#Model#}['<?= $field ?>'] ?]</td>
 				</tr>
 <? endif ?>
 <? endforeach ?>
@@ -31,8 +31,8 @@
 		</table>
 
 		<div class="form">
-		<form method="post" action="[?= UrlComponent::path(array('action' => 'delete'), $<?= $settings['model'] ?>['id']) ?]">
-			<input type="hidden" name="id" value="[?= $<?= $settings['model'] ?>['id'] ?]">
+		<form method="post" action="[?= UrlComponent::path(array('action' => 'delete'), ${#Model#}['id']) ?]">
+			<input type="hidden" name="id" value="[?= ${#Model#}['id'] ?]">
 			
 			<div>
 				<input class="button" type="submit" value="Supprimer"> 

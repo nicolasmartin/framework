@@ -23,7 +23,7 @@
 				foreach ($Items as $Item) {
 					$Item->delete();
 				}
-				FlashComponent::set('success', pluralize(count($id), "{<?= cfirst($settings['singular']) ?>|<?= cfirst($settings['plural']) ?>} effacé<?= $settings['male'] ? '' : 'e' ?>{s}"));
+				FlashComponent::set('success', pluralize(count($id), "{<?= cfirst('{#Singular#}') ?>|<?= cfirst('{#Plural#}') ?>} effacé{#female#}{s}"));
 			break;
 		}
 		$this->redirect(array('action' => 'index'));

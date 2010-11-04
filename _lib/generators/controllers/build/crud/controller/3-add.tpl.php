@@ -2,19 +2,19 @@
 	// Add
 	public function add() {						
 		if ($this->Request()->isPost()) {
-			$<?= $settings['model'] ?> = new <?= $model ?>();
-			$<?= $settings['model'] ?>->fromArray($this->Request()->post());	
-			if ($<?= $settings['model'] ?>->isValid()) {
-				$<?= $settings['model'] ?>->save();
-				FlashComponent::set('success', "<?= cfirst($settings['singular']) ?> créé<?= $settings['male'] ? '' : 'e' ?>.");
+			${#Model#} = new {#Model#}();
+			${#Model#}->fromArray($this->Request()->post());	
+			if (${#Model#}->isValid()) {
+				${#Model#}->save();
+				FlashComponent::set('success', "<?= cfirst('{#Singular#}') ?> créé{#female#}.");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$errors = $<?= $settings['model'] ?>->getErrorStack();
+				$errors = ${#Model#}->getErrorStack();
 				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|#} erreur{s}.'));
 			}
 		} else {
-			$<?= $settings['model'] ?> = new <?= $model ?>();
+			${#Model#} = new {#Model#}();
 		}
-		$this->View->setPath('<?= strtolower($controller) ?>/edit');
-		$this->View->set('<?= $settings['model'] ?>', $<?= $settings['model'] ?>);
+		$this->View->setPath('{#controller#}/edit');
+		$this->View->set('{#Model#}', ${#Model#});
 	}

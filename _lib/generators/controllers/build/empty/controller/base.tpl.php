@@ -1,7 +1,7 @@
 [?php
-// Controller <?= $controller ?> 
+// Controller {#Controller#}
 // Généré le <?= date('d M Y à H:i:s') ?> 
-class <?= $controller ?>Controller extends Controller { 
+class {#Controller#}Controller extends Controller { 
 <? if ($protection) : ?>
 
 	// Protection

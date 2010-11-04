@@ -76,7 +76,7 @@
 			
 			$handle = opendir($path);
 			while ($file = readdir($handle)) {
-				if (strpos($file, '.tpl.php') !== false && $file != 'base.tpl.php') {
+				if (strpos($file, '.tpl.php') !== false && $file != '0-base.tpl.php') {
 					$templates[] = $file;
 				}
 			}
@@ -85,6 +85,7 @@
 			return $templates;
 		}
 		
+		// remplaçe les {#vars#} et copie le dossier et son contenu 
 		protected function copy($from_dir, $to_dir, $overide = false) {
             if (!file_exists($from_dir)) {
                 $this->debug('Pas de dossier '.$from_dir.' à copier.');
@@ -94,24 +95,25 @@
             $files = read_folder($from_dir);
 			            
             foreach($files as $file) {
-                 $from   = $from_dir.'/'.$file;
-				 $to     = $this->replace($to_dir.'/'.$file);
- 
-                 if (!file_exists(dirname($to))) {
-                     mkdir(dirname($to), 0700, true);
-                 }
- 
-                 if (file_exists($to) && $overide === false) {
-                     $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
-                 } else {
-                     $this->debug('Création du fichier '.$to.'.');
-                     $content = file_get_contents($from);
-                	 $content = $this->replace($content);
-					 file_put_contents($to, $content);
-                 }
+				$from   = $from_dir.'/'.$file;
+				$to     = $this->replace($to_dir.'/'.$file);
+				
+				if (!file_exists(dirname($to))) {
+				 mkdir(dirname($to), 0700, true);
+				}
+				
+				if (file_exists($to) && $overide === false) {
+				 $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
+				} else {
+				 $this->debug('Création du fichier '.$to.'.');
+				 $content = file_get_contents($from);
+				 $content = $this->replace($content);
+				 file_put_contents($to, $content);
+				}
             }		    
 		}
-		
+
+		// Copie le dossier et son contenu sans remplaçer les {#vars#}
 		protected function duplicate($from_dir, $to_dir, $overide = false) {
             if (!file_exists($from_dir)) {
                 $this->debug('Pas de dossier '.$from_dir.' à copier.');
@@ -121,19 +123,19 @@
             $files = read_folder($from_dir);
             
             foreach($files as $file) {
-                 $from   = $from_dir.'/'.$file;
-                 $to     = $to_dir.'/'.$file;
- 
-                 if (!file_exists(dirname($to))) {
-                     mkdir(dirname($to), 0700, true);
-                 }
- 
-                 if (file_exists($to) && $overide === false) {
-                     $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
-                 } else {
-                     $this->debug('Création du fichier '.$to.'.');
-                     copy($from, $to);
-                 }
+				$from   = $from_dir.'/'.$file;
+				$to     = $to_dir.'/'.$file;
+				
+				if (!file_exists(dirname($to))) {
+				 mkdir(dirname($to), 0700, true);
+				}
+				
+				if (file_exists($to) && $overide === false) {
+				 $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
+				} else {
+				 $this->debug('Création du fichier '.$to.'.');
+				 copy($from, $to);
+				}
             }		    
 		}
 		
