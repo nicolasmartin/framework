@@ -1,7 +1,7 @@
 <?php
 	require_once('../../../bootstrap.php');
 
-	$Generator = new GeneratorController('test', 'admin', 'sandbox');
+	$Generator = new GeneratorController('sandboxes', 'admin', 'sandbox');
 	$Generator->setVar('model',			"Item");
 	$Generator->setVar('collection',	"Items");
 	$Generator->setVar('singular',		"élément");

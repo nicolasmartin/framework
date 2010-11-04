@@ -2,7 +2,7 @@
 	// Add
 	public function add() {						
 		if ($this->Request()->isPost()) {
-			${#Model#} = new {#Model#}();
+			${#Model#} = new <?= $model ?>();
 			${#Model#}->fromArray($this->Request()->post());	
 			if (${#Model#}->isValid()) {
 				${#Model#}->save();
@@ -13,7 +13,7 @@
 				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|#} erreur{s}.'));
 			}
 		} else {
-			${#Model#} = new {#Model#}();
+			${#Model#} = new <?= $model ?>();
 		}
 		$this->View->setPath('{#controller#}/edit');
 		$this->View->set('{#Model#}', ${#Model#});
