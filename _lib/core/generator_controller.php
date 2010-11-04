@@ -44,7 +44,7 @@
 			'updated_at'	=> "mis à jour",
 		);
 				
-		function __construct($controller, $model = null, $app = null, $path = '.', $settings = array()) {
+		function __construct($controller, $app = null, $model = null, $path = '.', $settings = array()) {
 			$this->setApp($app);
 			$this->setController($controller);
 			$this->setModel($model);

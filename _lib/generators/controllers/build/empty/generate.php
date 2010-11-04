@@ -1,7 +1,7 @@
 <?php
 	require_once('../../../bootstrap.php');
 	
-	$Generator = new GeneratorController('library', 'test2');
+	$Generator = new GeneratorController('test', 'admin');
 
 	$Generator->setOverwriteController(true);
 	$Generator->setOverwriteViews(true);
