@@ -163,10 +163,7 @@
 			
 			$path = ROOT.'/apps/'.strtolower($this->getApp()).'/controllers/'.$this->getController().'.php';
 
-			if (!file_exists(dirname($path))) {
-				mkdir(dirname($path), 0700, true);
-				$this->debug('Création du dossier '.dirname($path));
-			}
+			$this->mkdir(dirname($path));
 			
 			if (file_exists($path) && $this->getOverwrite() === false) {
 				$this->debug('Le controller existe déjà. '.$path.' est ignoré.');	
@@ -202,10 +199,7 @@
 
 				$path = ROOT.'/apps/'.strtolower($this->getApp()).'/views/'.strtolower($this->getController()).'/'.$file;
 
-				if (!file_exists(dirname($path))) {
-					mkdir(dirname($path), 0700, true);
-					$this->debug('Création du dossier '.dirname($path));
-				}
+				$this->mkdir(dirname($path));
 				
 				if (file_exists($path) && $this->getOverwrite() === false) {
 				    $this->debug('La vue existe déjà. '.$path.' est ignoré.', true);		

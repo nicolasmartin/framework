@@ -50,8 +50,10 @@
 			 if ($this->getVerbose()) {
 				 if (!is_cli() && $error) {
     			     $format = '<span style="color:red">%s</span>';
+				 } else if (is_cli() && $error) {
+    			     $format = '*** %s';
     			 } else {
-    			     $format = "%s";
+    			     $format = '%s';
     			 }
 				 printf($format, str_replace(realpath($_SERVER['DOCUMENT_ROOT']), '', $string));
     			 if (is_cli()) {
@@ -76,7 +78,7 @@
 			
 			$handle = opendir($path);
 			while ($file = readdir($handle)) {
-				if (strpos($file, '.tpl.php') !== false && $file != '0-base.tpl.php') {
+				if (strpos($file, '.tpl.php') !== false && $file != 'base.tpl.php') {
 					$templates[] = $file;
 				}
 			}
@@ -98,9 +100,7 @@
 				$from   = $from_dir.'/'.$file;
 				$to     = $this->replace($to_dir.'/'.$file);
 				
-				if (!file_exists(dirname($to))) {
-				 mkdir(dirname($to), 0700, true);
-				}
+				$this->mkdir(dirname($to));
 				
 				if (file_exists($to) && $overide === false) {
 				 $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
@@ -126,9 +126,7 @@
 				$from   = $from_dir.'/'.$file;
 				$to     = $to_dir.'/'.$file;
 				
-				if (!file_exists(dirname($to))) {
-				 mkdir(dirname($to), 0700, true);
-				}
+				$this->mkdir(dirname($to));
 				
 				if (file_exists($to) && $overide === false) {
 				 $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
@@ -137,6 +135,19 @@
 				 copy($from, $to);
 				}
             }		    
+		}
+		
+		protected function mkdir($path, $mod = 0755) {	
+			if (file_exists($path)) {
+				return false;
+			}
+			if (contains('*/cache/*', 	$path.'/')
+			||	contains('*/logs/*', 	$path.'/')
+			||	contains('*/models/*',	$path.'/')) {
+				$mod = 0777;
+			}
+			mkdir($path, $mod, true);
+			$this->debug('Création du dossier '.$path);
 		}
 		
 		protected function replace($content) {
