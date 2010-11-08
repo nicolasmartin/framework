@@ -113,7 +113,17 @@
 	}
 
 	function exception_handler($e) {
-		$message  = "<div style='padding:20px; font:12px/1.7 Arial'>";
+		$message = "";
+		if (is_cli()) {
+			$message .= "*** Exception ***\n";
+			$message .= "[".$e->getCode()."] ".$e->getMessage()."\n";
+			$message .= "Fichier : ".basename($e->getFile())." [ Ligne ".$e->getLine()." ]"."\n";
+			$message .= "Chemin : ".$e->getFile()."\n";
+			$message .= "\n\n";
+			echo $message;
+			return;	
+		}
+		$message .= "<div style='padding:20px; font:12px/1.7 Arial'>";
 		$message .= "<h1>[".$e->getCode()."] ".$e->getMessage()."</h1>";
 
 		$message .= '<ul style="margin-bottom:50px">';
@@ -359,6 +369,8 @@
     	}
     }
 	
-	function create_folder($path) {
-		@mkdir($path);	
+	function create_folder($path, $mod = 0777) {
+		if (!file_exists($path)) {
+			mkdir($path, $mod, true);	
+		}
 	}
