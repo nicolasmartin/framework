@@ -11,6 +11,7 @@
 body {
 	color:#444;
 	font:12px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+	padding:0 10px;
 }
 
 /* ------- HEADERS ---------------- */
@@ -387,9 +388,13 @@ form {
 	form select {
 		font:12px 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 		padding:10px;
+		border:1px solid Gray;
 	}
-	form div.has-error {
+	form .error input[type=text],
+	form .error textarea,
+	form .error select {
 		background:Ivory;
+		border:1px solid DarkRed;
 	}
 	form input[type=text]:focus,
 	form textarea:focus,
