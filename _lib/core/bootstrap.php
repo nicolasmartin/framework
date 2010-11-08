@@ -124,23 +124,24 @@
 			if (empty($this->models)) {
 				throw new Exception("Les chemins des modèles doivent être configurés avant l'appel de cette méthode.");	
 			}
-			
+
 			if (Config::get('db.name')) {
+				$Conn = Doctrine_Manager::connection('sqlite::memory:', 'default');
+			} else {
 				$Conn = Doctrine_Manager::connection(array('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), 
 				    Config::get('db.username'), 
 				    Config::get('db.password')
 				), 
 				'default');
+			}
+			$Conn->setAttribute(Doctrine::ATTR_VALIDATE, 				Doctrine::VALIDATE_ALL);
+			$Conn->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE,  true); 
+			$Conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, 		true);
+			$Conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, 			Doctrine::MODEL_LOADING_CONSERVATIVE);
+			$Conn->setAttribute(Doctrine::ATTR_COLLECTION_CLASS, 		'DefaultCollection');
 
-				$Conn->setAttribute(Doctrine::ATTR_VALIDATE, 				Doctrine::VALIDATE_ALL);
-				$Conn->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE,  true); 
-				$Conn->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, 		true);
-				$Conn->setAttribute(Doctrine::ATTR_MODEL_LOADING, 			Doctrine::MODEL_LOADING_CONSERVATIVE);
-				$Conn->setAttribute(Doctrine::ATTR_COLLECTION_CLASS, 		'DefaultCollection');
-
-				foreach($this->models as $model_path) {
-					Doctrine::loadModels($model_path);
-				}
+			foreach($this->models as $model_path) {
+				Doctrine::loadModels($model_path);
 			}
 		}
 				
