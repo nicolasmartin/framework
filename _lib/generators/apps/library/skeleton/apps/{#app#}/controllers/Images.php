@@ -74,7 +74,7 @@ class ImagesController extends Controller {
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$errors = $Picture->getErrorStack();
-				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|#} erreur{s}.'));
+				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|{#}} erreur{s}.'));
 			}
 		} else {
 			$Picture = new Library();
@@ -152,7 +152,7 @@ class ImagesController extends Controller {
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$errors = $Picture->getErrorStack();
-				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|#} erreur{s}.'));
+				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|{#}} erreur{s}.'));
 			}
 		} else {
 			$Picture = Doctrine::getTable('Library')->find($id);

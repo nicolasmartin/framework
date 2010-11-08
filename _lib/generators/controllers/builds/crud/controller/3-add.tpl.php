@@ -10,7 +10,7 @@
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$errors = ${#Model#}->getErrorStack();
-				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|#} erreur{s}.'));
+				FlashComponent::set('error', "Le formulaire contient ".pluralize(count($errors), '{une|{#}} erreur{s}.'));
 			}
 		} else {
 			${#Model#} = new <?= $model ?>();
