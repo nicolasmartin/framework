@@ -1,0 +1,12 @@
+{#Model#}:
+  columns:
+    name:
+      notblank: true
+      type: string(100)
+    email:
+      email: true
+      notblank: true
+      type: string(50)
+    body:
+      notblank: true
+      type: clob

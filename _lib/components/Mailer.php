@@ -26,4 +26,20 @@
 		public function setAltBody($body = null) {
 			$this->AltBody = $body;
 		}
+		
+		public function setTo($email, $name = null) {
+			parent::addAddress($email, $name);
+		}
+		
+		public function addAddress($email, $name = null) {
+			parent::addAddress($email, $name);
+		}
+		
+		public function setFrom($email, $name = null) {
+			parent::setFrom($email, $name);
+		}
+		
+		public function send() {
+			arent::send();	
+		}
 	}
