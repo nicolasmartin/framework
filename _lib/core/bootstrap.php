@@ -125,7 +125,7 @@
 				throw new Exception("Les chemins des modèles doivent être configurés avant l'appel de cette méthode.");	
 			}
 
-			if (Config::get('db.name')) {
+			if (!Config::get('db.name')) {
 				$Conn = Doctrine_Manager::connection('sqlite::memory:', 'default');
 			} else {
 				$Conn = Doctrine_Manager::connection(array('mysql:dbname='.Config::get('db.name').';host='.Config::get('db.host'), 
