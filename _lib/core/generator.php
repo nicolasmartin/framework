@@ -84,6 +84,7 @@
 			}
 			closedir($handle);
 			
+			sort($templates);
 			return $templates;
 		}
 		
