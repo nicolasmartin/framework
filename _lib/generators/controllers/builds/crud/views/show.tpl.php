@@ -30,10 +30,12 @@
 			</tbody>
 		</table>
 
+		<div style="text-align:right">
 		<ul class="actions">
 			<li><a class="sprite left prefix edit" title="Editer" href="[?= UrlComponent::path(array('action' => 'edit'), ${#Model#}['id']) ?]">Editer</a></li>
 			<li><a class="sprite left prefix delete" title="Supprimer" href="[?= UrlComponent::path(array('action' => 'delete'), ${#Model#}['id']) ?]">Supprimer</a></li>
 		</ul>
+		</div>
 		
 	</div><!-- #main -->
 </div><!-- #content -->

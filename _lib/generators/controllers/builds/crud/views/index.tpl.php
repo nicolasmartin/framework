@@ -37,7 +37,7 @@
 			</thead>
 			<tfoot>
 				<tr>
-					<td colspan="2" class="batch-actions">
+					<td colspan="2" class="batch">
 						<select name="action">
 							<option value="">&#8212; Actions &#8212;</option>
 							<option value="delete">Supprimer</option>
@@ -79,6 +79,10 @@
 			</tbody>
 		</table>
 		</form>
+		
+		<ul class="toolbar">
+			<li><a class="sprite prefix add" href="[?= UrlComponent::path(array('action' => 'add')) ?]">Ajouter {#a#}</a></li>
+		</ul>
 	</div><!-- #main -->
 </div><!-- #content -->
 
