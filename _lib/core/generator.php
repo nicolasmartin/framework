@@ -103,6 +103,10 @@
 				
 				$this->mkdir(dirname($to));
 				
+                if (basename($file) == 'empty') {
+                    continue;
+                }
+				
 				if (file_exists($to) && $overide === false) {
 				 $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
 				} else {
@@ -128,7 +132,10 @@
 				$to     = $to_dir.'/'.$file;
 				
 				$this->mkdir(dirname($to));
-				
+                if (basename($file) == 'empty') {
+                    continue;
+                }
+                
 				if (file_exists($to) && $overide === false) {
 				 $this->debug('Le fichier existe déjà. '.$to.' est ignoré.', true);    
 				} else {

@@ -600,3 +600,19 @@ table {
 	table tr.selected td {
 		background:Ivory !important;
 	}
+/* hacks */
+.menu:after,
+.toolbar:after,
+.actions:after {
+	clear:both;
+	content:".";
+	display:block;
+	height:0;
+	line-height:0;
+	visibility:hidden;
+}
+	* html .row,
+	* html .toolbar,
+	* html .actions {
+		height:1%;
+	}

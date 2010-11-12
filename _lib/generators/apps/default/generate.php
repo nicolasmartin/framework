@@ -1,6 +1,6 @@
 <?php
 	require_once('../../bootstrap.php');
 	
-	$Generator = new GeneratorStructure('default');
+	$Generator = new GeneratorStructure('test');
 	$Generator->setOverwrite(true);
 	$Generator->generate();
