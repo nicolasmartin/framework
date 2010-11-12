@@ -6,6 +6,7 @@
 	Color :White
  ------------------------------ */
 body {
+	padding:20px;
 	background:White;	
 	color:#111;
 	font:12px/1.6 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
