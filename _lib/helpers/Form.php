@@ -45,16 +45,19 @@ class FormHelper extends Helper {
     
     static function checkboxes($name, $options  = array(), $checked = '', $attributes = array()) {
         $checked = is_object($checked) ? $checked[$name] : $checked;
-        $html = '';
+        $html = '<div class="checkboxes">';
         foreach((array) $options as $key => $value) {
             $attributes['value'] = $key;
+			$html .= '<label>';
             $html .= '<input type="checkbox" name="'.$name.'" '.self::attributes($attributes);
             if ($key == $checked || (is_array($checked) && in_array($key, $checked))) {
                 $html .= ' checked="checked"';                
             }
             $html .= Helper::xhtml().'> ';
-            $html .= $value.' ';
+            $html .= $value;
+			$html .= '</label> ';
         }
+		$html .= '</div>';
         return $html;
     }
     
@@ -70,16 +73,19 @@ class FormHelper extends Helper {
     
     static function radios($name, $options = array(), $checked = '', $attributes = array()) {
         $checked = is_object($checked) ? $checked[$name] : $checked;
-        $html = '';
+	    $html = '<div class="radios">';
         foreach((array) $options as $key => $value) {
             $attributes['value'] = $key;
+			$html .= '<label>';
             $html .= '<input type="radio" name="'.$name.'" '.self::attributes($attributes);
             if ($key == $checked || (is_array($checked) && in_array($key, $checked))) {
                 $html .= ' checked="checked"';                
             }
             $html .= Helper::xhtml().'> ';
-            $html .= $value.' ';
+            $html .= $value;
+			$html .= '</label> ';
         }
+		$html .= '</div>';
         return $html;
     }
 
