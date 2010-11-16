@@ -8,6 +8,7 @@
 	
 	class Controller implements ControllerInterface {
 		public $View;
+		public $Request;
 		public $app;
 		public $name;
 		public $action;
@@ -34,6 +35,8 @@
 			$this->View = new View($this->name.'/'.$this->action, $this->Layout);
 			$this->View->setController($this);
 			$this->View->setAutoRender(true);
+			
+			$this->Request = $this->Request();	
 		}
 		
 		public function Request() {
