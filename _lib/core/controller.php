@@ -32,7 +32,7 @@
 				$this->Layout = null;
 			}
 
-			$this->View = new View($this->name.'/'.$this->action, $this->Layout);
+			$this->View = new View($this->name.'/'.InflectionComponent::unCamelcase($this->action, '-'), $this->Layout);
 			$this->View->setController($this);
 			$this->View->setAutoRender(true);
 			

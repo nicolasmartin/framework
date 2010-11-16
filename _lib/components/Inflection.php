@@ -28,8 +28,8 @@
 			return $string;
 		}
 
-		public static function unCamelCase($string) {
-			$string = preg_replace('/(?!^)[[:upper:]]/', '_$0', $string);
+		public static function unCamelCase($string, $sep = '_') {
+			$string = preg_replace('/(?!^)[[:upper:]]/', $sep.'$0', $string);
 			$string = strtolower($string);
 			return $string;
 		}
