@@ -39,7 +39,7 @@
 <? if (!in_array($field, $exclude)) : ?>
 			<div class="[?= ++$i % 2 ? 'odd': 'even' ?] [?= FormHelper::getErrorClass('<?= $field ?>', ${#Model#}, false); ?]">
 				<label for="<?= $field ?>"><?= cfirst(ThisGeneratorHelper::field($field, $mapping)) ?></label>
-				[?= <?= ThisGeneratorHelper::getFormElement($model, $field, '{#Model#}') ?> ?] <?= ThisGeneratorHelper::getFormHint($model, $field, '{#Model#}') ?>
+				[?= <?= ThisGeneratorHelper::getFormElement($model, $field, '{#Model#}') ?> ?] <?= ThisGeneratorHelper::getFormHint($model, $field, '{#Model#}') ?> 
 				[?= FormHelper::displayErrors('<?= $field ?>', ${#Model#}) ?]
 			</div>
 
