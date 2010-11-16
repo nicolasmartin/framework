@@ -10,10 +10,10 @@
 		- SIDEBAR
 	- FOOTER
 */
-
+ 
 /* ------- CONTAINER ---------------- */
 #container {
-	width:1024px;
+	width:960px;
 	margin:20px auto;
 }
 #header, 
@@ -24,51 +24,51 @@
 }
 
 /* ------- HEADER ---------------- */
-	#header {
-		position: relative;	
+#header {
+	position: relative;	
+}
+	#header small {
+		display:none;
 	}
-		#header small {
-			display:none;
-		}
-	#logo {
-		margin:0; padding:0;	
+#logo {
+	margin:0; padding:0;	
+}
+#logo a {
+	background:transparent url(../img/logo.png) no-repeat;
+	display:block;
+	height:128px;
+	overflow:hidden;
+	text-indent:-9999px;
+	width:128px; 
+}
+#logged {
+	position:absolute;
+	top: 0px;
+	right: 10px;
+}
+	#logged .user {
+		font-weight: bold;
 	}
-	#logo a {
-		background:transparent url(../img/logo.png) no-repeat;
-		display:block;
-		height:128px;
-		overflow:hidden;
-		text-indent:-9999px;
-		width:128px; 
-	}
-	#logged {
-		position:absolute;
-		top: 0px;
-		right: 10px;
-	}
-		#logged .user {
-			font-weight: bold;
-		}
 
 /* ------- CONTENT ---------------- */
 #content {
 	
 }
 
-/* ------- MAIN ---------------- */
-#main {
-
-}
-	#main p {
-			text-align: justify;	
+	/* ------- MAIN ---------------- */
+	#main {
+		position:relative;
 	}
-
-/* ------- SIDEBAR ---------------- */
-#sidebar {
-
-}
+		#main p {
+			text-align:justify;	
+		}
+	
+	/* ------- SIDEBAR ---------------- */
+	#sidebar {
+		
+	}
 
 /* ------- FOOTER ---------------- */
 #footer {
-
+	
 }

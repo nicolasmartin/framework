@@ -1,3 +1,4 @@
+/* ------- GRID ------------------- */
 .col1-1  { width:100%; 		}
 /* half */
 .col1-2  { width:48%; 		}
@@ -26,7 +27,6 @@
 .col66  { width:65.33%; 	}
 .col75  { width:74%; 		}
 .col100 { width:100%; 		}
-
 .col1-1, .col1-2, 
 .col1-3, .col2-3,
 .col1-4, .col2-4, .col3-4, 
@@ -86,18 +86,14 @@
 .pull66   { right:69.33%; 	}
 .pull75   { right:78%; 		}
 /* row  */
-.row {
-	display: inline-block;
+.row:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
 }
-	.row:after {
-		content: ".";
-		display: block;
-		clear: both;
-		visibility: hidden;
-		line-height: 0;
-		height: 0;
-	} 
-	
 	html[xmlns] .row {
 		display: block;
 	}
