@@ -35,6 +35,7 @@ class FormHelper extends Helper {
     
     static function checkbox($name, $value = '', $checked = '', $attributes = array()) {
         $attributes['value'] = $value = is_object($value) ? $value[$name] : $value;
+        $attributes['id'] = isset($attributes['id']) ? $attributes['id'] : $name;
         $html = '<input type="checkbox" name="'.$name.'" '.self::attributes($attributes);
         if ($value == $checked) {
             $html .= ' checked="checked"';

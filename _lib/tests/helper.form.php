@@ -78,15 +78,15 @@
 		public function testCheckbox() {
 		    $this->assertEqual(
 		        FormHelper::checkbox('name', 'value', null, array('class' => 'myClass')),
-		        '<input type="checkbox" name="name" class="myClass" value="value">');		    
+		        '<input type="checkbox" name="name" class="myClass" value="value" id="name">');		    
 
 		    $this->assertEqual(
 		        FormHelper::checkbox('name', 'value', 'value', array('class' => 'myClass')),
-		        '<input type="checkbox" name="name" class="myClass" value="value" checked="checked">');		    
+		        '<input type="checkbox" name="name" class="myClass" value="value" id="name" checked="checked">');		    
 
 		    $this->assertEqual(
 		        FormHelper::checkbox('name', $this->Model, 'obj', array('class' => 'myClass')),
-		        '<input type="checkbox" name="name" class="myClass" value="obj" checked="checked">');		    
+		        '<input type="checkbox" name="name" class="myClass" value="obj" id="name" checked="checked">');		    
 		}
 
 		public function testCheckboxes() {
