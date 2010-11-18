@@ -1,12 +1,12 @@
 [?php
-	$this->set('ID', 			"{#controller#}-page") ?>");
-	$this->set('TITLE', 		"<?= cfirst("{#plural#}") ?>");
-	$this->set('DESCRIPTION',	"Les {#plural#}");
+	$this->set('ID', 			"{#controller#}-page");
+	$this->set('TITLE', 		"{#Controller#}");
+	$this->set('DESCRIPTION',	"{#Controller#} page");
 ?]
 
-<div id="content" class="row {#collection#}">
+<div id="content" class="row">
 	<div id="main" class="col3-4 first">
-		<h1><?= ucfirst("{#plural#}") ?></h1>
+		<h1>{#Controller#}</h1>
 
 		[?= $this->partial('flash') ?]
 	</div><!-- #main -->
