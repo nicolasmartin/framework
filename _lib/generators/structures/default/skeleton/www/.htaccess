@@ -8,9 +8,14 @@ RewriteRule ^(.*)$ default/index.php?URL=$1 [QSA,L]
 
 ErrorDocument 500 'Under Construction'
 
+# Options
+Options +FollowSymlinks
+Options -Indexes
+Options -MultiViews 
+
 # Charset
 AddDefaultCharset utf-8
-AddCharset utf-8 .html .css .js .xml .json .rss
+AddCharset utf-8 .html .php .css .js .xml .json .rss
 
 # Interpréter certains fichier en tant que PHP
 AddType application/x-httpd-php .xml

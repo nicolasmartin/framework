@@ -1,7 +1,14 @@
 SetEnv PHP_VER 5
 
-# Redirige les URL
 RewriteEngine On
+
+# Redirige les images
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/(.*?)/
+RewriteRule ^(.*)_([0-9]*)x([0-9]*)([T]?)(\.jpg|\.png)$ /image.php?src=%0$1$5&width=$2&height=$3&mode=$4 [L]
+
+# Redirige les URL
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?URL=$1 [QSA,L]
@@ -9,21 +16,3 @@ RewriteRule ^(.*)$ index.php?URL=$1 [QSA,L]
 # Pages d'erreur
 ErrorDocument 403 /pages/error403
 ErrorDocument 404 /pages/error404
-
-# Options
-Options +FollowSymlinks
-Options -Indexes
-Options -MultiViews 
-
-# Charset
-AddDefaultCharset utf-8
-AddCharset utf-8 .html .css .js .xml .json .rss
-
-# Interpréter certains fichier en tant que PHP
-AddType application/x-httpd-php .xml
-
-# Includes
-<FilesMatch "\.(js|css)$">
- 	Options +Includes
-  	SetOutputFilter INCLUDES
-</FilesMatch>

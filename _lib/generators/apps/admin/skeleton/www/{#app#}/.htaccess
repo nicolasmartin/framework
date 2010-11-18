@@ -1,7 +1,14 @@
 SetEnv PHP_VER 5
 
-# Redirige les URL
 RewriteEngine On
+
+# Redirige les images
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/(.*?)/
+RewriteRule ^(.*)_([0-9]*)x([0-9]*)([T]?)(\.jpg|\.png)$ /image.php?src=%0$1$5&width=$2&height=$3&mode=$4 [L]
+
+# Redirige les URL
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?URL=$1 [QSA,L]
