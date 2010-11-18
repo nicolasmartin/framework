@@ -48,7 +48,24 @@ class LibraryController extends Controller {
 		$this->View->set('Pictures', $Pager->execute());
 		$this->View->set('Pager', $Pager);
 	}
-	
+
+	// Insertion
+	public function insertionIndex() {
+		$this->Layout->setPath('simple', true);
+		$this->index();
+	}
+
+	// Insertion window
+	public function insertionEdit($id) {
+		$Picture = Doctrine::getTable('Library')->find($id);
+		if (!$Picture) {
+			FlashComponent::set('error', "Cet enregistrement n'existe pas.");
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->View->set('Picture', $Picture);
+		$this->Layout->setPath('simple', true);
+	}
+
 	// Show
 	public function show($id = null) {
 		$Picture = Doctrine::getTable('Library')->find($id);

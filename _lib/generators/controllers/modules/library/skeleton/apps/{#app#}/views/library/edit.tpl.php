@@ -41,7 +41,7 @@
 					<tr class="<?= ++$i % 2 ? 'odd': 'even' ?>">
 						<th scope="row">Nom</th>
 						<td>
-							<input size="40" type="text" id="name" name="name" value="<?= addslashes($Picture['name']) ?>"/>
+							<input size="40" type="text" id="name" name="name" value="<?= addslashes($Picture['name']) ?>">
 							<?= FormHelper::displayErrors('name', $Picture) ?>
 						</td>
 					</tr>

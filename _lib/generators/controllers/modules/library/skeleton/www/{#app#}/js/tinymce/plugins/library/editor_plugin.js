@@ -21,7 +21,7 @@
 				
 				ed.windowManager.open({
 					file : url + '/window.php',
-					width : 480,
+					width : 860,
 					height : 600,
 					inline : 1
 				}, {
