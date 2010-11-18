@@ -12,3 +12,4 @@ RewriteRule ^(.*)_([0-9]*)x([0-9]*)([T]?)(\.jpg|\.png)$ /image.php?src=%0$1$5&wi
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?URL=$1 [QSA,L]
+RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
