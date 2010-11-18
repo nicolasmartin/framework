@@ -159,6 +159,10 @@
 	set_exception_handler('exception_handler'); 
 
 	function implode_r($glue, $array, $format = '(%s)'){
+		if (!is_array($array)) {
+			$array[0] = $array;	
+		}
+		
 		$out = '';
 		foreach ($array as $item) {
 			if (is_array($item)) {
